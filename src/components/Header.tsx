@@ -29,8 +29,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
           <Menu className="w-6 h-6" />
         </button>
         <div>
-          <h2 className="text-lg sm:text-[22px] font-bold text-slate-800 dark:text-white leading-tight">Dashboard</h2>
-          <p className="hidden sm:block text-[13px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">Welcome back, Alex! Here's what's happening today.</p>
+          <h2 className="text-lg sm:text-[22px] font-bold text-slate-800 dark:text-white leading-tight">대시보드</h2>
+          <p className="hidden sm:block text-[13px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">알렉스님 환영합니다! 오늘의 소식을 확인해 보세요.</p>
         </div>
       </div>
 
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
           <input
             type="text"
             className="block w-full pl-11 pr-10 py-2 sm:py-2.5 bg-slate-100 dark:bg-slate-800/50 border-none rounded-full text-sm font-medium placeholder-slate-400 dark:placeholder-slate-500 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/20 focus:bg-white dark:focus:bg-slate-800 transition-all outline-none"
-            placeholder="Search anything..."
+            placeholder="무엇이든 검색해 보세요..."
           />
           <div className="absolute inset-y-0 right-0 pr-4 flex items-center">
             <button className="text-slate-400 hover:text-indigo-500 transition-colors">
@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
       <div className="flex items-center gap-2 sm:gap-4">
         <button className="hidden sm:flex items-center gap-1.5 bg-indigo-500 hover:bg-indigo-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-sm transition-colors shadow-sm shadow-indigo-200">
           <Plus className="w-4 h-4" />
-          New
+          새로 만들기
         </button>
 
         <div className="flex items-center gap-0.5 sm:gap-1 mx-1 sm:mx-2">
@@ -91,8 +91,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white dark:border-slate-800 shadow-sm"
           />
           <div className="hidden md:block flex-1 min-w-0">
-            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">Alex Johnson</p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium group-hover:text-red-500 transition-colors">Logout</p>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">알렉스 존슨</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium group-hover:text-red-500 transition-colors">로그아웃</p>
           </div>
         </div>
       </div>

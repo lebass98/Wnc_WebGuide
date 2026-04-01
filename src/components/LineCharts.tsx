@@ -34,12 +34,12 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
               className="flex items-center gap-1.5 text-[13px] font-medium text-slate-500 hover:text-indigo-600 transition-colors"
             >
               <Copy className="w-3.5 h-3.5" />
-              Copy Code
+              코드 복사
             </button>
             {copied && (
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900 text-white text-[11px] font-bold rounded-lg shadow-xl animate-in fade-in zoom-in duration-200 flex items-center gap-1.5 whitespace-nowrap z-50">
                 <Check className="w-3 h-3 text-emerald-400" />
-                Copied to clipboard!
+                클립보드에 복사되었습니다!
               </div>
             )}
           </div>
@@ -50,12 +50,12 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
             {showCode ? (
               <>
                 <EyeOff className="w-3.5 h-3.5" />
-                Hide code
+                코드 숨기기
               </>
             ) : (
               <>
                 <Eye className="w-3.5 h-3.5" />
-                View code
+                코드 보기
               </>
             )}
           </button>
@@ -65,10 +65,10 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
       {showCode && (
         <div className="bg-[#1C222D] p-6 font-mono text-[13px] leading-relaxed animate-in slide-in-from-top-4 duration-300 relative z-20">
           <div className="text-slate-400 mb-1">
-            &lt;!-- Find the JS file for the following chart at: src/js/charts/echarts/examples/{title.toLowerCase().replace(/\s+/g, '-')} --&gt;
+            &lt;!-- 다음 위치에서 이 차트의 JS 파일을 찾을 수 있습니다: src/js/charts/echarts/examples/{title.toLowerCase().replace(/\s+/g, '-')} --&gt;
           </div>
           <div className="text-slate-400 mb-2">
-            &lt;!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js --&gt;
+            &lt;!-- gulp 기반 워크플로우를 사용하지 않는 경우, 트랜스파일된 코드를 다음에서 찾을 수 있습니다: public/assets/js/theme.js --&gt;
           </div>
           <div className="flex gap-1.5">
             <span className="text-[#89DDFF]">&lt;div</span>
@@ -94,7 +94,7 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
 const LineCharts: React.FC = () => {
   const commonXAxis = {
     type: 'category',
-    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    data: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
     axisLine: { show: false },
     axisTick: { show: false },
     axisLabel: { color: '#64748b', fontSize: 12, margin: 15 }
@@ -150,7 +150,7 @@ const LineCharts: React.FC = () => {
 
   const stackedXAxis = {
     type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    data: ['월', '화', '수', '목', '금', '토', '일'],
     axisLine: { show: false },
     axisTick: { show: false },
     axisLabel: { color: '#64748b', fontSize: 12, margin: 15 }
@@ -163,7 +163,7 @@ const LineCharts: React.FC = () => {
     yAxis: commonYAxis,
     series: [
       {
-        name: 'Primary',
+        name: '프라이머리',
         type: 'line',
         data: [1600, 1800, 1700, 1800, 2300, 2600, 2600],
         smooth: true,
@@ -172,7 +172,7 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Orange',
+        name: '주황',
         type: 'line',
         data: [800, 900, 800, 850, 1000, 1250, 1300],
         smooth: true,
@@ -181,7 +181,7 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Red',
+        name: '빨강',
         type: 'line',
         data: [500, 550, 500, 550, 600, 900, 950],
         smooth: true,
@@ -190,7 +190,7 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Green',
+        name: '초록',
         type: 'line',
         data: [350, 350, 300, 400, 400, 600, 550],
         smooth: true,
@@ -199,7 +199,7 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Light Blue',
+        name: '연파랑',
         type: 'line',
         data: [150, 150, 100, 150, 100, 250, 250],
         smooth: true,
@@ -217,9 +217,9 @@ const LineCharts: React.FC = () => {
     yAxis: commonYAxis,
     series: [
       {
-        name: 'Primary',
+        name: '프라이머리',
         type: 'line',
-        stack: 'Total',
+        stack: '합계',
         data: [1600, 1800, 1700, 1800, 2300, 2600, 2600],
         smooth: true,
         areaStyle: { opacity: 0.15, color: '#3C50E0' },
@@ -228,9 +228,9 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Orange',
+        name: '주황',
         type: 'line',
-        stack: 'Total',
+        stack: '합계',
         data: [800, 900, 800, 850, 1000, 1250, 1300],
         smooth: true,
         areaStyle: { opacity: 0.15, color: '#FF7043' },
@@ -239,9 +239,9 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Red',
+        name: '빨강',
         type: 'line',
-        stack: 'Total',
+        stack: '합계',
         data: [500, 550, 500, 550, 600, 900, 950],
         smooth: true,
         areaStyle: { opacity: 0.15, color: '#F44336' },
@@ -250,9 +250,9 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Green',
+        name: '초록',
         type: 'line',
-        stack: 'Total',
+        stack: '합계',
         data: [350, 350, 300, 400, 400, 600, 550],
         smooth: true,
         areaStyle: { opacity: 0.15, color: '#4CAF50' },
@@ -261,9 +261,9 @@ const LineCharts: React.FC = () => {
         symbolSize: 8
       },
       {
-        name: 'Light Blue',
+        name: '연파랑',
         type: 'line',
-        stack: 'Total',
+        stack: '합계',
         data: [150, 150, 100, 150, 100, 250, 250],
         smooth: true,
         areaStyle: { opacity: 0.15, color: '#29B6F6' },
@@ -277,7 +277,7 @@ const LineCharts: React.FC = () => {
   const lineMarkerOption = {
     tooltip: { trigger: 'axis' },
     legend: { 
-      data: ['Max', 'Min'],
+      data: ['최대값', '최소값'],
       top: 20,
       itemWidth: 14,
       itemHeight: 14,
@@ -286,7 +286,7 @@ const LineCharts: React.FC = () => {
     grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      data: ['월', '화', '수', '목', '금', '토', '일'],
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: { color: '#64748b' }
@@ -298,32 +298,32 @@ const LineCharts: React.FC = () => {
     },
     series: [
       {
-        name: 'Max',
+        name: '최대값',
         type: 'line',
         data: [10, 11, 13, 11, 12, 10, 12],
         markPoint: {
           data: [
-            { type: 'max', name: 'Max' },
-            { type: 'min', name: 'Min' }
+            { type: 'max', name: '최대값' },
+            { type: 'min', name: '최소값' }
           ]
         },
         markLine: {
-          data: [{ type: 'average', name: 'Avg' }]
+          data: [{ type: 'average', name: '평균' }]
         },
         lineStyle: { width: 3, color: '#3C50E0' },
         itemStyle: { color: '#3C50E0' }
       },
       {
-        name: 'Min',
+        name: '최소값',
         type: 'line',
         data: [1, -2, 2, 5, 3, 2, 0],
         markPoint: {
-          data: [{ name: 'Lowest', value: -2, xAxis: 1, yAxis: -1.5 }]
+          data: [{ name: '최저점', value: -2, xAxis: 1, yAxis: -1.5 }]
         },
         markLine: {
           data: [
-            { type: 'average', name: 'Avg' },
-            [{ symbol: 'none', x: '90%', yAxis: 'max' }, { symbol: 'circle', label: { position: 'start', formatter: 'Max' }, type: 'max', name: 'Max' }]
+            { type: 'average', name: '평균' },
+            [{ symbol: 'none', x: '90%', yAxis: 'max' }, { symbol: 'circle', label: { position: 'start', formatter: '최대값' }, type: 'max', name: '최대값' }]
           ]
         },
         lineStyle: { width: 3, color: '#F44336' },
@@ -338,7 +338,7 @@ const LineCharts: React.FC = () => {
     xAxis: {
       type: 'category',
       boundaryGap: false,
-      data: ['Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14', 'Oct 15', 'Oct 16', 'Oct 17', 'Oct 18'],
+      data: ['10월 10일', '10월 11일', '10월 12일', '10월 13일', '10월 14일', '10월 15일', '10월 16일', '10월 17일', '10월 18일'],
       axisLine: { show: false },
       axisLabel: { color: '#64748b' }
     },
@@ -375,7 +375,7 @@ const LineCharts: React.FC = () => {
     },
     series: [
       {
-        name: 'Step Start',
+        name: '시작 부분 계단',
         type: 'line',
         step: 'start',
         data: [120, 130, 100, 130, 90, 230, 210],
@@ -383,7 +383,7 @@ const LineCharts: React.FC = () => {
         itemStyle: { color: '#3C50E0' }
       },
       {
-        name: 'Step Middle',
+        name: '중간 부분 계단',
         type: 'line',
         step: 'middle',
         data: [220, 280, 200, 230, 290, 430, 410],
@@ -391,7 +391,7 @@ const LineCharts: React.FC = () => {
         itemStyle: { color: '#FF7043' }
       },
       {
-        name: 'Step End',
+        name: '끝 부분 계단',
         type: 'line',
         step: 'end',
         data: [450, 430, 400, 450, 590, 530, 510],
@@ -405,7 +405,7 @@ const LineCharts: React.FC = () => {
     tooltip: { trigger: 'axis' },
     grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
     xAxis: {
-      data: ['Jun 05', 'Jun 09', 'Jun 13', 'Jun 17', 'Jun 21', 'Jun 25', 'Jun 29', 'Jul 03', 'Jul 07', 'Jul 11', 'Jul 15', 'Jul 19', 'Jul 23'],
+      data: ['6월 5일', '6월 9일', '6월 13일', '6월 17일', '6월 21일', '6월 25일', '6월 29일', '7월 3일', '7월 7일', '7월 11일', '7월 15일', '7월 19일', '7월 23일'],
       axisLine: { show: false },
       axisLabel: { color: '#64748b' }
     },
@@ -429,7 +429,7 @@ const LineCharts: React.FC = () => {
     grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
     xAxis: {
       type: 'category',
-      data: ['Oct', '2005', 'Apr', 'Jul', 'Oct', '2006', 'Apr', 'Jul', 'Oct', '2007', 'Apr'],
+      data: ['10월', '2005년', '4월', '7월', '10월', '2006년', '4월', '7월', '10월', '2007년', '4월'],
       axisLine: { show: false },
       axisLabel: { color: '#64748b' }
     },
@@ -460,7 +460,7 @@ const LineCharts: React.FC = () => {
     },
     series: [
         {
-            name: 'Line 1',
+            name: '라인 1',
             type: 'line',
             data: [1, 3, 9, 27, 81, 243, 729, 2187, 6561],
             lineStyle: { color: '#F44336', width: 2 },
@@ -468,7 +468,7 @@ const LineCharts: React.FC = () => {
             symbolSize: 8
         },
         {
-            name: 'Line 2',
+            name: '라인 2',
             type: 'line',
             data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
             lineStyle: { color: '#4CAF50', width: 2 },
@@ -476,7 +476,7 @@ const LineCharts: React.FC = () => {
             symbolSize: 8
         },
         {
-            name: 'Line 3',
+            name: '라인 3',
             type: 'line',
             data: [0.5, 0.25, 0.12, 0.06, 0.03, 0.015, 0.007, 0.003, 0.001],
             lineStyle: { color: '#29B6F6', width: 2 },
@@ -499,11 +499,11 @@ const LineCharts: React.FC = () => {
     },
     dataset: {
       source: [
-        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
-        ['Milk Tea', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
-        ['Matcha Latte', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
-        ['Cheese Cocoa', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
-        ['Walnut Brownie', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
+        ['제품', '2012', '2013', '2014', '2015', '2016', '2017'],
+        ['밀크티', 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
+        ['말차 라떼', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+        ['치즈 코코아', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
+        ['호두 브라우니', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
       ]
     },
     xAxis: { type: 'category', axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: '#64748b' } },
@@ -563,7 +563,7 @@ const LineCharts: React.FC = () => {
           color: '#64748b'
         },
         encode: {
-          itemName: 'product',
+          itemName: '제품',
           value: '2012',
           tooltip: '2012'
         }
@@ -576,32 +576,32 @@ const LineCharts: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
-          Line charts
+          라인 차트
         </h1>
         <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400">
-          <span>Home</span>
+          <span>홈</span>
           <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-indigo-600 dark:text-indigo-400 font-medium">ECharts</span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">Line charts</span>
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium">라인 차트</span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <ChartCard title="Basic line chart" option={basicLineOption} />
-        <ChartCard title="Basic area line chart" option={basicAreaOption} />
-        <ChartCard title="Stacked line chart" option={stackedLineOption} />
-        <ChartCard title="Stacked area chart" option={stackedAreaOption} />
+        <ChartCard title="기본 라인 차트" option={basicLineOption} />
+        <ChartCard title="기본 영역 라인 차트" option={basicAreaOption} />
+        <ChartCard title="스택형 라인 차트" option={stackedLineOption} />
+        <ChartCard title="스택형 영역 차트" option={stackedAreaOption} />
         
-        <ChartCard title="Line marker chart" option={lineMarkerOption} />
-        <ChartCard title="Area pieces chart" option={areaPiecesOption} />
-        <ChartCard title="Step line chart" option={stepLineOption} />
-        <ChartCard title="Line gradient chart" option={lineGradientOption} />
-        <ChartCard title="Dynamic line chart" option={dynamicLineOption} />
-        <ChartCard title="Line log chart" option={lineLogOption} />
+        <ChartCard title="라인 마커 차트" option={lineMarkerOption} />
+        <ChartCard title="영역 세그먼트 차트" option={areaPiecesOption} />
+        <ChartCard title="스텝 라인 차트" option={stepLineOption} />
+        <ChartCard title="라인 그라데이션 차트" option={lineGradientOption} />
+        <ChartCard title="다이내믹 라인 차트" option={dynamicLineOption} />
+        <ChartCard title="라인 로그 차트" option={lineLogOption} />
 
         <div className="xl:col-span-2">
-            <ChartCard title="Share dataset" option={shareDatasetOption} />
+            <ChartCard title="데이터셋 공유" option={shareDatasetOption} />
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ const Integrations: React.FC = () => {
     { 
       id: '1', 
       name: 'Mailchimp', 
-      description: 'Connect Mailchimp to streamline your email marketing—automate campaigns.', 
+      description: '마케팅 이메일 전송 및 캠페인 관리를 자동화하기 위해 Mailchimp를 연결하세요.', 
       isEnabled: true, 
       icon: <span className="text-2xl">🐵</span>, 
       iconBg: 'bg-white' 
@@ -34,7 +34,7 @@ const Integrations: React.FC = () => {
     { 
       id: '2', 
       name: 'Google Meet', 
-      description: 'Connect your Google Meet account for seamless video conferencing.', 
+      description: '원활한 화상 회의 진행을 위해 Google Meet 계정을 연동하세요.', 
       isEnabled: false, 
       icon: <Video className="w-6 h-6 text-emerald-500" />, 
       iconBg: 'bg-white' 
@@ -42,7 +42,7 @@ const Integrations: React.FC = () => {
     { 
       id: '3', 
       name: 'Zoom', 
-      description: 'Integrate Zoom to streamline your virtual meetings and team collaborations.', 
+      description: '원격 회의 및 팀 협업을 위해 Zoom을 통합하세요.', 
       isEnabled: false, 
       icon: <Video className="w-6 h-6 text-blue-500" />, 
       iconBg: 'bg-blue-500' 
@@ -50,7 +50,7 @@ const Integrations: React.FC = () => {
     { 
       id: '4', 
       name: 'Loom', 
-      description: 'Integrate Loom to easily record, share, and manage video messages.', 
+      description: '영상 메시지를 쉽게 녹화하고 공유, 관리할 수 있도록 Loom을 연동하세요.', 
       isEnabled: false, 
       icon: <Box className="w-6 h-6 text-indigo-500" />, 
       iconBg: 'bg-white' 
@@ -58,7 +58,7 @@ const Integrations: React.FC = () => {
     { 
       id: '5', 
       name: 'Linear', 
-      description: 'Integrate Linear to manage issues, track progress, and streamline your team\'s.', 
+      description: '팀의 이슈를 관리하고 진행 상황을 추적하기 위해 Linear를 연결하세요.', 
       isEnabled: false, 
       icon: <CheckSquare className="w-6 h-6 text-indigo-600" />, 
       iconBg: 'bg-indigo-600' 
@@ -66,7 +66,7 @@ const Integrations: React.FC = () => {
     { 
       id: '6', 
       name: 'Gmail', 
-      description: 'Integrate Gmail to send, receive, and manage emails directly from your workspace.', 
+      description: '워크스페이스에서 직접 이메일을 주고받으며 관리하도록 Gmail을 연동하세요.', 
       isEnabled: false, 
       icon: <Mail className="w-6 h-6 text-red-500" />, 
       iconBg: 'bg-white' 
@@ -74,7 +74,7 @@ const Integrations: React.FC = () => {
     { 
       id: '7', 
       name: 'Trello', 
-      description: 'Capture, organize, and tackle your to-dos from anywhere.', 
+      description: '어디서든 일정을 기록하고 칸반 보드로 시각적으로 관리하세요.', 
       isEnabled: false, 
       icon: <Clipboard className="w-6 h-6 text-blue-600" />, 
       iconBg: 'bg-blue-600' 
@@ -82,7 +82,7 @@ const Integrations: React.FC = () => {
     { 
       id: '8', 
       name: 'Notion', 
-      description: 'Capture, organize, and tackle your to-dos from anywhere.', 
+      description: '팀의 지식을 기록, 공유하고 프로젝트를 함께 체계적으로 구축하세요.', 
       isEnabled: false, 
       icon: <CheckSquare className="w-6 h-6 text-black" />, 
       iconBg: 'bg-white' 
@@ -90,7 +90,7 @@ const Integrations: React.FC = () => {
     { 
       id: '9', 
       name: 'Jira', 
-      description: 'Track issues and manage projects with ease and full team visibility.', 
+      description: '팀 전체가 이슈를 추적하고 프로젝트 진행 상황을 쉽게 확인할 수 있습니다.', 
       isEnabled: false, 
       icon: <Box className="w-6 h-6 text-blue-500" />, 
       iconBg: 'bg-white' 
@@ -136,7 +136,7 @@ const Integrations: React.FC = () => {
   };
 
   const handleAddIntegration = () => {
-    if (!newAppName || newAppName === 'Select Option') return;
+    if (!newAppName || newAppName === '옵션 선택') return;
 
     // Find the base app to steal its icon if it exists in the template list
     const templateApp = integrations.find(app => app.name === newAppName);
@@ -144,7 +144,7 @@ const Integrations: React.FC = () => {
     const newIntegration: Integration = {
       id: Date.now().toString(),
       name: newAppName,
-      description: templateApp ? templateApp.description : 'Custom integration added by team.',
+      description: templateApp ? templateApp.description : '팀에서 추가한 커스텀 앱 연동 항목입니다.',
       isEnabled: true,
       icon: templateApp ? templateApp.icon : <Box className="w-6 h-6 text-slate-500" />,
       iconBg: templateApp ? templateApp.iconBg : 'bg-white'
@@ -165,11 +165,11 @@ const Integrations: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Integrations</h2>
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-white">연동 서비스 관리</h2>
           <nav className="flex items-center gap-2 text-sm font-medium mt-1">
-            <span className="text-slate-400 font-normal">Home</span>
+            <span className="text-slate-400 font-normal">홈</span>
             <span className="text-slate-400 font-normal">/</span>
-            <span className="text-indigo-600 font-bold">Integrations</span>
+            <span className="text-indigo-600 font-bold">연동 서비스 관리</span>
           </nav>
         </div>
         <button 
@@ -177,7 +177,7 @@ const Integrations: React.FC = () => {
           className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold text-sm transition-all shadow-md shadow-indigo-200 dark:shadow-none"
         >
           <Plus className="w-4 h-4" />
-          Add New Integration
+          새 연동 추가
         </button>
       </div>
 
@@ -209,7 +209,7 @@ const Integrations: React.FC = () => {
                         }}
                         className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
                       >
-                        Remove
+                        삭제하기
                       </button>
                     </div>
                   )}
@@ -234,7 +234,7 @@ const Integrations: React.FC = () => {
                   onClick={() => { setSelectedApp(item); setActiveModal('details'); }}
                   className="px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 transition-all"
                 >
-                  Details
+                  상세 정보
                 </button>
               </div>
 
@@ -266,13 +266,13 @@ const Integrations: React.FC = () => {
                 >
                   <X className="w-4 h-4" />
                 </button>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Integration settings</h3>
-                <p className="text-[13px] text-slate-500 dark:text-slate-400">Manage and configure your connected apps and services</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">연동 설정</h3>
+                <p className="text-[13px] text-slate-500 dark:text-slate-400">연결된 앱 및 서비스의 설정을 관리합니다.</p>
               </div>
 
               <div className="px-8 py-2 space-y-5">
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Select App</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">앱 선택</label>
                   <div className="relative">
                     <select className="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all">
                       <option>{selectedApp.name}</option>
@@ -282,7 +282,7 @@ const Integrations: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Client ID</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">클라이언트 ID</label>
                   <input 
                     type="text" 
                     defaultValue="872364219810-abc123xyz456.apps.googleusercontent.com"
@@ -291,7 +291,7 @@ const Integrations: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Client Secret</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">클라이언트 비밀키 (Secret)</label>
                   <input 
                     type="text" 
                     defaultValue="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e"
@@ -300,7 +300,7 @@ const Integrations: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Authentication base URI</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">인증 기본 URI</label>
                   <input 
                     type="text" 
                     defaultValue="https://accounts.application.com/o/oauth2/auth"
@@ -310,19 +310,19 @@ const Integrations: React.FC = () => {
               </div>
 
               <div className="p-8 pt-6 space-y-6">
-                <p className="text-[13px] text-slate-500 dark:text-slate-400">Save your changes by clicking 'Save Changes'</p>
+                <p className="text-[13px] text-slate-500 dark:text-slate-400">'변경사항 저장' 버튼을 눌러 설정을 저장하세요.</p>
                 <div className="flex gap-4">
                   <button 
                     onClick={() => setActiveModal('none')}
                     className="flex-1 py-3 rounded-lg border border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600 text-[13px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
                   >
-                    Close
+                    닫기
                   </button>
                   <button 
                     onClick={() => setActiveModal('none')}
                     className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-[13px] font-bold transition-colors"
                   >
-                    Save Changes
+                    변경사항 저장
                   </button>
                 </div>
               </div>
@@ -339,30 +339,30 @@ const Integrations: React.FC = () => {
                 >
                   <X className="w-4 h-4" />
                 </button>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Integration details</h3>
-                <p className="text-[13px] text-slate-500 dark:text-slate-400">Check the credentials and settings for your connected app.</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">연동 상세 정보</h3>
+                <p className="text-[13px] text-slate-500 dark:text-slate-400">연결된 앱의 인증 정보 및 설정을 확인하세요.</p>
               </div>
 
               <div className="px-8 py-4">
                 <div className="divide-y divide-slate-100 dark:divide-slate-800 border-t border-b border-slate-100 dark:border-slate-800">
                   <div className="py-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">App Name</span>
+                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">앱 이름</span>
                     <span className="text-[14px] font-medium text-slate-800 dark:text-slate-200">{selectedApp.name}</span>
                   </div>
                   <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">Client ID</span>
+                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">클라이언트 ID</span>
                     <span className="text-[14px] font-medium text-slate-800 dark:text-slate-200 break-all leading-relaxed">
                       872364219810-abc123xyz456.apps.usercontent.com
                     </span>
                   </div>
                   <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">Client Secret</span>
+                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">클라이언트 비밀키</span>
                     <span className="text-[14px] font-medium text-slate-800 dark:text-slate-200 break-all leading-relaxed">
                       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e
                     </span>
                   </div>
                   <div className="py-4 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
-                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">Authentication base URI</span>
+                    <span className="w-[180px] shrink-0 text-[13px] text-slate-500 dark:text-slate-400">인증 기본 URI</span>
                     <span className="text-[14px] font-medium text-slate-800 dark:text-slate-200 break-all leading-relaxed">
                       https://accounts.app.com/o/oauth2/auth
                     </span>
@@ -383,20 +383,20 @@ const Integrations: React.FC = () => {
                 >
                   <X className="w-4 h-4" />
                 </button>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">New integration</h3>
-                <p className="text-[13px] text-slate-500 dark:text-slate-400">Set up an integration and add a brief explanation for the team.</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">새로운 연동 항목</h3>
+                <p className="text-[13px] text-slate-500 dark:text-slate-400">새로운 앱을 연동하고 팀을 위한 간단한 설명을 추가하세요.</p>
               </div>
 
               <div className="px-8 py-2 space-y-5">
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Select App</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">앱 선택</label>
                   <div className="relative">
                     <select 
                       value={newAppName}
                       onChange={(e) => setNewAppName(e.target.value)}
                       className="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
                     >
-                      <option value="">Select Option</option>
+                      <option value="">옵션 선택</option>
                       {integrations.map(app => (
                         <option key={app.id} value={app.name}>{app.name}</option>
                       ))}
@@ -406,34 +406,34 @@ const Integrations: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Client ID</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">클라이언트 ID</label>
                   <input 
                     type="text" 
                     value={newClientId}
                     onChange={(e) => setNewClientId(e.target.value)}
-                    placeholder="Enter client ID here"
+                    placeholder="여기에 클라이언트 ID 입력"
                     className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-400"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Client Secret</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">클라이언트 비밀키</label>
                   <input 
                     type="text" 
                     value={newClientSecret}
                     onChange={(e) => setNewClientSecret(e.target.value)}
-                    placeholder="Enter client secret here"
+                    placeholder="여기에 클라이언트 비밀키 입력"
                     className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-400"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">Authentication base URI</label>
+                  <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">인증 기본 URI</label>
                   <input 
                     type="text" 
                     value={newAuthUri}
                     onChange={(e) => setNewAuthUri(e.target.value)}
-                    placeholder="Paste URL here"
+                    placeholder="여기에 URL 붙여넣기"
                     className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-400"
                   />
                 </div>
@@ -441,21 +441,21 @@ const Integrations: React.FC = () => {
 
               <div className="p-8 pt-6 space-y-6">
                 <p className="text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Paste the full URI, and we'll automatically pull out and show only the subdomain for quick reference.
+                  전체 URI를 붙여넣으시면 참고할 수 있도록 하위 도메인만 자동으로 추출하여 표시합니다.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={() => setActiveModal('none')}
                     className="flex-1 py-3 rounded-lg border border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600 text-[13px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
                   >
-                    Close
+                    닫기
                   </button>
                   <button 
                     onClick={handleAddIntegration}
                     disabled={!newAppName}
                     className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-[13px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Add Integration
+                    저장하기
                   </button>
                 </div>
               </div>
@@ -481,9 +481,9 @@ const Integrations: React.FC = () => {
                   <X className="w-8 h-8 text-red-500 relative z-10 stroke-[2.5]" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Action Needed!</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">확인 필요!</h3>
                 <p className="text-[15px] font-medium text-slate-500 dark:text-slate-400">
-                  Are you sure you want to remove this integration?
+                  이 앱의 연동을 삭제하시겠습니까?
                 </p>
               </div>
 
@@ -492,13 +492,13 @@ const Integrations: React.FC = () => {
                   onClick={() => setActiveModal('none')}
                   className="px-6 py-2.5 rounded-lg border border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600 text-[14px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
                 >
-                  No, cancel
+                  아니오, 취소할게요
                 </button>
                 <button 
                   onClick={handleRemove}
                   className="px-6 py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-lg text-[14px] font-bold transition-colors"
                 >
-                  Yes, I'm sure
+                  네, 삭제합니다
                 </button>
               </div>
             </div>

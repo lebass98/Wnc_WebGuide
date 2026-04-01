@@ -11,7 +11,7 @@ interface CustomDatePickerProps {
 }
 
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ 
-  placeholder = "Select date",
+  placeholder = "날짜 선택",
   onChange,
   isRange = false,
   value,
@@ -33,7 +33,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -155,7 +155,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
 
   const formatDate = (date: Date | null) => {
     if (!date) return "";
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('ko-KR', {
       month: 'short',
       day: 'numeric'
     });
@@ -163,9 +163,9 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
 
 
   const formatMonthYear = (date: Date) => {
-    return date.toLocaleDateString('en-US', {
-      month: 'long',
-      year: 'numeric'
+    return date.toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long'
     });
   };
 

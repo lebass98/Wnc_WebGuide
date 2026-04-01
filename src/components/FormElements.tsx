@@ -8,8 +8,8 @@ const FormElements: React.FC = () => {
 
   // Multiple Select State
   const [multiSelectOpen, setMultiSelectOpen] = React.useState(false);
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['Option 1', 'Option 3']);
-  const availableOptions = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['옵션 1', '옵션 3']);
+  const availableOptions = ['옵션 1', '옵션 2', '옵션 3', '옵션 4'];
 
   const toggleOption = (option: string) => {
     if (selectedOptions.includes(option)) {
@@ -75,11 +75,11 @@ const FormElements: React.FC = () => {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Form Elements</h2>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">폼 요소</h2>
         <nav className="flex items-center gap-2 text-sm font-medium">
-          <span className="text-slate-400">Home</span>
+          <span className="text-slate-400">홈</span>
           <span className="text-slate-400">/</span>
-          <span className="text-indigo-600">Form Elements</span>
+          <span className="text-indigo-600">폼 요소</span>
         </nav>
       </div>
 
@@ -90,35 +90,35 @@ const FormElements: React.FC = () => {
           
           {/* Default Inputs */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Default Inputs</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">기본 입력란</h3>
             
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Input</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">입력란</label>
                 <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Input with Placeholder</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">플레이스홀더가 있는 입력란</label>
                 <input type="text" placeholder="info@gmail.com" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Select Input</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">선택 입력란</label>
                 <div className="relative">
                   <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
-                    <option>Select Option</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
+                    <option>옵션 선택</option>
+                    <option>옵션 1</option>
+                    <option>옵션 2</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Password Input</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">비밀번호 입력란</label>
                 <div className="relative">
-                  <input type={showPassword ? "text" : "password"} placeholder="Enter your password" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
+                  <input type={showPassword ? "text" : "password"} placeholder="비밀번호를 입력하세요" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
                   <Eye 
                     className={`absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 cursor-pointer hover:text-indigo-500 transition-colors ${showPassword ? 'text-indigo-500' : 'text-slate-400'}`} 
                     onClick={() => setShowPassword(!showPassword)}
@@ -127,21 +127,21 @@ const FormElements: React.FC = () => {
               </div>
 
               <div className="space-y-2 relative z-50">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Date Picker Input</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">날짜 선택 입력란</label>
                 <CustomDatePicker placeholder="mm/dd/yyyy" />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Time Select Input</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">시간 선택 입력란</label>
                 <div className="relative">
                   <input type="time" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all text-slate-500" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Input with Payment</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">결제 입력란</label>
                 <div className="relative">
-                  <input type="text" placeholder="Card number" className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
+                  <input type="text" placeholder="카드 번호" className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
                   <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500" />
                 </div>
               </div>
@@ -150,26 +150,26 @@ const FormElements: React.FC = () => {
 
           {/* Select Inputs */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Select Inputs</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">선택 입력란 (Select)</h3>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Select Input</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">선택 입력란</label>
                 <div className="relative">
                   <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
-                    <option>Select Option</option>
+                    <option>옵션 선택</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Multiple Select Options</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">다중 선택 옵션</label>
                 <div className="relative">
                   <div 
                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center bg-white dark:bg-slate-800 cursor-pointer min-h-[50px] transition-all relative z-10"
                     onClick={() => setMultiSelectOpen(!multiSelectOpen)}
                   >
-                    {selectedOptions.length === 0 && <span className="text-slate-400">Select options...</span>}
+                    {selectedOptions.length === 0 && <span className="text-slate-400">옵션을 선택하세요...</span>}
                     {selectedOptions.map(option => (
                       <span key={option} className="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 dark:text-slate-300 px-2 py-0.5 rounded text-xs font-semibold flex items-center gap-1">
                         {option} 
@@ -206,22 +206,22 @@ const FormElements: React.FC = () => {
 
           {/* Textarea input field */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Textarea input field</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">텍스트 영역 (Textarea)</h3>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Description</label>
-                <textarea placeholder="Enter a description..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">설명</label>
+                <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Description</label>
-                <textarea placeholder="Enter a description..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">설명</label>
+                <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Description</label>
-                <textarea placeholder="Enter a description..." rows={4} className="w-full px-4 py-3 rounded-lg border border-red-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-red-100 dark:focus:ring-red-900/50 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
-                <p className="text-xs text-red-500 font-medium">Please enter a message in the textarea.</p>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">설명</label>
+                <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-red-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-red-100 dark:focus:ring-red-900/50 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+                <p className="text-xs text-red-500 font-medium">텍스트 영역에 메시지를 입력해주세요.</p>
               </div>
             </div>
           </div>
@@ -233,10 +233,10 @@ const FormElements: React.FC = () => {
 
           {/* Input Group */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Input Group</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">입력 그룹</h3>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Email</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">이메일</label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Mail className="w-5 h-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
@@ -246,7 +246,7 @@ const FormElements: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Phone</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">전화번호</label>
                 <div className="flex">
                   <div className="relative group min-w-[80px]">
                     <select className="w-full h-full pl-4 pr-8 py-3 rounded-l-lg border border-r-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white outline-none appearance-none cursor-pointer">
@@ -259,7 +259,7 @@ const FormElements: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Phone</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">전화번호</label>
                 <div className="flex">
                   <input type="text" placeholder="+1 (555) 000-0000" className="flex-1 px-4 py-3 rounded-l-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
                   <div className="relative group min-w-[80px]">
@@ -272,7 +272,7 @@ const FormElements: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">URL</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">웹사이트 주소</label>
                 <div className="flex">
                   <span className="px-4 py-3 rounded-l-lg border border-r-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 font-medium">http://</span>
                   <input type="text" placeholder="www.tailadmin.com" className="flex-1 px-4 py-3 rounded-r-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
@@ -280,14 +280,14 @@ const FormElements: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Website</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">웹사이트</label>
                 <div className="flex">
                   <input type="text" value="www.tailadmin.com" readOnly className="flex-1 px-4 py-3 rounded-l-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none text-slate-600 dark:text-slate-400 dark:text-slate-300" />
                   <button 
                     onClick={handleCopy}
                     className="px-4 py-3 rounded-r-lg border border-l-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-indigo-500 dark:text-indigo-400 font-semibold flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
                   >
-                    {copied ? <span className="text-emerald-500 text-sm">Copied!</span> : <><Copy className="w-4 h-4" /> Copy</>}
+                    {copied ? <span className="text-emerald-500 text-sm">복사됨!</span> : <><Copy className="w-4 h-4" /> 복사</>}
                   </button>
                 </div>
               </div>
@@ -296,9 +296,9 @@ const FormElements: React.FC = () => {
 
           {/* File Input */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">File Input</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">파일 입력</h3>
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Upload file</label>
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">파일 업로드</label>
               <div className="relative">
                 <input type="file" className="hidden" id="file-upload" onChange={handleFileChange} />
                 <label htmlFor="file-upload" className="flex items-center w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-500 transition-all overflow-hidden whitespace-nowrap">
@@ -313,78 +313,78 @@ const FormElements: React.FC = () => {
 
           {/* Checkboxes */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Checkboxes</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">체크박스</h3>
             <div className="flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="hidden" checked={checkbox1} onChange={(e) => setCheckbox1(e.target.checked)} />
                 <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${checkbox1 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
                   {checkbox1 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
-                <span className={`text-sm font-medium ${checkbox1 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>Default</span>
+                <span className={`text-sm font-medium ${checkbox1 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>기본</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="hidden" checked={checkbox2} onChange={(e) => setCheckbox2(e.target.checked)} />
                 <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${checkbox2 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
                   {checkbox2 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
-                <span className={`text-sm font-medium ${checkbox2 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>Checked</span>
+                <span className={`text-sm font-medium ${checkbox2 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>선택됨</span>
               </label>
               <label className="flex items-center gap-2 cursor-not-allowed opacity-50">
                 <input type="checkbox" disabled className="hidden" />
                 <div className="w-5 h-5 rounded-[0.25rem] border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center"></div>
-                <span className="text-sm font-medium text-slate-400 dark:text-slate-500">Disabled</span>
+                <span className="text-sm font-medium text-slate-400 dark:text-slate-500">비활성화됨</span>
               </label>
             </div>
           </div>
 
           {/* Radio Buttons */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Radio Buttons</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">라디오 버튼</h3>
             <div className="flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="radio-test" value="default" checked={radioValue === 'default'} onChange={(e) => setRadioValue(e.target.value)} className="hidden" />
                 <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${radioValue === 'default' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600 dark:group-hover:border-indigo-500'}`}>
                    {radioValue === 'default' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
-                <span className={`text-sm font-medium ${radioValue === 'default' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>Default</span>
+                <span className={`text-sm font-medium ${radioValue === 'default' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>기본</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="radio-test" value="secondary" checked={radioValue === 'secondary'} onChange={(e) => setRadioValue(e.target.value)} className="hidden" />
                 <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${radioValue === 'secondary' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600 dark:group-hover:border-indigo-500'}`}>
                   {radioValue === 'secondary' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
-                <span className={`text-sm font-medium ${radioValue === 'secondary' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>Secondary</span>
+                <span className={`text-sm font-medium ${radioValue === 'secondary' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400 dark:text-slate-400'}`}>보조</span>
               </label>
               <label className="flex items-center gap-2 cursor-not-allowed opacity-50">
                 <input type="radio" disabled className="hidden" />
                 <div className="w-5 h-5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50"></div>
-                <span className="text-sm font-medium text-slate-400 dark:text-slate-500">Disabled Secondary</span>
+                <span className="text-sm font-medium text-slate-400 dark:text-slate-500">비활성화됨 (보조)</span>
               </label>
             </div>
           </div>
 
           {/* Toggle switch input */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Toggle switch input</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">토글 스위치 설정</h3>
             <div className="space-y-4 pt-2">
               <div className="flex gap-8 items-center">
                 <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle1(!toggle1)}>
                   <div className={`relative w-11 h-6 rounded-full transition-colors ${toggle1 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300 dark:group-hover:bg-slate-500'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${toggle1 ? 'left-[calc(100%-1.25rem)]' : 'left-1'}`}></div>
                   </div>
-                  <span className={`text-sm font-medium ${toggle1 ? 'text-indigo-600' : 'text-slate-600 dark:text-slate-400'}`}>Default</span>
+                  <span className={`text-sm font-medium ${toggle1 ? 'text-indigo-600' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle2(!toggle2)}>
                   <div className={`relative w-11 h-6 rounded-full transition-colors ${toggle2 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300 dark:group-hover:bg-slate-500'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${toggle2 ? 'translate-x-6' : 'translate-x-1'}`}></div>
                   </div>
-                  <span className={`text-sm font-medium ${toggle2 ? 'text-indigo-600' : 'text-slate-600 dark:text-slate-400'}`}>Checked</span>
+                  <span className={`text-sm font-medium ${toggle2 ? 'text-indigo-600' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-not-allowed opacity-50">
                   <div className="relative w-11 h-6 bg-slate-100 dark:bg-slate-800 rounded-full">
                     <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
                   </div>
-                  <span className="text-sm font-medium text-slate-400 dark:text-slate-500">Disabled</span>
+                  <span className="text-sm font-medium text-slate-400 dark:text-slate-500">비활성화됨</span>
                 </label>
               </div>
 
@@ -393,19 +393,19 @@ const FormElements: React.FC = () => {
                   <div className={`relative w-12 h-6 border-2 rounded-full transition-colors flex items-center px-1 ${toggle3 ? 'border-slate-800 dark:border-white' : 'border-slate-200 group-hover:border-slate-300'}`}>
                     <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${toggle3 ? 'bg-slate-800 dark:bg-white translate-x-6' : 'bg-slate-200 translate-x-0'}`}></div>
                   </div>
-                  <span className={`text-sm font-medium ${toggle3 ? 'text-slate-800 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'}`}>Default</span>
+                  <span className={`text-sm font-medium ${toggle3 ? 'text-slate-800 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle4(!toggle4)}>
                    <div className={`relative w-12 h-6 border-2 rounded-full transition-colors flex items-center px-1 ${toggle4 ? 'border-slate-800 dark:border-white' : 'border-slate-200 group-hover:border-slate-300'}`}>
                     <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${toggle4 ? 'bg-slate-800 dark:bg-white translate-x-6' : 'bg-slate-200 translate-x-0'}`}></div>
                   </div>
-                  <span className={`text-sm font-medium ${toggle4 ? 'text-slate-800 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'}`}>Checked</span>
+                  <span className={`text-sm font-medium ${toggle4 ? 'text-slate-800 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-not-allowed opacity-50">
                    <div className="relative w-12 h-6 border-2 border-slate-100 dark:border-slate-800 rounded-full flex items-center px-1">
                     <div className="w-2.5 h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
                   </div>
-                  <span className="text-sm font-medium text-slate-400 dark:text-slate-500">Disabled</span>
+                  <span className="text-sm font-medium text-slate-400 dark:text-slate-500">비활성화됨</span>
                 </label>
               </div>
             </div>
@@ -413,7 +413,7 @@ const FormElements: React.FC = () => {
 
           {/* Dropzone */}
           <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 dark:border-white p-6 space-y-6 transition-colors duration-300">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">Dropzone</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white dark:text-white border-b border-slate-50 dark:border-slate-800 dark:border-white pb-4 -mx-6 px-6">드롭존 (파일 끌어다 놓기)</h3>
             <div 
               className={`border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all ${dragActive ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-500/10 scale-[1.02]' : 'border-indigo-100 dark:border-slate-700 bg-indigo-50/5 dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500'}`}
               onDragEnter={handleDrag}
@@ -435,7 +435,7 @@ const FormElements: React.FC = () => {
               
               {selectedFiles.length > 0 ? (
                 <div className="space-y-2 w-full max-w-sm">
-                  <p className="text-lg font-bold text-indigo-600">{selectedFiles.length} file(s) selected</p>
+                  <p className="text-lg font-bold text-indigo-600">{selectedFiles.length}개 파일 선택됨</p>
                   <ul className="text-sm text-slate-500 max-h-24 overflow-y-auto custom-scrollbar text-left bg-white p-3 rounded-lg border border-slate-200">
                     {selectedFiles.map((file, i) => (
                       <li key={i} className="truncate">• {file.name}</li>
@@ -444,12 +444,12 @@ const FormElements: React.FC = () => {
                 </div>
               ) : (
                 <div>
-                  <p className="text-lg font-bold text-slate-800 dark:text-white">Drag & Drop File Here</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Drag and drop your PNG, JPG, WEBP, SVG images here or browse</p>
+                  <p className="text-lg font-bold text-slate-800 dark:text-white">여기로 파일을 드래그 앤 드롭하세요</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">PNG, JPG, WEBP, SVG 이미지를 여기로 드래그하여 놓거나 찾아보기를 클릭하세요</p>
                 </div>
               )}
               
-              {!selectedFiles.length && <button type="button" className="text-indigo-600 font-bold text-sm hover:underline">Browse File</button>}
+              {!selectedFiles.length && <button type="button" className="text-indigo-600 font-bold text-sm hover:underline">파일 찾아보기</button>}
             </div>
           </div>
 

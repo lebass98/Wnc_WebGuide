@@ -23,9 +23,9 @@ const Calendar: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingEventId, setEditingEventId] = useState<string | null>(null);
   const [events, setEvents] = useState<Event[]>([
-    { id: '1', title: 'Event Conf.', startDate: new Date(2026, 2, 11), endDate: new Date(2026, 2, 11), type: 'danger' },
-    { id: '2', title: 'Meeting', startDate: new Date(2026, 2, 12), endDate: new Date(2026, 2, 12), type: 'success' },
-    { id: '3', title: 'Workshop', startDate: new Date(2026, 2, 13), endDate: new Date(2026, 2, 13), type: 'primary' },
+    { id: '1', title: '이벤트 컨퍼런스', startDate: new Date(2026, 2, 11), endDate: new Date(2026, 2, 11), type: 'danger' },
+    { id: '2', title: '회의', startDate: new Date(2026, 2, 12), endDate: new Date(2026, 2, 12), type: 'success' },
+    { id: '3', title: '워크샵', startDate: new Date(2026, 2, 13), endDate: new Date(2026, 2, 13), type: 'primary' },
   ]);
 
   const [formData, setFormData] = useState({
@@ -35,8 +35,8 @@ const Calendar: React.FC = () => {
     endDate: new Date(2026, 3, 7)
   });
 
-  const timeSlots = ['all-day', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm'];
-  const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const timeSlots = ['하루 종일', '오전 6시', '오전 7시', '오전 8시', '오전 9시', '오전 10시', '오전 11시', '오후 12시', '오후 1시', '오후 2시', '오후 3시', '오후 4시', '오후 5시', '오후 6시', '오후 7시', '오후 8시', '오후 9시', '오후 10시'];
+  const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
   // Helper functions
   const formatDate = (date: Date) => {
@@ -241,14 +241,14 @@ const Calendar: React.FC = () => {
                         onClick={() => handleAddEvent(d)}
                         className="border-r border-slate-100 dark:border-slate-800/50 last:border-r-0 relative min-h-[50px] group transition-colors cursor-pointer hover:bg-slate-50/50 dark:hover:bg-slate-800/20 active:bg-slate-100 dark:active:bg-slate-800/40"
                     >
-                        {time === 'all-day' && i === 3 && (
-                            <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('danger')}`}>Event Conf.</div>
+                        {time === '하루 종일' && i === 3 && (
+                            <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('danger')}`}>이벤트 컨퍼런스</div>
                         )}
-                        {time === '7am' && i === 4 && (
-                            <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('success')}`}>Meeting</div>
+                        {time === '오전 7시' && i === 4 && (
+                            <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('success')}`}>회의</div>
                         )}
-                        {time === '7am' && i === 5 && (
-                             <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('primary')}`}>Workshop</div>
+                        {time === '오전 7시' && i === 5 && (
+                             <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('primary')}`}>워크샵</div>
                         )}
                     </div>
                 ))}
@@ -289,11 +289,11 @@ const Calendar: React.FC = () => {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">Calendar</h1>
+        <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">캘린더</h1>
         <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400">
-          <span>Home</span>
+          <span>홈</span>
           <ChevronRightSmall className="w-3.5 h-3.5" />
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">Calendar</span>
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium">캘린더</span>
         </div>
       </div>
 
@@ -309,7 +309,7 @@ const Calendar: React.FC = () => {
               onClick={() => handleAddEvent()}
               className="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 rounded-lg text-[13px] font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
             >
-              <Plus className="w-4 h-4" /> Add Event +
+              <Plus className="w-4 h-4" /> 이벤트 추가 +
             </button>
           </div>
 
@@ -324,7 +324,7 @@ const Calendar: React.FC = () => {
                 onClick={() => setView(v as any)}
                 className={`px-6 py-2 rounded-md text-[13px] font-bold capitalize transition-all ${view === v ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
               >
-                {v}
+                {v === 'month' ? '월간' : v === 'week' ? '주간' : '일간'}
               </button>
             ))}
           </div>
@@ -341,26 +341,26 @@ const Calendar: React.FC = () => {
           <div className="relative w-full max-w-[560px] bg-white dark:bg-slate-900 rounded-[24px] shadow-2xl animate-in zoom-in duration-300">
             <div className="p-8 pb-4">
                 <div className="flex items-center justify-between mb-1">
-                    <h2 className="text-[24px] font-bold text-slate-900 dark:text-white">{isEditing ? 'Edit Event' : 'Add Event'}</h2>
+                    <h2 className="text-[24px] font-bold text-slate-900 dark:text-white">{isEditing ? '이벤트 수정' : '이벤트 추가'}</h2>
                     <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-slate-600 transition-colors"><CloseIcon className="w-5 h-5" /></button>
                 </div>
-                <p className="text-[14px] text-slate-500 dark:text-slate-400">Plan your next big moment: schedule or edit an event to stay on track</p>
+                <p className="text-[14px] text-slate-500 dark:text-slate-400">다음 일정을 계획하세요: 이벤트를 추가하거나 수정하여 일정을 관리하세요</p>
             </div>
 
             <form onSubmit={handleSubmit} className="p-8 pt-0 space-y-6">
                 <div className="space-y-4">
                     <div className="space-y-1.5">
-                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Event Title</label>
+                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">이벤트 제목</label>
                         <input
                             type="text" required value={formData.title}
                             onChange={(e) => setFormData({...formData, title: e.target.value})}
-                            placeholder="Enter task title"
+                            placeholder="작업 제목을 입력하세요"
                             className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300"
                         />
                     </div>
 
                     <div className="space-y-1.5">
-                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Event Color</label>
+                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">이벤트 색상</label>
                         <div className="flex flex-wrap items-center gap-6 pt-1">
                             {(['danger', 'success', 'primary', 'warning'] as const).map((t) => (
                                 <label key={t} className="flex items-center gap-2.5 cursor-pointer group">
@@ -375,7 +375,7 @@ const Calendar: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Enter Start Date</label>
+                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">시작 날짜 입력</label>
                         <CustomDatePicker 
                             value={formData.startDate}
                             placeholder="2026. 04. 06." 
@@ -384,7 +384,7 @@ const Calendar: React.FC = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Enter End Date</label>
+                        <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">종료 날짜 입력</label>
                         <CustomDatePicker 
                             value={formData.endDate}
                             placeholder="2026. 04. 07." 
@@ -394,9 +394,9 @@ const Calendar: React.FC = () => {
                 </div>
 
                 <div className="flex justify-end gap-3 pt-4">
-                    <button type="button" onClick={() => setIsModalOpen(false)} className="px-8 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors">Close</button>
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="px-8 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors">닫기</button>
                     <button type="submit" className="px-8 py-2.5 rounded-xl bg-[#4B62FA] hover:bg-indigo-600 text-sm font-bold text-white shadow-lg transition-all active:scale-95">
-                        {isEditing ? 'Update Changes' : 'Add Event'}
+                        {isEditing ? '변경사항 저장' : '이벤트 추가'}
                     </button>
                 </div>
             </form>

@@ -59,35 +59,35 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, is
                   className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors self-start mb-auto"
                 >
                     <ChevronLeft className="w-4 h-4" />
-                    Back to dashboard
+                    대시보드로 돌아가기
                 </button>
 
                 <div className="w-full max-w-[420px] mx-auto mb-auto mt-20">
-                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">Sign In</h1>
-                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">Enter your email and password to sign in!</p>
+                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">로그인</h1>
+                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">이메일과 비밀번호를 입력하여 로그인하세요!</p>
 
                     {/* Social Logins */}
                     <div className="flex gap-4 mb-8">
                         <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
                             <GoogleIcon />
-                            Sign in with Google
+                            Google로 로그인
                         </button>
                         <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
                             <XIcon />
-                            Sign in with X
+                            X로 로그인
                         </button>
                     </div>
 
                     <div className="relative mb-8 flex items-center">
                         <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
-                        <span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">Or</span>
+                        <span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">또는</span>
                         <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="space-y-1.5">
                             <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                Email<span className="text-red-500">*</span>
+                                이메일<span className="text-red-500">*</span>
                             </label>
                             <input
                                 type="email"
@@ -100,14 +100,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, is
 
                         <div className="space-y-1.5">
                             <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                Password<span className="text-red-500">*</span>
+                                비밀번호<span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Enter your password"
+                                    placeholder="비밀번호를 입력하세요"
                                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                                 />
                                 <button
@@ -129,24 +129,24 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, is
                                 <svg className="absolute w-2.5 h-2.5 ml-[-1px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span className="text-[13px] font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">Keep me logged in</span>
+                                <span className="text-[13px] font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">로그인 상태 유지</span>
                             </label>
 
-                            <a href="#" className="text-[13px] font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
-                                Forgot password?
-                            </a>
+                            <button type="button" className="text-[13px] font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
+                                비밀번호를 잊으셨나요?
+                            </button>
                         </div>
 
                         <button
                             type="submit"
                             className="w-full py-3.5 bg-[#4B62FA] hover:bg-indigo-600 text-white font-bold text-sm rounded-lg transition-colors mt-2"
                         >
-                            Sign In
+                            로그인
                         </button>
                     </form>
 
                     <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">
-                        Don't have an account? <button onClick={onSignUpClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">Sign Up</button>
+                        계정이 없으신가요? <button onClick={onSignUpClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">회원가입</button>
                     </p>
                 </div>
             </div>
@@ -170,7 +170,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, is
                         <span className="text-3xl font-bold text-white tracking-tight">TailAdmin</span>
                     </div>
                     <p className="text-[15px] font-medium text-slate-400 max-w-sm leading-relaxed">
-                        Free and Open-Source Tailwind CSS Admin<br />Dashboard Template
+                        무료 오픈소스 Tailwind CSS 관리자<br />대시보드 템플릿
                     </p>
                 </div>
             </div>

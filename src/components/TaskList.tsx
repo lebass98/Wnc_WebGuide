@@ -32,19 +32,19 @@ const initialTasks: Task[] = [
   // To Do
   {
     id: '1',
-    title: 'Finish user onboarding',
+    title: '사용자 온보딩 완료',
     status: 'todo',
-    tag: { name: 'Marketing', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' },
-    dueDate: 'Tomorrow',
+    tag: { name: '마케팅', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' },
+    dueDate: '내일',
     comments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1535711603863-10d97bc7a2d4?w=100&h=100&fit=crop',
     completed: false
   },
   {
     id: '2',
-    title: 'Solve the Dribbble prioritisation issue with the team',
+    title: '팀과 Dribbble 우선순위 문제 해결',
     status: 'todo',
-    dueDate: 'Jan 8, 2027',
+    dueDate: '2027년 1월 8일',
     comments: 2,
     attachments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
@@ -52,10 +52,10 @@ const initialTasks: Task[] = [
   },
   {
     id: '3',
-    title: 'Change license and remove products',
+    title: '라이선스 변경 및 제품 제거',
     status: 'todo',
-    tag: { name: 'Marketing', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' },
-    dueDate: 'Feb 12, 2027',
+    tag: { name: '마케팅', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' },
+    dueDate: '2027년 2월 12일',
     comments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&h=100&fit=crop',
     completed: true
@@ -63,19 +63,19 @@ const initialTasks: Task[] = [
   // In Progress
   {
     id: '4',
-    title: 'Work In Progress (WIP) Dashboard',
+    title: '진행 중(WIP) 대시보드',
     status: 'inprogress',
-    dueDate: 'Today',
+    dueDate: '오늘',
     comments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop',
     completed: false
   },
   {
     id: '5',
-    title: 'Kanban Flow Manager',
+    title: '칸반 플로우 매니저',
     status: 'inprogress',
-    tag: { name: 'Template', color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10' },
-    dueDate: 'Feb 12, 2027',
+    tag: { name: '템플릿', color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10' },
+    dueDate: '2027년 2월 12일',
     comments: 8,
     attachments: 2,
     userAvatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
@@ -83,18 +83,18 @@ const initialTasks: Task[] = [
   },
   {
     id: '6',
-    title: 'Product Update - Q4 2024',
+    title: '제품 업데이트 - 2024년 4분기',
     status: 'inprogress',
-    dueDate: 'Feb 12, 2027',
+    dueDate: '2027년 2월 12일',
     comments: 8,
     userAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
     completed: false
   },
   {
     id: '7',
-    title: 'Make figbot send comment when ticket is auto-moved back to inbox',
+    title: '티켓 인박스 복귀 시 Figbot 댓글 자동화 설정',
     status: 'inprogress',
-    dueDate: 'Mar 08, 2027',
+    dueDate: '2027년 3월 8일',
     comments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
     completed: false
@@ -102,28 +102,28 @@ const initialTasks: Task[] = [
   // Completed
   {
     id: '8',
-    title: 'Manage internal feedback',
+    title: '내부 피드백 관리',
     status: 'completed',
-    dueDate: 'Tomorrow',
+    dueDate: '내일',
     comments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop',
     completed: false
   },
   {
     id: '9',
-    title: 'Do some projects on React Native with Flutter',
+    title: 'React Native 및 Flutter 프로젝트 진행',
     status: 'completed',
-    tag: { name: 'Development', color: 'text-orange-600 bg-orange-50 dark:bg-orange-500/10' },
-    dueDate: 'Jan 8, 2027',
+    tag: { name: '개발', color: 'text-orange-600 bg-orange-50 dark:bg-orange-500/10' },
+    dueDate: '2027년 1월 8일',
     userAvatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop',
     completed: false
   },
   {
     id: '10',
-    title: 'Design marketing assets',
+    title: '마케팅 에셋 디자인',
     status: 'completed',
-    tag: { name: 'Marketing', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' },
-    dueDate: 'Jan 8, 2027',
+    tag: { name: '마케팅', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' },
+    dueDate: '2027년 1월 8일',
     comments: 2,
     attachments: 1,
     userAvatar: 'https://images.unsplash.com/photo-1535711603863-10d97bc7a2d4?w=100&h=100&fit=crop',
@@ -131,10 +131,10 @@ const initialTasks: Task[] = [
   },
   {
     id: '11',
-    title: 'Kanban Flow Manager',
+    title: '칸반 플로우 매니저',
     status: 'completed',
-    tag: { name: 'Template', color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10' },
-    dueDate: 'Feb 12, 2027',
+    tag: { name: '템플릿', color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10' },
+    dueDate: '2027년 2월 12일',
     comments: 8,
     userAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop',
     completed: false
@@ -151,7 +151,7 @@ const TaskList: React.FC = () => {
     title: '',
     dueDate: '',
     status: 'todo' as 'todo' | 'inprogress' | 'completed',
-    tag: 'Marketing',
+    tag: '마케팅',
     assignee: 'Mayad Ahmed',
     description: ''
   });
@@ -188,8 +188,8 @@ const TaskList: React.FC = () => {
       status: newTask.status,
       tag: { 
         name: newTask.tag, 
-        color: newTask.tag === 'Marketing' ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' : 
-               newTask.tag === 'Template' ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10' : 
+        color: newTask.tag === '마케팅' ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10' : 
+               newTask.tag === '템플릿' ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10' : 
                'text-orange-600 bg-orange-50 dark:bg-orange-500/10' 
       },
       dueDate: newTask.dueDate || 'Today',
@@ -204,7 +204,7 @@ const TaskList: React.FC = () => {
       title: '',
       dueDate: '',
       status: 'todo',
-      tag: 'Marketing',
+      tag: '마케팅',
       assignee: 'Mayad Ahmed',
       description: ''
     });
@@ -228,11 +228,11 @@ const TaskList: React.FC = () => {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Task List</h2>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">작업 목록</h2>
         <nav className="flex items-center gap-2 text-sm font-medium">
-          <span className="text-slate-400">Home</span>
+          <span className="text-slate-400">홈</span>
           <span className="text-slate-400">/</span>
-          <span className="text-indigo-600">Task List</span>
+          <span className="text-indigo-600">작업 목록</span>
         </nav>
       </div>
 
@@ -240,10 +240,10 @@ const TaskList: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#1A222C] p-2 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
         <div className="flex flex-wrap gap-1 p-1">
           {[
-            { id: 'all', label: 'All Tasks' },
-            { id: 'todo', label: 'To do' },
-            { id: 'inprogress', label: 'In Progress' },
-            { id: 'completed', label: 'Completed' }
+            { id: 'all', label: '전체 작업' },
+            { id: 'todo', label: '할 일' },
+            { id: 'inprogress', label: '진행 중' },
+            { id: 'completed', label: '완료' }
           ].map(filter => (
             <button
               key={filter.id}
@@ -261,13 +261,13 @@ const TaskList: React.FC = () => {
         <div className="flex items-center gap-3 px-2">
           <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
             <Filter className="w-4 h-4" />
-            Filter & Short
+            필터 및 정렬
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors"
           >
-            Add New Task
+            새 작업 추가
             <Plus className="w-4 h-4" />
           </button>
         </div>
@@ -277,7 +277,7 @@ const TaskList: React.FC = () => {
       <div className="space-y-8 pb-10">
         {activeFilter !== 'inprogress' && activeFilter !== 'completed' && todoTasks.length > 0 && (
           <TaskGroup 
-            title="To Do" 
+            title="할 일" 
             status="todo"
             count={todoTasks.length} 
             tasks={todoTasks} 
@@ -290,7 +290,7 @@ const TaskList: React.FC = () => {
         
         {activeFilter !== 'todo' && activeFilter !== 'completed' && inProgressTasks.length > 0 && (
           <TaskGroup 
-            title="In Progress" 
+            title="진행 중" 
             status="inprogress"
             count={inProgressTasks.length} 
             tasks={inProgressTasks} 
@@ -303,7 +303,7 @@ const TaskList: React.FC = () => {
 
         {activeFilter !== 'todo' && activeFilter !== 'inprogress' && completedTasks.length > 0 && (
           <TaskGroup 
-            title="Completed" 
+            title="완료" 
             status="completed"
             count={completedTasks.length} 
             tasks={completedTasks} 
@@ -322,8 +322,8 @@ const TaskList: React.FC = () => {
             {/* Modal Header */}
             <div className="p-8 pb-0 flex justify-between items-start">
               <div>
-                <h3 className="text-2xl font-bold text-slate-800 dark:text-white">Add a new task</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Effortlessly manage your to-do list: add a new task</p>
+                <h3 className="text-2xl font-bold text-slate-800 dark:text-white">새 작업 추가하기</h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">할 일 목록을 효율적으로 관리하세요: 새 작업을 추가합니다.</p>
               </div>
               <button 
                 onClick={() => setIsModalOpen(false)}
@@ -336,63 +336,63 @@ const TaskList: React.FC = () => {
             {/* Modal Body */}
             <div className="p-8 space-y-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Task Title</label>
+                <label className="text-sm font-bold text-slate-700 dark:text-slate-300">작업 제목</label>
                 <input 
                   type="text" 
                   value={newTask.title}
                   onChange={(e) => setNewTask({...newTask, title: e.target.value})}
-                  placeholder="Enter task title"
+                  placeholder="작업 제목을 입력하세요"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-50 dark:focus:ring-indigo-900/20 outline-none transition-all"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Due Date</label>
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">마감일</label>
                   <CustomDatePicker 
-                    placeholder="Select due date"
+                    placeholder="마감일 선택"
                     onChange={(date) => {
                       if (date instanceof Date) {
-                        setNewTask({ ...newTask, dueDate: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) });
+                        setNewTask({ ...newTask, dueDate: date.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric', year: 'numeric' }) });
                       }
                     }}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Status</label>
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">상태</label>
                   <div className="relative">
                     <select 
                       value={newTask.status}
                       onChange={(e) => setNewTask({...newTask, status: e.target.value as any})}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer"
                     >
-                      <option value="todo">To Do</option>
-                      <option value="inprogress">In Progress</option>
-                      <option value="completed">Completed</option>
+                      <option value="todo">할 일</option>
+                      <option value="inprogress">진행 중</option>
+                      <option value="completed">완료</option>
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Tags</label>
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">태그</label>
                   <div className="relative">
                     <select 
                       value={newTask.tag}
                       onChange={(e) => setNewTask({...newTask, tag: e.target.value})}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer"
                     >
-                      <option value="Marketing">Marketing</option>
-                      <option value="Template">Template</option>
-                      <option value="Development">Development</option>
+                      <option value="마케팅">마케팅</option>
+                      <option value="템플릿">템플릿</option>
+                      <option value="개발">개발</option>
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Assignees</label>
+                  <label className="text-sm font-bold text-slate-700 dark:text-slate-300">담당자</label>
                   <div className="relative">
                     <select 
                       value={newTask.assignee}
@@ -409,12 +409,12 @@ const TaskList: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Description</label>
+                <label className="text-sm font-bold text-slate-700 dark:text-slate-300">설명</label>
                 <textarea 
                   rows={4}
                   value={newTask.description}
                   onChange={(e) => setNewTask({...newTask, description: e.target.value})}
-                  placeholder="Enter task description"
+                  placeholder="작업 설명을 입력하세요"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all resize-none overflow-y-auto"
                 ></textarea>
               </div>
@@ -423,7 +423,7 @@ const TaskList: React.FC = () => {
             {/* Modal Footer */}
             <div className="p-8 pt-4 flex items-center justify-between border-t border-slate-50 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-slate-500">Viewers:</span>
+                <span className="text-xs font-bold text-slate-500">조회자:</span>
                 <div className="flex -space-x-2">
                   {[
                     "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop",
@@ -439,13 +439,13 @@ const TaskList: React.FC = () => {
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
-                  Cancel
+                  취소
                 </button>
                 <button 
                   onClick={handleCreateTask}
                   className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold shadow-lg shadow-indigo-200 dark:shadow-none transition-all active:scale-95"
                 >
-                  Create Task
+                  작업 생성하기
                 </button>
               </div>
             </div>
