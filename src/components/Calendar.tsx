@@ -22,11 +22,44 @@ const Calendar: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editingEventId, setEditingEventId] = useState<string | null>(null);
-  const [events, setEvents] = useState<Event[]>([
+  const defaultEvents: Event[] = [
     { id: '1', title: '이벤트 컨퍼런스', startDate: new Date(2026, 2, 11), endDate: new Date(2026, 2, 11), type: 'danger' },
     { id: '2', title: '회의', startDate: new Date(2026, 2, 12), endDate: new Date(2026, 2, 12), type: 'success' },
     { id: '3', title: '워크샵', startDate: new Date(2026, 2, 13), endDate: new Date(2026, 2, 13), type: 'primary' },
-  ]);
+  ];
+
+  const koreanHolidays: Event[] = [
+    // 2026년 법정 공휴일 (빨간날 - type: 'danger')
+    { id: 'h1', title: '신정', startDate: new Date(2026, 0, 1), endDate: new Date(2026, 0, 1), type: 'danger' },
+    { id: 'h2', title: '설날 연휴', startDate: new Date(2026, 1, 16), endDate: new Date(2026, 1, 16), type: 'danger' },
+    { id: 'h3', title: '설날', startDate: new Date(2026, 1, 17), endDate: new Date(2026, 1, 17), type: 'danger' },
+    { id: 'h4', title: '설날 연휴', startDate: new Date(2026, 1, 18), endDate: new Date(2026, 1, 18), type: 'danger' },
+    { id: 'h5', title: '삼일절', startDate: new Date(2026, 2, 1), endDate: new Date(2026, 2, 1), type: 'danger' },
+    { id: 'h6', title: '대체공휴일(삼일절)', startDate: new Date(2026, 2, 2), endDate: new Date(2026, 2, 2), type: 'danger' },
+    { id: 'h7', title: '어린이날', startDate: new Date(2026, 4, 5), endDate: new Date(2026, 4, 5), type: 'danger' },
+    { id: 'h8', title: '부처님오신날', startDate: new Date(2026, 4, 24), endDate: new Date(2026, 4, 24), type: 'danger' },
+    { id: 'h9', title: '대체공휴일(부처님)', startDate: new Date(2026, 4, 25), endDate: new Date(2026, 4, 25), type: 'danger' },
+    { id: 'h10', title: '지방선거', startDate: new Date(2026, 5, 3), endDate: new Date(2026, 5, 3), type: 'danger' },
+    { id: 'h11', title: '현충일', startDate: new Date(2026, 5, 6), endDate: new Date(2026, 5, 6), type: 'danger' },
+    { id: 'h12', title: '광복절', startDate: new Date(2026, 7, 15), endDate: new Date(2026, 7, 15), type: 'danger' },
+    { id: 'h13', title: '대체공휴일(광복절)', startDate: new Date(2026, 7, 17), endDate: new Date(2026, 7, 17), type: 'danger' },
+    { id: 'h14', title: '추석 연휴', startDate: new Date(2026, 8, 24), endDate: new Date(2026, 8, 24), type: 'danger' },
+    { id: 'h15', title: '추석', startDate: new Date(2026, 8, 25), endDate: new Date(2026, 8, 25), type: 'danger' },
+    { id: 'h16', title: '추석 연휴', startDate: new Date(2026, 8, 26), endDate: new Date(2026, 8, 26), type: 'danger' },
+    { id: 'h17', title: '개천절', startDate: new Date(2026, 9, 3), endDate: new Date(2026, 9, 3), type: 'danger' },
+    { id: 'h18', title: '대체공휴일(개천절)', startDate: new Date(2026, 9, 5), endDate: new Date(2026, 9, 5), type: 'danger' },
+    { id: 'h19', title: '한글날', startDate: new Date(2026, 9, 9), endDate: new Date(2026, 9, 9), type: 'danger' },
+    { id: 'h20', title: '기독탄신일', startDate: new Date(2026, 11, 25), endDate: new Date(2026, 11, 25), type: 'danger' },
+    
+    // 국가 지정 특정일 및 기념일 (type: 'warning'으로 구분)
+    { id: 'a1', title: '식목일', startDate: new Date(2026, 3, 5), endDate: new Date(2026, 3, 5), type: 'warning' },
+    { id: 'a2', title: '어버이날', startDate: new Date(2026, 4, 8), endDate: new Date(2026, 4, 8), type: 'warning' },
+    { id: 'a3', title: '스승의 날', startDate: new Date(2026, 4, 15), endDate: new Date(2026, 4, 15), type: 'warning' },
+    { id: 'a4', title: '제헌절', startDate: new Date(2026, 6, 17), endDate: new Date(2026, 6, 17), type: 'warning' },
+    { id: 'a5', title: '국군의 날', startDate: new Date(2026, 9, 1), endDate: new Date(2026, 9, 1), type: 'warning' }
+  ];
+
+  const [events, setEvents] = useState<Event[]>([...defaultEvents, ...koreanHolidays]);
 
   const [formData, setFormData] = useState({
     title: '',
