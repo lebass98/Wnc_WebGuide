@@ -7,8 +7,8 @@ const CustomersDemographic: React.FC = () => {
         <div className="bg-white dark:bg-[#1A222C] rounded-sm p-7 border border-[#E2E8F0] dark:border-[#2E3A47] transition-all duration-300 flex flex-col h-full">
             <div className="flex justify-between items-start mb-6">
                 <div>
-                    <h3 className="text-xl font-bold text-[#1C2434] dark:text-white mb-1">Customers Demographic</h3>
-                    <p className="text-sm text-[#64748B] dark:text-[#8A99AF] font-medium">Number of customer based on country</p>
+                    <h3 className="text-xl font-bold text-[#1C2434] dark:text-white mb-1">고객 인구통계</h3>
+                    <p className="text-sm text-[#64748B] dark:text-[#8A99AF] font-medium">국가별 고객 수</p>
                 </div>
                 <button className="text-[#64748B] hover:text-[#1C2434] dark:hover:text-white mt-1">
                     <MoreVertical className="w-5 h-5" />
@@ -36,8 +36,8 @@ const CustomersDemographic: React.FC = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-[15px] font-bold text-[#1C2434] dark:text-white mb-0.5">USA</p>
-                                <p className="text-[13px] text-[#64748B] dark:text-[#8A99AF] font-medium">2,379 Customers</p>
+                                <p className="text-[15px] font-bold text-[#1C2434] dark:text-white mb-0.5">미국</p>
+                                <p className="text-[13px] text-[#64748B] dark:text-[#8A99AF] font-medium">2,379명</p>
                             </div>
                         </div>
                         <div className="flex-1 flex items-center justify-end gap-5">
@@ -60,8 +60,8 @@ const CustomersDemographic: React.FC = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-[15px] font-bold text-[#1C2434] dark:text-white mb-0.5">France</p>
-                                <p className="text-[13px] text-[#64748B] dark:text-[#8A99AF] font-medium">589 Customers</p>
+                                <p className="text-[15px] font-bold text-[#1C2434] dark:text-white mb-0.5">프랑스</p>
+                                <p className="text-[13px] text-[#64748B] dark:text-[#8A99AF] font-medium">589명</p>
                             </div>
                         </div>
                         <div className="flex-1 flex items-center justify-end gap-5">

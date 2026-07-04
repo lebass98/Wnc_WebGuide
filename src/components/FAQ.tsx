@@ -7,70 +7,70 @@ const FAQ: React.FC = () => {
 
   const faqData1 = [
     {
-      question: "Do I get free updates?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis magna ac nibh malesuada consectetur at vitae ipsum orem ipsum dolor sit amet, consectetur adipiscing elit nam fermentum, leo et lacinia accumsan."
+      question: "무료 업데이트가 지원되나요?",
+      answer: "우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다."
     },
     {
-      question: "Can I Customize TailAdmin to suit my needs?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis magna ac nibh malesuada consectetur at vitae ipsum orem ipsum dolor sit amet."
+      question: "대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?",
+      answer: "네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경하거나 구성을 추가할 수 있습니다."
     },
     {
-      question: "What does \"Unlimited Projects\" mean?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis magna ac nibh malesuada consectetur at vitae ipsum orem ipsum dolor sit amet."
+      question: "\"무제한 프로젝트\"는 무슨 뜻인가요?",
+      answer: "무제한 프로젝트란 본 서비스를 활용하여 진행할 수 있는 웹, 앱 등의 프로젝트 생성 개수에 어떠한 제한도 두지 않는다는 것을 의미합니다. 하나의 라이선스로 원하는 만큼 프로젝트를 구축할 수 있습니다."
     }
   ];
 
   const faqData2 = [
     {
-      question: "Do I get free updates?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis magna ac nibh malesuada consectetur at vitae ipsum orem ipsum dolor sit amet, consectetur adipiscing elit nam fermentum, leo et lacinia accumsan."
+      question: "무료 업데이트가 지원되나요?",
+      answer: "우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다."
     },
     {
-      question: "Which license type is suitable for me?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "어떤 라이선스가 제게 적합한가요?",
+      answer: "스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다."
     },
     {
-      question: "What are the \"Seats\" mentioned on pricing plans?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "가격 정책에 언급된 \"시트(Seats)\"는 무엇인가요?",
+      answer: "시트(Seats)는 대시보드 관리자 페이지에 접근하거나 프로젝트 개발에 직접 참여하는 개발자 혹은 관리자 계정의 수를 의미합니다."
     },
     {
-      question: "Can I Customize TailAdmin to suit my needs?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?",
+      answer: "네, 완전히 가능합니다. 제공되는 코드를 바탕으로 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다."
     },
     {
-      question: "What does \"Unlimited Projects\" mean?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "\"무제한 프로젝트\"는 무슨 뜻인가요?",
+      answer: "프로젝트 진행 개수에 한도를 두지 않는다는 의미입니다. 단일 라이선스로 다수의 서비스 애플리케이션에 적용하실 수 있습니다."
     },
     {
-      question: "Can I upgrade to a higher plan?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "더 상위 요금제로 업그레이드할 수 있나요?",
+      answer: "언제든지 고객 지원 버튼을 통해 요금제 업그레이드를 신청하실 수 있으며, 결제 금액은 사용한 날짜를 제외하고 일할 계산되어 청구됩니다."
     },
     {
-      question: "Are there dark and light mode options?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "다크 모드와 라이트 모드를 지원하나요?",
+      answer: "예, 제공되는 컴포넌트는 기본적으로 다크/라이트 테마에 완벽하게 대응하도록 설계되었으며, 시스템 설정에 따라 적절한 테마가 자동으로 적용됩니다."
     }
   ];
 
   const faqData3 = [
     {
-      question: "Do I get free updates?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      question: "무료 업데이트가 지원되나요?",
+      answer: "우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 기능 개선 사항을 주기적으로 고객님께 안내해 드립니다."
     },
     {
-      question: "Can I Customize TailAdmin to suit my needs?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      question: "대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?",
+      answer: "네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다."
     },
     {
-      question: "Which license type is suitable for me?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      question: "어떤 라이선스가 제게 적합한가요?",
+      answer: "개인 개발자라면 기본 라이선스를, 기업 고객이라면 확장 라이선스를 추천해 드립니다. 자세한 비교 내용은 결제 페이지에서 확인하세요."
     },
     {
-      question: "What does \"Unlimited Projects\" mean?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis magna ac nibh malesuada consectetur at vitae ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum, leo et lacinia accumsan, ligula ante hendrerit nisi, eget vulputate ante justo et justo."
+      question: "\"무제한 프로젝트\"는 무슨 뜻인가요?",
+      answer: "무제한 프로젝트란 본 플랫폼 내에서 생성하거나 운영할 워크스페이스나 애플리케이션 프로젝트 개수에 상한제가 없음을 의미합니다. 자유롭게 다양한 서비스 모델을 개발하고 런칭할 수 있습니다."
     },
     {
-      question: "What are the \"Seats\" mentioned on pricing plans?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nunc ut risus imperdiet lacinia."
+      question: "가격 정책에 언급된 \"시트(Seats)\"는 무엇인가요?",
+      answer: "시트(Seats)는 서비스를 구독하여 이용할 수 있는 인증된 활성 사용자 혹은 팀원의 최대 허용 인원을 뜻합니다."
     }
   ];
 
@@ -78,17 +78,17 @@ const FAQ: React.FC = () => {
     <div className="space-y-10 pb-10">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Faq's</h2>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">자주 묻는 질문 (FAQ)</h2>
         <nav className="flex items-center gap-2 text-sm font-medium">
-          <span className="text-slate-400 font-normal">Home</span>
+          <span className="text-slate-400 font-normal">홈</span>
           <span className="text-slate-400 font-normal">/</span>
-          <span className="text-indigo-600 font-bold">Faq's</span>
+          <span className="text-indigo-600 font-bold">자주 묻는 질문</span>
         </nav>
       </div>
 
       {/* FAQ Type 1 */}
       <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">Faq's 1</h3>
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">FAQ 유형 1</h3>
         <div className="space-y-4">
           {faqData1.map((item, idx) => (
             <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
@@ -113,7 +113,7 @@ const FAQ: React.FC = () => {
 
       {/* FAQ Type 2 */}
       <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">Faq's 2</h3>
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">FAQ 유형 2</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="space-y-4">
             {faqData2.slice(0, 3).map((item, idx) => (
@@ -167,7 +167,7 @@ const FAQ: React.FC = () => {
 
       {/* FAQ Type 3 */}
       <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">Faq's 3</h3>
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">FAQ 유형 3</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {faqData3.map((item, idx) => (
             <div key={idx} className="flex gap-4">
@@ -184,7 +184,7 @@ const FAQ: React.FC = () => {
                 {/* Visual helper for multi-paragraph look in the image */}
                 {idx < 2 && (
                    <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    추가적인 안내사항이 있다면 고객 지원 문서나 이용약관의 관련 섹션을 통해 상세히 확인해보실 것을 권장합니다.
                   </p>
                 )}
               </div>

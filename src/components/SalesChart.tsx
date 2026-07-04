@@ -2,10 +2,10 @@ import React from 'react';
 
 const SalesChart: React.FC = () => {
   const categories = [
-    { name: 'Electronics', color: 'bg-blue-500', dot: 'bg-blue-500', hex: '#3b82f6', percent: 45 },
-    { name: 'Clothing', color: 'bg-purple-500', dot: 'bg-purple-500', hex: '#a855f7', percent: 30 },
-    { name: 'Books', color: 'bg-emerald-500', dot: 'bg-emerald-500', hex: '#10b981', percent: 15 },
-    { name: 'Other', color: 'bg-amber-500', dot: 'bg-amber-500', hex: '#f59e0b', percent: 10 },
+    { name: '전자제품', color: 'bg-blue-500', dot: 'bg-blue-500', hex: '#3b82f6', percent: 45 },
+    { name: '의류', color: 'bg-purple-500', dot: 'bg-purple-500', hex: '#a855f7', percent: 30 },
+    { name: '도서', color: 'bg-emerald-500', dot: 'bg-emerald-500', hex: '#10b981', percent: 15 },
+    { name: '기타', color: 'bg-amber-500', dot: 'bg-amber-500', hex: '#f59e0b', percent: 10 },
   ];
 
   // Calculate conic gradient
@@ -29,8 +29,8 @@ const SalesChart: React.FC = () => {
   return (
     <div className="bg-white dark:bg-[#1A222C] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 h-full flex flex-col transition-colors duration-300">
       <div className="mb-8">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white">Sales by Category</h3>
-        <p className="text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">Product distribution</p>
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white">카테고리별 매출</h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">제품 분포도</p>
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center">

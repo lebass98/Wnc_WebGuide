@@ -32,13 +32,13 @@ const PricingSectionWrapper: React.FC<PricingCardProps> = ({ title, htmlCode, ch
               onClick={() => setActiveTab('preview')}
               className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
             >
-              Preview
+              미리보기
             </button>
             <button 
               onClick={() => setActiveTab('code')}
               className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${activeTab === 'code' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
             >
-              Code
+              코드
             </button>
           </div>
 
@@ -271,44 +271,44 @@ const PricingSections: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
-            Pricing Sections
+            가격 섹션
           </h1>
           <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
-            <span>Home</span>
+            <span>홈</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span>Pages</span>
+            <span>페이지</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">Pricing Sections</span>
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">가격 섹션</span>
           </div>
         </div>
       </div>
 
       {/* Variation 1: Two tiers with emphasized right tier */}
-      <PricingSectionWrapper title="Two tiers with emphasized right tier" htmlCode={section1Html}>
+      <PricingSectionWrapper title="우측이 강조된 두 가지 티어" htmlCode={section1Html}>
         <div className="relative isolate bg-white dark:bg-slate-950 px-6 py-24 sm:py-32 lg:px-8 overflow-hidden rounded-2xl">
           <div className="absolute inset-x-0 -top-3 px-3 -z-10 transform-gpu opacity-30 blur-3xl" aria-hidden="true">
             <div className="ml-[50%] aspect-[1155/678] w-[72.1875rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]"></div>
           </div>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Pricing</h2>
-            <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Choose the right plan for you</p>
-            <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400">Choose an affordable plan that's packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
+            <h2 className="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">가격 정책</h2>
+            <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">당신에게 맞는 요금제를 선택하세요</p>
+            <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400">오디언스의 참여를 유도하고, 고객 충성도를 구축하며, 매출을 촉진하는 데 필요한 최고의 기능을 갖춘 합리적인 요금제를 선택하세요.</p>
           </div>
           <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
             {/* Hobby Plan */}
             <div className="relative rounded-3xl bg-white/60 dark:bg-white/5 p-8 ring-1 ring-slate-900/10 dark:ring-white/10 sm:mx-8 lg:mx-0 lg:rounded-r-none lg:p-10 backdrop-blur-sm border-white/20">
-              <h3 className="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Hobby</h3>
+              <h3 className="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">취미</h3>
               <p className="mt-4 flex items-baseline gap-x-2">
                 <span className="text-5xl font-bold tracking-tight text-slate-900 dark:text-white">$29</span>
-                <span className="text-base text-slate-500 dark:text-slate-400">/month</span>
+                <span className="text-base text-slate-500 dark:text-slate-400">/월</span>
               </p>
-              <p className="mt-6 text-base leading-7 text-slate-600 dark:text-slate-400">The perfect plan if you're just getting started with our product.</p>
+              <p className="mt-6 text-base leading-7 text-slate-600 dark:text-slate-400">우리 제품을 처음 시작하시는 분들에게 완벽한 요금제입니다.</p>
               <ul className="mt-8 space-y-3 text-sm leading-6 text-slate-600 dark:text-slate-400 sm:mt-10">
                 {[
-                  "25 products",
-                  "Up to 10,000 subscribers",
-                  "Advanced analytics",
-                  "24-hour support response time"
+                  "25개 제품",
+                  "최대 10,000명의 구독자",
+                  "고급 분석",
+                  "24시간 내 지원 응답 타임"
                 ].map((feature, i) => (
                   <li key={i} className="flex gap-x-3">
                     <Check className="h-6 w-5 flex-none text-indigo-600 dark:text-indigo-400" />
@@ -317,25 +317,25 @@ const PricingSections: React.FC = () => {
                 ))}
               </ul>
               <button className="mt-8 block w-full rounded-md px-3.5 py-2.5 text-center text-sm font-semibold leading-6 text-indigo-600 dark:text-indigo-400 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-900 hover:ring-indigo-300 dark:hover:ring-indigo-700 transition-all">
-                Get started today
+                오늘 바로 시작하기
               </button>
             </div>
             {/* Enterprise Plan */}
             <div className="relative rounded-3xl bg-slate-900 dark:bg-indigo-600 p-8 shadow-2xl ring-1 ring-slate-900 dark:ring-indigo-600 sm:p-10 lg:z-10 lg:rounded-l-none">
-              <h3 className="text-base font-semibold leading-7 text-indigo-400 dark:text-blue-100">Enterprise</h3>
+              <h3 className="text-base font-semibold leading-7 text-indigo-400 dark:text-blue-100">엔터프라이즈</h3>
               <p className="mt-4 flex items-baseline gap-x-2">
                 <span className="text-5xl font-bold tracking-tight text-white">$99</span>
-                <span className="text-base text-slate-400 dark:text-blue-100/70">/month</span>
+                <span className="text-base text-slate-400 dark:text-blue-100/70">/월</span>
               </p>
-              <p className="mt-6 text-base leading-7 text-slate-300 dark:text-blue-50">Dedicated support and infrastructure for your company.</p>
+              <p className="mt-6 text-base leading-7 text-slate-300 dark:text-blue-50">회사에 맞춤화된 전용 지원 및 인프라를 제공합니다.</p>
               <ul className="mt-8 space-y-3 text-sm leading-6 text-slate-300 dark:text-blue-50 sm:mt-10">
                 {[
-                  "Unlimited products",
-                  "Unlimited subscribers",
-                  "Advanced analytics",
-                  "Dedicated support representative",
-                  "Marketing automations",
-                  "Custom integrations"
+                  "무제한 제품",
+                  "무제한 구독자",
+                  "고급 분석",
+                  "전담 지원 담당자",
+                  "마케팅 자동화",
+                  "사용자 맞춤형 통합"
                 ].map((feature, i) => (
                   <li key={i} className="flex gap-x-3">
                     <Check className="h-6 w-5 flex-none text-indigo-400 dark:text-blue-200" />
@@ -344,7 +344,7 @@ const PricingSections: React.FC = () => {
                 ))}
               </ul>
               <button className="mt-8 block w-full rounded-md bg-indigo-500 dark:bg-white px-3.5 py-2.5 text-center text-sm font-semibold leading-6 text-white dark:text-indigo-600 shadow-sm hover:bg-indigo-400 dark:hover:bg-blue-50 transition-all">
-                Get started today
+                오늘 바로 시작하기
               </button>
             </div>
           </div>
@@ -354,68 +354,68 @@ const PricingSections: React.FC = () => {
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* Variation 2: Three tiers with emphasized middle tier */}
-      <PricingSectionWrapper title="Three tiers with emphasized middle tier" htmlCode={section2Html}>
+      <PricingSectionWrapper title="본문이 강조되는 3가지 티어" htmlCode={section2Html}>
         <div className="bg-slate-50 dark:bg-slate-900 py-24 sm:py-32 rounded-2xl">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Pricing Plans</h2>
-              <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Our Flexible Pricing</p>
-              <p className="mt-4 text-slate-600 dark:text-slate-400">Simple and transparent pricing for businesses of all sizes.</p>
+              <h2 className="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">가격 요금제</h2>
+              <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">우리의 유연한 가격 정책</p>
+              <p className="mt-4 text-slate-600 dark:text-slate-400">모든 규모의 기업을 위한 간단하고 투명한 가격 정책입니다.</p>
             </div>
             <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 items-center">
               {/* Starter */}
               <div className="flex flex-col justify-between rounded-3xl bg-white dark:bg-slate-800/50 p-8 ring-1 ring-slate-200 dark:ring-slate-700 xl:p-10 transition-all hover:shadow-lg">
                 <div>
-                  <h3 className="text-lg font-semibold leading-8 text-slate-900 dark:text-white">Starter</h3>
-                  <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">Perfect for individuals and small projects.</p>
+                  <h3 className="text-lg font-semibold leading-8 text-slate-900 dark:text-white">스타터</h3>
+                  <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">개인 및 소규모 프로젝트에 완벽합니다.</p>
                   <p className="mt-6 flex items-baseline gap-x-1">
                     <span className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">$15</span>
-                    <span className="text-sm font-semibold leading-6 text-slate-600 dark:text-slate-400">/month</span>
+                    <span className="text-sm font-semibold leading-6 text-slate-600 dark:text-slate-400">/월</span>
                   </p>
                   <ul className="mt-8 space-y-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    {["5 projects", "Basic support", "Community access"].map((feat, i) => (
+                    {["5개 프로젝트", "기본 지원", "커뮤니티 액세스"].map((feat, i) => (
                       <li key={i} className="flex gap-x-3"><Check className="h-6 w-5 flex-none text-indigo-600" /> {feat}</li>
                     ))}
                   </ul>
                 </div>
-                <button className="mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 dark:text-indigo-400 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-900 hover:ring-indigo-300 dark:hover:ring-indigo-800">Buy Starter</button>
+                <button className="mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 dark:text-indigo-400 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-900 hover:ring-indigo-300 dark:hover:ring-indigo-800">스타터 구매하기</button>
               </div>
               {/* Professional */}
               <div className="relative flex flex-col justify-between rounded-3xl bg-slate-900 p-8 ring-1 ring-slate-900 xl:p-10 lg:scale-105 z-10 shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4">
-                  <span className="bg-indigo-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Most Popular</span>
+                  <span className="bg-indigo-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">가장 인기 있음</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold leading-8 text-white">Professional</h3>
-                  <p className="mt-4 text-sm leading-6 text-slate-300">The best choice for growing businesses.</p>
+                  <h3 className="text-lg font-semibold leading-8 text-white">프로페셔널</h3>
+                  <p className="mt-4 text-sm leading-6 text-slate-300">성장하는 기업을 위한 최고의 선택입니다.</p>
                   <p className="mt-6 flex items-baseline gap-x-1">
                     <span className="text-4xl font-bold tracking-tight text-white">$49</span>
-                    <span className="text-sm font-semibold leading-6 text-slate-400">/month</span>
+                    <span className="text-sm font-semibold leading-6 text-slate-400">/월</span>
                   </p>
                   <ul className="mt-8 space-y-3 text-sm leading-6 text-slate-300">
-                    {["20 projects", "Priority support", "Advanced analytics", "Team collaboration"].map((feat, i) => (
+                    {["20개 프로젝트", "우선 지원", "고급 분석", "팀 협업"].map((feat, i) => (
                       <li key={i} className="flex gap-x-3"><Check className="h-6 w-5 flex-none text-indigo-400" /> {feat}</li>
                     ))}
                   </ul>
                 </div>
-                <button className="mt-8 block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 transition-all">Buy Professional</button>
+                <button className="mt-8 block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 transition-all">프로페셔널 구매하기</button>
               </div>
               {/* Enterprise */}
               <div className="flex flex-col justify-between rounded-3xl bg-white dark:bg-slate-800/50 p-8 ring-1 ring-slate-200 dark:ring-slate-700 xl:p-10 transition-all hover:shadow-lg">
                 <div>
-                  <h3 className="text-lg font-semibold leading-8 text-slate-900 dark:text-white">Enterprise</h3>
-                  <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">Everything you need for large-scale operations.</p>
+                  <h3 className="text-lg font-semibold leading-8 text-slate-900 dark:text-white">엔터프라이즈</h3>
+                  <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400">대규모 운영에 필요한 모든 것을 제공합니다.</p>
                   <p className="mt-6 flex items-baseline gap-x-1">
                     <span className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">$99</span>
-                    <span className="text-sm font-semibold leading-6 text-slate-600 dark:text-slate-400">/month</span>
+                    <span className="text-sm font-semibold leading-6 text-slate-600 dark:text-slate-400">/월</span>
                   </p>
                   <ul className="mt-8 space-y-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                    {["Unlimited projects", "24/7 Dedicated support", "Custom integrations", "White labeling"].map((feat, i) => (
+                    {["무제한 프로젝트", "연중무휴 전담 지원", "사용자 맞춤형 통합", "화이트 라벨링"].map((feat, i) => (
                       <li key={i} className="flex gap-x-3"><Check className="h-6 w-5 flex-none text-indigo-600" /> {feat}</li>
                     ))}
                   </ul>
                 </div>
-                <button className="mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 dark:text-indigo-400 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-900 hover:ring-indigo-300 dark:hover:ring-indigo-800">Buy Enterprise</button>
+                <button className="mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 dark:text-indigo-400 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-900 hover:ring-indigo-300 dark:hover:ring-indigo-800">엔터프라이즈 구매하기</button>
               </div>
             </div>
           </div>
@@ -425,27 +425,27 @@ const PricingSections: React.FC = () => {
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* Variation 3: Simple horizontal tiers */}
-      <PricingSectionWrapper title="Simple three column" htmlCode={`<!-- Simple three column -->
+      <PricingSectionWrapper title="간단한 세 개의 기준열" htmlCode={`<!-- Simple three column -->
 <div class="bg-white dark:bg-slate-950 py-24 sm:py-32 rounded-2xl">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-x-8">
       <!-- Tier 1 -->
       <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-3xl">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Personal</h3>
-        <p class="mt-4 text-4xl font-black text-slate-900 dark:text-white">$0 <span class="text-sm font-normal text-slate-500">/month</span></p>
-        <button class="mt-8 w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 transition-all">Get Started</button>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">퍼스널</h3>
+        <p class="mt-4 text-4xl font-black text-slate-900 dark:text-white">$0 <span class="text-sm font-normal text-slate-500">/월</span></p>
+        <button class="mt-8 w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 transition-all">시작하기</button>
       </div>
       <!-- Tier 2 -->
       <div class="p-8 bg-indigo-600 rounded-3xl shadow-xl shadow-indigo-200 dark:shadow-none">
-        <h3 class="text-lg font-bold text-white">Startup</h3>
-        <p class="mt-4 text-4xl font-black text-white">$24 <span class="text-sm font-normal text-indigo-200">/month</span></p>
-        <button class="mt-8 w-full py-3 bg-white text-indigo-600 rounded-xl font-bold hover:bg-slate-100 transition-all">Get Started</button>
+        <h3 class="text-lg font-bold text-white">스타트업</h3>
+        <p class="mt-4 text-4xl font-black text-white">$24 <span class="text-sm font-normal text-indigo-200">/월</span></p>
+        <button class="mt-8 w-full py-3 bg-white text-indigo-600 rounded-xl font-bold hover:bg-slate-100 transition-all">시작하기</button>
       </div>
       <!-- Tier 3 -->
       <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-3xl">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Business</h3>
-        <p class="mt-4 text-4xl font-black text-slate-900 dark:text-white">$48 <span class="text-sm font-normal text-slate-500">/month</span></p>
-        <button class="mt-8 w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 transition-all">Get Started</button>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">비즈니스</h3>
+        <p class="mt-4 text-4xl font-black text-slate-900 dark:text-white">$48 <span class="text-sm font-normal text-slate-500">/월</span></p>
+        <button class="mt-8 w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 transition-all">시작하기</button>
       </div>
     </div>
   </div>
@@ -454,19 +454,19 @@ const PricingSections: React.FC = () => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-x-8">
               {[
-                { name: "Personal", price: "$0", bg: "bg-slate-50 dark:bg-slate-900", text: "text-slate-900 dark:text-white", btn: "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white" },
-                { name: "Startup", price: "$24", bg: "bg-indigo-600", text: "text-white", btn: "bg-white text-indigo-600" },
-                { name: "Business", price: "$48", bg: "bg-slate-50 dark:bg-slate-900", text: "text-slate-900 dark:text-white", btn: "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white" }
+                { name: "퍼스널", price: "$0", bg: "bg-slate-50 dark:bg-slate-900", text: "text-slate-900 dark:text-white", btn: "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white" },
+                { name: "스타트업", price: "$24", bg: "bg-indigo-600", text: "text-white", btn: "bg-white text-indigo-600" },
+                { name: "비즈니스", price: "$48", bg: "bg-slate-50 dark:bg-slate-900", text: "text-slate-900 dark:text-white", btn: "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white" }
               ].map((tier, i) => (
                 <div key={i} className={`p-8 ${tier.bg} rounded-3xl transition-transform hover:-translate-y-2 duration-300`}>
                   <h3 className={`text-lg font-bold ${tier.text}`}>{tier.name}</h3>
-                  <p className={`mt-4 text-4xl font-black ${tier.text}`}>{tier.price} <span className="text-sm font-normal opacity-60">/month</span></p>
+                  <p className={`mt-4 text-4xl font-black ${tier.text}`}>{tier.price} <span className="text-sm font-normal opacity-60">/월</span></p>
                   <ul className={`mt-6 space-y-3 text-sm font-medium ${tier.text} opacity-80`}>
-                    <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Core features</li>
-                    <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Community forums</li>
-                    <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Email support</li>
+                    <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> 핵심 기능</li>
+                    <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> 커뮤니티 포럼</li>
+                    <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> 이메일 지원</li>
                   </ul>
-                  <button className={`mt-8 w-full py-3 ${tier.btn} rounded-xl font-bold hover:opacity-90 transition-all shadow-sm`}>Get Started</button>
+                  <button className={`mt-8 w-full py-3 ${tier.btn} rounded-xl font-bold hover:opacity-90 transition-all shadow-sm`}>시작하기</button>
                 </div>
               ))}
             </div>
@@ -477,16 +477,16 @@ const PricingSections: React.FC = () => {
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
       
       {/* Variation 4: Centered with badges and micro-animations */}
-      <PricingSectionWrapper title="Feature-rich centered" htmlCode={`<!-- Content omitted for brevity in this mock -->`}>
+      <PricingSectionWrapper title="기능이 풍부한 중앙 정렬" htmlCode={`<!-- Content omitted for brevity in this mock -->`}>
         <div className="relative overflow-hidden bg-slate-50 dark:bg-slate-900 py-24 sm:py-32 rounded-2xl">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
           <div className="mx-auto max-w-4xl px-6 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest mb-8">
               <Sparkles className="w-3.5 h-3.5" />
-              Limited Time Offer: 20% Off Yearly
+              기간 한정 제공: 연간 결제 시 20% 할인
             </div>
-            <h2 className="text-5xl font-black text-slate-900 dark:text-white mb-6">Scale with Confidence</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">From side projects to enterprise-grade solutions. Get the features you need, when you need them.</p>
+            <h2 className="text-5xl font-black text-slate-900 dark:text-white mb-6">자신 있게 확장하세요</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">사이드 프로젝트에서 엔터프라이즈급 솔루션까지. 필요할 때 필요한 기능을 이용하세요.</p>
             
             <div className="bg-white dark:bg-slate-800 p-8 rounded-[40px] shadow-2xl border border-slate-100 dark:border-slate-700 flex flex-col md:flex-row items-center gap-12 text-left relative overflow-hidden group">
                <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-colors"></div>
@@ -496,18 +496,18 @@ const PricingSections: React.FC = () => {
                       <Zap className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Pro Accelerator</h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-sm">Most popular for high-growth startups</p>
+                      <h4 className="text-2xl font-bold text-slate-900 dark:text-white">프로 액셀러레이터</h4>
+                      <p className="text-slate-500 dark:text-slate-400 text-sm">고속 성장하는 스타트업에게 가장 인기가 높습니다.</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
-                      "Real-time fraud detection",
-                      "Priority API access",
-                      "Custom reporting hooks",
-                      "Dedicated account manager",
-                      "SLA 99.9% guarantee",
-                      "RBAC & SSO integration"
+                      "실시간 사기 탐지",
+                      "우선 API 접근 권한",
+                      "맞춤형 보고 후크",
+                      "전담 계정 매니저",
+                      "SLA 99.9% 보장",
+                      "RBAC 및 SSO 통합"
                     ].map((f, i) => (
                       <div key={i} className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
                         <Check className="w-4 h-4 text-emerald-500" /> {f}
@@ -516,15 +516,15 @@ const PricingSections: React.FC = () => {
                   </div>
                </div>
                <div className="shrink-0 w-full md:w-[280px] p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-700 text-center">
-                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2">Starts from</p>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2">시작가</p>
                   <div className="flex items-baseline justify-center gap-1 mb-6">
                     <span className="text-5xl font-black text-indigo-600">$49</span>
-                    <span className="text-slate-400 font-medium">/mo</span>
+                    <span className="text-slate-400 font-medium">/월</span>
                   </div>
                   <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200 dark:shadow-none mb-4">
-                    Scale Now
+                    지금 확장하기
                   </button>
-                  <p className="text-[11px] text-slate-400">No credit card required for 14-day trial</p>
+                  <p className="text-[11px] text-slate-400">14일 평가판에는 신용카드가 필요하지 않습니다.</p>
                </div>
             </div>
           </div>

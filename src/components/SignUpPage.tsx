@@ -62,28 +62,28 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
                   className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors self-start mb-auto"
                 >
                     <ChevronLeft className="w-4 h-4" />
-                    Back to dashboard
+                    대시보드로 돌아가기
                 </button>
 
                 <div className="w-full max-w-[420px] mx-auto mb-auto mt-16">
-                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">Sign Up</h1>
-                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">Enter your email and password to sign up!</p>
+                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">회원가입</h1>
+                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">이메일과 비밀번호를 입력하여 회원가입하세요!</p>
 
                     {/* Social Logins */}
                     <div className="flex gap-4 mb-8">
                         <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
                             <GoogleIcon />
-                            Sign up with Google
+                            Google로 가입
                         </button>
                         <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
                             <XIcon />
-                            Sign up with X
+                            X로 가입
                         </button>
                     </div>
 
                     <div className="relative mb-8 flex items-center">
                         <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
-                        <span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">Or</span>
+                        <span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">또는</span>
                         <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
                     </div>
 
@@ -91,26 +91,26 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1.5">
                                 <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                    First Name<span className="text-red-500">*</span>
+                                    이름<span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={firstName}
                                     onChange={(e) => setFirstName(e.target.value)}
-                                    placeholder="Enter your first name"
+                                    placeholder="이름을 입력하세요"
                                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                                 />
                             </div>
                             
                             <div className="space-y-1.5">
                                 <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                    Last Name<span className="text-red-500">*</span>
+                                    성<span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={lastName}
                                     onChange={(e) => setLastName(e.target.value)}
-                                    placeholder="Enter your last name"
+                                    placeholder="성을 입력하세요"
                                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                                 />
                             </div>
@@ -118,27 +118,27 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
 
                         <div className="space-y-1.5">
                             <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                Email<span className="text-red-500">*</span>
+                                이메일<span className="text-red-500">*</span>
                             </label>
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Enter your email"
+                                placeholder="이메일을 입력하세요"
                                 className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                             />
                         </div>
 
                         <div className="space-y-1.5">
                             <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                Password<span className="text-red-500">*</span>
+                                비밀번호<span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Enter your password"
+                                    placeholder="비밀번호를 입력하세요"
                                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                                 />
                                 <button
@@ -163,7 +163,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
                                     </svg>
                                 </div>
                                 <span className="text-[13px] font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors leading-[1.6]">
-                                    By creating an account means you agree to the <span className="text-slate-700 dark:text-slate-200 font-bold">Terms and Conditions</span>, and our <span className="text-slate-700 dark:text-slate-200 font-bold">Privacy Policy</span>
+                                    계정을 생성하면 <span className="text-slate-700 dark:text-slate-200 font-bold">이용약관</span> 및 <span className="text-slate-700 dark:text-slate-200 font-bold">개인정보 처리방침</span>에 동의하는 것으로 간주됩니다.
                                 </span>
                             </label>
                         </div>
@@ -172,12 +172,12 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
                             type="submit"
                             className="w-full py-3.5 bg-[#4B62FA] hover:bg-indigo-600 text-white font-bold text-sm rounded-lg transition-colors mt-2"
                         >
-                            Sign Up
+                            회원가입
                         </button>
                     </form>
 
                     <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">
-                        Already have an account? <button onClick={onSignInClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">Sign In</button>
+                        이미 계정이 있으신가요? <button onClick={onSignInClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">로그인</button>
                     </p>
                 </div>
             </div>
@@ -201,7 +201,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
                         <span className="text-3xl font-bold text-white tracking-tight">TailAdmin</span>
                     </div>
                     <p className="text-[15px] font-medium text-slate-400 max-w-sm leading-relaxed">
-                        Free and Open-Source Tailwind CSS Admin<br />Dashboard Template
+                        무료 오픈소스 Tailwind CSS 관리자<br />대시보드 템플릿
                     </p>
                 </div>
             </div>

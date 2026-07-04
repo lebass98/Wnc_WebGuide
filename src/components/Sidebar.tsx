@@ -34,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           </div>
           <div>
             <h1 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">Nexus</h1>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Admin Panel</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">관리자 패널</p>
           </div>
         </div>
         <button
@@ -54,9 +54,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         >
           <div className="flex items-center gap-3">
             <LayoutDashboard className="w-5 h-5" />
-            <span className="font-semibold text-sm">Dashboard</span>
+            <span className="font-semibold text-sm">대시보드</span>
           </div>
-          {currentPage === 'dashboard' && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">NEW</span>}
+          {currentPage === 'dashboard' && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">신규</span>}
         </div>
 
         {/* Inactive Items Hidden
@@ -68,17 +68,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         {/* Task Menu */}
         <NavItem
           icon={ListTodo}
-          label="Tasks"
+          label="작업"
           hasSubmenu
-          subItems={['List', 'Kanban']}
+          subItems={['목록', '칸반']}
           onSubItemClick={(sub) => {
-            if (sub === 'List') onPageChange('task-list');
-            if (sub === 'Kanban') onPageChange('task-kanban');
+            if (sub === '목록') onPageChange('task-list');
+            if (sub === '칸반') onPageChange('task-kanban');
             onClose();
           }}
           activeSubItem={
-            currentPage === 'task-list' ? 'List' : 
-              currentPage === 'task-kanban' ? 'Kanban' : undefined
+            currentPage === 'task-list' ? '목록' : 
+              currentPage === 'task-kanban' ? '칸반' : undefined
           }
           isActive={currentPage === 'task-list' || currentPage === 'task-kanban'}
         />
@@ -86,17 +86,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         {/* Forms Submenu */}
         <NavItem
           icon={SquarePen}
-          label="Forms"
+          label="폼"
           hasSubmenu
-          subItems={['Form Elements', 'Form Layout']}
+          subItems={['폼 요소', '폼 레이아웃']}
           onSubItemClick={(sub) => {
-            if (sub === 'Form Elements') onPageChange('form-elements');
-            if (sub === 'Form Layout') onPageChange('form-layout');
+            if (sub === '폼 요소') onPageChange('form-elements');
+            if (sub === '폼 레이아웃') onPageChange('form-layout');
             onClose();
           }}
           activeSubItem={
-            currentPage === 'form-elements' ? 'Form Elements' :
-              currentPage === 'form-layout' ? 'Form Layout' : undefined
+            currentPage === 'form-elements' ? '폼 요소' :
+              currentPage === 'form-layout' ? '폼 레이아웃' : undefined
           }
           isActive={currentPage === 'form-elements' || currentPage === 'form-layout'}
         />
@@ -104,35 +104,35 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         {/* Tables Submenu */}
         <NavItem
           icon={Table}
-          label="Tables"
+          label="테이블"
           hasSubmenu
-          subItems={['Basic Tables']}
+          subItems={['기본 테이블']}
           onSubItemClick={(sub) => {
-            if (sub === 'Basic Tables') onPageChange('basic-tables');
+            if (sub === '기본 테이블') onPageChange('basic-tables');
             onClose();
           }}
-          activeSubItem={currentPage === 'basic-tables' ? 'Basic Tables' : undefined}
+          activeSubItem={currentPage === 'basic-tables' ? '기본 테이블' : undefined}
           isActive={currentPage === 'basic-tables'}
         />
 
         {/* Pages Submenu */}
         <NavItem
           icon={Layers}
-          label="Pages"
+          label="페이지"
           hasSubmenu
-          subItems={['FAQ', 'Integrations', 'Hero Sections', 'Pricing Sections']}
+          subItems={['자주 묻는 질문', '연동', '히어로 섹션', '가격 정책 섹션']}
           onSubItemClick={(sub) => {
-            if (sub === 'FAQ') onPageChange('faq');
-            if (sub === 'Integrations') onPageChange('integrations');
-            if (sub === 'Hero Sections') onPageChange('hero-sections');
-            if (sub === 'Pricing Sections') onPageChange('pricing-sections');
+            if (sub === '자주 묻는 질문') onPageChange('faq');
+            if (sub === '연동') onPageChange('integrations');
+            if (sub === '히어로 섹션') onPageChange('hero-sections');
+            if (sub === '가격 정책 섹션') onPageChange('pricing-sections');
             onClose();
           }}
           activeSubItem={
-            currentPage === 'faq' ? 'FAQ' :
-              currentPage === 'integrations' ? 'Integrations' : 
-                currentPage === 'hero-sections' ? 'Hero Sections' : 
-                  currentPage === 'pricing-sections' ? 'Pricing Sections' : undefined
+            currentPage === 'faq' ? '자주 묻는 질문' :
+              currentPage === 'integrations' ? '연동' : 
+                currentPage === 'hero-sections' ? '히어로 섹션' : 
+                  currentPage === 'pricing-sections' ? '가격 정책 섹션' : undefined
           }
           isActive={currentPage === 'faq' || currentPage === 'integrations' || currentPage === 'hero-sections' || currentPage === 'pricing-sections'}
         />
@@ -142,12 +142,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           icon={BarChart3}
           label="ECharts"
           hasSubmenu
-          subItems={['Line charts']}
+          subItems={['선형 차트']}
           onSubItemClick={(sub) => {
-            if (sub === 'Line charts') onPageChange('line-charts');
+            if (sub === '선형 차트') onPageChange('line-charts');
             onClose();
           }}
-          activeSubItem={currentPage === 'line-charts' ? 'Line charts' : undefined}
+          activeSubItem={currentPage === 'line-charts' ? '선형 차트' : undefined}
           isActive={currentPage === 'line-charts'}
         />
 
@@ -162,7 +162,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         >
           <div className="flex items-center gap-3">
             <Calendar className={`w-5 h-5 ${currentPage === 'calendar' ? 'text-indigo-600 dark:text-white' : ''}`} />
-            <span className={`text-sm ${currentPage === 'calendar' ? 'font-bold' : 'font-medium'}`}>Calendar</span>
+            <span className={`text-sm ${currentPage === 'calendar' ? 'font-bold' : 'font-medium'}`}>캘린더</span>
           </div>
         </div>
         {/* Inactive Items Hidden

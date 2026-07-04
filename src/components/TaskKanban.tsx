@@ -58,113 +58,113 @@ interface Column {
 // --- Initial Data ---
 
 const initialColumns: Column[] = [
-  { id: 'todo', title: 'To Do' },
-  { id: 'inProgress', title: 'In Progress' },
-  { id: 'completed', title: 'Completed' },
+  { id: 'todo', title: '할 일' },
+  { id: 'inProgress', title: '진행 중' },
+  { id: 'completed', title: '완료' },
 ];
 
 const initialTasks: Task[] = [
   {
     id: '1',
-    title: 'Finish user onboarding',
+    title: '사용자 온보딩 완료',
     columnId: 'todo',
-    date: 'Tomorrow',
+    date: '내일',
     comments: 1,
-    tag: 'Development',
+    tag: '개발',
     tagColor: 'bg-orange-50 text-orange-500 border-orange-100',
     userImage: 'https://i.pravatar.cc/150?u=1'
   },
   {
     id: '2',
-    title: 'Change license and remove products',
+    title: '라이선스 변경 및 제품 제거',
     columnId: 'todo',
-    date: 'Jan 8, 2027',
+    date: '2027년 1월 8일',
     comments: 0,
-    tag: 'Dev',
+    tag: '데브',
     tagColor: 'bg-blue-50 text-blue-500 border-blue-100',
     userImage: 'https://i.pravatar.cc/150?u=2'
   },
   {
     id: '3',
-    title: 'Kanban manager',
+    title: '칸반 매니저',
     columnId: 'todo',
-    date: 'Jan 8, 2027',
+    date: '2027년 1월 8일',
     comments: 8,
     links: 2,
-    tag: 'Template',
+    tag: '템플릿',
     tagColor: 'bg-emerald-50 text-emerald-500 border-emerald-100',
     userImage: 'https://i.pravatar.cc/150?u=3'
   },
   {
     id: '4',
-    title: 'Solve the dribble prioritization issue with the team',
+    title: '팀과 함께 Dribble 우선순위 문제 해결',
     columnId: 'inProgress',
-    date: 'Jan 08, 2027',
+    date: '2027년 1월 8일',
     comments: 1,
-    tag: 'Marketing',
+    tag: '마케팅',
     tagColor: 'bg-purple-50 text-purple-500 border-purple-100',
     userImage: 'https://i.pravatar.cc/150?u=4'
   },
   {
     id: '5',
-    title: 'Work in progress(WIP) Dashboard',
+    title: '진행 중(WIP) 대시보드',
     columnId: 'inProgress',
-    date: 'Today',
+    date: '오늘',
     comments: 1,
-    tag: 'Development',
+    tag: '개발',
     tagColor: 'bg-orange-50 text-orange-500 border-orange-100',
     userImage: 'https://i.pravatar.cc/150?u=5'
   },
   {
     id: '6',
-    title: 'Product Update - Q4 (2024)',
+    title: '제품 업데이트 - 2024년 4분기',
     columnId: 'inProgress',
-    date: 'Today',
+    date: '오늘',
     comments: 1,
-    description: 'Dedicated from a category of users that will perform actions.',
+    description: '이 작업은 제품 기능 향상을 위한 전용 작업입니다.',
     imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400',
-    tag: 'Development',
+    tag: '개발',
     tagColor: 'bg-orange-50 text-orange-500 border-orange-100',
     userImage: 'https://i.pravatar.cc/150?u=6'
   },
   {
     id: '7',
-    title: 'Make figbot send comment when ticket is auto-moved back to inbox',
+    title: '티켓 인박스 복귀 시 Figbot 댓글 자동화 설정',
     columnId: 'inProgress',
-    date: 'Mar 08, 2027',
+    date: '2027년 3월 8일',
     comments: 1,
-    tag: 'Dev',
+    tag: '데브',
     tagColor: 'bg-blue-50 text-blue-500 border-blue-100',
     userImage: 'https://i.pravatar.cc/150?u=7'
   },
   {
     id: '8',
-    title: 'Manage internal feedback',
+    title: '내부 피드백 관리',
     columnId: 'completed',
-    date: 'Tomorrow',
+    date: '내일',
     comments: 1,
-    tag: 'Dev',
+    tag: '데브',
     tagColor: 'bg-blue-50 text-blue-500 border-blue-100',
     userImage: 'https://i.pravatar.cc/150?u=8'
   },
   {
     id: '9',
-    title: 'Do some projects on React Native with Flutter',
+    title: 'React Native 및 Flutter 관련 프로젝트 조사',
     columnId: 'completed',
-    date: 'Jan 8, 2027',
+    date: '2027년 1월 8일',
     comments: 1,
-    tag: 'Development',
+    tag: '개발',
     tagColor: 'bg-orange-50 text-orange-500 border-orange-100',
     userImage: 'https://i.pravatar.cc/150?u=9'
   },
   {
     id: '10',
-    title: 'Design marketing assets',
+    title: '마케팅 에셋 디자인',
     columnId: 'completed',
-    date: 'Jan 08, 2027',
+    date: '2027년 1월 8일',
     comments: 2,
     links: 1,
-    tag: 'Marketing',
+    tag: '마케팅',
     tagColor: 'bg-purple-50 text-purple-500 border-purple-100',
     userImage: 'https://i.pravatar.cc/150?u=10'
   }
@@ -291,7 +291,7 @@ const KanbanColumn = ({ column, tasks }: { column: Column; tasks: Task[] }) => {
                <div className="w-12 h-12 rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center mb-2">
                  <Plus className="w-6 h-6" />
                </div>
-               <p className="text-xs font-bold uppercase tracking-wider">Empty</p>
+               <p className="text-xs font-bold uppercase tracking-wider">비어 있음</p>
             </div>
           )}
         </div>
@@ -303,7 +303,7 @@ const KanbanColumn = ({ column, tasks }: { column: Column; tasks: Task[] }) => {
 const TaskKanban: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
-  const [activeTab, setActiveTab] = useState('All Tasks');
+  const [activeTab, setActiveTab] = useState('전체 작업');
   
   // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -317,10 +317,10 @@ const TaskKanban: React.FC = () => {
   });
 
   const tagsList = [
-      { name: 'Development', color: 'bg-orange-50 text-orange-500 border-orange-100' },
-      { name: 'Dev', color: 'bg-blue-50 text-blue-500 border-blue-100' },
-      { name: 'Template', color: 'bg-emerald-50 text-emerald-500 border-emerald-100' },
-      { name: 'Marketing', color: 'bg-purple-50 text-purple-500 border-purple-100' }
+      { name: '개발', color: 'bg-orange-50 text-orange-500 border-orange-100' },
+      { name: '데브', color: 'bg-blue-50 text-blue-500 border-blue-100' },
+      { name: '템플릿', color: 'bg-emerald-50 text-emerald-500 border-emerald-100' },
+      { name: '마케팅', color: 'bg-purple-50 text-purple-500 border-purple-100' }
   ];
 
   const assignees = [
@@ -340,7 +340,7 @@ const TaskKanban: React.FC = () => {
     })
   );
 
-  const tabs = ['All Tasks', 'To do', 'In Progress', 'Completed'];
+  const tabs = ['전체 작업', '할 일', '진행 중', '완료'];
 
   const onDragStart = (event: DragStartEvent) => {
     if (event.active.data.current?.type === 'Task') {
@@ -454,26 +454,26 @@ const TaskKanban: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
-            Task Kanban
+            칸반 보드
           </h1>
           <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
-            <span>Home</span>
+            <span>홈</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">Task Kanban</span>
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">칸반 보드</span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
             <button className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all shadow-sm">
                 <Filter className="w-4 h-4" />
-                Filter & Short
+                필터 및 정렬
             </button>
             <button 
                 onClick={() => setIsModalOpen(true)}
                 className="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
             >
                 <Plus className="w-4 h-4" />
-                Add New Task
+                새 작업 추가
             </button>
         </div>
       </div>
@@ -491,16 +491,16 @@ const TaskKanban: React.FC = () => {
             }`}
           >
             {tab}
-            {tab === 'All Tasks' && (
+            {tab === '전체 작업' && (
                <span className="text-[11px] bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 px-1.5 py-0.5 rounded-md">14</span>
             )}
-            {tab === 'To do' && (
+            {tab === '할 일' && (
                <span className="text-[11px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 px-1.5 py-0.5 rounded-md">3</span>
             )}
-            {tab === 'In Progress' && (
+            {tab === '진행 중' && (
                <span className="text-[11px] bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 px-1.5 py-0.5 rounded-md">4</span>
             )}
-            {tab === 'Completed' && (
+            {tab === '완료' && (
                <span className="text-[11px] bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 px-1.5 py-0.5 rounded-md">4</span>
             )}
           </button>
@@ -550,7 +550,7 @@ const TaskKanban: React.FC = () => {
                 {/* Modal Header */}
                 <div className="p-8 pb-4">
                     <div className="flex items-center justify-between mb-1">
-                        <h2 className="text-[24px] font-bold text-slate-900 dark:text-white">Add a new task</h2>
+                        <h2 className="text-[24px] font-bold text-slate-900 dark:text-white">새 작업 추가하기</h2>
                         <button 
                             type="button"
                             onClick={() => setIsModalOpen(false)}
@@ -560,7 +560,7 @@ const TaskKanban: React.FC = () => {
                         </button>
                     </div>
                     <p className="text-[14px] text-slate-500 dark:text-slate-400">
-                        Effortlessly manage your to-do list: add a new task
+                        할 일 목록을 효율적으로 관리하세요: 새 작업을 추가합니다.
                     </p>
                 </div>
 
@@ -568,13 +568,13 @@ const TaskKanban: React.FC = () => {
                     <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                         {/* Task Title */}
                         <div className="space-y-1.5">
-                            <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Task Title</label>
+                            <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">작업 제목</label>
                             <input
                                 type="text"
                                 required
                                 value={formData.title}
                                 onChange={(e) => setFormData({...formData, title: e.target.value})}
-                                placeholder="Enter task title"
+                                placeholder="작업 제목을 입력하세요"
                                 className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 transition-all focus:border-indigo-500"
                             />
                         </div>
@@ -582,12 +582,12 @@ const TaskKanban: React.FC = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {/* Due Date */}
                             <div className="space-y-1.5">
-                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Due Date</label>
+                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">마감일</label>
                                 <CustomDatePicker 
                                     placeholder="연도. 월. 일."
                                     onChange={(date) => {
                                         if (date instanceof Date) {
-                                            const formatted = date.toLocaleDateString('en-US', {
+                                            const formatted = date.toLocaleDateString('ko-KR', {
                                                 month: 'short',
                                                 day: 'numeric',
                                                 year: 'numeric'
@@ -599,16 +599,16 @@ const TaskKanban: React.FC = () => {
                             </div>
                             {/* Status */}
                             <div className="space-y-1.5">
-                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Status</label>
+                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">상태</label>
                                 <div className="relative">
                                     <select 
                                         className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-indigo-500"
                                         value={formData.columnId}
                                         onChange={(e) => setFormData({...formData, columnId: e.target.value})}
                                     >
-                                        <option value="todo">To Do</option>
-                                        <option value="inProgress">In Progress</option>
-                                        <option value="completed">Completed</option>
+                                        <option value="todo">할 일</option>
+                                        <option value="inProgress">진행 중</option>
+                                        <option value="completed">완료</option>
                                     </select>
                                     <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
                                 </div>
@@ -618,7 +618,7 @@ const TaskKanban: React.FC = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {/* Tags */}
                             <div className="space-y-1.5">
-                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Tags</label>
+                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">태그</label>
                                 <div className="relative">
                                     <select 
                                         className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-indigo-500"
@@ -632,7 +632,7 @@ const TaskKanban: React.FC = () => {
                             </div>
                             {/* Assignees */}
                             <div className="space-y-1.5">
-                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Assignees</label>
+                                <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">담당자</label>
                                 <div className="relative">
                                     <select 
                                         className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-indigo-500"
@@ -648,9 +648,9 @@ const TaskKanban: React.FC = () => {
 
                         {/* Description */}
                         <div className="space-y-1.5">
-                            <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Description</label>
+                            <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">설명</label>
                             <textarea
-                                placeholder="Type your message here..."
+                                placeholder="여기에 설명을 입력하세요..."
                                 rows={4}
                                 value={formData.description}
                                 onChange={(e) => setFormData({...formData, description: e.target.value})}
@@ -662,7 +662,7 @@ const TaskKanban: React.FC = () => {
                     {/* Modal Footer */}
                     <div className="flex items-center justify-between pt-4 border-t border-slate-50 dark:border-slate-800">
                         <div className="flex items-center gap-1">
-                            <span className="text-[13px] font-medium text-slate-400 dark:text-slate-500 mr-2">Viewers:</span>
+                            <span className="text-[13px] font-medium text-slate-400 dark:text-slate-500 mr-2">조회자:</span>
                             <div className="flex -space-x-2">
                                 <img className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 object-cover" src="https://i.pravatar.cc/150?u=a" alt="" />
                                 <img className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 object-cover" src="https://i.pravatar.cc/150?u=b" alt="" />
@@ -675,13 +675,13 @@ const TaskKanban: React.FC = () => {
                                 onClick={() => setIsModalOpen(false)}
                                 className="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                             >
-                                Cancel
+                                취소
                             </button>
                             <button 
                                 type="submit"
                                 className="px-6 py-2.5 rounded-xl bg-[#4B62FA] hover:bg-indigo-600 text-sm font-bold text-white shadow-lg shadow-indigo-100 dark:shadow-none transition-all active:scale-95"
                             >
-                                Create Task
+                                작업 생성하기
                             </button>
                         </div>
                     </div>

@@ -7,8 +7,8 @@ const MonthlyTargetCard: React.FC = () => {
             <div className="px-7 pt-7 flex flex-col">
                 <div className="flex justify-between items-start mb-4">
                     <div>
-                        <h3 className="text-xl font-bold text-[#1C2434] dark:text-white mb-1">Monthly Target</h3>
-                        <p className="text-sm text-[#64748B] dark:text-[#8A99AF] font-medium">Target you've set for each month</p>
+                        <h3 className="text-xl font-bold text-[#1C2434] dark:text-white mb-1">월별 목표</h3>
+                        <p className="text-sm text-[#64748B] dark:text-[#8A99AF] font-medium">매월 설정한 목표치 대비 달성률입니다.</p>
                     </div>
                     <button className="text-[#64748B] hover:text-[#1C2434] dark:hover:text-white">
                         <MoreVertical className="w-5 h-5" />
@@ -48,28 +48,28 @@ const MonthlyTargetCard: React.FC = () => {
                     </div>
 
                     <p className="text-[14px] text-[#64748B] dark:text-[#8A99AF] text-center max-w-[300px] mt-8 leading-relaxed font-medium">
-                        You earn <span className="text-[#1C2434] dark:text-white font-bold">$3287</span> today, it's higher than last month. Keep up your good work!
+                        오늘 <span className="text-[#1C2434] dark:text-white font-bold">$3287</span>의 수익을 올렸습니다. 지난달보다 높은 수치입니다. 계속 수고해 주세요!
                     </p>
                 </div>
             </div>
 
             <div className="mt-auto bg-[#F7F9FC] dark:bg-[#1A222C]/50 px-7 py-6 grid grid-cols-3 gap-0">
                 <div className="text-center">
-                    <p className="text-xs font-bold text-[#64748B] dark:text-[#8A99AF] uppercase tracking-wider mb-2">Target</p>
+                    <p className="text-xs font-bold text-[#64748B] dark:text-[#8A99AF] uppercase tracking-wider mb-2">목표</p>
                     <div className="flex items-center justify-center gap-1.5">
                         <span className="text-base font-bold text-[#1C2434] dark:text-white">$20K</span>
                         <ArrowDown className="w-4 h-4 text-[#F64E60]" />
                     </div>
                 </div>
                 <div className="text-center border-x border-[#E2E8F0] dark:border-[#2E3A47]">
-                    <p className="text-xs font-bold text-[#64748B] dark:text-[#8A99AF] uppercase tracking-wider mb-2">Revenue</p>
+                    <p className="text-xs font-bold text-[#64748B] dark:text-[#8A99AF] uppercase tracking-wider mb-2">매출</p>
                     <div className="flex items-center justify-center gap-1.5">
                         <span className="text-base font-bold text-[#1C2434] dark:text-white">$20K</span>
                         <ArrowUp className="w-4 h-4 text-[#10B981]" />
                     </div>
                 </div>
                 <div className="text-center">
-                    <p className="text-xs font-bold text-[#64748B] dark:text-[#8A99AF] uppercase tracking-wider mb-2">Today</p>
+                    <p className="text-xs font-bold text-[#64748B] dark:text-[#8A99AF] uppercase tracking-wider mb-2">오늘</p>
                     <div className="flex items-center justify-center gap-1.5">
                         <span className="text-base font-bold text-[#1C2434] dark:text-white">$20K</span>
                         <ArrowUp className="w-4 h-4 text-[#10B981]" />

@@ -6,67 +6,67 @@ const RecentOrders: React.FC = () => {
     {
       id: '1',
       product: 'Macbook pro 13"',
-      variant: '2 Variants',
-      category: 'Laptop',
+      variant: '옵션 2개',
+      category: '노트북',
       price: '$2399.00',
-      status: 'Delivered',
+      status: '배송완료',
       image: '💻'
     },
     {
       id: '2',
       product: 'Apple Watch Ultra',
-      variant: '1 Variants',
-      category: 'Watch',
+      variant: '옵션 1개',
+      category: '시계',
       price: '$879.00',
-      status: 'Pending',
+      status: '대기중',
       image: '⌚'
     },
     {
       id: '3',
       product: 'iPhone 15 Pro Max',
-      variant: '2 Variants',
-      category: 'SmartPhone',
+      variant: '옵션 2개',
+      category: '스마트폰',
       price: '$1869.00',
-      status: 'Delivered',
+      status: '배송완료',
       image: '📱'
     },
     {
       id: '4',
       product: 'iPad Pro 3rd Gen',
-      variant: '2 Variants',
-      category: 'Electronics',
+      variant: '옵션 2개',
+      category: '전자제품',
       price: '$1699.00',
-      status: 'Canceled',
+      status: '취소됨',
       image: 'tablet'
     },
     {
       id: '5',
       product: 'Airpods Pro 2nd Gen',
-      variant: '1 Variants',
-      category: 'Accessories',
+      variant: '옵션 1개',
+      category: '액세서리',
       price: '$240.00',
-      status: 'Delivered',
+      status: '배송완료',
       image: '🎧'
     },
   ];
 
   const statusStyles: { [key: string]: string } = {
-    'Delivered': 'text-[#10B981] bg-[#10B981]/10',
-    'Pending': 'text-[#FFBA00] bg-[#FFBA00]/10',
-    'Canceled': 'text-[#F64E60] bg-[#F64E60]/10',
+    '배송완료': 'text-[#10B981] bg-[#10B981]/10',
+    '대기중': 'text-[#FFBA00] bg-[#FFBA00]/10',
+    '취소됨': 'text-[#F64E60] bg-[#F64E60]/10',
   };
 
   return (
     <div className="bg-white dark:bg-[#1A222C] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col h-full">
       <div className="flex justify-between items-center mb-10">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white">Recent Orders</h3>
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white">최근 주문</h3>
         <div className="flex gap-2">
           <button className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 shadow-sm hover:bg-slate-50 transition-all">
             <SlidersHorizontal className="w-3.5 h-3.5" />
-            <span>Filter</span>
+            <span>필터</span>
           </button>
           <button className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 shadow-sm hover:bg-slate-50 transition-all">
-            See all
+            전체 보기
           </button>
         </div>
       </div>
@@ -75,10 +75,10 @@ const RecentOrders: React.FC = () => {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-              <th className="pb-6 w-[40%]">Products</th>
-              <th className="pb-6">Category</th>
-              <th className="pb-6">Price</th>
-              <th className="pb-6">Status</th>
+              <th className="pb-6 w-[40%]">상품</th>
+              <th className="pb-6">카테고리</th>
+              <th className="pb-6">가격</th>
+              <th className="pb-6">상태</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-50 dark:divide-slate-800">

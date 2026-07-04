@@ -117,14 +117,14 @@ const App: React.FC = () => {
             {/* Stat Cards Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <StatCard
-                title="Customers"
+                title="고객"
                 value="3,782"
                 icon={<Users className="w-5 h-5 text-[#3C50E0]" />}
                 trend={11.01}
                 className="h-full"
               />
               <StatCard
-                title="Orders"
+                title="주문"
                 value="5,359"
                 icon={<Package className="w-5 h-5 text-[#3C50E0]" />}
                 trend={-9.05}
