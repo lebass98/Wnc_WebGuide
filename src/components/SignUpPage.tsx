@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ChevronLeft, Moon, Sun } from 'lucide-react';
 
 interface SignUpPageProps {
@@ -34,6 +35,7 @@ const TailAdminLogo = () => (
 
 
 const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick, isDarkMode, toggleDarkMode }) => {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -58,7 +60,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
             {/* Left Panel: Form Area */}
             <div className="w-full lg:w-1/2 flex flex-col pt-8 px-6 sm:px-12 md:px-24">
                 <button 
-                  onClick={() => window.location.reload()} 
+                  onClick={() => navigate('/')} 
                   className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors self-start mb-auto"
                 >
                     <ChevronLeft className="w-4 h-4" />

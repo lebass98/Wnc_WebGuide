@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   Calendar,
@@ -14,11 +15,13 @@ import {
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  onPageChange: (page: string) => void;
-  currentPage: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, currentPage }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <aside
       className={`fixed lg:static inset-y-0 left-0 z-30 w-[280px] bg-white dark:bg-[#1A222C] border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
@@ -49,22 +52,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
       <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C]">
         {/* Dashboard Item */}
         <div
-          onClick={() => { onPageChange('dashboard'); onClose(); }}
-          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPage === 'dashboard' ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
+          onClick={() => { navigate('/'); onClose(); }}
+          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPath === '/' ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
         >
           <div className="flex items-center gap-3">
             <LayoutDashboard className="w-5 h-5" />
             <span className="font-semibold text-sm">대시보드</span>
           </div>
-          {currentPage === 'dashboard' && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">신규</span>}
+          {currentPath === '/' && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">신규</span>}
         </div>
 
-        {/* Inactive Items Hidden
-        <NavItem icon={BarChart2} label="Analytics" hasSubmenu subItems={['Overview', 'Real-time', 'Demographics']} />
-        <NavItem icon={Users} label="Users" badge="2.4k" hasSubmenu subItems={['All Users', 'Active', 'Banned']} />
-        <NavItem icon={ShoppingCart} label="E-commerce" hasSubmenu subItems={['Products', 'Orders', 'Customers', 'Coupons']} />
-        */}
-        
         {/* Task Menu */}
         <NavItem
           icon={ListTodo}
@@ -72,15 +69,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           hasSubmenu
           subItems={['목록', '칸반']}
           onSubItemClick={(sub) => {
-            if (sub === '목록') onPageChange('task-list');
-            if (sub === '칸반') onPageChange('task-kanban');
+            if (sub === '목록') navigate('/tasks/list');
+            if (sub === '칸반') navigate('/tasks/kanban');
             onClose();
           }}
           activeSubItem={
-            currentPage === 'task-list' ? '목록' : 
-              currentPage === 'task-kanban' ? '칸반' : undefined
+            currentPath === '/tasks/list' ? '목록' : 
+              currentPath === '/tasks/kanban' ? '칸반' : undefined
           }
-          isActive={currentPage === 'task-list' || currentPage === 'task-kanban'}
+          isActive={currentPath.startsWith('/tasks')}
         />
 
         {/* Forms Submenu */}
@@ -90,15 +87,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           hasSubmenu
           subItems={['폼 요소', '폼 레이아웃']}
           onSubItemClick={(sub) => {
-            if (sub === '폼 요소') onPageChange('form-elements');
-            if (sub === '폼 레이아웃') onPageChange('form-layout');
+            if (sub === '폼 요소') navigate('/forms/elements');
+            if (sub === '폼 레이아웃') navigate('/forms/layout');
             onClose();
           }}
           activeSubItem={
-            currentPage === 'form-elements' ? '폼 요소' :
-              currentPage === 'form-layout' ? '폼 레이아웃' : undefined
+            currentPath === '/forms/elements' ? '폼 요소' :
+              currentPath === '/forms/layout' ? '폼 레이아웃' : undefined
           }
-          isActive={currentPage === 'form-elements' || currentPage === 'form-layout'}
+          isActive={currentPath.startsWith('/forms')}
         />
 
         {/* Tables Submenu */}
@@ -108,11 +105,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           hasSubmenu
           subItems={['기본 테이블']}
           onSubItemClick={(sub) => {
-            if (sub === '기본 테이블') onPageChange('basic-tables');
+            if (sub === '기본 테이블') navigate('/tables/basic');
             onClose();
           }}
-          activeSubItem={currentPage === 'basic-tables' ? '기본 테이블' : undefined}
-          isActive={currentPage === 'basic-tables'}
+          activeSubItem={currentPath === '/tables/basic' ? '기본 테이블' : undefined}
+          isActive={currentPath.startsWith('/tables')}
         />
 
         {/* Pages Submenu */}
@@ -122,19 +119,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           hasSubmenu
           subItems={['자주 묻는 질문', '연동', '히어로 섹션', '가격 정책 섹션']}
           onSubItemClick={(sub) => {
-            if (sub === '자주 묻는 질문') onPageChange('faq');
-            if (sub === '연동') onPageChange('integrations');
-            if (sub === '히어로 섹션') onPageChange('hero-sections');
-            if (sub === '가격 정책 섹션') onPageChange('pricing-sections');
+            if (sub === '자주 묻는 질문') navigate('/pages/faq');
+            if (sub === '연동') navigate('/pages/integrations');
+            if (sub === '히어로 섹션') navigate('/pages/hero-sections');
+            if (sub === '가격 정책 섹션') navigate('/pages/pricing-sections');
             onClose();
           }}
           activeSubItem={
-            currentPage === 'faq' ? '자주 묻는 질문' :
-              currentPage === 'integrations' ? '연동' : 
-                currentPage === 'hero-sections' ? '히어로 섹션' : 
-                  currentPage === 'pricing-sections' ? '가격 정책 섹션' : undefined
+            currentPath === '/pages/faq' ? '자주 묻는 질문' :
+              currentPath === '/pages/integrations' ? '연동' : 
+                currentPath === '/pages/hero-sections' ? '히어로 섹션' : 
+                  currentPath === '/pages/pricing-sections' ? '가격 정책 섹션' : undefined
           }
-          isActive={currentPage === 'faq' || currentPage === 'integrations' || currentPage === 'hero-sections' || currentPage === 'pricing-sections'}
+          isActive={currentPath.startsWith('/pages')}
         />
 
         {/* ECharts Submenu */}
@@ -144,34 +141,23 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           hasSubmenu
           subItems={['선형 차트']}
           onSubItemClick={(sub) => {
-            if (sub === '선형 차트') onPageChange('line-charts');
+            if (sub === '선형 차트') navigate('/charts/line-charts');
             onClose();
           }}
-          activeSubItem={currentPage === 'line-charts' ? '선형 차트' : undefined}
-          isActive={currentPage === 'line-charts'}
+          activeSubItem={currentPath === '/charts/line-charts' ? '선형 차트' : undefined}
+          isActive={currentPath.startsWith('/charts')}
         />
 
-        {/* Inactive Items Hidden
-        <NavItem icon={Box} label="Inventory" badge="847" />
-        <NavItem icon={Activity} label="Transactions" />
-        <NavItem icon={MessageSquare} label="Messages" badge="12" badgeColor="bg-red-500 text-white" />
-        */}
         <div
-          onClick={() => { onPageChange('calendar'); onClose(); }}
-          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPage === 'calendar' ? 'bg-indigo-50/30 dark:bg-slate-800/30 text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
+          onClick={() => { navigate('/calendar'); onClose(); }}
+          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPath === '/calendar' ? 'bg-indigo-50/30 dark:bg-slate-800/30 text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
         >
           <div className="flex items-center gap-3">
-            <Calendar className={`w-5 h-5 ${currentPage === 'calendar' ? 'text-indigo-600 dark:text-white' : ''}`} />
-            <span className={`text-sm ${currentPage === 'calendar' ? 'font-bold' : 'font-medium'}`}>캘린더</span>
+            <Calendar className={`w-5 h-5 ${currentPath === '/calendar' ? 'text-indigo-600 dark:text-white' : ''}`} />
+            <span className={`text-sm ${currentPath === '/calendar' ? 'font-bold' : 'font-medium'}`}>캘린더</span>
           </div>
         </div>
-        {/* Inactive Items Hidden
-        <NavItem icon={FileText} label="Reports" />
-        <NavItem icon={Settings} label="Settings" />
-        */}
       </div>
-
-      {/* User Profile Footer */}
 
     </aside>
   );

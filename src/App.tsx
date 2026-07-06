@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import StatCard from './components/StatCard';
@@ -22,13 +23,64 @@ import HeroSections from './components/HeroSections';
 import PricingSections from './components/PricingSections';
 import { Users, Package } from 'lucide-react';
 
+const DashboardHome: React.FC = () => {
+  return (
+    <div className="space-y-6">
+      {/* Top Section */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div className="xl:col-span-2 flex flex-col gap-6">
+          {/* Stat Cards Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <StatCard
+              title="고객"
+              value="3,782"
+              icon={<Users className="w-5 h-5 text-[#3C50E0]" />}
+              trend={11.01}
+              className="h-full"
+            />
+            <StatCard
+              title="주문"
+              value="5,359"
+              icon={<Package className="w-5 h-5 text-[#3C50E0]" />}
+              trend={-9.05}
+              className="h-full"
+            />
+          </div>
+          {/* Monthly Sales Chart takes remaining space */}
+          <div className="flex-1 min-h-[350px]">
+            <MonthlySalesChart />
+          </div>
+        </div>
+        <div className="xl:col-span-1 h-full min-h-[514px]">
+          <MonthlyTargetCard />
+        </div>
+      </div>
+
+      {/* Middle Section: Statistics Chart */}
+      <div className="w-full">
+        <StatisticsChart />
+      </div>
+
+      {/* Bottom Section: Demographic and Orders */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pb-8">
+        <div className="xl:col-span-1">
+          <CustomersDemographic />
+        </div>
+        <div className="xl:col-span-2 overflow-x-auto">
+          <RecentOrders />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const App: React.FC = () => {
+  const navigate = useNavigate();
+
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('isAuthenticated') === 'true';
   });
-  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('dashboard');
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
@@ -66,119 +118,43 @@ const App: React.FC = () => {
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
     localStorage.setItem('isAuthenticated', 'true');
-    setCurrentPage('dashboard');
+    navigate('/');
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
-  };
-
-  const renderContent = () => {
-    if (currentPage === 'form-elements') {
-      return <FormElements />;
-    }
-    if (currentPage === 'form-layout') {
-      return <FormLayout />;
-    }
-    if (currentPage === 'task-list') {
-      return <TaskList />;
-    }
-    if (currentPage === 'task-kanban') {
-      return <TaskKanban />;
-    }
-    if (currentPage === 'basic-tables') {
-      return <BasicTables />;
-    }
-    if (currentPage === 'faq') {
-      return <FAQ />;
-    }
-    if (currentPage === 'integrations') {
-      return <Integrations />;
-    }
-    if (currentPage === 'calendar') {
-      return <Calendar />;
-    }
-    if (currentPage === 'line-charts') {
-      return <LineCharts />;
-    }
-    if (currentPage === 'hero-sections') {
-      return <HeroSections />;
-    }
-    if (currentPage === 'pricing-sections') {
-      return <PricingSections />;
-    }
-
-    return (
-      <div className="space-y-6">
-        {/* Top Section */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <div className="xl:col-span-2 flex flex-col gap-6">
-            {/* Stat Cards Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <StatCard
-                title="고객"
-                value="3,782"
-                icon={<Users className="w-5 h-5 text-[#3C50E0]" />}
-                trend={11.01}
-                className="h-full"
-              />
-              <StatCard
-                title="주문"
-                value="5,359"
-                icon={<Package className="w-5 h-5 text-[#3C50E0]" />}
-                trend={-9.05}
-                className="h-full"
-              />
-            </div>
-            {/* Monthly Sales Chart takes remaining space */}
-            <div className="flex-1 min-h-[350px]">
-              <MonthlySalesChart />
-            </div>
-          </div>
-          <div className="xl:col-span-1 h-full min-h-[514px]">
-            <MonthlyTargetCard />
-          </div>
-        </div>
-
-        {/* Middle Section: Statistics Chart */}
-        <div className="w-full">
-          <StatisticsChart />
-        </div>
-
-        {/* Bottom Section: Demographic and Orders */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pb-8">
-          <div className="xl:col-span-1">
-            <CustomersDemographic />
-          </div>
-          <div className="xl:col-span-2 overflow-x-auto">
-            <RecentOrders />
-          </div>
-        </div>
-      </div>
-    );
+    navigate('/signin');
   };
 
   if (!isAuthenticated) {
-    if (authMode === 'signin') {
-      return (
-        <LoginPage 
-          onLoginSuccess={handleLoginSuccess} 
-          onSignUpClick={() => setAuthMode('signup')} 
-          isDarkMode={isDarkMode}
-          toggleDarkMode={toggleDarkMode}
+    return (
+      <Routes>
+        <Route 
+          path="/signin" 
+          element={
+            <LoginPage 
+              onLoginSuccess={handleLoginSuccess} 
+              onSignUpClick={() => navigate('/signup')} 
+              isDarkMode={isDarkMode}
+              toggleDarkMode={toggleDarkMode}
+            />
+          } 
         />
-      );
-    } else {
-      return (
-        <SignUpPage 
-          onSignUpSuccess={handleLoginSuccess} 
-          onSignInClick={() => setAuthMode('signin')} 
-          isDarkMode={isDarkMode}
-          toggleDarkMode={toggleDarkMode}
+        <Route 
+          path="/signup" 
+          element={
+            <SignUpPage 
+              onSignUpSuccess={handleLoginSuccess} 
+              onSignInClick={() => navigate('/signin')} 
+              isDarkMode={isDarkMode}
+              toggleDarkMode={toggleDarkMode}
+            />
+          } 
         />
-      );
-    }
+        <Route path="*" element={<Navigate to="/signin" replace />} />
+      </Routes>
+    );
   }
 
   return (
@@ -186,8 +162,6 @@ const App: React.FC = () => {
       <Sidebar
         isOpen={isSidebarOpen}
         onClose={closeSidebar}
-        onPageChange={setCurrentPage}
-        currentPage={currentPage}
       />
 
       {/* Overlay for mobile when sidebar is open */}
@@ -209,7 +183,23 @@ const App: React.FC = () => {
         {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pt-[100px] lg:pt-[112px] custom-scrollbar">
           <div className="w-full">
-            {renderContent()}
+            <Routes>
+              <Route path="/" element={<DashboardHome />} />
+              <Route path="/tasks/list" element={<TaskList />} />
+              <Route path="/tasks/kanban" element={<TaskKanban />} />
+              <Route path="/forms/elements" element={<FormElements />} />
+              <Route path="/forms/layout" element={<FormLayout />} />
+              <Route path="/tables/basic" element={<BasicTables />} />
+              <Route path="/pages/faq" element={<FAQ />} />
+              <Route path="/pages/integrations" element={<Integrations />} />
+              <Route path="/pages/hero-sections" element={<HeroSections />} />
+              <Route path="/pages/pricing-sections" element={<PricingSections />} />
+              <Route path="/charts/line-charts" element={<LineCharts />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/signin" element={<Navigate to="/" replace />} />
+              <Route path="/signup" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
           </div>
         </main>
       </div>
