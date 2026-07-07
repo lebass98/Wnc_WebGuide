@@ -322,7 +322,7 @@ const BorderAccordionFaq = () => {
             </div>
           </button>
           <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
-            <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
+            <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-slate-50 dark:border-slate-800">
               {item.answer}
             </div>
           </div>
@@ -1264,7 +1264,7 @@ const FlatIconFaq = () => {
                 </div>
               </button>
               <div className={`transition-all duration-300 ease-in-out ${openFaq1 === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
+                <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-slate-50 dark:border-slate-800">
                   {item.answer}
                 </div>
               </div>
