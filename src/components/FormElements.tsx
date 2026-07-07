@@ -79,7 +79,7 @@ const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, descri
   };
 
   return (
-    <div className="space-y-4 font-sans bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-6 transition-colors duration-300">
+    <div className="space-y-4 font-sans">
       {/* Wrapper Header: Controls Toolbar (세로 줄내림 레이아웃 적용) */}
       <div className="flex flex-col items-start gap-3 bg-slate-50/50 dark:bg-slate-800/40 p-4 rounded-2xl">
         <div>
@@ -91,7 +91,7 @@ const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, descri
         <div className="flex flex-wrap items-center gap-2">
           {/* 1. Preview Mode Group: React | HTML */}
           {activeTab === 'preview' && (
-            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-[#1A222C] rounded-xl">
+            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
               <button
                 onClick={() => setPreviewMode('react')}
                 className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
@@ -107,7 +107,7 @@ const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, descri
             </div>
           )}
 
-          {/* 코드보기 button */}
+          {/* 코드보기 button (separate, always visible) */}
           <button
             onClick={() => setActiveTab(activeTab === 'code' ? 'preview' : 'code')}
             className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer border ${activeTab === 'code' ? 'bg-[#4B62FA] text-white border-[#4B62FA] shadow-sm' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-800 dark:hover:text-white hover:border-slate-300'}`}
@@ -117,56 +117,93 @@ const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, descri
 
           <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
 
-          {/* 2. Device View Mode Group (Only Visible in Preview-HTML) */}
-          {activeTab === 'preview' && previewMode === 'html' && (
-            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-[#1A222C] rounded-xl">
-              <button
-                onClick={() => setDevice('desktop')}
-                className={`p-1.5 rounded-lg transition-all cursor-pointer ${device === 'desktop' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500'}`}
-              >
-                <Monitor className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => setDevice('tablet')}
-                className={`p-1.5 rounded-lg transition-all cursor-pointer ${device === 'tablet' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500'}`}
-              >
-                <Tablet className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => setDevice('mobile')}
-                className={`p-1.5 rounded-lg transition-all cursor-pointer ${device === 'mobile' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500'}`}
-              >
-                <Smartphone className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          )}
-
-          {/* 3. Theme Toggle Switch (Only Visible in Preview-HTML) */}
-          {activeTab === 'preview' && previewMode === 'html' && (
-            <button
-              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-all cursor-pointer"
-            >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
-            </button>
-          )}
-
-          {/* 4. Code Language Mode selector */}
+          {/* Code type toggler (only in code tab) */}
           {activeTab === 'code' && (
-            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-[#1A222C] rounded-xl">
-              <button
-                onClick={() => setCodeMode('react')}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${codeMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                React Source
-              </button>
-              <button
-                onClick={() => setCodeMode('html')}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${codeMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-550'}`}
-              >
-                HTML / CSS / JS
-              </button>
-            </div>
+            <>
+              <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
+                <button
+                  onClick={() => setCodeMode('react')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                >
+                  React
+                </button>
+                <button
+                  onClick={() => setCodeMode('html')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                >
+                  일반 HTML
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
+
+          {/* Device simulation switcher (preview only) */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="flex items-center gap-1">
+                <button 
+                  onClick={() => setDevice('desktop')} 
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  <Monitor className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    데스크톱 뷰
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
+                </button>
+                <button 
+                  onClick={() => setDevice('tablet')} 
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  <Tablet className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    태블릿 뷰
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
+                </button>
+                <button 
+                  onClick={() => setDevice('mobile')} 
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  <Smartphone className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    모바일 뷰
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
+
+          {/* Theme switcher (preview only) */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="flex items-center gap-1">
+                <button 
+                  onClick={() => setTheme('light')} 
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  <Sun className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    라이트 모드 테마
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
+                </button>
+                <button 
+                  onClick={() => setTheme('dark')} 
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  <Moon className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    다크 모드 테마
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
           )}
 
           {/* Copy Actions */}
@@ -186,12 +223,12 @@ const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, descri
       </div>
 
       {/* Frame Container */}
-      <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto' : 'w-full'}`}>
+      <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}>
         {activeTab === 'preview' ? (
           previewMode === 'react' ? (
             /* React Component Live Preview */
             <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-white dark:bg-[#1A222C] transition-colors duration-300 w-full">
+              <div className="bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300 w-full p-4">
                 {children}
               </div>
             </div>
