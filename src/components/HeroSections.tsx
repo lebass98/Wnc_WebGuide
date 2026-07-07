@@ -378,7 +378,7 @@ const CenteredHero = () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>Centered Hero</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-5xl mx-auto">
     <div class="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-sm">
       <nav class="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
@@ -594,7 +594,7 @@ const ClassicSplitHero = () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>Classic Split Hero</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-5xl mx-auto">
     <section class="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-w-5xl mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl shadow-sm">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -984,7 +984,7 @@ const SearchOrientedHero = () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>Search Oriented Hero</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-5xl mx-auto">
     <section class="relative w-full max-w-5xl mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
       <div class="absolute top-0 right-0 p-8 opacity-10">
@@ -1128,7 +1128,7 @@ const MinimalistImageHero = () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>Minimalist Image Hero</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-5xl mx-auto">
     <section class="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-w-5xl mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group shadow-md animate-in fade-in">
       <img

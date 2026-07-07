@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 1 (보더 아코디언) 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-4xl mx-auto">
     <div class="space-y-4 w-full">
       
@@ -813,7 +813,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 2 (스위칭 배경 아코디언) 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-5xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
       
@@ -1111,7 +1111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 3 (아이콘 정보형 플랫 리스트) 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-5xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
       

@@ -632,7 +632,7 @@ export default BasicForm;`,
   <script src="https://cdn.tailwindcss.com"></script>
   <title>기본 폼 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-4 sm:space-y-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -801,7 +801,7 @@ export default MessageForm;`,
   <script src="https://cdn.tailwindcss.com"></script>
   <title>예제 폼 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-4 sm:space-y-6 text-left">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -1047,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-4 sm:space-y-6 text-left">
       <div class="relative group">
@@ -1421,7 +1421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
   <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-6 sm:space-y-8 text-left">
       
