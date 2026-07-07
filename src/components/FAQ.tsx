@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  ChevronDown, 
-  Plus, 
-  Minus, 
-  Info, 
-  ChevronRight, 
-  Monitor, 
-  Smartphone, 
-  Tablet, 
-  Sun, 
-  Moon, 
-  Copy, 
+import {
+  ChevronDown,
+  Plus,
+  Minus,
+  Info,
+  ChevronRight,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Sun,
+  Moon,
+  Copy,
   Check
 } from 'lucide-react';
 
@@ -36,7 +36,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
   const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
-  
+
   const [copied, setCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setIframeHeight] = useState('400px');
@@ -84,13 +84,13 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           {/* 1. Preview Mode Group: React | HTML */}
           {activeTab === 'preview' && (
             <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
-              <button 
+              <button
                 onClick={() => setPreviewMode('react')}
                 className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
               >
                 React
               </button>
-              <button 
+              <button
                 onClick={() => setPreviewMode('html')}
                 className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
               >
@@ -134,8 +134,8 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           {activeTab === 'preview' && (
             <>
               <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => setDevice('desktop')} 
+                <button
+                  onClick={() => setDevice('desktop')}
                   className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Monitor className="w-4 h-4" />
@@ -144,8 +144,8 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
                     <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
                   </div>
                 </button>
-                <button 
-                  onClick={() => setDevice('tablet')} 
+                <button
+                  onClick={() => setDevice('tablet')}
                   className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Tablet className="w-4 h-4" />
@@ -154,8 +154,8 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
                     <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
                   </div>
                 </button>
-                <button 
-                  onClick={() => setDevice('mobile')} 
+                <button
+                  onClick={() => setDevice('mobile')}
                   className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Smartphone className="w-4 h-4" />
@@ -173,8 +173,8 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           {activeTab === 'preview' && (
             <>
               <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => setTheme('light')} 
+                <button
+                  onClick={() => setTheme('light')}
                   className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Sun className="w-4 h-4" />
@@ -183,8 +183,8 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
                     <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
                   </div>
                 </button>
-                <button 
-                  onClick={() => setTheme('dark')} 
+                <button
+                  onClick={() => setTheme('dark')}
                   className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Moon className="w-4 h-4" />
@@ -220,7 +220,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           previewMode === 'react' ? (
             /* React Component Live Preview */
             <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300 w-full">
+              <div className="bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300 w-full p-6">
                 {children}
               </div>
             </div>
@@ -253,7 +253,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
                 ))}
               </div>
             )}
-            
+
             {/* Syntax Code block view */}
             <div className="flex-1 overflow-x-auto p-4 sm:p-6 font-mono text-[11px] sm:text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text max-h-[450px]">
               <pre className="whitespace-pre-wrap sm:whitespace-pre break-all sm:break-normal">
@@ -1127,7 +1127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 3 (아이콘 정보형 플랫 리스트) 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
   <div class="w-full max-w-5xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
       
@@ -1238,122 +1238,122 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       {/* FAQ Sections Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6">
 
-      {/* FAQ Variation 1 */}
-      <FaqSectionWrapper 
-        title="FAQ 유형 1" 
-        description="기본형 보더 아코디언 스타일 레이아웃입니다."
-        snippet={codeSnippets.faq1}
-      >
-        <div className="space-y-4 w-full max-w-4xl mx-auto">
-          {faqData1.map((item, idx) => (
-            <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
-              <button 
-                onClick={() => setOpenFaq1(openFaq1 === idx ? null : idx)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-              >
-                <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
-                <div className={`w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300 ${openFaq1 === idx ? 'rotate-180' : ''}`}>
-                  <ChevronDown className="w-4 h-4 text-slate-500" />
-                </div>
-              </button>
-              <div className={`transition-all duration-300 ease-in-out ${openFaq1 === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-slate-50 dark:border-slate-800">
-                  {item.answer}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </FaqSectionWrapper>
-
-      {/* FAQ Variation 2 */}
-      <FaqSectionWrapper 
-        title="FAQ 유형 2" 
-        description="배경색이 반전 스위칭되는 미려한 아코디언 스타일입니다."
-        snippet={codeSnippets.faq2}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
-          <div className="space-y-4">
-            {faqData2.slice(0, 3).map((item, idx) => (
-              <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
-                <button 
-                  onClick={() => setOpenFaq2(openFaq2 === idx ? null : idx)}
-                  className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+        {/* FAQ Variation 1 */}
+        <FaqSectionWrapper
+          title="FAQ 유형 1"
+          description="기본형 보더 아코디언 스타일 레이아웃입니다."
+          snippet={codeSnippets.faq1}
+        >
+          <div className="space-y-4 w-full max-w-4xl mx-auto">
+            {faqData1.map((item, idx) => (
+              <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
+                <button
+                  onClick={() => setOpenFaq1(openFaq1 === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
-                  {openFaq2 === idx ? (
-                    <Minus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-                  ) : (
-                    <Plus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
-                  )}
+                  <div className={`w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300 ${openFaq1 === idx ? 'rotate-180' : ''}`}>
+                    <ChevronDown className="w-4 h-4 text-slate-500" />
+                  </div>
                 </button>
-                <div className={`transition-all duration-300 ease-in-out ${openFaq2 === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                  <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}`}>
+                <div className={`transition-all duration-300 ease-in-out ${openFaq1 === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                  <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-slate-50 dark:border-slate-800">
                     {item.answer}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="space-y-4">
-            {faqData2.slice(3).map((item, idx) => {
-              const realIdx = idx + 3;
-              return (
-                <div key={realIdx} className="rounded-lg overflow-hidden transition-all duration-300">
-                  <button 
-                    onClick={() => setOpenFaq2(openFaq2 === realIdx ? null : realIdx)}
-                    className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+        </FaqSectionWrapper>
+
+        {/* FAQ Variation 2 */}
+        <FaqSectionWrapper
+          title="FAQ 유형 2"
+          description="배경색이 반전 스위칭되는 미려한 아코디언 스타일입니다."
+          snippet={codeSnippets.faq2}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
+            <div className="space-y-4">
+              {faqData2.slice(0, 3).map((item, idx) => (
+                <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
+                  <button
+                    onClick={() => setOpenFaq2(openFaq2 === idx ? null : idx)}
+                    className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
                   >
                     <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
-                    {openFaq2 === realIdx ? (
+                    {openFaq2 === idx ? (
                       <Minus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
                     ) : (
                       <Plus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
                     )}
                   </button>
-                  <div className={`transition-all duration-300 ease-in-out ${openFaq2 === realIdx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                    <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}`}>
+                  <div className={`transition-all duration-300 ease-in-out ${openFaq2 === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                    <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}`}>
                       {item.answer}
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+            <div className="space-y-4">
+              {faqData2.slice(3).map((item, idx) => {
+                const realIdx = idx + 3;
+                return (
+                  <div key={realIdx} className="rounded-lg overflow-hidden transition-all duration-300">
+                    <button
+                      onClick={() => setOpenFaq2(openFaq2 === realIdx ? null : realIdx)}
+                      className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+                    >
+                      <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
+                      {openFaq2 === realIdx ? (
+                        <Minus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+                      ) : (
+                        <Plus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+                      )}
+                    </button>
+                    <div className={`transition-all duration-300 ease-in-out ${openFaq2 === realIdx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                      <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}`}>
+                        {item.answer}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </FaqSectionWrapper>
+        </FaqSectionWrapper>
 
-      {/* FAQ Variation 3 */}
-      <FaqSectionWrapper 
-        title="FAQ 유형 3" 
-        description="아이콘을 결합하여 가벼운 정보 전달력을 높인 플랫 리스트입니다."
-        snippet={codeSnippets.faq3}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
-          {faqData3.map((item, idx) => (
-            <div key={idx} className="flex gap-4">
-              <div className="shrink-0 pt-1">
-                <div className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
-                  <Info className="w-3.5 h-3.5 text-slate-400" />
+        {/* FAQ Variation 3 */}
+        <FaqSectionWrapper
+          title="FAQ 유형 3"
+          description="아이콘을 결합하여 가벼운 정보 전달력을 높인 플랫 리스트입니다."
+          snippet={codeSnippets.faq3}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
+            {faqData3.map((item, idx) => (
+              <div key={idx} className="flex gap-4">
+                <div className="shrink-0 pt-1">
+                  <div className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+                    <Info className="w-3.5 h-3.5 text-slate-400" />
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-bold text-slate-800 dark:text-white leading-tight">{item.question}</h4>
+                  <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+                    {item.answer}
+                  </p>
+                  {idx < 2 && (
+                    <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+                      추가적인 안내사항이 있다면 고객 지원 문서나 이용약관의 관련 섹션을 통해 상세히 확인해보실 것을 권장합니다.
+                    </p>
+                  )}
                 </div>
               </div>
-              <div className="space-y-3">
-                <h4 className="font-bold text-slate-800 dark:text-white leading-tight">{item.question}</h4>
-                <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-                  {item.answer}
-                </p>
-                {idx < 2 && (
-                   <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-                    추가적인 안내사항이 있다면 고객 지원 문서나 이용약관의 관련 섹션을 통해 상세히 확인해보실 것을 권장합니다.
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </FaqSectionWrapper>
+            ))}
+          </div>
+        </FaqSectionWrapper>
 
       </div>{/* end grid */}
     </div>

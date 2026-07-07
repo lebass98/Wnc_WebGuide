@@ -280,7 +280,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CenteredHero = () => {
   return (
-    <div className="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-w-5xl mx-auto rounded-xl overflow-hidden">
+    <div className="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-h-full mx-auto rounded-xl overflow-hidden">
       {/* Navbar */}
       <nav className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
         <div className="flex items-center lg:flex-1">
@@ -333,7 +333,7 @@ const CenteredHero = () => {
   );
 };`,
       html: `<!-- 1. Centered Hero 마크업 (Tailwind CSS 기반) -->
-<div class="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-w-5xl mx-auto rounded-xl overflow-hidden">
+<div class="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-h-full mx-auto rounded-xl overflow-hidden">
   <!-- Navbar -->
   <nav class="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
     <div class="flex items-center lg:flex-1">
@@ -395,8 +395,8 @@ const CenteredHero = () => {
   <title>Centered Hero</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-5xl mx-auto">
-    <div class="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-sm">
+  <div class="w-full max-h-full mx-auto">
+    <div class="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full max-h-full mx-auto rounded-xl overflow-hidden shadow-sm">
       <nav class="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
         <div class="flex items-center lg:flex-1">
           <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
@@ -455,7 +455,7 @@ import { ArrowRight, Play, Sparkles, Star } from 'lucide-react';
 
 const ClassicSplitHero = () => {
   return (
-    <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-w-5xl mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl">
+    <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-h-full mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left: Text */}
         <div className="space-y-6 sm:space-y-8">
@@ -525,7 +525,7 @@ const ClassicSplitHero = () => {
   );
 };`,
       html: `<!-- 2. Classic Split Hero 마크업 (Tailwind CSS 기반) -->
-<section class="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-w-5xl mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl">
+<section class="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-h-full mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl">
   <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
     <!-- Left: Text -->
     <div class="space-y-6 sm:space-y-8 text-left">
@@ -611,8 +611,8 @@ const ClassicSplitHero = () => {
   <title>Classic Split Hero</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-5xl mx-auto">
-    <section class="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-w-5xl mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl shadow-sm">
+  <div class="w-full max-h-full mx-auto">
+    <section class="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-h-full mx-auto px-4 sm:px-8 py-10 lg:py-24 rounded-xl shadow-sm">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <!-- Left: Text -->
         <div class="space-y-6 sm:space-y-8 text-left">
@@ -702,7 +702,7 @@ const CenteredElegantHero = () => {
   ];
 
   return (
-    <section className="relative w-full max-w-5xl mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center rounded-xl">
+    <section className="relative w-full max-h-full mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center rounded-xl">
       {/* Glow blobs */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2" />
@@ -741,7 +741,7 @@ const CenteredElegantHero = () => {
   );
 };`,
       html: `<!-- 3. Centered Elegant Hero 마크업 (Tailwind CSS 기반) -->
-<section class="relative w-full max-w-5xl mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center rounded-xl">
+<section class="relative w-full max-h-full mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center rounded-xl">
   <!-- Glow blobs -->
   <div class="absolute inset-0 opacity-20 pointer-events-none">
     <div class="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
@@ -804,8 +804,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <title>Centered Elegant Hero</title>
 </head>
 <body class="bg-slate-900 p-4 sm:p-10 flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-5xl mx-auto">
-    <section class="relative w-full max-w-5xl mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center rounded-xl shadow-lg border border-slate-800">
+  <div class="w-full max-h-full mx-auto">
+    <section class="relative w-full max-h-full mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center rounded-xl shadow-lg border border-slate-800">
       <div class="absolute inset-0 opacity-20 pointer-events-none">
         <div class="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
         <div class="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
@@ -860,7 +860,7 @@ import { Search, Sparkles, CheckCircle, Users, Box } from 'lucide-react';
 
 const SearchOrientedHero = () => {
   return (
-    <section className="relative w-full max-w-5xl mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
+    <section className="relative w-full max-h-full mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
       <div className="absolute top-0 right-0 p-8 opacity-10">
         <Sparkles className="w-64 h-64 text-indigo-500" />
       </div>
@@ -925,7 +925,7 @@ const SearchOrientedHero = () => {
   );
 };`,
       html: `<!-- 4. Search Oriented Hero 마크업 (Tailwind CSS 기반) -->
-<section class="relative w-full max-w-5xl mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
+<section class="relative w-full max-h-full mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
   <div class="absolute top-0 right-0 p-8 opacity-10">
     <i data-lucide="sparkles" class="w-64 h-64 text-indigo-500"></i>
   </div>
@@ -1001,8 +1001,8 @@ const SearchOrientedHero = () => {
   <title>Search Oriented Hero</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-5xl mx-auto">
-    <section class="relative w-full max-w-5xl mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
+  <div class="w-full max-h-full mx-auto">
+    <section class="relative w-full max-h-full mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm rounded-xl">
       <div class="absolute top-0 right-0 p-8 opacity-10">
         <i data-lucide="sparkles" class="w-64 h-64 text-indigo-500"></i>
       </div>
@@ -1077,7 +1077,7 @@ import { ArrowRight } from 'lucide-react';
 
 const MinimalistImageHero = () => {
   return (
-    <section className="relative h-[350px] sm:h-[480px] lg:h-[560px] w-full max-w-5xl mx-auto rounded-[28px] sm:rounded-[40px] overflow-hidden group">
+    <section className="relative h-[350px] sm:h-[480px] lg:h-[560px] w-full max-h-full mx-auto rounded-[28px] sm:rounded-[40px] overflow-hidden group">
       <img
         src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070"
         alt="사무실"
@@ -1104,7 +1104,7 @@ const MinimalistImageHero = () => {
   );
 };`,
       html: `<!-- 5. Minimalist Image Hero 마크업 (Tailwind CSS 기반) -->
-<section class="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-w-5xl mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group">
+<section class="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-h-full mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group">
   <img
     src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070"
     alt="사무실"
@@ -1145,8 +1145,8 @@ const MinimalistImageHero = () => {
   <title>Minimalist Image Hero</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-5xl mx-auto">
-    <section class="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-w-5xl mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group shadow-md animate-in fade-in">
+  <div class="w-full max-h-full mx-auto">
+    <section class="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-h-full mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group shadow-md animate-in fade-in">
       <img
         src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070"
         alt="사무실"
@@ -1206,7 +1206,7 @@ const MinimalistImageHero = () => {
         description="깔끔한 타이포그래피와 중앙 집중형 레이아웃의 기본형 히어로 섹션입니다."
         snippet={codeSnippets.hero1}
       >
-        <div className="relative isolate px-3 sm:px-6 pt-10 sm:pt-14 bg-white dark:bg-slate-950 min-h-[420px] sm:min-h-[600px] flex flex-col w-full max-w-5xl mx-auto rounded-xl overflow-hidden">
+        <div className="relative isolate px-3 sm:px-6 pt-10 sm:pt-14 bg-white dark:bg-slate-950 min-h-[420px] sm:min-h-[600px] flex flex-col w-full max-h-full mx-auto rounded-xl overflow-hidden">
           {/* Navbar */}
           <nav className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
             <div className="flex lg:flex-1">
@@ -1273,7 +1273,7 @@ const MinimalistImageHero = () => {
         description="한눈에 띄는 뱃지와 소셜 신뢰도 증명 리스트를 결합한 좌우 분할식 컴포넌트입니다."
         snippet={codeSnippets.hero2}
       >
-        <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-w-5xl mx-auto px-3 sm:px-8 py-6 lg:py-24 rounded-xl">
+        <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-h-full mx-auto px-3 sm:px-8 py-6 lg:py-24 rounded-xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 sm:space-y-8 animate-in slide-in-from-left duration-700 text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-550 dark:bg-indigo-505/10 text-indigo-600 dark:text-indigo-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-indigo-100 dark:border-indigo-500/20">
@@ -1346,7 +1346,7 @@ const MinimalistImageHero = () => {
         description="다크 모드와 그라디언트 글로우 백드롭으로 고급스러운 브랜드 이미지를 심어주는 레이아웃입니다."
         snippet={codeSnippets.hero3}
       >
-        <section className="relative w-full max-w-5xl mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-8 sm:py-24 text-center rounded-xl">
+        <section className="relative w-full max-h-full mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-8 sm:py-24 text-center rounded-xl">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
@@ -1395,7 +1395,7 @@ const MinimalistImageHero = () => {
         description="검색 인풋 필드를 상단 중앙에 배치하여 도움말이나 서비스 탐색에 특화된 레이아웃입니다."
         snippet={codeSnippets.hero4}
       >
-        <section className="relative w-full max-w-5xl mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-3 sm:p-10 lg:p-20 shadow-sm rounded-xl">
+        <section className="relative w-full max-h-full mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-3 sm:p-10 lg:p-20 shadow-sm rounded-xl">
           <div className="absolute top-0 right-0 p-8 opacity-10">
             <Sparkles className="w-64 h-64 text-indigo-500" />
           </div>
@@ -1467,7 +1467,7 @@ const MinimalistImageHero = () => {
         description="아름다운 사무실 전경 배경을 깔아 입체적인 시인성을 확보하는 정적인 무드의 히어로 섹션입니다."
         snippet={codeSnippets.hero5}
       >
-        <section className="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-w-5xl mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group">
+        <section className="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full max-h-full mx-auto rounded-[24px] sm:rounded-[32px] overflow-hidden group">
           <img
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070"
             alt="사무실"
