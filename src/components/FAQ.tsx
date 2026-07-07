@@ -8,7 +8,8 @@ import {
   Code, 
   Copy, 
   Check, 
-  X 
+  X,
+  FileCode
 } from 'lucide-react';
 
 interface CodeSnippet {
@@ -17,6 +18,7 @@ interface CodeSnippet {
   html: string;
   css: string;
   js: string;
+  fullHtml: string;
 }
 
 const FAQ: React.FC = () => {
@@ -31,7 +33,9 @@ const FAQ: React.FC = () => {
   const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
   // Sub-tabs when codeMode is 'html'
   const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
+  
   const [isCopied, setIsCopied] = useState(false);
+  const [isFullCopied, setIsFullCopied] = useState(false);
 
   const faqData1 = [
     {
@@ -112,8 +116,9 @@ import { ChevronDown } from 'lucide-react';
 const BorderAccordionFaq = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const faqData = [
-    { question: "무료 업데이트가 지원되나요?", answer: "..." },
-    { question: "대시보드 커스터마이징 가능 여부", answer: "..." }
+    { question: "무료 업데이트가 지원되나요?", answer: "우리의 서비스는 지속적인 개선을 목표로..." },
+    { question: "대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?", answer: "네, 대시보드는 모듈화되어 있으며..." },
+    { question: "\\"무제한 프로젝트\\"는 무슨 뜻인가요?", answer: "무제한 프로젝트란 본 서비스를 활용하여..." }
   ];
   
   return (
@@ -139,70 +144,392 @@ const BorderAccordionFaq = () => {
     </div>
   );
 };`,
-      html: `<!-- 일반 정적 HTML 마크업 (3개 항목 펼침 버전) -->
-<div class="faq-container" style="display: flex; flex-direction: column; gap: 16px;">
+      html: `<!-- FAQ 유형 1 (보더 아코디언 마크업) -->
+<div class="faq-container">
   
-  <!-- 항목 1 (활성화 상태) -->
-  <div class="faq-item active" style="border: 1px solid #f1f5f9; border-radius: 8px; overflow: hidden; transition: all 0.3s ease;">
-    <button class="faq-trigger" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px; border: none; background: transparent; text-align: left; cursor: pointer;">
-      <span style="font-weight: 700; color: #1e293b;">무료 업데이트가 지원되나요?</span>
-      <div class="icon-circle" style="width: 32px; height: 32px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; transform: rotate(180deg); transition: transform 0.3s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+  <!-- 아코디언 항목 1 (기본 활성화 상태) -->
+  <div class="faq-item active">
+    <button class="faq-trigger">
+      <span class="faq-question">무료 업데이트가 지원되나요?</span>
+      <div class="icon-circle">
+        <!-- Lucide Chevron Down Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
       </div>
     </button>
-    <div class="faq-content" style="max-height: 400px; opacity: 1; transition: all 0.3s ease; border-top: 1px solid #f1f5f9;">
-      <div style="padding: 24px; padding-top: 0px; font-size: 14px; line-height: 1.6; color: #64748b;">
-        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내 모든 주요 패치를 무료 제공합니다.
+    <div class="faq-content">
+      <div class="faq-answer">
+        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
       </div>
     </div>
   </div>
 
-  <!-- 항목 2 (비활성화 상태) -->
-  <div class="faq-item" style="border: 1px solid #f1f5f9; border-radius: 8px; overflow: hidden; transition: all 0.3s ease;">
-    <button class="faq-trigger" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px; border: none; background: transparent; text-align: left; cursor: pointer;">
-      <span style="font-weight: 700; color: #1e293b;">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
-      <div class="icon-circle" style="width: 32px; height: 32px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; transform: rotate(0deg); transition: transform 0.3s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+  <!-- 아코디언 항목 2 (비활성화 상태) -->
+  <div class="faq-item">
+    <button class="faq-trigger">
+      <span class="faq-question">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
+      <div class="icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
       </div>
     </button>
-    <div class="faq-content" style="max-height: 0px; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
-      <div style="padding: 24px; padding-top: 0px; font-size: 14px; line-height: 1.6; color: #64748b;">
-        네, 모듈화되어 있으며, 각 컴포넌트들을 설정에 맞춰 수정할 수 있도록 정교하게 설계되어 있습니다.
+    <div class="faq-content">
+      <div class="faq-answer">
+        네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경하거나 구성을 추가할 수 있습니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 아코디언 항목 3 (비활성화 상태) -->
+  <div class="faq-item">
+    <button class="faq-trigger">
+      <span class="faq-question">"무제한 프로젝트"는 무슨 뜻인가요?</span>
+      <div class="icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </button>
+    <div class="faq-content">
+      <div class="faq-answer">
+        무제한 프로젝트란 본 서비스를 활용하여 진행할 수 있는 웹, 앱 등의 프로젝트 생성 개수에 어떠한 제한도 두지 않는다는 것을 의미합니다. 하나의 라이선스로 원하는 만큼 프로젝트를 구축할 수 있습니다.
       </div>
     </div>
   </div>
 
 </div>`,
-      css: `/* CSS / Tailwind CSS Utility Classes */
-.border-slate-100 { border-color: #f1f5f9; }
-.dark .dark\\:border-slate-800 { border-color: #1e293b; }
-.rounded-lg { border-radius: 0.5rem; }
-.transition-all { transition-property: all; }
-.duration-300 { transition-duration: 300ms; }
-.rotate-180 { transform: rotate(180deg); }
-.max-h-96 { max-height: 24rem; }
-.max-h-0 { max-height: 0px; }
-.overflow-hidden { overflow: hidden; }`,
-      js: `// Vanilla JavaScript 아코디언 토글 제어 이벤트 바인딩
-document.querySelectorAll('.faq-trigger').forEach((button) => {
-  button.addEventListener('click', () => {
-    const item = button.parentElement;
+      css: `/* FAQ 유형 1 스타일 정의 */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 100%;
+}
+
+.faq-item {
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .faq-item {
+    border-color: #1e293b;
+    background-color: #1a222c;
+  }
+  .faq-question {
+    color: #ffffff !important;
+  }
+  .faq-answer {
+    color: #94a3b8 !important;
+    border-color: #1e293b !important;
+  }
+  .icon-circle {
+    background-color: #1e293b !important;
+  }
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.faq-question {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.faq-trigger:hover .faq-question {
+  color: #4f46e5;
+}
+
+.icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.2s;
+}
+
+.chevron-icon {
+  color: #64748b;
+  transition: transform 0.3s;
+}
+
+.faq-content {
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+.faq-item.active .faq-content {
+  max-height: 200px; /* 답변 텍스트 길이에 맞춰 조절 */
+  opacity: 1;
+}
+
+.faq-item.active .icon-circle {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 24px;
+  padding-top: 0px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748b;
+  border-top: 1px solid #f1f5f9;
+}`,
+      js: `// Vanilla JS 아코디언 구동 이벤트 바인딩
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger');
     const content = item.querySelector('.faq-content');
-    const circle = button.querySelector('.icon-circle');
-    
-    const isActive = item.classList.toggle('active');
-    
-    if (isActive) {
+
+    // 초기 'active' 클래스가 있는 상태 대응
+    if (item.classList.contains('active')) {
       content.style.maxHeight = content.scrollHeight + 'px';
       content.style.opacity = '1';
-      circle.style.transform = 'rotate(180deg)';
-    } else {
-      content.style.maxHeight = '0px';
-      content.style.opacity = '0';
-      circle.style.transform = 'rotate(0deg)';
     }
+
+    trigger.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      // 다른 아코디언 닫기 (옵션)
+      faqItems.forEach((otherItem) => {
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.faq-content').style.maxHeight = '0px';
+        otherItem.querySelector('.faq-content').style.opacity = '0';
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+      } else {
+        item.classList.remove('active');
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+      }
+    });
   });
-});`
+});`,
+      fullHtml: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=initial-scale=1.0">
+  <title>FAQ 유형 1 (보더 아코디언) 실시간 미리보기</title>
+  <style>
+    /* 전체 바디 스타일링 */
+    body {
+      background-color: #f8fafc;
+      padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 800px;
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      border: 1px solid #f1f5f9;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 24px;
+    }
+    
+    /* FAQ 컴포넌트 내장 스타일 */
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+      border: none;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+    .faq-question {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    .faq-trigger:hover .faq-question {
+      color: #4f46e5;
+    }
+    .icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.2s;
+    }
+    .chevron-icon {
+      color: #64748b;
+      transition: transform 0.3s;
+    }
+    .faq-content {
+      max-height: 0px;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    }
+    .faq-item.active .faq-content {
+      max-height: 200px;
+      opacity: 1;
+    }
+    .faq-item.active .icon-circle {
+      transform: rotate(180deg);
+      background-color: #e0e7ff;
+    }
+    .faq-item.active .chevron-icon {
+      color: #4f46e5;
+    }
+    .faq-answer {
+      padding: 24px;
+      padding-top: 0px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #485563;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title">자주 묻는 질문 (FAQ)</div>
+
+    <!-- FAQ 컴포넌트 시작 -->
+    <div class="faq-container">
+      
+      <!-- 항목 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <span class="faq-question">무료 업데이트가 지원되나요?</span>
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </button>
+        <div class="faq-content">
+          <div class="faq-answer">
+            우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 항목 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </button>
+        <div class="faq-content">
+          <div class="faq-answer">
+            네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경하거나 구성을 추가할 수 있습니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 항목 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">"무제한 프로젝트"는 무슨 뜻인가요?</span>
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </button>
+        <div class="faq-content">
+          <div class="faq-answer">
+            무제한 프로젝트란 본 서비스를 활용하여 진행할 수 있는 웹, 앱 등의 프로젝트 생성 개수에 어떠한 제한도 두지 않는다는 것을 의미합니다. 하나의 라이선스로 원하는 만큼 프로젝트를 구축할 수 있습니다.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- FAQ 컴포넌트 끝 -->
+  </div>
+
+  <!-- JavaScript 이벤트 컨트롤 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach((item) => {
+        const trigger = item.querySelector('.faq-trigger');
+        const content = item.querySelector('.faq-content');
+
+        if (item.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+        }
+
+        trigger.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+
+          faqItems.forEach((otherItem) => {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-content').style.maxHeight = '0px';
+            otherItem.querySelector('.faq-content').style.opacity = '0';
+          });
+
+          if (!isActive) {
+            item.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.opacity = '1';
+          } else {
+            item.classList.remove('active');
+            content.style.maxHeight = '0px';
+            content.style.opacity = '0';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>`
     },
     faq2: {
       title: "FAQ 유형 2 (스위칭 배경 아코디언)",
@@ -243,61 +570,348 @@ const SwitchingBgFaq = () => {
     </div>
   );
 };`,
-      html: `<!-- 일반 정적 HTML 마크업 (배경 스위칭 테마형) -->
-<div class="faq-switching-container" style="display: grid; grid-template-cols: 1fr; gap: 16px;">
+      html: `<!-- FAQ 유형 2 (스위칭 배경 아코디언 마크업) -->
+<div class="faq-grid">
   
-  <!-- 활성화된 카드 (연한 보라/인디고 배경) -->
-  <div class="faq-card active" style="border-radius: 8px; overflow: hidden; transition: background 0.3s;">
-    <button class="faq-btn" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px; border: none; background: #e0e7ff; text-align: left; cursor: pointer;">
-      <span style="font-weight: 700; color: #1e293b;">무료 업데이트가 지원되나요?</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-content" style="max-height: 400px; opacity: 1; background: #e0e7ff;">
-      <div style="padding: 20px; padding-top: 8px; font-size: 14px; line-height: 1.6; color: #4f46e5;">
-        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내 패치를 무료로 제공받으실 수 있습니다.
+  <!-- 그룹 1 (좌측 배열) -->
+  <div class="faq-group">
+    
+    <!-- 항목 1 (활성화 상태 - 연한 인디고 배경) -->
+    <div class="faq-card active">
+      <button class="faq-btn">
+        <span class="faq-question">무료 업데이트가 지원되나요?</span>
+        <!-- Lucide Minus Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-content">
+        <div class="faq-answer">
+          우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 비활성화된 카드 (회색 배경) -->
-  <div class="faq-card" style="border-radius: 8px; overflow: hidden; transition: background 0.3s;">
-    <button class="faq-btn" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px; border: none; background: #f8fafc; text-align: left; cursor: pointer;">
-      <span style="font-weight: 700; color: #1e293b;">어떤 라이선스가 제게 적합한가요?</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-content" style="max-height: 0px; opacity: 0; overflow: hidden;">
-      <div style="padding: 20px; padding-top: 8px; font-size: 14px; line-height: 1.6; color: #64748b;">
-        소규모 팀의 경우 스탠다드 라이선스가 좋으며, 대규모 기업의 경우 엔터프라이즈 라이선스를 추천합니다.
+    <!-- 항목 2 (비활성화 상태 - 회색 배경) -->
+    <div class="faq-card">
+      <button class="faq-btn">
+        <span class="faq-question">어떤 라이선스가 제게 적합한가요?</span>
+        <!-- Lucide Plus Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-content">
+        <div class="faq-answer">
+          스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
+        </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>`,
-      css: `/* CSS / Tailwind CSS Utility Classes */
-.bg-indigo-50 { background-color: #e0e7ff; }
-.dark .dark\\:bg-indigo-500\\/10 { background-color: rgba(99, 102, 241, 0.1); }
-.bg-slate-50 { background-color: #f8fafc; }
-.dark .dark\\:bg-slate-800 { background-color: #1e293b; }
-.transition-colors { transition-property: background-color, border-color, color, fill, stroke; }`,
-      js: `// Vanilla JavaScript 버튼 클릭 플러스/마이너스 스위칭 제어
-document.querySelectorAll('.faq-btn').forEach((button) => {
-  button.addEventListener('click', () => {
-    const card = button.parentElement;
+      css: `/* FAQ 유형 2 스타일 정의 */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.faq-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: none;
+  background-color: #f8fafc;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.faq-question {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.math-icon {
+  color: #475569;
+}
+
+.faq-content {
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+
+.faq-answer {
+  padding: 20px;
+  padding-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+/* Active 상태 스타일 (Active 시 연한 보라/인디고 테마) */
+.faq-card.active .faq-btn {
+  background-color: #e0e7ff;
+}
+.faq-card.active .faq-btn .faq-question {
+  color: #4f46e5;
+}
+.faq-card.active .faq-btn .math-icon {
+  color: #4f46e5;
+}
+.faq-card.active .faq-content {
+  max-height: 200px;
+  opacity: 1;
+  background-color: #e0e7ff;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .faq-btn {
+    background-color: #1a222c;
+  }
+  .faq-question {
+    color: #ffffff;
+  }
+  .math-icon {
+    color: #94a3b8;
+  }
+  .faq-card.active .faq-btn {
+    background-color: rgba(99, 102, 241, 0.1);
+  }
+  .faq-card.active .faq-btn .faq-question {
+    color: #818cf8;
+  }
+  .faq-card.active .faq-content {
+    background-color: rgba(99, 102, 241, 0.1);
+  }
+  .faq-answer {
+    color: #94a3b8;
+  }
+}`,
+      js: `// Vanilla JS 플러스/마이너스 토글 연동
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.faq-card');
+
+  cards.forEach((card) => {
+    const btn = card.querySelector('.faq-btn');
     const content = card.querySelector('.faq-content');
-    
-    const isOpen = card.classList.toggle('active');
-    
-    if (isOpen) {
-      button.style.backgroundColor = '#e0e7ff';
+
+    if (card.classList.contains('active')) {
       content.style.maxHeight = content.scrollHeight + 'px';
       content.style.opacity = '1';
-    } else {
-      button.style.backgroundColor = '#f8fafc';
-      content.style.maxHeight = '0px';
-      content.style.opacity = '0';
     }
+
+    btn.addEventListener('click', () => {
+      const isActive = card.classList.contains('active');
+
+      if (!isActive) {
+        card.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+      } else {
+        card.classList.remove('active');
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+      }
+    });
   });
 });`
+    ,
+      fullHtml: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=initial-scale=1.0">
+  <title>FAQ 유형 2 (스위칭 배경 아코디언) 실시간 미리보기</title>
+  <style>
+    body {
+      background-color: #f8fafc;
+      padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 850px;
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+      border: 1px solid #f1f5f9;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 24px;
+    }
+    
+    /* FAQ 컴포넌트 내장 스타일 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .faq-card {
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      border: none;
+      background-color: #f8fafc;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+    .faq-question {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 15px;
+    }
+    .math-icon {
+      color: #475569;
+      transition: transform 0.2s;
+    }
+    .faq-content {
+      max-height: 0px;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.2s ease;
+    }
+    .faq-answer {
+      padding: 20px;
+      padding-top: 8px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #64748b;
+    }
+    
+    /* Active 상태 스타일 */
+    .faq-card.active .faq-btn {
+      background-color: #e0e7ff;
+    }
+    .faq-card.active .faq-btn .faq-question {
+      color: #4f46e5;
+    }
+    .faq-card.active .faq-btn .math-icon {
+      color: #4f46e5;
+    }
+    .faq-card.active .faq-content {
+      max-height: 200px;
+      opacity: 1;
+      background-color: #e0e7ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title">자주 묻는 질문 (FAQ) - 배경 스위칭 테마</div>
+
+    <!-- FAQ 컴포넌트 시작 -->
+    <div class="faq-grid">
+      
+      <!-- 항목 1 -->
+      <div class="faq-card active">
+        <button class="faq-btn">
+          <span class="faq-question">무료 업데이트가 지원되나요?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-content">
+          <div class="faq-answer">
+            우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 항목 2 -->
+      <div class="faq-card">
+        <button class="faq-btn">
+          <span class="faq-question">어떤 라이선스가 제게 적합한가요?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-content">
+          <div class="faq-answer">
+            스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 항목 3 -->
+      <div class="faq-card">
+        <button class="faq-btn">
+          <span class="faq-question">가격 정책에 언급된 "시트(Seats)"는 무엇인가요?</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-content">
+          <div class="faq-answer">
+            시트(Seats)는 대시보드 관리자 페이지에 접근하거나 프로젝트 개발에 직접 참여하는 개발자 혹은 관리자 계정의 수를 의미합니다.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- FAQ 컴포넌트 끝 -->
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.faq-card');
+
+      cards.forEach((card) => {
+        const btn = card.querySelector('.faq-btn');
+        const content = card.querySelector('.faq-content');
+
+        if (card.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+        }
+
+        btn.addEventListener('click', () => {
+          const isActive = card.classList.contains('active');
+
+          if (!isActive) {
+            card.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.opacity = '1';
+            btn.innerHTML = btn.innerHTML.replace('<line x1="12" y1="5" x2="12" y2="19"></line>', '');
+          } else {
+            card.classList.remove('active');
+            content.style.maxHeight = '0px';
+            content.style.opacity = '0';
+          }
+          window.location.reload(); // 단순 구동용 데모 리프레시 대응
+        });
+      });
+    });
+  </script>
+</body>
+</html>`
     },
     faq3: {
       title: "FAQ 유형 3 (아이콘 정보형 플랫 리스트)",
@@ -330,55 +944,245 @@ const FlatIconFaq = () => {
     </div>
   );
 };`,
-      html: `<!-- 일반 정적 HTML 마크업 (플랫 그리드형) -->
-<div class="faq-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px;">
+      html: `<!-- FAQ 유형 3 (플랫 아이콘 그리드 마크업) -->
+<div class="faq-grid-list">
   
-  <!-- 질문 항목 1 -->
-  <div class="faq-grid-item" style="display: flex; gap: 16px;">
-    <div style="flex-shrink: 0; padding-top: 4px;">
-      <div style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-      </div>
+  <!-- 항목 1 -->
+  <div class="faq-grid-item">
+    <div class="icon-wrapper">
+      <!-- Lucide Info Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <h4 style="margin: 0; font-weight: 700; color: #1e293b; line-height: 1.25;">무료 업데이트가 지원되나요?</h4>
-      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #64748b;">
-        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내 무료 패치를 제공받으실 수 있습니다.
+    <div class="faq-text-group">
+      <h4 class="faq-grid-title">무료 업데이트가 지원되나요?</h4>
+      <p class="faq-grid-desc">
+        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 기능 개선 사항을 주기적으로 고객님께 안내해 드립니다.
       </p>
     </div>
   </div>
 
-  <!-- 질문 항목 2 -->
-  <div class="faq-grid-item" style="display: flex; gap: 16px;">
-    <div style="flex-shrink: 0; padding-top: 4px;">
-      <div style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-      </div>
+  <!-- 항목 2 -->
+  <div class="faq-grid-item">
+    <div class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <h4 style="margin: 0; font-weight: 700; color: #1e293b; line-height: 1.25;">대시보드 커스터마이징 가능 여부</h4>
-      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #64748b;">
-        네, 모듈화되어 있으며, 각 컴포넌트들을 필요에 맞춰 자유롭게 수정하고 적용하도록 지원하고 있습니다.
+    <div class="faq-text-group">
+      <h4 class="faq-grid-title">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</h4>
+      <p class="faq-grid-desc">
+        네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다.
       </p>
     </div>
   </div>
 
 </div>`,
-      css: `/* CSS / Tailwind CSS Utility Classes */
-.flex { display: flex; }
-.shrink-0 { flex-shrink: 0; }
-.border-slate-200 { border-color: #e2e8f0; }
-.text-slate-400 { color: #94a3b8; }
-.gap-4 { gap: 1rem; }`,
-      js: `// 플랫형 질문 리스트는 일반 정적 마크업으로 별도 JS 로직이 관여하지 않습니다.`
+      css: `/* FAQ 유형 3 스타일 정의 */
+.faq-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px 48px;
+}
+
+.faq-grid-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.icon-wrapper {
+  flex-shrink: 0;
+  margin-top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.info-icon {
+  color: #94a3b8;
+}
+
+.faq-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faq-grid-title {
+  margin: 0;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.faq-grid-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .icon-wrapper {
+    border-color: #334155;
+    background-color: #1e293b;
+  }
+  .info-icon {
+    color: #64748b;
+  }
+  .faq-grid-title {
+    color: #ffffff;
+  }
+  .faq-grid-desc {
+    color: #94a3b8;
+  }
+}`,
+      js: `// 본 플랫 리스트 형태는 정적 레이아웃으로써 작동에 관여하는 자바스크립트 소스가 불필요합니다.`
+    ,
+      fullHtml: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=initial-scale=1.0">
+  <title>FAQ 유형 3 (아이콘 정보형 플랫 리스트) 실시간 미리보기</title>
+  <style>
+    body {
+      background-color: #f8fafc;
+      padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+      border: 1px solid #f1f5f9;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 32px;
+    }
+    
+    /* FAQ 컴포넌트 내장 스타일 */
+    .faq-grid-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px 48px;
+    }
+    .faq-grid-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .icon-wrapper {
+      flex-shrink: 0;
+      margin-top: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+    }
+    .info-icon {
+      color: #94a3b8;
+    }
+    .faq-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .faq-grid-title {
+      margin: 0;
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+    .faq-grid-desc {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title">자주 묻는 질문 (FAQ) - 플랫 아이콘 그리드</div>
+
+    <!-- FAQ 컴포넌트 시작 -->
+    <div class="faq-grid-list">
+      
+      <!-- 항목 1 -->
+      <div class="faq-grid-item">
+        <div class="icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="faq-text-group">
+          <h4 class="faq-grid-title">무료 업데이트가 지원되나요?</h4>
+          <p class="faq-grid-desc">
+            우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 기능 개선 사항을 주기적으로 고객님께 안내해 드립니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 항목 2 -->
+      <div class="faq-grid-item">
+        <div class="icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="faq-text-group">
+          <h4 class="faq-grid-title">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</h4>
+          <p class="faq-grid-desc">
+            네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 항목 3 -->
+      <div class="faq-grid-item">
+        <div class="icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div class="faq-text-group">
+          <h4 class="faq-grid-title">어떤 라이선스가 제게 적합한가요?</h4>
+          <p class="faq-grid-desc">
+            스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- FAQ 컴포넌트 끝 -->
+  </div>
+
+</body>
+</html>`
     }
   };
 
   const openCodeModal = (snippetKey: string) => {
     setSelectedSnippet(codeSnippets[snippetKey]);
-    setCodeMode('react'); // 기본 모드는 React로 지정
-    setHtmlSubTab('html'); // HTML 모드 서브탭 초기화
+    setCodeMode('react');
+    setHtmlSubTab('html');
     setIsCopied(false);
+    setIsFullCopied(false);
     setIsModalOpen(true);
   };
 
@@ -389,6 +1193,16 @@ const FlatIconFaq = () => {
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);
+      }, 1500);
+    });
+  };
+
+  const handleCopyFullSource = () => {
+    if (!selectedSnippet) return;
+    navigator.clipboard.writeText(selectedSnippet.fullHtml).then(() => {
+      setIsFullCopied(true);
+      setTimeout(() => {
+        setIsFullCopied(false);
       }, 1500);
     });
   };
@@ -570,6 +1384,7 @@ const FlatIconFaq = () => {
                     onClick={() => {
                       setCodeMode('react');
                       setIsCopied(false);
+                      setIsFullCopied(false);
                     }}
                     className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer ${
                       codeMode === 'react'
@@ -583,6 +1398,7 @@ const FlatIconFaq = () => {
                     onClick={() => {
                       setCodeMode('html');
                       setIsCopied(false);
+                      setIsFullCopied(false);
                     }}
                     className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer ${
                       codeMode === 'html'
@@ -605,7 +1421,7 @@ const FlatIconFaq = () => {
 
             {/* Modal Body: Tabs and Code Viewer */}
             <div className="flex-1 flex flex-col min-h-0 bg-[#0F172A]">
-              {/* Tab Selector Row (Only shown when codeMode is 'html') */}
+              {/* Tab Selector Row */}
               <div className="flex items-center justify-between px-6 py-3 border-b border-slate-800/80 bg-[#141C2F]">
                 <div className="flex gap-4">
                   {codeMode === 'react' ? (
@@ -621,6 +1437,7 @@ const FlatIconFaq = () => {
                         onClick={() => {
                           setHtmlSubTab(tab);
                           setIsCopied(false);
+                          setIsFullCopied(false);
                         }}
                         className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
                           htmlSubTab === tab 
@@ -634,23 +1451,46 @@ const FlatIconFaq = () => {
                   )}
                 </div>
 
-                {/* Copy Button */}
-                <button
-                  onClick={handleCopyCode}
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4B62FA]/10 hover:bg-[#4B62FA]/25 text-indigo-400 hover:text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
-                >
-                  {isCopied ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400 animate-scale-up" />
-                      <span className="text-emerald-400">복사 완료</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      코드 복사
-                    </>
+                {/* Double Copy Buttons Group */}
+                <div className="flex items-center gap-2">
+                  {/* Tab Code Copy Button */}
+                  <button
+                    onClick={handleCopyCode}
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4B62FA]/10 hover:bg-[#4B62FA]/25 text-indigo-400 hover:text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                  >
+                    {isCopied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400 animate-scale-up" />
+                        <span className="text-emerald-400">복사 완료</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        코드 복사
+                      </>
+                    )}
+                  </button>
+
+                  {/* HTML Single-File Full Copy Button */}
+                  {codeMode === 'html' && (
+                    <button
+                      onClick={handleCopyFullSource}
+                      className="flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/25 text-emerald-400 hover:text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                    >
+                      {isFullCopied ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-400 animate-scale-up" />
+                          <span className="text-emerald-400 font-extrabold">전체 소스 복증됨</span>
+                        </>
+                      ) : (
+                        <>
+                          <FileCode className="w-3.5 h-3.5" />
+                          전체 소스 복사 (바로 실행용)
+                        </>
+                      )}
+                    </button>
                   )}
-                </button>
+                </div>
               </div>
 
               {/* Code Pre Container */}
