@@ -97,7 +97,7 @@ Vite의 고속 핫 리로딩(HMR) 기능이 활성화된 로컬 호스트 서버
 ```bash
 npm run dev
 ```
-- 실행 후 브라우저에서 `http://localhost:5173/react_dashboard_01/` 로 접근할 수 있습니다.
+- 실행 후 브라우저에서 `http://localhost:5173/` 로 접근할 수 있습니다.
 
 ### 3. 프로덕션 빌드
 배포용 번들을 준비하기 위해 TypeScript 타입 검사 수행 후 리소스를 빌드합니다.
