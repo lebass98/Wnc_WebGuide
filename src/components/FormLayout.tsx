@@ -211,7 +211,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
           previewMode === 'react' ? (
             /* React Component Live Preview */
             <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 transition-colors duration-300 min-h-[300px] flex flex-col justify-center items-center">
+              <div className="bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300 w-full">
                 {children}
               </div>
             </div>
@@ -363,7 +363,7 @@ const IconFormPreview: React.FC = () => {
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <User className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+            <User className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
           </div>
           <input 
             type="text" 
@@ -373,32 +373,32 @@ const IconFormPreview: React.FC = () => {
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
+            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
           </div>
           <input 
             type="email" 
             placeholder="이메일 주소" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-550 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
           </div>
           <input 
             type="password" 
             placeholder="비밀번호" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-550 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
           </div>
           <input 
             type="password" 
             placeholder="비밀번호 확인" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-550 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">

@@ -211,7 +211,7 @@ const HeroSectionWrapper: React.FC<HeroSectionWrapperProps> = ({ title, descript
           previewMode === 'react' ? (
             /* React Component Live Preview */
             <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-slate-50 dark:bg-[#0F172A] p-6 sm:p-12 transition-colors duration-300 min-h-[300px] flex flex-col justify-center items-center">
+              <div className="bg-slate-50 dark:bg-[#0F172A] transition-colors duration-300 w-full">
                 {children}
               </div>
             </div>
