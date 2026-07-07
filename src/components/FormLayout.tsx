@@ -59,19 +59,18 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
 
   return (
     <div className="flex flex-col gap-4 bg-transparent">
-      {/* Flattened Toolbar Header (No border/shadow on wrapper card) */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-0">
-        <div>
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white leading-snug">
-            {title}
-          </h3>
-          <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-0.5 max-w-xl">
-            {description}
-          </p>
-        </div>
+      {/* Title & Description Column */}
+      <div className="flex flex-col gap-1 p-0">
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white leading-snug">
+          {title}
+        </h3>
+        <p className="text-[13px] text-slate-500 dark:text-slate-400 max-w-xl">
+          {description}
+        </p>
+      </div>
 
-        {/* Toolbar Controls */}
-        <div className="flex flex-wrap items-center gap-3 bg-white dark:bg-[#1A222C] p-2.5 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm w-fit self-start lg:self-auto">
+      {/* Toolbar Controls - Placed underneath the title, taking w-full container space */}
+      <div className="flex flex-wrap items-center gap-3 bg-white dark:bg-[#1A222C] p-2.5 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm w-full">
           {/* 1. Preview / Code Switcher */}
           <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
             <button
@@ -185,7 +184,6 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
             )}
           </div>
         </div>
-      </div>
 
       {/* Frame Container */}
       <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}>
