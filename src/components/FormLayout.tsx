@@ -258,7 +258,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
 /* --- 1. Basic Form Preview Component --- */
 const BasicFormPreview: React.FC = () => {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <input 
@@ -296,7 +296,7 @@ const BasicFormPreview: React.FC = () => {
 /* --- 2. Message Form Preview Component --- */
 const MessageFormPreview: React.FC = () => {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-1.5 sm:space-y-2">
@@ -359,7 +359,7 @@ const IconFormPreview: React.FC = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
@@ -431,7 +431,7 @@ const PersonalInfoFormPreview: React.FC = () => {
   const [membership, setMembership] = useState('free');
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-6 sm:space-y-8 text-left">
         
         {/* Personal Info section */}
@@ -553,7 +553,7 @@ const FormLayout: React.FC = () => {
 
 const BasicForm = () => {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <input 
@@ -590,7 +590,7 @@ const BasicForm = () => {
 
 export default BasicForm;`,
       html: `<!-- 기본 폼 HTML (Tailwind CSS 기반) -->
-<div class="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+<div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
   <div class="space-y-4 sm:space-y-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       <input 
@@ -633,7 +633,7 @@ export default BasicForm;`,
   <title>기본 폼 실시간 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+  <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-4 sm:space-y-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <input 
@@ -674,7 +674,7 @@ import { Send, ChevronDown } from 'lucide-react';
 
 const MessageForm = () => {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-1.5 sm:space-y-2">
@@ -734,7 +734,7 @@ const MessageForm = () => {
 
 export default MessageForm;`,
       html: `<!-- 예제 폼 HTML (Tailwind CSS 기반) -->
-<div class="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+<div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
   <div class="space-y-4 sm:space-y-6 text-left">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       <div class="space-y-1.5 sm:space-y-2">
@@ -802,7 +802,7 @@ export default MessageForm;`,
   <title>예제 폼 실시간 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+  <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-4 sm:space-y-6 text-left">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div class="space-y-1.5 sm:space-y-2">
@@ -871,7 +871,7 @@ const IconForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
@@ -940,7 +940,7 @@ const IconForm = () => {
 
 export default IconForm;`,
       html: `<!-- 아이콘이 포함된 폼 HTML (Tailwind CSS 및 Lucide 웹아이콘 기반) -->
-<div class="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+<div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
   <div class="space-y-4 sm:space-y-6 text-left">
     <div class="relative group">
       <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
@@ -1048,7 +1048,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-2xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+  <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-4 sm:space-y-6 text-left">
       <div class="relative group">
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
@@ -1134,7 +1134,7 @@ const PersonalInfoForm = () => {
   const [membership, setMembership] = useState('free');
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-6 sm:space-y-8 text-left">
         
         {/* Personal Info section */}
@@ -1249,7 +1249,7 @@ const PersonalInfoForm = () => {
 
 export default PersonalInfoForm;`,
       html: `<!-- 상세 개인정보 & 주소 폼 HTML (Tailwind CSS 기반) -->
-<div class="w-full max-w-3xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+<div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
   <div class="space-y-6 sm:space-y-8 text-left">
     
     <!-- Personal Info section -->
@@ -1422,7 +1422,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-8 flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-3xl mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+  <div class="w-full max-w-full mx-auto bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 shadow-sm border border-slate-100 dark:border-slate-800">
     <div class="space-y-6 sm:space-y-8 text-left">
       
       <!-- Personal Info section -->
