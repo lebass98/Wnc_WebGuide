@@ -709,7 +709,7 @@ const CenteredElegantHero = () => {
         <div className="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto space-y-6 sm:space-y-10">
+      <div className="relative z-10 max-h-full mx-auto space-y-6 sm:space-y-10">
         <div className="mx-auto w-fit px-3 py-1 bg-white/5 border border-white/10 rounded-full flex items-center gap-2 text-white/80 text-xs">
           <span className="bg-emerald-500 w-1.5 h-1.5 rounded-full animate-pulse" />
           엔터프라이즈 지원. SOC2 준수.
@@ -748,7 +748,7 @@ const CenteredElegantHero = () => {
     <div class="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
   </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto space-y-6 sm:space-y-10">
+  <div class="relative z-10 max-h-full mx-auto space-y-6 sm:space-y-10">
     <div class="mx-auto w-fit px-3 py-1 bg-white/5 border border-white/10 rounded-full flex items-center gap-2 text-white/80 text-xs">
       <span class="bg-emerald-500 w-1.5 h-1.5 rounded-full animate-pulse"></span>
       엔터프라이즈 지원. SOC2 준수.
@@ -811,7 +811,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
       </div>
 
-      <div class="relative z-10 max-w-4xl mx-auto space-y-6 sm:space-y-10">
+      <div class="relative z-10 max-h-full mx-auto space-y-6 sm:space-y-10">
         <div class="mx-auto w-fit px-3 py-1 bg-white/5 border border-white/10 rounded-full flex items-center gap-2 text-white/80 text-xs">
           <span class="bg-emerald-500 w-1.5 h-1.5 rounded-full animate-pulse"></span>
           엔터프라이즈 지원. SOC2 준수.
@@ -1084,7 +1084,7 @@ const MinimalistImageHero = () => {
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/50 to-transparent" />
-      <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 md:px-20 max-w-4xl space-y-4 sm:space-y-6">
+      <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 md:px-20 max-h-full space-y-4 sm:space-y-6">
         <h2 className="text-2xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
           모든 픽셀에<br className="hidden sm:block" /> 담긴 우아함.
         </h2>
@@ -1111,7 +1111,7 @@ const MinimalistImageHero = () => {
     class="absolute inset-0 w-full h-full object-cover transition-transform duration-750 group-hover:scale-105"
   />
   <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent"></div>
-  <div class="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-w-4xl space-y-4 sm:space-y-6 text-left">
+  <div class="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-h-full space-y-4 sm:space-y-6 text-left">
     <h2 class="text-xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
       모든 픽셀에 담긴 우아함.
     </h2>
@@ -1153,7 +1153,7 @@ const MinimalistImageHero = () => {
         class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent"></div>
-      <div class="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-w-4xl space-y-4 sm:space-y-6 text-left">
+      <div class="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-h-full space-y-4 sm:space-y-6 text-left">
         <h2 class="text-xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
           모든 픽셀에 담긴 우아함.
         </h2>
@@ -1351,7 +1351,7 @@ const MinimalistImageHero = () => {
             <div className="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
           </div>
-          <div className="relative z-10 max-w-4xl mx-auto space-y-4 sm:space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div className="relative z-10 max-h-full mx-auto space-y-4 sm:space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             <div className="mx-auto w-fit px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center gap-2 text-white/80 text-xs">
               <span className="bg-emerald-500 w-1.5 h-1.5 rounded-full animate-pulse"></span>
               엔터프라이즈 지원. SOC2 준수.
@@ -1474,7 +1474,7 @@ const MinimalistImageHero = () => {
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent"></div>
-          <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-w-4xl space-y-4 sm:space-y-6 text-left">
+          <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-h-full space-y-4 sm:space-y-6 text-left">
             <h2 className="text-xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
               모든 픽셀에 담긴 우아함.
             </h2>

@@ -364,7 +364,7 @@ const BorderAccordionFaq = () => {
   ];
   
   return (
-    <div className="space-y-4 w-full max-w-4xl mx-auto">
+    <div className="space-y-4 w-full max-h-full mx-auto">
       {faqData.map((item, idx) => (
         <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
           <button 
@@ -387,7 +387,7 @@ const BorderAccordionFaq = () => {
   );
 };`,
       html: `<!-- FAQ 유형 1 (보더 아코디언 마크업 - Tailwind CSS 기반) -->
-<div class="space-y-4 w-full max-w-4xl mx-auto">
+<div class="space-y-4 w-full max-h-full mx-auto">
   
   <!-- 아코디언 항목 1 (기본 활성화) -->
   <div class="faq-item border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300 active" data-index="0">
@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <title>FAQ 유형 1 (보더 아코디언) 실시간 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-4xl mx-auto">
+  <div class="w-full max-h-full mx-auto">
     <div class="space-y-4 w-full">
       
       <div class="faq-item border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300 active">
@@ -603,7 +603,7 @@ const SwitchingBgFaq = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-h-full mx-auto">
       <div className="space-y-4">
         {faqData.slice(0, 3).map((item, idx) => (
           <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
@@ -655,7 +655,7 @@ const SwitchingBgFaq = () => {
   );
 };`,
       html: `<!-- FAQ 유형 2 (스위칭 배경 아코디언 마크업 - Tailwind CSS 기반) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-h-full mx-auto">
   
   <!-- Left column -->
   <div class="space-y-4">
@@ -829,9 +829,9 @@ document.addEventListener('DOMContentLoaded', () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 2 (스위칭 배경 아코디언) 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-5xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
+  <div class="w-full max-h-full mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-h-full mx-auto">
       
       <div class="space-y-4">
         <div class="faq-item rounded-lg overflow-hidden transition-all duration-300 active">
@@ -1002,7 +1002,7 @@ const FlatIconFaq = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-h-full mx-auto">
       {faqData.map((item, idx) => (
         <div key={idx} className="flex gap-4">
           <div className="shrink-0 pt-1">
@@ -1027,7 +1027,7 @@ const FlatIconFaq = () => {
   );
 };`,
       html: `<!-- FAQ 유형 3 (플랫 아이콘 그리드 마크업 - Tailwind CSS 기반) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-h-full mx-auto">
   
   <!-- 항목 1 -->
   <div class="flex gap-4">
@@ -1128,8 +1128,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <title>FAQ 유형 3 (아이콘 정보형 플랫 리스트) 실시간 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
-  <div class="w-full max-w-5xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
+  <div class="w-full max-h-full mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-h-full mx-auto">
       
       <div class="flex gap-4">
         <div class="shrink-0 pt-1">
@@ -1246,7 +1246,7 @@ document.addEventListener('DOMContentLoaded', () => {
           description="기본형 보더 아코디언 스타일 레이아웃입니다."
           snippet={codeSnippets.faq1}
         >
-          <div className="space-y-4 w-full max-w-4xl mx-auto">
+          <div className="space-y-4 w-full max-h-full mx-auto">
             {faqData1.map((item, idx) => (
               <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
                 <button
@@ -1274,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', () => {
           description="배경색이 반전 스위칭되는 미려한 아코디언 스타일입니다."
           snippet={codeSnippets.faq2}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full max-h-full mx-auto">
             <div className="space-y-4">
               {faqData2.slice(0, 3).map((item, idx) => (
                 <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
@@ -1331,7 +1331,7 @@ document.addEventListener('DOMContentLoaded', () => {
           description="아이콘을 결합하여 가벼운 정보 전달력을 높인 플랫 리스트입니다."
           snippet={codeSnippets.faq3}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full max-h-full mx-auto">
             {faqData3.map((item, idx) => (
               <div key={idx} className="flex gap-4">
                 <div className="shrink-0 pt-1">
