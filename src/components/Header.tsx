@@ -86,9 +86,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
           className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-l border-slate-200 dark:border-slate-800 cursor-pointer hover:opacity-80 group relative"
         >
           <img
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-            alt="Alex Johnson"
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white dark:border-slate-800 shadow-sm"
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+            alt="User Avatar"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 shadow-sm bg-indigo-50 dark:bg-slate-800"
           />
           <div className="hidden md:block flex-1 min-w-0">
             <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">퍼블리싱팀</p>

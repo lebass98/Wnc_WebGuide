@@ -318,7 +318,7 @@ const BasicTables: React.FC = () => {
                     { name: 'Alena Franci', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop', campaign: '웹사이트 트래픽 증가...', type: '광고 캠페인', platform: 'Google', status: '성공' },
                     { name: 'Jocelyn Kenter', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop', campaign: '디지털 마케팅...', type: '광고 캠페인', platform: 'Instagram', status: '실패' },
                     { name: 'Brandon Philips', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop', campaign: '퍼스널 브랜딩', type: '광고 캠페인', platform: 'Facebook', status: '성공' },
-                    { name: 'James Lipshutz', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop', campaign: '웹사이트 트래픽 증가...', type: '광고 캠페인', platform: 'Google', status: '성공' }
+                    { name: 'James Lipshutz', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix', campaign: '웹사이트 트래픽 증가...', type: '광고 캠페인', platform: 'Google', status: '성공' }
                   ].map((row, i) => (
                     <tr key={i} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
                       <td className="px-4 py-4">

@@ -138,7 +138,7 @@ const ShowcaseDataDisplay: React.FC = () => {
                   <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?w=100&h=100&fit=crop" alt="member" />
                   <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?w=100&h=100&fit=crop" alt="member" />
                   <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="member" />
-                  <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="member" />
+                  <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover bg-indigo-50 dark:bg-slate-800" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="member" />
                 </div>
                 <span className="text-xs font-bold text-slate-500 dark:text-slate-400 ml-3">+ 12명 참여 중</span>
               </div>
