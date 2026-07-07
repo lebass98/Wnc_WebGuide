@@ -191,7 +191,7 @@ const App: React.FC = () => {
                 />
               )}
 
-              <div className="flex-1 lg flex flex-col min-h-screen overflow-hidden transition-all duration-300">
+              <div className="flex-1 lg:pl-[280px] flex flex-col min-h-screen overflow-hidden transition-all duration-300">
                 <Header
                   onMenuClick={toggleSidebar}
                   isDarkMode={isDarkMode}
