@@ -39,8 +39,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
   const [copied, setCopied] = useState(false);
 
   const handleCopyCode = () => {
-    const textToCopy = codeMode === 'react' ? snippet.react : snippet.fullHtml;
-    navigator.clipboard.writeText(textToCopy).then(() => {
+    navigator.clipboard.writeText(snippet.fullHtml).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     });
@@ -172,7 +171,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
             >
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                {copied ? "복사 완료!" : (codeMode === 'react' ? "React 코드 복사" : "HTML/CSS/JS 전체 소스 복사")}
+                {copied ? "복사 완료!" : "HTML/CSS/JS 전체 소스 복사"}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
               </div>
             </button>
