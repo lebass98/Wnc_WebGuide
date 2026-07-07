@@ -84,47 +84,57 @@ const HeroSectionWrapper: React.FC<HeroSectionWrapperProps> = ({ title, descript
         </div>
 
         {/* Action Controls Toolbar */}
-        <div className="flex flex-wrap items-center gap-3">
-          {/* 1. Preview/Code toggle tab */}
-          <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
-            <button 
-              onClick={() => setActiveTab('preview')}
-              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-            >
-              미리보기
-            </button>
-            <button 
-              onClick={() => setActiveTab('code')}
-              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${activeTab === 'code' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-            >
-              코드 보기
-            </button>
-          </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {/* 1. Preview Mode Group: React | HTML */}
+          {activeTab === 'preview' && (
+            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
+              <button 
+                onClick={() => setPreviewMode('react')}
+                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+              >
+                React
+              </button>
+              <button 
+                onClick={() => setPreviewMode('html')}
+                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+              >
+                HTML
+              </button>
+            </div>
+          )}
+
+          {/* 코드보기 button (separate, always visible) */}
+          <button
+            onClick={() => setActiveTab(activeTab === 'code' ? 'preview' : 'code')}
+            className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer border ${activeTab === 'code' ? 'bg-[#4B62FA] text-white border-[#4B62FA] shadow-sm' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-800 dark:hover:text-white hover:border-slate-300'}`}
+          >
+            코드보기
+          </button>
 
           <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
 
-          {/* 1.5 Preview Mode Switcher (React vs HTML) */}
-          {activeTab === 'preview' && (
+          {/* Code type toggler (only in code tab) */}
+          {activeTab === 'code' && (
             <>
               <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
                 <button
-                  onClick={() => setPreviewMode('react')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                  onClick={() => setCodeMode('react')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >
-                  React 미리보기
+                  React
                 </button>
                 <button
-                  onClick={() => setPreviewMode('html')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                  onClick={() => setCodeMode('html')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >
-                  HTML 미리보기
+                  일반 HTML
                 </button>
               </div>
               <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
             </>
           )}
 
-          {/* 2. Device Responsive simulation switcher (only for preview) */}
+          {/* Device switcher (preview only) */}
           {activeTab === 'preview' && (
             <>
               <div className="flex items-center gap-1">
@@ -163,7 +173,7 @@ const HeroSectionWrapper: React.FC<HeroSectionWrapperProps> = ({ title, descript
             </>
           )}
 
-          {/* 3. Embedded Theme simulator switcher (only for preview) */}
+          {/* Theme switcher (preview only) */}
           {activeTab === 'preview' && (
             <>
               <div className="flex items-center gap-1">
@@ -192,28 +202,7 @@ const HeroSectionWrapper: React.FC<HeroSectionWrapperProps> = ({ title, descript
             </>
           )}
 
-          {/* 4. Code type toggler (only for code mode) */}
-          {activeTab === 'code' && (
-            <>
-              <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
-                <button
-                  onClick={() => setCodeMode('react')}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-                >
-                  React
-                </button>
-                <button
-                  onClick={() => setCodeMode('html')}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-                >
-                  일반 HTML
-                </button>
-              </div>
-              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-
-          {/* 5. Copy Actions */}
+          {/* Copy Actions */}
           <div className="flex items-center gap-1.5">
             <button
               onClick={handleCopyCode}
