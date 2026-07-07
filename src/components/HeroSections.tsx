@@ -961,27 +961,27 @@ const MinimalistImageHero = () => {
         description="아름다운 사무실 전경 배경을 깔아 입체적인 시인성을 확보하는 정적인 무드의 히어로 섹션입니다."
         snippet={codeSnippets.hero5}
       >
-        <section className="relative h-[550px] w-full rounded-[32px] overflow-hidden group">
+        <section className="relative h-[380px] sm:h-[500px] lg:h-[550px] w-full rounded-[32px] overflow-hidden group">
            <img 
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070" 
             alt="사무실" 
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
            />
            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent"></div>
-           <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-12 md:px-24 max-w-4xl space-y-6 text-left">
-              <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight">
-                 모든 픽셀에 <br /> 담긴 우아함.
+           <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-w-4xl space-y-4 sm:space-y-6 text-left">
+              <h2 className="text-2xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
+                 모든 픽셀에 <br className="hidden sm:block" /> 담긴 우아함.
               </h2>
-              <p className="text-xl text-slate-200 leading-relaxed max-w-lg">
+              <p className="text-xs sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-lg">
                  우리는 단순함과 집중의 힘을 믿습니다. 보이지 않는 곳에서 강력한 도구를 제공하여 여러분의 콘텐츠가 빛날 수 있도록 플랫폼을 설계했습니다.
               </p>
-              <div className="flex items-center gap-6 pt-4">
-                 <button className="px-10 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all shadow-lg hover:-translate-y-1">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+                 <button className="px-6 py-3 sm:px-10 sm:py-4 bg-indigo-600 text-white rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg hover:-translate-y-1 w-fit">
                     무료 체험 시작
                  </button>
-                 <div className="flex items-center gap-2 group/link cursor-pointer">
+                 <div className="flex items-center gap-2 group/link cursor-pointer text-xs sm:text-sm">
                     <span className="text-white font-bold group-hover/link:underline">우리의 철학에 대해 자세히 알아보기</span>
-                    <ArrowRight className="w-5 h-5 text-white group-hover/link:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover/link:translate-x-1 transition-transform" />
                  </div>
               </div>
            </div>
