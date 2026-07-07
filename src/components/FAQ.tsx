@@ -1,9 +1,32 @@
 import React, { useState } from 'react';
-import { ChevronDown, Plus, Minus, Info, ChevronRight } from 'lucide-react';
+import { 
+  ChevronDown, 
+  Plus, 
+  Minus, 
+  Info, 
+  ChevronRight, 
+  Code, 
+  Copy, 
+  Check, 
+  X 
+} from 'lucide-react';
+
+interface CodeSnippet {
+  title: string;
+  html: string;
+  css: string;
+  js: string;
+}
 
 const FAQ: React.FC = () => {
   const [openFaq1, setOpenFaq1] = useState<number | null>(0);
   const [openFaq2, setOpenFaq2] = useState<number | null>(0);
+
+  // Code preview modal states
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSnippet, setSelectedSnippet] = useState<CodeSnippet | null>(null);
+  const [activeTab, setActiveTab] = useState<'html' | 'css' | 'js'>('html');
+  const [isCopied, setIsCopied] = useState(false);
 
   const faqData1 = [
     {
@@ -74,8 +97,154 @@ const FAQ: React.FC = () => {
     }
   ];
 
+  // Code snippets data map
+  const codeSnippets: Record<string, CodeSnippet> = {
+    faq1: {
+      title: "FAQ 유형 1 (보더 아코디언)",
+      html: `<div className="space-y-4">
+  {faqData.map((item, idx) => (
+    <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
+      <button 
+        onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+        className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+      >
+        <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
+        <div className={\`w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300 \${openIdx === idx ? 'rotate-180' : ''}\`}>
+          <ChevronDown className="w-4 h-4 text-slate-500" />
+        </div>
+      </button>
+      <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
+        <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
+          {item.answer}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>`,
+      css: `/* Tailwind CSS Utility Classes */
+.border-slate-100 { border-color: #f1f5f9; }
+.dark .dark\\:border-slate-800 { border-color: #1e293b; }
+.rounded-lg { border-radius: 0.5rem; }
+.transition-all { transition-property: all; }
+.duration-300 { transition-duration: 300ms; }
+.rotate-180 { transform: rotate(180deg); }
+.max-h-96 { max-height: 24rem; }
+.max-h-0 { max-height: 0px; }
+.overflow-hidden { overflow: hidden; }`,
+      js: `import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+const AccordionFaq = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const faqData = [...]; // 질문 답변 데이터 배열
+  
   return (
-    <div className="space-y-10 pb-10">
+    // HTML 구조 매핑...
+  );
+};`
+    },
+    faq2: {
+      title: "FAQ 유형 2 (스위칭 배경 아코디언)",
+      html: `<div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+  <div className="space-y-4">
+    {faqData.map((item, idx) => (
+      <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
+        <button 
+          onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+          className={\`w-full flex items-center justify-between p-5 text-left transition-colors \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}\`}
+        >
+          <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
+          {openIdx === idx ? (
+            <Minus className="w-4 h-4 text-slate-600" />
+          ) : (
+            <Plus className="w-4 h-4 text-slate-600" />
+          )}
+        </button>
+        <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
+          <div className={\`p-5 pt-2 text-sm leading-relaxed text-slate-500 \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}\`}>
+            {item.answer}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>`,
+      css: `/* Tailwind CSS Utility Classes */
+.bg-indigo-50 { background-color: #e0e7ff; }
+.dark .dark\\:bg-indigo-500\\/10 { background-color: rgba(99, 102, 241, 0.1); }
+.bg-slate-50 { background-color: #f8fafc; }
+.dark .dark\\:bg-slate-800 { background-color: #1e293b; }
+.transition-colors { transition-property: background-color, border-color, color, fill, stroke; }`,
+      js: `import React, { useState } from 'react';
+import { Plus, Minus } from 'lucide-react';
+
+const SwitchingBgFaq = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const faqData = [...]; // 질문 답변 데이터 배열
+
+  return (
+    // HTML 구조 매핑...
+  );
+};`
+    },
+    faq3: {
+      title: "FAQ 유형 3 (아이콘 정보형 플랫 리스트)",
+      html: `<div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+  {faqData.map((item, idx) => (
+    <div key={idx} className="flex gap-4">
+      <div className="shrink-0 pt-1">
+        <div className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+          <Info className="w-3.5 h-3.5 text-slate-400" />
+        </div>
+      </div>
+      <div className="space-y-3">
+        <h4 className="font-bold text-slate-800 dark:text-white leading-tight">{item.question}</h4>
+        <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+          {item.answer}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>`,
+      css: `/* Tailwind CSS Utility Classes */
+.flex { display: flex; }
+.shrink-0 { flex-shrink: 0; }
+.border-slate-200 { border-color: #e2e8f0; }
+.text-slate-400 { color: #94a3b8; }
+.gap-4 { gap: 1rem; }`,
+      js: `import React from 'react';
+import { Info } from 'lucide-react';
+
+const FlatIconFaq = () => {
+  const faqData = [...]; // 질문 답변 데이터 배열
+
+  return (
+    // HTML 구조 매핑...
+  );
+};`
+    }
+  };
+
+  const openCodeModal = (snippetKey: string) => {
+    setSelectedSnippet(codeSnippets[snippetKey]);
+    setActiveTab('html');
+    setIsCopied(false);
+    setIsModalOpen(true);
+  };
+
+  const handleCopyCode = () => {
+    if (!selectedSnippet) return;
+    const textToCopy = selectedSnippet[activeTab];
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setIsCopied(true);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 1500);
+    });
+  };
+
+  return (
+    <div className="space-y-10 pb-10 font-sans relative">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -93,8 +262,17 @@ const FAQ: React.FC = () => {
       </div>
 
       {/* FAQ Type 1 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">FAQ 유형 1</h3>
+      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9 relative">
+        {/* Code Preview Button */}
+        <button
+          onClick={() => openCodeModal('faq1')}
+          className="absolute top-4 right-4 sm:top-6 sm:right-9 flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 dark:bg-slate-800/60 dark:hover:bg-indigo-500/10 dark:text-slate-400 dark:hover:text-indigo-400 rounded-lg text-xs font-bold transition-all cursor-pointer"
+        >
+          <Code className="w-3.5 h-3.5" />
+          코드 보기
+        </button>
+
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6 pr-24">FAQ 유형 1</h3>
         <div className="space-y-4">
           {faqData1.map((item, idx) => (
             <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
@@ -118,8 +296,17 @@ const FAQ: React.FC = () => {
       </div>
 
       {/* FAQ Type 2 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">FAQ 유형 2</h3>
+      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9 relative">
+        {/* Code Preview Button */}
+        <button
+          onClick={() => openCodeModal('faq2')}
+          className="absolute top-4 right-4 sm:top-6 sm:right-9 flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 dark:bg-slate-800/60 dark:hover:bg-indigo-500/10 dark:text-slate-400 dark:hover:text-indigo-400 rounded-lg text-xs font-bold transition-all cursor-pointer"
+        >
+          <Code className="w-3.5 h-3.5" />
+          코드 보기
+        </button>
+
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6 pr-24">FAQ 유형 2</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="space-y-4">
             {faqData2.slice(0, 3).map((item, idx) => (
@@ -172,8 +359,17 @@ const FAQ: React.FC = () => {
       </div>
 
       {/* FAQ Type 3 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6">FAQ 유형 3</h3>
+      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9 relative">
+        {/* Code Preview Button */}
+        <button
+          onClick={() => openCodeModal('faq3')}
+          className="absolute top-4 right-4 sm:top-6 sm:right-9 flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 dark:bg-slate-800/60 dark:hover:bg-indigo-500/10 dark:text-slate-400 dark:hover:text-indigo-400 rounded-lg text-xs font-bold transition-all cursor-pointer"
+        >
+          <Code className="w-3.5 h-3.5" />
+          코드 보기
+        </button>
+
+        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6 pr-24">FAQ 유형 3</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {faqData3.map((item, idx) => (
             <div key={idx} className="flex gap-4">
@@ -187,7 +383,6 @@ const FAQ: React.FC = () => {
                 <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
                   {item.answer}
                 </p>
-                {/* Visual helper for multi-paragraph look in the image */}
                 {idx < 2 && (
                    <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
                     추가적인 안내사항이 있다면 고객 지원 문서나 이용약관의 관련 섹션을 통해 상세히 확인해보실 것을 권장합니다.
@@ -198,6 +393,82 @@ const FAQ: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Code Previewer Modal (Mac-style look) */}
+      {isModalOpen && selectedSnippet && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div 
+            className="bg-white dark:bg-[#1E293B] rounded-2xl w-full max-w-4xl max-h-[85vh] shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col overflow-hidden animate-zoom-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Mac Header */}
+            <div className="bg-slate-50 dark:bg-[#0F172A] px-5 py-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {/* Simulated Mac Buttons */}
+                <span className="w-3.5 h-3.5 rounded-full bg-rose-500 block hover:opacity-85 cursor-pointer" onClick={() => setIsModalOpen(false)}></span>
+                <span className="w-3.5 h-3.5 rounded-full bg-amber-400 block"></span>
+                <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 block"></span>
+                <span className="text-[13px] font-bold text-slate-600 dark:text-slate-400 ml-3 hidden sm:inline">
+                  {selectedSnippet.title}
+                </span>
+              </div>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body: Tabs and Code Viewer */}
+            <div className="flex-1 flex flex-col min-h-0 bg-[#0F172A]">
+              {/* Tab Selector Row */}
+              <div className="flex items-center justify-between px-6 py-3 border-b border-slate-800/80 bg-[#141C2F]">
+                <div className="flex gap-4">
+                  {(['html', 'css', 'js'] as const).map(tab => (
+                    <button
+                      key={tab}
+                      onClick={() => {
+                        setActiveTab(tab);
+                        setIsCopied(false);
+                      }}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
+                        activeTab === tab 
+                          ? 'bg-[#4B62FA] text-white' 
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  ))}
+                </div>
+                {/* Copy Button */}
+                <button
+                  onClick={handleCopyCode}
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                >
+                  {isCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400 animate-scale-up" />
+                      <span className="text-emerald-400">복사 완료</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      코드 복사
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Code Pre Container */}
+              <div className="flex-1 overflow-auto p-6 font-mono text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text">
+                <pre className="whitespace-pre">{selectedSnippet[activeTab]}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
