@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Plus, Minus, Info } from 'lucide-react';
+import { ChevronDown, Plus, Minus, Info, ChevronRight } from 'lucide-react';
 
 const FAQ: React.FC = () => {
   const [openFaq1, setOpenFaq1] = useState<number | null>(0);
@@ -78,12 +78,16 @@ const FAQ: React.FC = () => {
     <div className="space-y-10 pb-10">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">자주 묻는 질문 (FAQ)</h2>
-        <nav className="flex items-center gap-2 text-sm font-medium">
-          <span className="text-slate-400 font-normal">홈</span>
-          <span className="text-slate-400 font-normal">/</span>
-          <span className="text-indigo-600 font-bold">자주 묻는 질문</span>
-        </nav>
+        <div>
+          <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
+            자주 묻는 질문 (FAQ)
+          </h1>
+          <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
+            <span>홈</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">자주 묻는 질문</span>
+          </div>
+        </div>
       </div>
 
       {/* FAQ Type 1 */}

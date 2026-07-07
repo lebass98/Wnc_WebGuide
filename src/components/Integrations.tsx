@@ -9,7 +9,8 @@ import {
   CheckSquare, 
   Clipboard,
   X,
-  ChevronDown
+  ChevronDown,
+  ChevronRight
 } from 'lucide-react';
 
 interface Integration {
@@ -165,12 +166,14 @@ const Integrations: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white">연동 서비스 관리</h2>
-          <nav className="flex items-center gap-2 text-sm font-medium mt-1">
-            <span className="text-slate-400 font-normal">홈</span>
-            <span className="text-slate-400 font-normal">/</span>
-            <span className="text-indigo-600 font-bold">연동 서비스 관리</span>
-          </nav>
+          <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
+            연동 서비스 관리
+          </h1>
+          <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
+            <span>홈</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">연동 서비스 관리</span>
+          </div>
         </div>
         <button 
           onClick={() => setActiveModal('new')}

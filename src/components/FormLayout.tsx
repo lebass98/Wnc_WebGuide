@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, User, Lock, Send, ChevronDown, Check } from 'lucide-react';
+import { Mail, User, Lock, Send, ChevronDown, Check, ChevronRight } from 'lucide-react';
 import CustomDatePicker from './CustomDatePicker';
 
 const FormLayout: React.FC = () => {
@@ -13,12 +13,16 @@ const FormLayout: React.FC = () => {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">폼 레이아웃</h2>
-        <nav className="flex items-center gap-2 text-sm font-medium">
-          <span className="text-slate-400">홈</span>
-          <span className="text-slate-400">/</span>
-          <span className="text-indigo-600">폼 레이아웃</span>
-        </nav>
+        <div>
+          <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
+            폼 레이아웃
+          </h1>
+          <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
+            <span>홈</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">폼 레이아웃</span>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
