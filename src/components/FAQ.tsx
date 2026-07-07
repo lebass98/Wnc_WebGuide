@@ -11,8 +11,7 @@ import {
   Sun, 
   Moon, 
   Copy, 
-  Check, 
-  FileCode
+  Check
 } from 'lucide-react';
 
 interface CodeSnippet {
@@ -38,20 +37,12 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
   const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
   
   const [copied, setCopied] = useState(false);
-  const [fullCopied, setFullCopied] = useState(false);
 
   const handleCopyCode = () => {
-    const textToCopy = codeMode === 'react' ? snippet.react : snippet[htmlSubTab];
+    const textToCopy = codeMode === 'react' ? snippet.react : snippet.fullHtml;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
-    });
-  };
-
-  const handleCopyFullSource = () => {
-    navigator.clipboard.writeText(snippet.fullHtml).then(() => {
-      setFullCopied(true);
-      setTimeout(() => setFullCopied(false), 1500);
     });
   };
 
@@ -90,24 +81,33 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
               <div className="flex items-center gap-1">
                 <button 
                   onClick={() => setDevice('desktop')} 
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="데스크톱 뷰"
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Monitor className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    데스크톱 뷰
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
                 </button>
                 <button 
                   onClick={() => setDevice('tablet')} 
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="태블릿 뷰"
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Tablet className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    태블릿 뷰
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
                 </button>
                 <button 
                   onClick={() => setDevice('mobile')} 
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="모바일 뷰"
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Smartphone className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    모바일 뷰
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
                 </button>
               </div>
               <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
@@ -120,17 +120,23 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
               <div className="flex items-center gap-1">
                 <button 
                   onClick={() => setTheme('light')} 
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="라이트 모드 테마"
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Sun className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    라이트 모드 테마
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
                 </button>
                 <button 
                   onClick={() => setTheme('dark')} 
-                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="다크 모드 테마"
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Moon className="w-4 h-4" />
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                    다크 모드 테마
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+                  </div>
                 </button>
               </div>
               <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
@@ -162,21 +168,14 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           <div className="flex items-center gap-1.5">
             <button
               onClick={handleCopyCode}
-              className={`p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
-              title={copied ? "복사 완료!" : "코드 복사"}
+              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
             >
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                {copied ? "복사 완료!" : (codeMode === 'react' ? "React 코드 복사" : "HTML/CSS/JS 전체 소스 복사")}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+              </div>
             </button>
-
-            {codeMode === 'html' && activeTab === 'code' && (
-              <button
-                onClick={handleCopyFullSource}
-                className={`p-2 rounded-xl transition-all cursor-pointer ${fullCopied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-emerald-50 text-slate-500 hover:text-emerald-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
-                title={fullCopied ? "전체 소스 복사됨!" : "전체 소스 복사 (바로 실행용)"}
-              >
-                {fullCopied ? <Check className="w-4 h-4" /> : <FileCode className="w-4 h-4" />}
-              </button>
-            )}
           </div>
         </div>
       </div>

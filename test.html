@@ -1,39 +1,75 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { margin: 0; font-family: sans-serif; background: #f8fafc; padding: 20px; }
-    .icon-form { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-    .input-wrapper { position: relative; display: flex; align-items: center; }
-    .icon-box { position: absolute; left: 14px; pointer-events: none; border-right: 1px solid #cbd5e1; padding-right: 10px; }
-    .form-input-icon { width: 105; padding: 10px 16px 10px 52px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
-    .flex-row { display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
-    .checkbox-container { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: bold; color: #475569; }
-    .btn-create { background: #4a6bff; color: #fff; padding: 10px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    @media (min-width: 640px) {
-      .icon-form { padding: 24px; }
-      .flex-row { flex-direction: row; align-items: center; }
-    }
-  </style>
-</head>
-<body>
-  <div class="icon-form">
-    <div class="input-wrapper">
-      <span class="icon-box">👤</span>
-      <input type="text" placeholder="사용자 이름" class="form-input-icon">
+import React, { useState } from 'react';
+import { Mail, User, Lock, Check } from 'lucide-react';
+
+const IconForm = () => {
+  const [rememberMe, setRememberMe] = useState(false);
+
+  return (
+    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+      <div className="space-y-4 sm:space-y-6 text-left">
+        <div className="relative group">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
+            <User className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+          </div>
+          <input 
+            type="text" 
+            placeholder="사용자 이름" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          />
+        </div>
+        <div className="relative group">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
+            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+          </div>
+          <input 
+            type="email" 
+            placeholder="이메일 주소" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-550 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          />
+        </div>
+        <div className="relative group">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+          </div>
+          <input 
+            type="password" 
+            placeholder="비밀번호" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-550 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          />
+        </div>
+        <div className="relative group">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+          </div>
+          <input 
+            type="password" 
+            placeholder="비밀번호 확인" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-550 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          />
+        </div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+          <label className="flex items-center gap-3 cursor-pointer group w-fit">
+            <input 
+              type="checkbox" 
+              className="hidden" 
+              checked={rememberMe} 
+              onChange={(e) => setRememberMe(e.target.checked)} 
+            />
+            <div className={"w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all " + (rememberMe ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500')}>
+              {rememberMe && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
+            </div>
+            <span className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-white">로그인 유지</span>
+          </label>
+          <button 
+            type="button" 
+            className="w-full sm:w-auto py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm"
+          >
+            계정 생성
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="input-wrapper">
-      <span class="icon-box">🔒</span>
-      <input type="password" placeholder="비밀번호" class="form-input-icon">
-    </div>
-    <div class="flex-row">
-      <label class="checkbox-container">
-        <input type="checkbox"> 로그인 유지
-      </label>
-      <button class="btn-create">계정 생성</button>
-    </div>
-  </div>
-</body>
-</html>
+  );
+};
+
+export default IconForm;
