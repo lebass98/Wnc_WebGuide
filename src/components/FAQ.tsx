@@ -85,6 +85,8 @@ const FAQ: React.FC = () => {
           <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
             <span>홈</span>
             <ChevronRight className="w-3.5 h-3.5" />
+            <span>페이지</span>
+            <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-indigo-600 dark:text-indigo-400 font-medium">자주 묻는 질문</span>
           </div>
         </div>

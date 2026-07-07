@@ -3,7 +3,6 @@ import {
   ChevronLeft, 
   ChevronRight, 
   Plus, 
-  ChevronRight as ChevronRightSmall,
   X as CloseIcon
 } from 'lucide-react';
 import CustomDatePicker from './CustomDatePicker';
@@ -325,8 +324,10 @@ const Calendar: React.FC = () => {
         <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">캘린더</h1>
         <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400">
           <span>홈</span>
-          <ChevronRightSmall className="w-3.5 h-3.5" />
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">캘린더</span>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <span>캘린더</span>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium">일정 관리</span>
         </div>
       </div>
 

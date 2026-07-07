@@ -271,14 +271,14 @@ const PricingSections: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
-            가격 섹션
+            가격 정책 섹션
           </h1>
           <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
             <span>홈</span>
             <ChevronRight className="w-3.5 h-3.5" />
             <span>페이지</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">가격 섹션</span>
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">가격 정책 섹션</span>
           </div>
         </div>
       </div>
