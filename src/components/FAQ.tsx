@@ -42,7 +42,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
   const handleCopyCode = () => {
     navigator.clipboard.writeText(snippet.fullHtml).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setTimeout(() => setCopied(false), 1550);
     });
   };
 
@@ -207,7 +207,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           previewMode === 'react' ? (
             /* React Component Live Preview */
             <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-white dark:bg-[#0F172A] p-6 sm:p-9 transition-colors duration-300 min-h-[250px] flex flex-col justify-center">
+              <div className="bg-slate-50 dark:bg-[#0F172A] p-6 sm:p-10 transition-colors duration-300 min-h-[250px] flex flex-col justify-center items-center">
                 {children}
               </div>
             </div>
@@ -216,7 +216,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
             <iframe
               srcDoc={theme === 'dark' ? snippet.fullHtml.replace('<body class="', '<body class="dark ') : snippet.fullHtml}
               title={`${title} HTML Preview`}
-              className="w-full min-h-[400px] border-none bg-white dark:bg-[#0F172A] transition-colors"
+              className="w-full min-h-[400px] border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
               sandbox="allow-scripts"
             />
           )
@@ -339,7 +339,7 @@ const BorderAccordionFaq = () => {
   ];
   
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 w-full max-w-4xl mx-auto">
       {faqData.map((item, idx) => (
         <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
           <button 
@@ -361,136 +361,41 @@ const BorderAccordionFaq = () => {
     </div>
   );
 };`,
-      html: `<!-- FAQ 유형 1 (보더 아코디언 마크업) -->
-<div class="faq-container">
+      html: `<!-- FAQ 유형 1 (보더 아코디언 마크업 - Tailwind CSS 기반) -->
+<div class="space-y-4 w-full max-w-4xl mx-auto">
   
-  <!-- 아코디언 항목 1 (기본 활성화 상태) -->
-  <div class="faq-item active">
-    <button class="faq-trigger">
-      <span class="faq-question">무료 업데이트가 지원되나요?</span>
-      <div class="icon-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+  <!-- 아코디언 항목 1 (활성화 상태) -->
+  <div class="faq-item border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300 active" data-index="0">
+    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+      <span class="font-bold text-slate-800 dark:text-white">무료 업데이트가 지원되나요?</span>
+      <div class="faq-icon w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300">
+        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
       </div>
     </button>
-    <div class="faq-content">
-      <div class="faq-answer">
+    <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+      <div class="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
         우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
       </div>
     </div>
   </div>
 
   <!-- 아코디언 항목 2 (비활성화 상태) -->
-  <div class="faq-item">
-    <button class="faq-trigger">
-      <span class="faq-question">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
-      <div class="icon-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+  <div class="faq-item border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300" data-index="1">
+    <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+      <span class="font-bold text-slate-800 dark:text-white">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
+      <div class="faq-icon w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300">
+        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
       </div>
     </button>
-    <div class="faq-content">
-      <div class="faq-answer">
+    <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+      <div class="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
         네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경하거나 구성을 추가할 수 있습니다.
       </div>
     </div>
   </div>
 
 </div>`,
-      css: `/* FAQ 유형 1 스타일 정의 */
-.faq-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 100%;
-}
-
-.faq-item {
-  border: 1px solid #f1f5f9;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #ffffff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media (prefers-color-scheme: dark) {
-  .faq-item {
-    border-color: #1e293b;
-    background-color: #1a222c;
-  }
-  .faq-question {
-    color: #ffffff !important;
-  }
-  .faq-answer {
-    color: #94a3b8 !important;
-    border-color: #1e293b !important;
-  }
-  .icon-circle {
-    background-color: #1e293b !important;
-  }
-}
-
-.faq-trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px;
-  border: none;
-  background: transparent;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-}
-
-.faq-question {
-  font-weight: 700;
-  color: #1e293b;
-  font-size: 16px;
-  transition: color 0.2s;
-}
-
-.faq-trigger:hover .faq-question {
-  color: #4f46e5;
-}
-
-.icon-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, background-color 0.2s;
-}
-
-.chevron-icon {
-  color: #64748b;
-  transition: transform 0.3s;
-}
-
-.faq-content {
-  max-height: 0px;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-}
-
-.faq-item.active .faq-content {
-  max-height: 200px;
-  opacity: 1;
-}
-
-.faq-item.active .icon-circle {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  padding: 24px;
-  padding-top: 0px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #64748b;
-}`,
+      css: `/* 기본 Tailwind CSS 스타일링 사용으로 별도의 커스텀 클래스가 존재하지 않습니다. */`,
       js: `// Vanilla JS 아코디언 구동 이벤트 바인딩
 document.addEventListener('DOMContentLoaded', () => {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -498,154 +403,83 @@ document.addEventListener('DOMContentLoaded', () => {
   faqItems.forEach((item) => {
     const trigger = item.querySelector('.faq-trigger');
     const content = item.querySelector('.faq-content');
+    const icon = item.querySelector('.faq-icon');
 
-    if (item.classList.contains('active')) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-    }
+    const updateState = () => {
+      const isActive = item.classList.contains('active');
+      if (isActive) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      } else {
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      }
+    };
+
+    updateState();
 
     trigger.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
 
       faqItems.forEach((otherItem) => {
         otherItem.classList.remove('active');
-        otherItem.querySelector('.faq-content').style.maxHeight = '0px';
-        otherItem.querySelector('.faq-content').style.opacity = '0';
+        const otherContent = otherItem.querySelector('.faq-content');
+        otherContent.style.maxHeight = '0px';
+        otherContent.style.opacity = '0';
+        const otherIcon = otherItem.querySelector('.faq-icon');
+        if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
       });
 
       if (!isActive) {
         item.classList.add('active');
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
-      } else {
-        item.classList.remove('active');
-        content.style.maxHeight = '0px';
-        content.style.opacity = '0';
       }
+      updateState();
     });
   });
+
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
 });`,
       fullHtml: `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 1 (보더 아코디언) 실시간 미리보기</title>
-  <style>
-    body {
-      background-color: #f8fafc;
-      padding: 40px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-    .wrapper {
-      width: 100%;
-      max-width: 800px;
-      background: #ffffff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-      border: 1px solid #f1f5f9;
-    }
-    .title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 24px;
-    }
-    
-    .faq-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .faq-item {
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #ffffff;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .faq-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px;
-      border: none;
-      background: transparent;
-      text-align: left;
-      cursor: pointer;
-      outline: none;
-    }
-    .faq-question {
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 15px;
-      transition: color 0.2s;
-    }
-    .faq-trigger:hover .faq-question {
-      color: #4f46e5;
-    }
-    .icon-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background-color: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease, background-color 0.2s;
-    }
-    .chevron-icon {
-      color: #64748b;
-      transition: transform 0.3s;
-    }
-    .faq-content {
-      max-height: 0px;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-    }
-    .faq-item.active .faq-content {
-      max-height: 200px;
-      opacity: 1;
-    }
-    .faq-item.active .icon-circle {
-      transform: rotate(180deg);
-      background-color: #e0e7ff;
-    }
-    .faq-item.active .chevron-icon {
-      color: #4f46e5;
-    }
-    .faq-answer {
-      padding: 24px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #485563;
-      border-top: 1px solid #e2e8f0;
-    }
-  </style>
 </head>
-<body>
-
-  <div class="wrapper">
-    <div class="title">자주 묻는 질문 (FAQ)</div>
-
-    <div class="faq-container">
+<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-4xl mx-auto">
+    <div class="space-y-4 w-full">
       
-      <div class="faq-item active">
-        <button class="faq-trigger">
-          <span class="faq-question">무료 업데이트가 지원되나요?</span>
-          <div class="icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
+      <div class="faq-item border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300 active">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          <span class="font-bold text-slate-800 dark:text-white">무료 업데이트가 지원되나요?</span>
+          <div class="faq-icon w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300">
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
           </div>
         </button>
-        <div class="faq-content">
-          <div class="faq-answer">
+        <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+          <div class="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
             우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          <span class="font-bold text-slate-800 dark:text-white">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
+          <div class="faq-icon w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300">
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+          </div>
+        </button>
+        <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+          <div class="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+            네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경하거나 구성을 추가할 수 있습니다.
           </div>
         </div>
       </div>
@@ -656,36 +490,43 @@ document.addEventListener('DOMContentLoaded', () => {
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const faqItems = document.querySelectorAll('.faq-item');
-
       faqItems.forEach((item) => {
         const trigger = item.querySelector('.faq-trigger');
         const content = item.querySelector('.faq-content');
+        const icon = item.querySelector('.faq-icon');
 
-        if (item.classList.contains('active')) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.opacity = '1';
-        }
+        const updateState = () => {
+          const isActive = item.classList.contains('active');
+          if (isActive) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.opacity = '1';
+            if (icon) icon.style.transform = 'rotate(180deg)';
+          } else {
+            content.style.maxHeight = '0px';
+            content.style.opacity = '0';
+            if (icon) icon.style.transform = 'rotate(0deg)';
+          }
+        };
+
+        updateState();
 
         trigger.addEventListener('click', () => {
           const isActive = item.classList.contains('active');
-
           faqItems.forEach((otherItem) => {
             otherItem.classList.remove('active');
-            otherItem.querySelector('.faq-content').style.maxHeight = '0px';
-            otherItem.querySelector('.faq-content').style.opacity = '0';
+            const otherContent = otherItem.querySelector('.faq-content');
+            otherContent.style.maxHeight = '0px';
+            otherContent.style.opacity = '0';
+            const otherIcon = otherItem.querySelector('.faq-icon');
+            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
           });
-
           if (!isActive) {
             item.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + 'px';
-            content.style.opacity = '1';
-          } else {
-            item.classList.remove('active');
-            content.style.maxHeight = '0px';
-            content.style.opacity = '0';
           }
+          updateState();
         });
       });
+      lucide.createIcons();
     });
   </script>
 </body>
@@ -703,13 +544,13 @@ const SwitchingBgFaq = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full">
       <div className="space-y-4">
         {faqData.map((item, idx) => (
           <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
             <button 
               onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-              className={\`w-full flex items-center justify-between p-5 text-left transition-colors \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}\`}
+              className={\`w-full flex items-center justify-between p-5 text-left transition-colors \${openIdx === idx ? 'bg-indigo-550 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}\`}
             >
               <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
               {openIdx === idx ? (
@@ -729,319 +570,168 @@ const SwitchingBgFaq = () => {
     </div>
   );
 };`,
-      html: `<!-- FAQ 유형 2 (스위칭 배경 아코디언 마크업) -->
-<div class="faq-grid">
+      html: `<!-- FAQ 유형 2 (스위칭 배경 아코디언 마크업 - Tailwind CSS 기반) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full">
   
-  <div class="faq-group">
-    
+  <div class="space-y-4">
     <!-- 항목 1 (활성화 상태) -->
-    <div class="faq-card active">
-      <button class="faq-btn">
-        <span class="faq-question">무료 업데이트가 지원되나요?</span>
-        <!-- 플러스/마이너스 공통 SVG (세로선을 CSS로 제어) -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-        </svg>
+    <div class="faq-item rounded-lg overflow-hidden transition-all duration-300 active">
+      <button class="faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-indigo-50 dark:bg-indigo-500/10 text-slate-800 dark:text-white">
+        <span class="font-bold">무료 업데이트가 지원되나요?</span>
+        <div class="faq-icon-wrapper flex items-center justify-center">
+          <i data-lucide="minus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>
+        </div>
       </button>
-      <div class="faq-content">
-        <div class="faq-answer">
+      <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+        <div class="p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 bg-indigo-50 dark:bg-indigo-500/10">
           우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
         </div>
       </div>
     </div>
 
+    <!-- 항목 2 -->
+    <div class="faq-item rounded-lg overflow-hidden transition-all duration-300">
+      <button class="faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white">
+        <span class="font-bold">어떤 라이선스가 제게 적합한가요?</span>
+        <div class="faq-icon-wrapper flex items-center justify-center">
+          <i data-lucide="plus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>
+        </div>
+      </button>
+      <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+        <div class="p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+          스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>`,
-      css: `/* FAQ 유형 2 스타일 정의 */
-.faq-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-.faq-group {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.faq-card {
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.faq-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  border: none;
-  background-color: #f8fafc;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.3s;
-}
-
-.faq-question {
-  font-weight: 700;
-  color: #1e293b;
-  font-size: 15px;
-}
-
-.math-icon {
-  color: #475569;
-}
-
-.vertical-line {
-  transition: transform 0.2s, opacity 0.2s;
-  transform-origin: center;
-}
-
-.faq-content {
-  max-height: 0px;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.2s ease;
-}
-
-.faq-answer {
-  padding: 20px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #64748b;
-}
-
-/* Active 상태 스타일 (Active 시 연한 보라/인디고 테마) */
-.faq-card.active .faq-btn {
-  background-color: #e0e7ff;
-}
-.faq-card.active .faq-btn .faq-question {
-  color: #4f46e5;
-}
-.faq-card.active .faq-btn .math-icon {
-  color: #4f46e5;
-}
-.faq-card.active .vertical-line {
-  opacity: 0;
-  transform: scaleY(0);
-}
-.faq-card.active .faq-content {
-  max-height: 200px;
-  opacity: 1;
-  background-color: #e0e7ff;
-}
-
-/* 다크모드 대응 */
-@media (prefers-color-scheme: dark) {
-  .faq-btn {
-    background-color: #1a222c;
-  }
-  .faq-question {
-    color: #ffffff;
-  }
-  .math-icon {
-    color: #94a3b8;
-  }
-  .faq-card.active .faq-btn {
-    background-color: rgba(99, 102, 241, 0.1);
-  }
-  .faq-card.active .faq-btn .faq-question {
-    color: #818cf8;
-  }
-  .faq-card.active .faq-btn .math-icon {
-    color: #818cf8;
-  }
-  .faq-card.active .faq-content {
-    background-color: rgba(99, 102, 241, 0.1);
-  }
-  .faq-answer {
-    color: #94a3b8;
-  }
-}`,
+      css: `/* 기본 Tailwind CSS 스타일링 사용으로 별도의 커스텀 클래스가 존재하지 않습니다. */`,
       js: `// Vanilla JS 플러스/마이너스 토글 연동 (상호배타 단일오픈 지원)
 document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.faq-card');
+  const faqItems = document.querySelectorAll('.faq-item');
 
-  cards.forEach((card) => {
-    const btn = card.querySelector('.faq-btn');
-    const content = card.querySelector('.faq-content');
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
+    const iconWrapper = item.querySelector('.faq-icon-wrapper');
 
-    if (card.classList.contains('active')) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-    }
+    const updateState = () => {
+      const isActive = item.classList.contains('active');
+      if (isActive) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+        trigger.className = "faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-indigo-50 dark:bg-indigo-500/10 text-slate-800 dark:text-white";
+        if (iconWrapper) iconWrapper.innerHTML = '<i data-lucide="minus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>';
+      } else {
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+        trigger.className = "faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-slate-50 dark:bg-slate-800 text-slate-850 dark:text-white";
+        if (iconWrapper) iconWrapper.innerHTML = '<i data-lucide="plus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>';
+      }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    };
 
-    btn.addEventListener('click', () => {
-      const isActive = card.classList.contains('active');
+    updateState();
 
-      cards.forEach((otherCard) => {
-        otherCard.classList.remove('active');
-        const otherContent = otherCard.querySelector('.faq-content');
+    trigger.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      faqItems.forEach((otherItem) => {
+        otherItem.classList.remove('active');
+        const otherContent = otherItem.querySelector('.faq-content');
         otherContent.style.maxHeight = '0px';
         otherContent.style.opacity = '0';
+        const otherTrigger = otherItem.querySelector('.faq-trigger');
+        otherTrigger.className = "faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white";
+        const otherIcon = otherItem.querySelector('.faq-icon-wrapper');
+        if (otherIcon) otherIcon.innerHTML = '<i data-lucide="plus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>';
       });
 
       if (!isActive) {
-        card.classList.add('active');
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
+        item.classList.add('active');
       }
+      updateState();
     });
   });
+  
+  if (typeof lucide !== 'undefined') lucide.createIcons();
 });`,
       fullHtml: `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 2 (스위칭 배경 아코디언) 실시간 미리보기</title>
-  <style>
-    body {
-      background-color: #f8fafc;
-      padding: 40px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-    .wrapper {
-      width: 100%;
-      max-width: 850px;
-      background: #ffffff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-      border: 1px solid #f1f5f9;
-    }
-    .title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 24px;
-    }
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    .faq-group {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .faq-card {
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    .faq-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      border: none;
-      background-color: #f8fafc;
-      text-align: left;
-      cursor: pointer;
-      outline: none;
-      transition: background-color 0.3s;
-    }
-    .faq-question {
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 15px;
-    }
-    .math-icon {
-      color: #475569;
-    }
-    .vertical-line {
-      transition: transform 0.2s, opacity 0.2s;
-      transform-origin: center;
-    }
-    .faq-content {
-      max-height: 0px;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.2s ease;
-    }
-    .faq-answer {
-      padding: 20px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #64748b;
-    }
-    .faq-card.active .faq-btn {
-      background-color: #e0e7ff;
-    }
-    .faq-card.active .faq-btn .faq-question {
-      color: #4f46e5;
-    }
-    .faq-card.active .faq-btn .math-icon {
-      color: #4f46e5;
-    }
-    .faq-card.active .vertical-line {
-      opacity: 0;
-      transform: scaleY(0);
-    }
-    .faq-card.active .faq-content {
-      max-height: 200px;
-      opacity: 1;
-      background-color: #e0e7ff;
-    }
-  </style>
 </head>
-<body>
-  <div class="wrapper">
-    <div class="title">자주 묻는 질문 (FAQ) - 배경 스위칭 테마</div>
-    <div class="faq-grid">
-      <div class="faq-group">
-        <div class="faq-card active">
-          <button class="faq-btn">
-            <span class="faq-question">무료 업데이트가 지원되나요?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="faq-answer">
-              우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
-            </div>
+<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full">
+      
+      <div class="faq-item rounded-lg overflow-hidden transition-all duration-300 active">
+        <button class="faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-indigo-50 dark:bg-indigo-500/10 text-slate-800 dark:text-white">
+          <span class="font-bold text-slate-800 dark:text-white">무료 업데이트가 지원되나요?</span>
+          <div class="faq-icon-wrapper flex items-center justify-center">
+            <i data-lucide="minus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>
+          </div>
+        </button>
+        <div class="faq-content transition-all duration-300 ease-in-out overflow-hidden max-h-0 opacity-0">
+          <div class="p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 bg-indigo-50 dark:bg-indigo-500/10">
+            우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.faq-card');
-      cards.forEach((card) => {
-        const btn = card.querySelector('.faq-btn');
-        const content = card.querySelector('.faq-content');
-        if (card.classList.contains('active')) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.opacity = '1';
-        }
-        btn.addEventListener('click', () => {
-          const isActive = card.classList.contains('active');
-          cards.forEach((otherCard) => {
-            otherCard.classList.remove('active');
-            const otherContent = otherCard.querySelector('.faq-content');
-            otherContent.style.maxHeight = '0px';
-            otherContent.style.opacity = '0';
-          });
-          if (!isActive) {
-            card.classList.add('active');
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach((item) => {
+        const trigger = item.querySelector('.faq-trigger');
+        const content = item.querySelector('.faq-content');
+        const iconWrapper = item.querySelector('.faq-icon-wrapper');
+
+        const updateState = () => {
+          const isActive = item.classList.contains('active');
+          if (isActive) {
             content.style.maxHeight = content.scrollHeight + 'px';
             content.style.opacity = '1';
+            trigger.className = "faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-indigo-50 dark:bg-indigo-500/10 text-slate-800 dark:text-white";
+            if (iconWrapper) iconWrapper.innerHTML = '<i data-lucide="minus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>';
+          } else {
+            content.style.maxHeight = '0px';
+            content.style.opacity = '0';
+            trigger.className = "faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white";
+            if (iconWrapper) iconWrapper.innerHTML = '<i data-lucide="plus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>';
           }
+          lucide.createIcons();
+        };
+
+        updateState();
+
+        trigger.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach((otherItem) => {
+            otherItem.classList.remove('active');
+            const otherContent = otherItem.querySelector('.faq-content');
+            otherContent.style.maxHeight = '0px';
+            otherContent.style.opacity = '0';
+            const otherTrigger = otherItem.querySelector('.faq-trigger');
+            otherTrigger.className = "faq-trigger w-full flex items-center justify-between p-5 text-left transition-colors bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white";
+            const otherIcon = otherItem.querySelector('.faq-icon-wrapper');
+            if (otherIcon) otherIcon.innerHTML = '<i data-lucide="plus" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i>';
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+          updateState();
         });
       });
+      lucide.createIcons();
     });
   </script>
 </body>
@@ -1058,7 +748,7 @@ const FlatIconFaq = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full">
       {faqData.map((item, idx) => (
         <div key={idx} className="flex gap-4">
           <div className="shrink-0 pt-1">
@@ -1077,181 +767,93 @@ const FlatIconFaq = () => {
     </div>
   );
 };`,
-      html: `<!-- FAQ 유형 3 (플랫 아이콘 그리드 마크업) -->
-<div class="faq-grid-list">
+      html: `<!-- FAQ 유형 3 (플랫 아이콘 그리드 마크업 - Tailwind CSS 기반) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full">
   
-  <div class="faq-grid-item">
-    <div class="icon-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  <div class="flex gap-4">
+    <div class="shrink-0 pt-1">
+      <div class="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+        <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+      </div>
     </div>
-    <div class="faq-text-group">
-      <h4 class="faq-grid-title">무료 업데이트가 지원되나요?</h4>
-      <p class="faq-grid-desc">
+    <div class="space-y-3">
+      <h4 class="font-bold text-slate-800 dark:text-white leading-tight">무료 업데이트가 지원되나요?</h4>
+      <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
         우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 기능 개선 사항을 주기적으로 고객님께 안내해 드립니다.
       </p>
     </div>
   </div>
 
+  <div class="flex gap-4">
+    <div class="shrink-0 pt-1">
+      <div class="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+        <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-bold text-slate-800 dark:text-white leading-tight">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</h4>
+      <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+        네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다.
+      </p>
+    </div>
+  </div>
+
 </div>`,
-      css: `/* FAQ 유형 3 스타일 정의 */
-.faq-grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px 48px;
-}
-
-.faq-grid-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.icon-wrapper {
-  flex-shrink: 0;
-  margin-top: 4px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1px solid #e2e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-}
-
-.info-icon {
-  color: #94a3b8;
-}
-
-.faq-text-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.faq-grid-title {
-  margin: 0;
-  font-weight: 700;
-  color: #1e293b;
-  font-size: 15px;
-  line-height: 1.3;
-}
-
-.faq-grid-desc {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #64748b;
-}
-
-@media (prefers-color-scheme: dark) {
-  .icon-wrapper {
-    border-color: #334155;
-    background-color: #1e293b;
+      css: `/* 기본 Tailwind CSS 스타일링 사용으로 별도의 커스텀 클래스가 존재하지 않습니다. */`,
+      js: `// 본 플랫 리스트 형태는 정적 레이아웃으로써 작동에 관여하는 자바스크립트 소스가 불필요합니다.
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
   }
-  .info-icon {
-    color: #64748b;
-  }
-  .faq-grid-title {
-    color: #ffffff;
-  }
-  .faq-grid-desc {
-    color: #94a3b8;
-  }
-}`,
-      js: `// 본 플랫 리스트 형태는 정적 레이아웃으로써 작동에 관여하는 자바스크립트 소스가 불필요합니다.`,
+});`,
       fullHtml: `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <title>FAQ 유형 3 (아이콘 정보형 플랫 리스트) 실시간 미리보기</title>
-  <style>
-    body {
-      background-color: #f8fafc;
-      padding: 40px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-    .wrapper {
-      width: 100%;
-      max-width: 900px;
-      background: #ffffff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-      border: 1px solid #f1f5f9;
-    }
-    .title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 32px;
-    }
-    .faq-grid-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px 48px;
-    }
-    .faq-grid-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .icon-wrapper {
-      flex-shrink: 0;
-      margin-top: 4px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 1px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #ffffff;
-    }
-    .info-icon {
-      color: #94a3b8;
-    }
-    .faq-text-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .faq-grid-title {
-      margin: 0;
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 15px;
-      line-height: 1.3;
-    }
-    .faq-grid-desc {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #64748b;
-    }
-  </style>
 </head>
-<body>
-  <div class="wrapper">
-    <div class="title">자주 묻는 질문 (FAQ) - 플랫 아이콘 그리드</div>
-    <div class="faq-grid-list">
-      <div class="faq-grid-item">
-        <div class="icon-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+<body class="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-10 flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full">
+      
+      <div class="flex gap-4">
+        <div class="shrink-0 pt-1">
+          <div class="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
         </div>
-        <div class="faq-text-group">
-          <h4 class="faq-grid-title">무료 업데이트가 지원되나요?</h4>
-          <p class="faq-grid-desc">
+        <div class="space-y-3">
+          <h4 class="font-bold text-slate-800 dark:text-white leading-tight">무료 업데이트가 지원되나요?</h4>
+          <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
             우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 기능 개선 사항을 주기적으로 고객님께 안내해 드립니다.
           </p>
         </div>
       </div>
+
+      <div class="flex gap-4">
+        <div class="shrink-0 pt-1">
+          <div class="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-slate-800 dark:text-white leading-tight">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</h4>
+          <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+            네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다.
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
 </body>
 </html>`
     }
@@ -1317,7 +919,7 @@ const FlatIconFaq = () => {
               <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
                 <button 
                   onClick={() => setOpenFaq2(openFaq2 === idx ? null : idx)}
-                  className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+                  className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === idx ? 'bg-indigo-550 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
                 >
                   <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
                   {openFaq2 === idx ? (
@@ -1341,7 +943,7 @@ const FlatIconFaq = () => {
                 <div key={realIdx} className="rounded-lg overflow-hidden transition-all duration-300">
                   <button 
                     onClick={() => setOpenFaq2(openFaq2 === realIdx ? null : realIdx)}
-                    className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+                    className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === realIdx ? 'bg-indigo-550 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
                   >
                     <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
                     {openFaq2 === realIdx ? (
