@@ -489,14 +489,14 @@ const PersonalInfoFormPreview: React.FC = () => {
                 <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${membership === 'free' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
                    {membership === 'free' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
-                <span className={`text-xs sm:text-sm font-bold ${membership === 'free' ? 'text-slate-800 dark:text-white' : 'text-slate-505 text-slate-500'}`}>무료</span>
+                <span className={`text-xs sm:text-sm font-bold ${membership === 'free' ? 'text-slate-800 dark:text-white' : 'text-slate-500'}`}>무료</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="membership" value="paid" checked={membership === 'paid'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
                 <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${membership === 'paid' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
                   {membership === 'paid' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
-                <span className={`text-xs sm:text-sm font-bold ${membership === 'paid' ? 'text-slate-800 dark:text-white' : 'text-slate-505 text-slate-500'}`}>유료</span>
+                <span className={`text-xs sm:text-sm font-bold ${membership === 'paid' ? 'text-slate-800 dark:text-white' : 'text-slate-500'}`}>유료</span>
               </label>
             </div>
           </div>
@@ -523,7 +523,7 @@ const FormLayout: React.FC = () => {
 
 const BasicForm = () => {
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <input 
@@ -645,7 +645,7 @@ import { Send, ChevronDown } from 'lucide-react';
 
 const MessageForm = () => {
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-1.5 sm:space-y-2">
@@ -804,7 +804,7 @@ export default MessageForm;`,
     .input-group label { font-size: 11px; font-weight: bold; color: #475569; }
     .form-input, .form-select, .form-textarea { width: 100%; padding: 10px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
     .form-textarea { resize: none; }
-    .btn-send { background: #4a6bff; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .btn-send { background: #4a6bff; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
     @media (min-width: 640px) {
       .grid-2 { grid-template-columns: 1fr 1fr; }
       .message-form { padding: 24px; }
@@ -827,6 +827,18 @@ export default MessageForm;`,
       <label>이메일</label>
       <input type="email" placeholder="이메일 주소 입력" class="form-input">
     </div>
+    <div class="input-group">
+      <label>주제 선택</label>
+      <select class="form-select">
+        <option>옵션 1</option>
+        <option>옵션 2</option>
+        <option>옵션 3</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>메시지</label>
+      <textarea rows="4" placeholder="메시지 입력" class="form-textarea"></textarea>
+    </div>
     <button type="button" class="btn-send">메시지 전송</button>
   </div>
 </body>
@@ -840,7 +852,7 @@ const IconForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
@@ -922,6 +934,10 @@ export default IconForm;`,
     <div class="icon-box">🔒</div>
     <input type="password" placeholder="비밀번호" class="form-input-icon" />
   </div>
+  <div class="input-wrapper">
+    <div class="icon-box">🔒</div>
+    <input type="password" placeholder="비밀번호 확인" class="form-input-icon" />
+  </div>
   <div class="flex-row">
     <label class="checkbox-container">
       <input type="checkbox" id="keep-login" />
@@ -989,7 +1005,13 @@ export default IconForm;`,
   .form-input-icon { padding: 12px 16px 12px 52px; }
   .flex-row { flex-direction: row; align-items: center; }
 }`,
-      js: `// 로컬 체크박스 상태 바인딩 제어 예시 (Vanilla JS)`,
+      js: `// 로컬 체크박스 상태 바인딩 제어 예시 (Vanilla JS)
+document.addEventListener('DOMContentLoaded', () => {
+  const checkbox = document.querySelector('#keep-login');
+  checkbox.addEventListener('change', (e) => {
+    console.log('로그인 유지 상태:', e.target.checked);
+  });
+});`,
       fullHtml: `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -999,10 +1021,10 @@ export default IconForm;`,
     body { margin: 0; font-family: sans-serif; background: #f8fafc; padding: 20px; }
     .icon-form { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
     .input-wrapper { position: relative; display: flex; align-items: center; }
-    .icon-box { position: absolute; left: 14px; pointer-events: none; border-right: 1px solid #cbd5e1; padding-right: 10px; }
-    .form-input-icon { width: 105; padding: 10px 16px 10px 52px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
+    .icon-box { position: absolute; left: 14px; pointer-events: none; border-right: 1px solid #cbd5e1; padding-right: 10px; font-size: 14px; }
+    .form-input-icon { width: 100%; padding: 10px 16px 10px 52px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
     .flex-row { display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
-    .checkbox-container { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: bold; color: #475569; }
+    .checkbox-container { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: bold; color: #475569; cursor: pointer; }
     .btn-create { background: #4a6bff; color: #fff; padding: 10px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
     @media (min-width: 640px) {
       .icon-form { padding: 24px; }
@@ -1017,12 +1039,20 @@ export default IconForm;`,
       <input type="text" placeholder="사용자 이름" class="form-input-icon">
     </div>
     <div class="input-wrapper">
+      <span class="icon-box">✉️</span>
+      <input type="email" placeholder="이메일 주소" class="form-input-icon">
+    </div>
+    <div class="input-wrapper">
       <span class="icon-box">🔒</span>
       <input type="password" placeholder="비밀번호" class="form-input-icon">
     </div>
+    <div class="input-wrapper">
+      <span class="icon-box">🔒</span>
+      <input type="password" placeholder="비밀번호 확인" class="form-input-icon">
+    </div>
     <div class="flex-row">
       <label class="checkbox-container">
-        <input type="checkbox"> 로그인 유지
+        <input type="checkbox" id="keep-login"> 로그인 유지
       </label>
       <button class="btn-create">계정 생성</button>
     </div>
@@ -1038,7 +1068,7 @@ const PersonalInfoForm = () => {
   const [membership, setMembership] = useState('free');
 
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-6 sm:space-y-8 text-left">
         
         {/* Personal Info section */}
@@ -1054,20 +1084,60 @@ const PersonalInfoForm = () => {
               <input type="text" placeholder="성 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
             </div>
           </div>
+          <div className="space-y-1.5 sm:space-y-2">
+            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성별</label>
+            <div className="relative">
+              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer text-xs sm:text-sm">
+                <option>남성</option>
+                <option>여성</option>
+                <option>기타</option>
+              </select>
+              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+            </div>
+          </div>
+          <div className="space-y-1.5 sm:space-y-2">
+            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">생년월일</label>
+            <input type="date" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+          </div>
+          <div className="space-y-1.5 sm:space-y-2">
+            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">카테고리</label>
+            <div className="relative">
+              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer text-xs sm:text-sm">
+                <option>카테고리 1</option>
+                <option>카테고리 2</option>
+                <option>카테고리 3</option>
+              </select>
+              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+            </div>
+          </div>
         </div>
 
         {/* Address section */}
         <div className="space-y-4 sm:space-y-6 pt-6 border-t border-slate-100 dark:border-slate-800">
           <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-[15px]">주소</h4>
+          <div className="space-y-1.5 sm:space-y-2">
+            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">도로명</label>
+            <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/구/군</label>
               <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
             </div>
             <div className="space-y-1.5 sm:space-y-2">
+              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/도</label>
+              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-1.5 sm:space-y-2">
+              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">우편번호</label>
+              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+            </div>
+            <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">국가</label>
               <div className="relative">
-                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs sm:text-sm">
+                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer text-xs sm:text-sm">
                   <option>대한민국</option>
                   <option>미국</option>
                 </select>
@@ -1100,6 +1170,9 @@ const PersonalInfoForm = () => {
             <button type="button" className="py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm">
               변경사항 저장
             </button>
+            <button type="button" className="py-2.5 px-6 bg-white border border-slate-200 hover:bg-slate-50 text-slate-650 font-semibold rounded-lg transition-colors text-xs sm:text-sm">
+              취소
+            </button>
           </div>
         </div>
 
@@ -1111,7 +1184,7 @@ const PersonalInfoForm = () => {
 export default PersonalInfoForm;`,
       html: `<!-- 상세 개인정보 & 주소 폼 HTML -->
 <div class="detailed-form">
-  <h4>개인 정보</h4>
+  <h4 class="form-title">개인 정보</h4>
   <div class="grid-2">
     <div class="input-group">
       <label>이름</label>
@@ -1122,11 +1195,45 @@ export default PersonalInfoForm;`,
       <input type="text" placeholder="성 입력" class="form-input" />
     </div>
   </div>
+  <div class="input-group">
+    <label>성별</label>
+    <select class="form-select">
+      <option>남성</option>
+      <option>여성</option>
+      <option>기타</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label>생년월일</label>
+    <input type="date" class="form-input" />
+  </div>
+  <div class="input-group">
+    <label>카테고리</label>
+    <select class="form-select">
+      <option>카테고리 1</option>
+      <option>카테고리 2</option>
+      <option>카테고리 3</option>
+    </select>
+  </div>
   
   <h4 class="section-title">주소</h4>
+  <div class="input-group">
+    <label>도로명</label>
+    <input type="text" class="form-input" />
+  </div>
   <div class="grid-2">
     <div class="input-group">
       <label>시/구/군</label>
+      <input type="text" class="form-input" />
+    </div>
+    <div class="input-group">
+      <label>시/도</label>
+      <input type="text" class="form-input" />
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="input-group">
+      <label>우편번호</label>
       <input type="text" class="form-input" />
     </div>
     <div class="input-group">
@@ -1140,11 +1247,14 @@ export default PersonalInfoForm;`,
 
   <div class="membership-group">
     <span>멤버십:</span>
-    <label><input type="radio" name="membership" checked /> 무료</label>
-    <label><input type="radio" name="membership" /> 유료</label>
+    <label class="radio-label"><input type="radio" name="membership" checked /> 무료</label>
+    <label class="radio-label"><input type="radio" name="membership" /> 유료</label>
   </div>
 
-  <button class="btn-save">변경사항 저장</button>
+  <div class="btn-group">
+    <button class="btn-save">변경사항 저장</button>
+    <button class="btn-cancel">취소</button>
+  </div>
 </div>`,
       css: `.detailed-form {
   background: #ffffff;
@@ -1156,13 +1266,18 @@ export default PersonalInfoForm;`,
   gap: 16px;
   text-align: left;
 }
+.form-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+}
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 .input-group { display: flex; flex-direction: column; gap: 8px; }
-.input-group label { font-size: 12px; font-weight: 750; color: #475569; }
+.input-group label { font-size: 11px; font-weight: 750; color: #475569; }
 .form-input, .form-select {
   width: 100%;
   padding: 10px 16px;
@@ -1172,7 +1287,9 @@ export default PersonalInfoForm;`,
   box-sizing: border-box;
 }
 .section-title {
-  margin-top: 16px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 16px 0 0 0;
   border-top: 1px solid #f1f5f9;
   padding-top: 16px;
 }
@@ -1182,21 +1299,48 @@ export default PersonalInfoForm;`,
   align-items: center;
   font-size: 14px;
 }
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.btn-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
 .btn-save {
   background: #4a6bff;
   color: #fff;
   font-weight: bold;
-  padding: 12px;
+  padding: 12px 24px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  width: fit-content;
+}
+.btn-cancel {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 @media (min-width: 640px) {
   .detailed-form { padding: 24px; }
   .grid-2 { grid-template-columns: 1fr 1fr; }
 }`,
-      js: `// 라디오 버튼 선택 바인딩 예시`,
+      js: `// 라디오 버튼 및 멤버십 바인딩 예시
+document.addEventListener('DOMContentLoaded', () => {
+  const radios = document.querySelectorAll('input[name="membership"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      console.log('선택된 멤버십:', e.target.nextSibling.textContent.trim());
+    });
+  });
+});`,
       fullHtml: `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1209,7 +1353,12 @@ export default PersonalInfoForm;`,
     .input-group { display: flex; flex-direction: column; gap: 6px; }
     .input-group label { font-size: 11px; font-weight: bold; color: #475569; }
     .form-input, .form-select { width: 100%; padding: 10px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
-    .btn-save { background: #4a6bff; color: #fff; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: fit-content; }
+    .section-title { font-size: 15px; font-weight: bold; margin: 16px 0 0 0; border-top: 1px solid #f1f5f9; padding-top: 16px; }
+    .membership-group { display: flex; gap: 16px; align-items: center; font-size: 14px; }
+    .radio-label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .btn-group { display: flex; gap: 16px; margin-top: 16px; }
+    .btn-save { background: #4a6bff; color: #fff; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .btn-cancel { background: #fff; border: 1px solid #cbd5e1; color: #475569; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; }
     @media (min-width: 640px) {
       .grid-2 { grid-template-columns: 1fr 1fr; }
       .detailed-form { padding: 24px; }
@@ -1218,7 +1367,7 @@ export default PersonalInfoForm;`,
 </head>
 <body>
   <div class="detailed-form">
-    <h2>개인 정보</h2>
+    <h4 style="margin:0; font-size:16px;">개인 정보</h4>
     <div class="grid-2">
       <div class="input-group">
         <label>이름</label>
@@ -1229,7 +1378,66 @@ export default PersonalInfoForm;`,
         <input type="text" placeholder="성 입력" class="form-input">
       </div>
     </div>
-    <button class="btn-save">변경사항 저장</button>
+    <div class="input-group">
+      <label>성별</label>
+      <select class="form-select">
+        <option>남성</option>
+        <option>여성</option>
+        <option>기타</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>생년월일</label>
+      <input type="date" class="form-input" />
+    </div>
+    <div class="input-group">
+      <label>카테고리</label>
+      <select class="form-select">
+        <option>카테고리 1</option>
+        <option>카테고리 2</option>
+        <option>카테고리 3</option>
+      </select>
+    </div>
+    
+    <h4 class="section-title">주소</h4>
+    <div class="input-group">
+      <label>도로명</label>
+      <input type="text" class="form-input">
+    </div>
+    <div class="grid-2">
+      <div class="input-group">
+        <label>시/구/군</label>
+        <input type="text" class="form-input">
+      </div>
+      <div class="input-group">
+        <label>시/도</label>
+        <input type="text" class="form-input">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="input-group">
+        <label>우편번호</label>
+        <input type="text" class="form-input">
+      </div>
+      <div class="input-group">
+        <label>국가</label>
+        <select class="form-select">
+          <option>대한민국</option>
+          <option>미국</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="membership-group">
+      <span>멤버십:</span>
+      <label class="radio-label"><input type="radio" name="membership" checked> 무료</label>
+      <label class="radio-label"><input type="radio" name="membership"> 유료</label>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn-save">변경사항 저장</button>
+      <button class="btn-cancel">취소</button>
+    </div>
   </div>
 </body>
 </html>`

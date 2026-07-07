@@ -3,195 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ 유형 2 (스위칭 배경 아코디언) 실시간 미리보기</title>
   <style>
-    body {
-      background-color: #f8fafc;
-      padding: 40px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-    .wrapper {
-      width: 100%;
-      max-width: 850px;
-      background: #ffffff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-      border: 1px solid #f1f5f9;
-    }
-    .title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 24px;
-    }
-    
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    .faq-group {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .faq-card {
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    .faq-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      border: none;
-      background-color: #f8fafc;
-      text-align: left;
-      cursor: pointer;
-      outline: none;
-      transition: background-color 0.3s;
-    }
-    .faq-question {
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 15px;
-    }
-    .math-icon {
-      color: #475569;
-    }
-    .vertical-line {
-      transition: transform 0.2s, opacity 0.2s;
-      transform-origin: center;
-    }
-    .faq-content {
-      max-height: 0px;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.2s ease;
-    }
-    .faq-answer {
-      padding: 20px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #64748b;
-    }
-    
-    .faq-card.active .faq-btn {
-      background-color: #e0e7ff;
-    }
-    .faq-card.active .faq-btn .faq-question {
-      color: #4f46e5;
-    }
-    .faq-card.active .faq-btn .math-icon {
-      color: #4f46e5;
-    }
-    .faq-card.active .vertical-line {
-      opacity: 0;
-      transform: scaleY(0);
-    }
-    .faq-card.active .faq-content {
-      max-height: 200px;
-      opacity: 1;
-      background-color: #e0e7ff;
+    body { margin: 0; font-family: sans-serif; background: #f8fafc; padding: 20px; }
+    .icon-form { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .input-wrapper { position: relative; display: flex; align-items: center; }
+    .icon-box { position: absolute; left: 14px; pointer-events: none; border-right: 1px solid #cbd5e1; padding-right: 10px; }
+    .form-input-icon { width: 105; padding: 10px 16px 10px 52px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; }
+    .flex-row { display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
+    .checkbox-container { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: bold; color: #475569; }
+    .btn-create { background: #4a6bff; color: #fff; padding: 10px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    @media (min-width: 640px) {
+      .icon-form { padding: 24px; }
+      .flex-row { flex-direction: row; align-items: center; }
     }
   </style>
 </head>
 <body>
-
-  <div class="wrapper">
-    <div class="title">자주 묻는 질문 (FAQ) - 배경 스위칭 테마</div>
-
-    <div class="faq-grid">
-      <div class="faq-group">
-        
-        <div class="faq-card active">
-          <button class="faq-btn">
-            <span class="faq-question">무료 업데이트가 지원되나요?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="faq-answer">
-              우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-card">
-          <button class="faq-btn">
-            <span class="faq-question">어떤 라이선스가 제게 적합한가요?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="faq-answer">
-              스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-card">
-          <button class="faq-btn">
-            <span class="faq-question">가격 정책에 언급된 "시트(Seats)"는 무엇인가요?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="faq-answer">
-              시트(Seats)는 대시보드 관리자 페이지에 접근하거나 프로젝트 개발에 직접 참여하는 개발자 혹은 관리자 계정의 수를 의미합니다.
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <div class="icon-form">
+    <div class="input-wrapper">
+      <span class="icon-box">👤</span>
+      <input type="text" placeholder="사용자 이름" class="form-input-icon">
+    </div>
+    <div class="input-wrapper">
+      <span class="icon-box">🔒</span>
+      <input type="password" placeholder="비밀번호" class="form-input-icon">
+    </div>
+    <div class="flex-row">
+      <label class="checkbox-container">
+        <input type="checkbox"> 로그인 유지
+      </label>
+      <button class="btn-create">계정 생성</button>
     </div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.faq-card');
-
-      cards.forEach((card) => {
-        const btn = card.querySelector('.faq-btn');
-        const content = card.querySelector('.faq-content');
-
-        if (card.classList.contains('active')) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.opacity = '1';
-        }
-
-        btn.addEventListener('click', () => {
-          const isActive = card.classList.contains('active');
-
-          // 다른 모든 카드 닫기
-          cards.forEach((otherCard) => {
-            otherCard.classList.remove('active');
-            const otherContent = otherCard.querySelector('.faq-content');
-            otherContent.style.maxHeight = '0px';
-            otherContent.style.opacity = '0';
-          });
-
-          // 현재 누른 카드가 닫혀있던 상태였다면 열기
-          if (!isActive) {
-            card.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + 'px';
-            content.style.opacity = '1';
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>
