@@ -117,19 +117,25 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           icon={Layers}
           label="페이지"
           hasSubmenu
-          subItems={['자주 묻는 질문', '연동', '히어로 섹션', '가격 정책 섹션']}
+          subItems={['자주 묻는 질문', '연동', '히어로 섹션', '가격 정책 섹션', '에러 404', '에러 500', '에러 503']}
           onSubItemClick={(sub) => {
             if (sub === '자주 묻는 질문') navigate('/pages/faq');
             if (sub === '연동') navigate('/pages/integrations');
             if (sub === '히어로 섹션') navigate('/pages/hero-sections');
             if (sub === '가격 정책 섹션') navigate('/pages/pricing-sections');
+            if (sub === '에러 404') navigate('/pages/error-404');
+            if (sub === '에러 500') navigate('/pages/error-500');
+            if (sub === '에러 503') navigate('/pages/error-503');
             onClose();
           }}
           activeSubItem={
             currentPath === '/pages/faq' ? '자주 묻는 질문' :
               currentPath === '/pages/integrations' ? '연동' : 
                 currentPath === '/pages/hero-sections' ? '히어로 섹션' : 
-                  currentPath === '/pages/pricing-sections' ? '가격 정책 섹션' : undefined
+                  currentPath === '/pages/pricing-sections' ? '가격 정책 섹션' : 
+                    currentPath === '/pages/error-404' ? '에러 404' :
+                      currentPath === '/pages/error-500' ? '에러 500' :
+                        currentPath === '/pages/error-503' ? '에러 503' : undefined
           }
           isActive={currentPath.startsWith('/pages')}
         />

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import ErrorPage from './components/ErrorPage';
 import StatCard from './components/StatCard';
 import RecentOrders from './components/RecentOrders';
 import FormElements from './components/FormElements';
@@ -76,6 +77,18 @@ const DashboardHome: React.FC = () => {
 
 const App: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // 에러 페이지 단독 전체화면 렌더링 분기
+  if (location.pathname === '/pages/error-404') {
+    return <ErrorPage code="404" />;
+  }
+  if (location.pathname === '/pages/error-500') {
+    return <ErrorPage code="500" />;
+  }
+  if (location.pathname === '/pages/error-503') {
+    return <ErrorPage code="503" />;
+  }
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('isAuthenticated') === 'true';
@@ -198,7 +211,7 @@ const App: React.FC = () => {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/signin" element={<Navigate to="/" replace />} />
               <Route path="/signup" element={<Navigate to="/" replace />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
             </Routes>
           </div>
         </main>
