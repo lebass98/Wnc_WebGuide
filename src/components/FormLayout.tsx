@@ -79,32 +79,29 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
   };
 
   return (
-    <div className="flex flex-col gap-4 bg-transparent">
-      {/* Title & Description Column */}
-      <div className="flex flex-col gap-1 p-0">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white leading-snug">
-          {title}
-        </h3>
-        <p className="text-[13px] text-slate-500 dark:text-slate-400">
-          {description}
-        </p>
-      </div>
+    <div className="space-y-4 font-sans">
+      {/* Wrapper Header: Controls Toolbar */}
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 bg-slate-50/50 dark:bg-slate-800/40 p-4 rounded-2xl">
+        <div>
+          <h3 className="text-base font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
+          <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
+        </div>
 
-      {/* Toolbar Controls */}
-      <div className="flex flex-wrap items-center gap-2 bg-white dark:bg-[#1A222C] p-2.5 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm w-full">
+        {/* Action Controls Toolbar */}
+        <div className="flex flex-wrap items-center gap-2">
 
           {/* 1. Preview Mode Group: React | HTML */}
           {activeTab === 'preview' && (
-            <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
               <button
                 onClick={() => setPreviewMode('react')}
-                className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
+                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
               >
                 React
               </button>
               <button
                 onClick={() => setPreviewMode('html')}
-                className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
+                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
               >
                 HTML
               </button>
@@ -121,7 +118,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
 
           <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
 
-          {/* 2. Code type toggler (only in code tab) */}
+          {/* Code type toggler (only in code tab) */}
           {activeTab === 'code' && (
             <>
               <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
@@ -129,20 +126,20 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
                   onClick={() => setCodeMode('react')}
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >
-                  REACT
+                  React
                 </button>
                 <button
                   onClick={() => setCodeMode('html')}
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >
-                  HTML/CSS
+                  일반 HTML
                 </button>
               </div>
               <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
             </>
           )}
 
-          {/* 3. Device simulation switcher (preview only) */}
+          {/* Device simulation switcher (preview only) */}
           {activeTab === 'preview' && (
             <>
               <div className="flex items-center gap-1">
@@ -181,7 +178,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
             </>
           )}
 
-          {/* 4. Theme switcher (preview only) */}
+          {/* Theme switcher (preview only) */}
           {activeTab === 'preview' && (
             <>
               <div className="flex items-center gap-1">
@@ -210,11 +207,11 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
             </>
           )}
 
-          {/* 5. Copy Actions */}
+          {/* Copy Actions */}
           <div className="flex items-center gap-1.5">
             <button
               onClick={handleCopyCode}
-              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-750'}`}
+              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
             >
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
@@ -224,6 +221,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
             </button>
           </div>
         </div>
+      </div>
 
       {/* Frame Container */}
       <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}>

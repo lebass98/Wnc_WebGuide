@@ -71,7 +71,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 font-sans">
       {/* Wrapper Header: Controls Toolbar */}
       <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 bg-slate-50/50 dark:bg-slate-800/40 p-4 rounded-2xl">
         <div>
