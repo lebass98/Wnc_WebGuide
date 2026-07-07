@@ -19,7 +19,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode, onLogout }) => {
   return (
-    <header className="fixed top-0 right-0 left-0 lg:left-[280px] h-[72px] lg:h-[80px] px-4 sm:px-6 lg:px-8 flex items-center justify-between bg-white dark:bg-[#1A222C] border-b border-slate-200 dark:border-slate-800 z-10 transition-all duration-300">
+    <header className="fixed top-0 right-0 left-0 lg:left-[280px] h-[72px] lg:h-[80px] px-4 sm:px-6 lg:px-8 flex items-center justify-between bg-white dark:bg-[#1A222C] border-b border-slate-200 dark:border-slate-800 z-10 transition-all duration-300 backdrop-blur-[20px] bg-white/10">
       {/* Left side: Title and Greetings */}
       <div className="flex items-center gap-4 lg:gap-6">
         <button
