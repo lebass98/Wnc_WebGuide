@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import ErrorPage from './components/ErrorPage';
@@ -82,18 +82,6 @@ const DashboardHome: React.FC = () => {
 
 const App: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  // 에러 페이지 단독 전체화면 렌더링 분기
-  if (location.pathname === '/pages/error-404') {
-    return <ErrorPage code="404" />;
-  }
-  if (location.pathname === '/pages/error-500') {
-    return <ErrorPage code="500" />;
-  }
-  if (location.pathname === '/pages/error-503') {
-    return <ErrorPage code="503" />;
-  }
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('isAuthenticated') === 'true';
@@ -145,88 +133,105 @@ const App: React.FC = () => {
     navigate('/signin');
   };
 
-  if (!isAuthenticated) {
-    return (
-      <Routes>
-        <Route 
-          path="/signin" 
-          element={
+  return (
+    <Routes>
+      {/* 1. 풀 스크린 에러 페이지 라우트 그룹 */}
+      <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
+      <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
+      <Route path="/pages/error-503" element={<ErrorPage code="503" />} />
+
+      {/* 2. 로그인 관련 풀 스크린 라우트 */}
+      <Route 
+        path="/signin" 
+        element={
+          isAuthenticated ? (
+            <Navigate to="/" replace />
+          ) : (
             <LoginPage 
               onLoginSuccess={handleLoginSuccess} 
               onSignUpClick={() => navigate('/signup')} 
               isDarkMode={isDarkMode}
               toggleDarkMode={toggleDarkMode}
             />
-          } 
-        />
-        <Route 
-          path="/signup" 
-          element={
+          )
+        } 
+      />
+      <Route 
+        path="/signup" 
+        element={
+          isAuthenticated ? (
+            <Navigate to="/" replace />
+          ) : (
             <SignUpPage 
               onSignUpSuccess={handleLoginSuccess} 
               onSignInClick={() => navigate('/signin')} 
               isDarkMode={isDarkMode}
               toggleDarkMode={toggleDarkMode}
             />
-          } 
-        />
-        <Route path="*" element={<Navigate to="/signin" replace />} />
-      </Routes>
-    );
-  }
-
-  return (
-    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-900 font-sans transition-colors duration-300">
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
+          )
+        } 
       />
 
-      {/* Overlay for mobile when sidebar is open */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-slate-900/50 z-20 lg:hidden"
-          onClick={closeSidebar}
-        />
-      )}
+      {/* 3. 대시보드 레이아웃 영역 (비인증 상태라면 signin으로 강제 리다이렉션) */}
+      <Route 
+        path="/*" 
+        element={
+          !isAuthenticated ? (
+            <Navigate to="/signin" replace />
+          ) : (
+            <div className="flex min-h-screen bg-slate-50 dark:bg-slate-900 font-sans transition-colors duration-300">
+              <Sidebar
+                isOpen={isSidebarOpen}
+                onClose={closeSidebar}
+              />
 
-      <div className="flex-1 lg flex flex-col min-h-screen overflow-hidden transition-all duration-300">
-        <Header
-          onMenuClick={toggleSidebar}
-          isDarkMode={isDarkMode}
-          toggleDarkMode={toggleDarkMode}
-          onLogout={handleLogout}
-        />
+              {/* Overlay for mobile when sidebar is open */}
+              {isSidebarOpen && (
+                <div
+                  className="fixed inset-0 bg-slate-900/50 z-20 lg:hidden"
+                  onClick={closeSidebar}
+                />
+              )}
 
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pt-[100px] lg:pt-[112px] custom-scrollbar">
-          <div className="w-full">
-            <Routes>
-              <Route path="/" element={<DashboardHome />} />
-              <Route path="/tasks/list" element={<TaskList />} />
-              <Route path="/tasks/kanban" element={<TaskKanban />} />
-              <Route path="/forms/elements" element={<FormElements />} />
-              <Route path="/forms/layout" element={<FormLayout />} />
-              <Route path="/tables/basic" element={<BasicTables />} />
-              <Route path="/pages/faq" element={<FAQ />} />
-              <Route path="/pages/integrations" element={<Integrations />} />
-              <Route path="/pages/hero-sections" element={<HeroSections />} />
-              <Route path="/pages/pricing-sections" element={<PricingSections />} />
-              <Route path="/charts/line-charts" element={<LineCharts />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
-              <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
-              <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
-              <Route path="/ui/progress-nav" element={<ShowcaseProgressNav />} />
-              <Route path="/ui/states-loaders" element={<ShowcaseStatesLoaders />} />
-              <Route path="/signin" element={<Navigate to="/" replace />} />
-              <Route path="/signup" element={<Navigate to="/" replace />} />
-              <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
-            </Routes>
-          </div>
-        </main>
-      </div>
-    </div>
+              <div className="flex-1 lg flex flex-col min-h-screen overflow-hidden transition-all duration-300">
+                <Header
+                  onMenuClick={toggleSidebar}
+                  isDarkMode={isDarkMode}
+                  toggleDarkMode={toggleDarkMode}
+                  onLogout={handleLogout}
+                />
+
+                {/* Main Content Area */}
+                <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pt-[100px] lg:pt-[112px] custom-scrollbar">
+                  <div className="w-full">
+                    <Routes>
+                      <Route path="/" element={<DashboardHome />} />
+                      <Route path="/tasks/list" element={<TaskList />} />
+                      <Route path="/tasks/kanban" element={<TaskKanban />} />
+                      <Route path="/forms/elements" element={<FormElements />} />
+                      <Route path="/forms/layout" element={<FormLayout />} />
+                      <Route path="/tables/basic" element={<BasicTables />} />
+                      <Route path="/pages/faq" element={<FAQ />} />
+                      <Route path="/pages/integrations" element={<Integrations />} />
+                      <Route path="/pages/hero-sections" element={<HeroSections />} />
+                      <Route path="/pages/pricing-sections" element={<PricingSections />} />
+                      <Route path="/charts/line-charts" element={<LineCharts />} />
+                      <Route path="/calendar" element={<Calendar />} />
+                      <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
+                      <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
+                      <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
+                      <Route path="/ui/progress-nav" element={<ShowcaseProgressNav />} />
+                      <Route path="/ui/states-loaders" element={<ShowcaseStatesLoaders />} />
+                      <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
+                    </Routes>
+                  </div>
+                </main>
+              </div>
+            </div>
+          )
+        }
+      />
+    </Routes>
   );
 };
 
