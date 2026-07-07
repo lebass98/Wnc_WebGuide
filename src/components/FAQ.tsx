@@ -706,7 +706,7 @@ const SwitchingBgFaq = () => {
     color: #94a3b8;
   }
 }`,
-      js: `// Vanilla JS 플러스/마이너스 토글 연동
+      js: `// Vanilla JS 플러스/마이너스 토글 연동 (상호배타 단일오픈 지원)
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.faq-card');
 
@@ -722,14 +722,19 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const isActive = card.classList.contains('active');
 
+      // 다른 열려있는 모든 카드 닫기
+      cards.forEach((otherCard) => {
+        otherCard.classList.remove('active');
+        const otherContent = otherCard.querySelector('.faq-content');
+        otherContent.style.maxHeight = '0px';
+        otherContent.style.opacity = '0';
+      });
+
+      // 현재 누른 것 열어주기
       if (!isActive) {
         card.classList.add('active');
         content.style.maxHeight = content.scrollHeight + 'px';
         content.style.opacity = '1';
-      } else {
-        card.classList.remove('active');
-        content.style.maxHeight = '0px';
-        content.style.opacity = '0';
       }
     });
   });
@@ -911,14 +916,19 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
           const isActive = card.classList.contains('active');
 
+          // 다른 열려있는 모든 카드 닫기
+          cards.forEach((otherCard) => {
+            otherCard.classList.remove('active');
+            const otherContent = otherCard.querySelector('.faq-content');
+            otherContent.style.maxHeight = '0px';
+            otherContent.style.opacity = '0';
+          });
+
+          // 현재 누른 것 열어주기
           if (!isActive) {
             card.classList.add('active');
             content.style.maxHeight = content.scrollHeight + 'px';
             content.style.opacity = '1';
-          } else {
-            card.classList.remove('active');
-            content.style.maxHeight = '0px';
-            content.style.opacity = '0';
           }
         });
       });
