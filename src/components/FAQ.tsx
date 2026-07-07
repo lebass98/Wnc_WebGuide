@@ -1242,17 +1242,21 @@ const FlatIconFaq = () => {
       </div>
 
       {/* FAQ Type 1 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9 relative">
-        {/* Code Preview Button */}
-        <button
-          onClick={() => openCodeModal('faq1')}
-          className="absolute top-4 right-4 sm:top-6 sm:right-9 flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 dark:bg-slate-800/60 dark:hover:bg-indigo-500/10 dark:text-slate-400 dark:hover:text-indigo-400 rounded-lg text-xs font-bold transition-all cursor-pointer"
-        >
-          <Code className="w-3.5 h-3.5" />
-          코드 보기
-        </button>
-
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6 pr-24">FAQ 유형 1</h3>
+      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
+        {/* Header flex row (Responsive layout) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-50 dark:border-slate-800/60">
+          <div>
+            <h3 className="text-base font-bold text-slate-800 dark:text-white">FAQ 유형 1</h3>
+            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">기본형 보더 아코디언 스타일 레이아웃입니다.</p>
+          </div>
+          <button
+            onClick={() => openCodeModal('faq1')}
+            className="rounded-lg bg-indigo-600 dark:bg-white px-4 py-2 text-center text-xs font-bold leading-6 text-white dark:text-indigo-600 shadow-md hover:bg-indigo-500 dark:hover:bg-blue-50 hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <Code className="w-3.5 h-3.5" />
+            코드 보기
+          </button>
+        </div>
         <div className="space-y-4">
           {faqData1.map((item, idx) => (
             <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
@@ -1276,17 +1280,21 @@ const FlatIconFaq = () => {
       </div>
 
       {/* FAQ Type 2 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9 relative">
-        {/* Code Preview Button */}
-        <button
-          onClick={() => openCodeModal('faq2')}
-          className="absolute top-4 right-4 sm:top-6 sm:right-9 flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 dark:bg-slate-800/60 dark:hover:bg-indigo-500/10 dark:text-slate-400 dark:hover:text-indigo-400 rounded-lg text-xs font-bold transition-all cursor-pointer"
-        >
-          <Code className="w-3.5 h-3.5" />
-          코드 보기
-        </button>
-
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6 pr-24">FAQ 유형 2</h3>
+      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
+        {/* Header flex row (Responsive layout) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-50 dark:border-slate-800/60">
+          <div>
+            <h3 className="text-base font-bold text-slate-800 dark:text-white">FAQ 유형 2</h3>
+            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">배경색이 반전 스위칭되는 미려한 아코디언 스타일입니다.</p>
+          </div>
+          <button
+            onClick={() => openCodeModal('faq2')}
+            className="rounded-lg bg-indigo-600 dark:bg-white px-4 py-2 text-center text-xs font-bold leading-6 text-white dark:text-indigo-600 shadow-md hover:bg-indigo-500 dark:hover:bg-blue-50 hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <Code className="w-3.5 h-3.5" />
+            코드 보기
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="space-y-4">
             {faqData2.slice(0, 3).map((item, idx) => (
@@ -1339,17 +1347,21 @@ const FlatIconFaq = () => {
       </div>
 
       {/* FAQ Type 3 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9 relative">
-        {/* Code Preview Button */}
-        <button
-          onClick={() => openCodeModal('faq3')}
-          className="absolute top-4 right-4 sm:top-6 sm:right-9 flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 dark:bg-slate-800/60 dark:hover:bg-indigo-500/10 dark:text-slate-400 dark:hover:text-indigo-400 rounded-lg text-xs font-bold transition-all cursor-pointer"
-        >
-          <Code className="w-3.5 h-3.5" />
-          코드 보기
-        </button>
-
-        <h3 className="text-base font-bold text-slate-800 dark:text-white mb-6 pr-24">FAQ 유형 3</h3>
+      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
+        {/* Header flex row (Responsive layout) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-50 dark:border-slate-800/60">
+          <div>
+            <h3 className="text-base font-bold text-slate-800 dark:text-white">FAQ 유형 3</h3>
+            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">아이콘을 결합하여 가벼운 정보 전달력을 높인 플랫 리스트입니다.</p>
+          </div>
+          <button
+            onClick={() => openCodeModal('faq3')}
+            className="rounded-lg bg-indigo-600 dark:bg-white px-4 py-2 text-center text-xs font-bold leading-6 text-white dark:text-indigo-600 shadow-md hover:bg-indigo-500 dark:hover:bg-blue-50 hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <Code className="w-3.5 h-3.5" />
+            코드 보기
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {faqData3.map((item, idx) => (
             <div key={idx} className="flex gap-4">
