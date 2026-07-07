@@ -19,6 +19,15 @@
    - **ECharts Charts**: 매출 추이, 목표 달성률, 고객 현황 등을 화려한 그래프로 렌더링하기 위해 `echarts`와 `echarts-for-react`가 최적화되어 도입되어 있습니다.
    - **Calendar & Forms**: 다양한 포맷의 일정 관리 기능과, 캘린더 피커를 포함한 정교한 폼 레이아웃 요소를 제공합니다.
 
+4. **📐 대시보드 레이아웃 개선 및 실시간 미리보기 고도화 (최신 업데이트)**
+   - **사이드바 fixed 고정**: 좌측 사이드바([Sidebar.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/Sidebar.tsx))를 `fixed` 형태로 완전 고정하고, 메인 콘텐츠 영역([App.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/App.tsx))에 패딩(`lg:pl-[280px]`)을 확보하여 콘텐츠 가려짐 현상을 근본적으로 해결했습니다.
+   - **FAQ 2열 반응형 그리드 배치**: FAQ 아코디언 카드들([FAQ.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/FAQ.tsx))을 `grid-cols-1 xl:grid-cols-2` 그리드로 정렬하고, 불필요한 구분선을 제거해 탁월한 공간 활용도와 심미성을 구현했습니다.
+   - **카드 헤더 세로 줄내림(flex-col) 디자인 고정**: 2열 그리드가 적용된 FAQ, 폼 레이아웃([FormLayout.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/FormLayout.tsx)), 폼 요소([FormElements.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/FormElements.tsx)) 카드의 상단 도구 바(미리보기, 코드보기, 테마 등)가 가로폭 부족으로 깨지거나 찌그러지지 않도록 항상 세로 정렬(`flex flex-col items-start gap-3`)로 디자인을 고정했습니다.
+   - **폼 요소 및 폼 레이아웃 실시간 미리보기(Wrapper) 연동**:
+     - 각 카드 영역에 대해 **React 탭 / 일반 HTML 탭 실시간 미리보기** 탭을 탑재했습니다.
+     - **기기 뷰포트 시뮬레이터**(데스크톱/태블릿/모바일) 및 **실시간 테마 스위처**(라이트/다크 모드 변경)를 제공하여 뷰 상태를 반응형으로 즉각 테스트할 수 있습니다.
+     - 전체 소스코드(React, HTML, CSS, JS 개별 서브 탭 분류) **코드보기 및 클립보드 간편 복사** 기능이 연동되어 개발자의 템플릿 사용성을 대폭 끌어올렸습니다.
+
 ---
 
 ## 🛠 기술 스택 (Technology Stack)
