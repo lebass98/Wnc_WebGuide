@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   Check, ChevronRight, Monitor, Smartphone, Tablet, Sun, Moon, ChevronDown, Copy, CheckCircle, Sparkles, Zap
 } from 'lucide-react';
 
@@ -28,13 +28,13 @@ const PricingSectionWrapper: React.FC<PricingCardProps> = ({ title, htmlCode, ch
         <div className="flex items-center gap-4">
           {/* Preview/Code Toggle */}
           <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
-            <button 
+            <button
               onClick={() => setActiveTab('preview')}
               className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
             >
               미리보기
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab('code')}
               className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${activeTab === 'code' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
             >
@@ -76,7 +76,7 @@ const PricingSectionWrapper: React.FC<PricingCardProps> = ({ title, htmlCode, ch
             HTML <ChevronDown className="w-3 h-3" />
           </button>
 
-          <button 
+          <button
             onClick={handleCopy}
             className={`p-1.5 rounded-md transition-all ${copied ? 'text-emerald-500' : 'text-slate-400 hover:text-slate-600'}`}
           >
@@ -94,7 +94,7 @@ const PricingSectionWrapper: React.FC<PricingCardProps> = ({ title, htmlCode, ch
           </div>
         ) : (
           <div className="bg-[#1e1e1e] p-6 font-mono text-sm text-slate-300 overflow-x-auto max-h-[600px] custom-scrollbar">
-             <pre><code>{htmlCode}</code></pre>
+            <pre><code>{htmlCode}</code></pre>
           </div>
         )}
       </div>
@@ -208,7 +208,7 @@ const PricingSections: React.FC = () => {
       <h2 class="text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">Pricing Plans</h2>
       <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">Our Flexible Pricing</p>
     </div>
-    <div class="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    <div class="isolate mx-auto mt-16 grid max-h-full grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
       <!-- Starter -->
       <div class="flex flex-col justify-between rounded-3xl bg-white dark:bg-slate-800 p-8 ring-1 ring-gray-200 dark:ring-slate-700 xl:p-10">
         <div>
@@ -362,7 +362,7 @@ const PricingSections: React.FC = () => {
               <p className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">우리의 유연한 가격 정책</p>
               <p className="mt-4 text-slate-600 dark:text-slate-400">모든 규모의 기업을 위한 간단하고 투명한 가격 정책입니다.</p>
             </div>
-            <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 items-center">
+            <div className="isolate mx-auto mt-16 grid max-h-full grid-cols-1 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 items-center">
               {/* Starter */}
               <div className="flex flex-col justify-between rounded-3xl bg-white dark:bg-slate-800/50 p-8 ring-1 ring-slate-200 dark:ring-slate-700 xl:p-10 transition-all hover:shadow-lg">
                 <div>
@@ -475,7 +475,7 @@ const PricingSections: React.FC = () => {
       </PricingSectionWrapper>
 
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
-      
+
       {/* Variation 4: Centered with badges and micro-animations */}
       <PricingSectionWrapper title="기능이 풍부한 중앙 정렬" htmlCode={`<!-- Content omitted for brevity in this mock -->`}>
         <div className="relative overflow-hidden bg-slate-50 dark:bg-slate-900 py-24 sm:py-32 rounded-2xl">
@@ -487,45 +487,45 @@ const PricingSections: React.FC = () => {
             </div>
             <h2 className="text-5xl font-black text-slate-900 dark:text-white mb-6">자신 있게 확장하세요</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">사이드 프로젝트에서 엔터프라이즈급 솔루션까지. 필요할 때 필요한 기능을 이용하세요.</p>
-            
+
             <div className="bg-white dark:bg-slate-800 p-8 rounded-[40px] shadow-2xl border border-slate-100 dark:border-slate-700 flex flex-col md:flex-row items-center gap-12 text-left relative overflow-hidden group">
-               <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-colors"></div>
-               <div className="flex-1 space-y-6">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 bg-indigo-600 rounded-2xl">
-                      <Zap className="w-6 h-6 text-white" />
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-colors"></div>
+              <div className="flex-1 space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-indigo-600 rounded-2xl">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-slate-900 dark:text-white">프로 액셀러레이터</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">고속 성장하는 스타트업에게 가장 인기가 높습니다.</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    "실시간 사기 탐지",
+                    "우선 API 접근 권한",
+                    "맞춤형 보고 후크",
+                    "전담 계정 매니저",
+                    "SLA 99.9% 보장",
+                    "RBAC 및 SSO 통합"
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+                      <Check className="w-4 h-4 text-emerald-500" /> {f}
                     </div>
-                    <div>
-                      <h4 className="text-2xl font-bold text-slate-900 dark:text-white">프로 액셀러레이터</h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-sm">고속 성장하는 스타트업에게 가장 인기가 높습니다.</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      "실시간 사기 탐지",
-                      "우선 API 접근 권한",
-                      "맞춤형 보고 후크",
-                      "전담 계정 매니저",
-                      "SLA 99.9% 보장",
-                      "RBAC 및 SSO 통합"
-                    ].map((f, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
-                        <Check className="w-4 h-4 text-emerald-500" /> {f}
-                      </div>
-                    ))}
-                  </div>
-               </div>
-               <div className="shrink-0 w-full md:w-[280px] p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-700 text-center">
-                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2">시작가</p>
-                  <div className="flex items-baseline justify-center gap-1 mb-6">
-                    <span className="text-5xl font-black text-indigo-600">$49</span>
-                    <span className="text-slate-400 font-medium">/월</span>
-                  </div>
-                  <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200 dark:shadow-none mb-4">
-                    지금 확장하기
-                  </button>
-                  <p className="text-[11px] text-slate-400">14일 평가판에는 신용카드가 필요하지 않습니다.</p>
-               </div>
+                  ))}
+                </div>
+              </div>
+              <div className="shrink-0 w-full md:w-[280px] p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-700 text-center">
+                <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-2">시작가</p>
+                <div className="flex items-baseline justify-center gap-1 mb-6">
+                  <span className="text-5xl font-black text-indigo-600">$49</span>
+                  <span className="text-slate-400 font-medium">/월</span>
+                </div>
+                <button className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200 dark:shadow-none mb-4">
+                  지금 확장하기
+                </button>
+                <p className="text-[11px] text-slate-400">14일 평가판에는 신용카드가 필요하지 않습니다.</p>
+              </div>
             </div>
           </div>
         </div>

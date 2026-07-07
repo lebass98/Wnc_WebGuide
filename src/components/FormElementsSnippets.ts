@@ -132,7 +132,7 @@ function DefaultInputs() {
   <title>기본 입력란 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[500px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="space-y-4">
       <div class="flex flex-col gap-2">
         <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">입력란</label>
@@ -425,7 +425,7 @@ function SelectInputs() {
   <title>선택 입력란 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[350px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="space-y-4">
       <div class="flex flex-col gap-2">
         <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">선택 입력란</label>
@@ -608,7 +608,7 @@ function TextareaInput() {
   <title>텍스트 영역 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[300px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="space-y-4">
       <div class="flex flex-col gap-2">
         <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">설명</label>
@@ -710,7 +710,7 @@ function InputGroup() {
   <title>입력 그룹 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[300px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="space-y-4">
       <div class="flex flex-col gap-2">
         <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">이메일</label>
@@ -811,7 +811,7 @@ function FileInput() {
   <title>파일 입력 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[250px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="flex flex-col gap-2">
       <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">파일 업로드</label>
       <div class="relative">
@@ -914,7 +914,7 @@ function CheckboxesInput() {
   <title>체크박스 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[250px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="flex flex-wrap gap-8 items-center pt-2">
       <label class="flex items-center gap-2 cursor-pointer group">
         <input type="checkbox" class="hidden checkbox-input" id="chk-1" />
@@ -1031,7 +1031,7 @@ function RadioButtonsInput() {
   <title>라디오 버튼 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[250px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="flex flex-wrap gap-8 items-center pt-2">
       <label class="flex items-center gap-2 cursor-pointer group">
         <input type="radio" name="radio-html" value="default" class="hidden radio-input" id="rad-1" />
@@ -1206,7 +1206,7 @@ function ToggleSwitchInput() {
   <title>토글 스위치 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[300px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="space-y-4 pt-2">
       <div class="flex gap-8 items-center">
         <label class="flex items-center gap-3 cursor-pointer group toggle-label" id="t-lbl-1">
@@ -1444,7 +1444,7 @@ function DropzoneInput() {
   <title>드롭존 미리보기</title>
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] p-6 flex justify-center items-center min-h-[350px]">
-  <div class="w-full max-w-md bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
+  <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
     <div class="p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
       <div class="border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all border-indigo-100 dark:border-slate-700 bg-indigo-50/5 dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500" id="dropzone-html">
         <input type="file" class="hidden" id="drop-file-input" multiple />

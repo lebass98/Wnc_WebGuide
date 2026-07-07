@@ -93,7 +93,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code }) => {
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 px-4 py-16 transition-colors duration-300 font-sans">
       <div className="w-full max-w-xl text-center space-y-8 bg-white dark:bg-[#1A222C] p-8 sm:p-12 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl transition-all duration-300">
-        
+
         {/* Error Badge & Illustration */}
         <div className="relative">
           {currentError.illustration}
@@ -113,7 +113,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code }) => {
           <p className="text-lg font-bold text-slate-700 dark:text-slate-300">
             {currentError.subtitle}
           </p>
-          <p className="text-sm font-medium text-slate-400 dark:text-slate-500 max-w-md mx-auto leading-relaxed">
+          <p className="text-sm font-medium text-slate-400 dark:text-slate-500 max-h-full mx-auto leading-relaxed">
             {currentError.description}
           </p>
         </div>
@@ -127,7 +127,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code }) => {
             <ArrowLeft className="w-4 h-4" />
             이전으로
           </button>
-          
+
           <button
             onClick={handleAction}
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#4B62FA] hover:bg-indigo-600 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none cursor-pointer"

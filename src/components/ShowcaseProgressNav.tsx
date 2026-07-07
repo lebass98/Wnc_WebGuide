@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  ChevronRight, 
-  Play, 
-  RefreshCw, 
-  ChevronDown, 
-  Check 
+import {
+  ChevronRight,
+  Play,
+  RefreshCw,
+  ChevronDown,
+  Check
 } from 'lucide-react';
 
 const ShowcaseProgressNav: React.FC = () => {
@@ -47,7 +47,7 @@ const ShowcaseProgressNav: React.FC = () => {
 
   return (
     <div className="space-y-6 pb-20 font-sans">
-      
+
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -66,7 +66,7 @@ const ShowcaseProgressNav: React.FC = () => {
 
       {/* Grid wrapper */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        
+
         {/* Box 1: Progress Bars */}
         <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
           <div className="flex justify-between items-center">
@@ -75,13 +75,13 @@ const ShowcaseProgressNav: React.FC = () => {
               <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">진행도를 정밀하게 전달하는 슬라이더 스케일입니다.</p>
             </div>
             <div className="flex gap-2">
-              <button 
+              <button
                 onClick={simulateProgress}
                 className="p-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-xl transition-all cursor-pointer"
               >
                 <Play className="w-4 h-4" />
               </button>
-              <button 
+              <button
                 onClick={() => setProgress(45)}
                 className="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 rounded-xl transition-all cursor-pointer"
               >
@@ -98,7 +98,7 @@ const ShowcaseProgressNav: React.FC = () => {
                 <span>{progress}%</span>
               </div>
               <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
                 />
@@ -125,7 +125,7 @@ const ShowcaseProgressNav: React.FC = () => {
             <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">업무 처리나 회원가입 시 여러 단계를 유도하는 타임라인 스태퍼입니다.</p>
           </div>
 
-          <div className="flex items-center justify-between relative max-w-md mx-auto py-4">
+          <div className="flex items-center justify-between relative max-h-full mx-auto py-4">
             {/* Connecting Bar */}
             <div className="absolute top-[34px] left-[30px] right-[30px] h-[2px] bg-slate-100 dark:bg-slate-700 -z-10">
               <div className="h-full bg-indigo-500 w-1/2 transition-all duration-500" />
@@ -175,11 +175,10 @@ const ShowcaseProgressNav: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`pb-3 text-sm font-bold border-b-2 transition-all cursor-pointer ${
-                    activeTab === tab.id 
-                      ? 'border-indigo-500 text-indigo-500' 
+                  className={`pb-3 text-sm font-bold border-b-2 transition-all cursor-pointer ${activeTab === tab.id
+                      ? 'border-indigo-500 text-indigo-500'
                       : 'border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -204,7 +203,7 @@ const ShowcaseProgressNav: React.FC = () => {
 
           <div className="space-y-3">
             {accordionData.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden"
               >
@@ -215,7 +214,7 @@ const ShowcaseProgressNav: React.FC = () => {
                   <span>{item.title}</span>
                   <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${openAccordion === idx ? 'rotate-180' : ''}`} />
                 </button>
-                
+
                 {openAccordion === idx && (
                   <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 text-xs leading-relaxed text-slate-500 dark:text-slate-400 animate-slide-down">
                     {item.content}
