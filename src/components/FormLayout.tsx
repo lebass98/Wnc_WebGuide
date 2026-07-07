@@ -190,7 +190,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
         {activeTab === 'preview' ? (
           /* Live Preview Container with Simulated local Light/Dark class */
           <div className={theme === 'dark' ? 'dark' : ''}>
-            <div className="bg-slate-50 dark:bg-[#0F172A] p-4 sm:p-6 transition-colors duration-300 min-h-[300px] flex flex-col justify-center">
+            <div className="bg-slate-50 dark:bg-[#0F172A] p-0 transition-colors duration-300 min-h-[300px] flex flex-col justify-center">
               {children}
             </div>
           </div>
