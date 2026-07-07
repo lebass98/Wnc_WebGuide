@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
         </button>
         <div>
           <h2 className="text-lg sm:text-[22px] font-bold text-slate-800 dark:text-white leading-tight">대시보드</h2>
-          <p className="hidden sm:block text-[13px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">알렉스님 환영합니다! 오늘의 소식을 확인해 보세요.</p>
+          <p className="hidden sm:block text-[13px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">퍼블리싱팀님 환영합니다! 템플릿가이드에 오신걸 환영합니다.</p>
         </div>
       </div>
 
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white dark:border-slate-800 shadow-sm"
           />
           <div className="hidden md:block flex-1 min-w-0">
-            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">알렉스 존슨</p>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">퍼블리싱팀</p>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium group-hover:text-red-500 transition-colors">로그아웃</p>
           </div>
         </div>
