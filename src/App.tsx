@@ -83,9 +83,7 @@ const DashboardHome: React.FC = () => {
 const App: React.FC = () => {
   const navigate = useNavigate();
 
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return localStorage.getItem('isAuthenticated') === 'true';
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -128,9 +126,9 @@ const App: React.FC = () => {
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    localStorage.removeItem('isAuthenticated');
-    navigate('/signin');
+    // 임시로 로그아웃 시에도 메인에 머물도록 설정
+    setIsAuthenticated(true);
+    navigate('/');
   };
 
   return (
