@@ -209,8 +209,8 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
             )}
             
             {/* Syntax Code block view */}
-            <div className="flex-1 overflow-auto p-6 font-mono text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text max-h-[450px]">
-              <pre className="whitespace-pre">
+            <div className="flex-1 overflow-x-auto p-4 sm:p-6 font-mono text-[11px] sm:text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text max-h-[450px]">
+              <pre className="whitespace-pre-wrap sm:whitespace-pre break-all sm:break-normal">
                 {codeMode === 'react' ? snippet.react : snippet[htmlSubTab]}
               </pre>
             </div>
