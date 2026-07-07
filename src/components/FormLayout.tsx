@@ -228,7 +228,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
 /* --- 1. Basic Form Preview Component --- */
 const BasicFormPreview: React.FC = () => {
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <input 
@@ -266,7 +266,7 @@ const BasicFormPreview: React.FC = () => {
 /* --- 2. Message Form Preview Component --- */
 const MessageFormPreview: React.FC = () => {
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div className="space-y-1.5 sm:space-y-2">
@@ -329,7 +329,7 @@ const IconFormPreview: React.FC = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
@@ -401,7 +401,7 @@ const PersonalInfoFormPreview: React.FC = () => {
   const [membership, setMembership] = useState('free');
 
   return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+    <div className="w-full p-4 sm:p-6 transition-colors duration-300">
       <div className="space-y-6 sm:space-y-8 text-left">
         
         {/* Personal Info section */}
