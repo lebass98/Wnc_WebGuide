@@ -9,7 +9,8 @@ import {
   ListTodo,
   Table,
   Layers,
-  BarChart3
+  BarChart3,
+  Component
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -152,6 +153,30 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           }}
           activeSubItem={currentPath === '/charts/line-charts' ? '선형 차트' : undefined}
           isActive={currentPath.startsWith('/charts')}
+        />
+
+        {/* UI Elements Submenu */}
+        <NavItem
+          icon={Component}
+          label="UI 요소"
+          hasSubmenu
+          subItems={['알림 & 모달', '버튼 & 배지', '데이터 표시', '진행률 & 네비게이션', '상태 & 로더']}
+          onSubItemClick={(sub) => {
+            if (sub === '알림 & 모달') navigate('/ui/alerts-modals');
+            if (sub === '버튼 & 배지') navigate('/ui/buttons-badges');
+            if (sub === '데이터 표시') navigate('/ui/data-display');
+            if (sub === '진행률 & 네비게이션') navigate('/ui/progress-nav');
+            if (sub === '상태 & 로더') navigate('/ui/states-loaders');
+            onClose();
+          }}
+          activeSubItem={
+            currentPath === '/ui/alerts-modals' ? '알림 & 모달' :
+              currentPath === '/ui/buttons-badges' ? '버튼 & 배지' :
+                currentPath === '/ui/data-display' ? '데이터 표시' :
+                  currentPath === '/ui/progress-nav' ? '진행률 & 네비게이션' :
+                    currentPath === '/ui/states-loaders' ? '상태 & 로더' : undefined
+          }
+          isActive={currentPath.startsWith('/ui')}
         />
 
         <div

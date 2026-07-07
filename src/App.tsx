@@ -3,6 +3,11 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import ErrorPage from './components/ErrorPage';
+import ShowcaseAlertsModals from './components/ShowcaseAlertsModals';
+import ShowcaseButtonsBadges from './components/ShowcaseButtonsBadges';
+import ShowcaseDataDisplay from './components/ShowcaseDataDisplay';
+import ShowcaseProgressNav from './components/ShowcaseProgressNav';
+import ShowcaseStatesLoaders from './components/ShowcaseStatesLoaders';
 import StatCard from './components/StatCard';
 import RecentOrders from './components/RecentOrders';
 import FormElements from './components/FormElements';
@@ -209,6 +214,11 @@ const App: React.FC = () => {
               <Route path="/pages/pricing-sections" element={<PricingSections />} />
               <Route path="/charts/line-charts" element={<LineCharts />} />
               <Route path="/calendar" element={<Calendar />} />
+              <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
+              <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
+              <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
+              <Route path="/ui/progress-nav" element={<ShowcaseProgressNav />} />
+              <Route path="/ui/states-loaders" element={<ShowcaseStatesLoaders />} />
               <Route path="/signin" element={<Navigate to="/" replace />} />
               <Route path="/signup" element={<Navigate to="/" replace />} />
               <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
