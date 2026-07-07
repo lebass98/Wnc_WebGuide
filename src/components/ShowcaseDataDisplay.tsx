@@ -39,8 +39,8 @@ const ShowcaseDataDisplay: React.FC = () => {
           </div>
           
           {/* Profile Details */}
-          <div className="px-6 pb-6 flex-1 flex flex-col items-center -mt-12">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-md">
+          <div className="px-6 pb-6 flex-1 flex flex-col items-center -mt-12 z-10">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-md shrink-0">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop" alt="profile" className="w-full h-full object-cover" />
             </div>
             
@@ -51,10 +51,13 @@ const ShowcaseDataDisplay: React.FC = () => {
               사용자 친화적이고 미려한 디자인 시스템을 구축하며 프론트엔드 퍼블리싱 가이드를 최적화하는 업무를 전문적으로 수행하고 있습니다.
             </p>
 
-            <div className="w-full border-t border-slate-100 dark:border-slate-700/60 my-5"></div>
+            {/* Flexible spacer to preserve proportional height distribution */}
+            <div className="flex-grow min-h-[16px]"></div>
+
+            <div className="w-full border-t border-slate-100 dark:border-slate-700/60 my-5 shrink-0"></div>
             
             {/* Contact stats */}
-            <div className="grid grid-cols-3 gap-4 w-full text-center">
+            <div className="grid grid-cols-3 gap-4 w-full text-center shrink-0">
               <div>
                 <p className="text-base font-extrabold text-slate-800 dark:text-white">12.5k</p>
                 <p className="text-[10px] font-bold text-slate-400 uppercase mt-0.5">팔로워</p>
