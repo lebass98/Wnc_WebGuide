@@ -249,7 +249,7 @@ const NavItem: React.FC<NavItemProps> = ({
       {/* Submenu Dropdown */}
       {hasSubmenu && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-60 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-11 pr-3 py-1">
             {subItems.map((item, idx) => (
