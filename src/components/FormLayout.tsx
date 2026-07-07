@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Mail, 
   User, 
@@ -40,6 +40,36 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
   const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
   
   const [copied, setCopied] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeHeight, setIframeHeight] = useState('400px');
+
+  const updateIframeHeight = () => {
+    const iframe = iframeRef.current;
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
+      const body = iframe.contentDocument.body;
+      const html = iframe.contentDocument.documentElement;
+      if (body) {
+        // 내부 폼 높이를 정확히 맞추기 위해 scrollHeight 계산
+        const height = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.clientHeight,
+          html.scrollHeight,
+          html.offsetHeight
+        );
+        setIframeHeight(`${height}px`);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === 'preview' && previewMode === 'html') {
+      const timer = setTimeout(() => {
+        updateIframeHeight();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [activeTab, previewMode, device, theme, snippet.fullHtml]);
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(snippet.fullHtml).then(() => {
@@ -218,9 +248,12 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
           ) : (
             /* Static HTML iframe Preview (applying simulated theme) */
             <iframe
+              ref={iframeRef}
+              onLoad={updateIframeHeight}
               srcDoc={theme === 'dark' ? snippet.fullHtml.replace('<body class="', '<body class="dark ') : snippet.fullHtml}
               title={`${title} HTML Preview`}
-              className="w-full min-h-[400px] border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
+              className="w-full border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
+              style={{ height: iframeHeight }}
               sandbox="allow-scripts"
             />
           )
