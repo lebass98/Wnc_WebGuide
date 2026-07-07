@@ -64,7 +64,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
         <h3 className="text-lg font-bold text-slate-800 dark:text-white leading-snug">
           {title}
         </h3>
-        <p className="text-[13px] text-slate-500 dark:text-slate-400 max-w-xl">
+        <p className="text-[13px] text-slate-500 dark:text-slate-400">
           {description}
         </p>
       </div>
