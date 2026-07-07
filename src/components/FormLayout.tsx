@@ -33,6 +33,7 @@ interface FormLayoutWrapperProps {
 
 const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, description, snippet, children }) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
+  const [previewMode, setPreviewMode] = useState<'react' | 'html'>('react');
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
@@ -78,6 +79,27 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
           </div>
 
           <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+
+          {/* 1.5 Preview Mode Switcher (React vs HTML) */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="inline-flex rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
+                <button
+                  onClick={() => setPreviewMode('react')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
+                >
+                  React 미리보기
+                </button>
+                <button
+                  onClick={() => setPreviewMode('html')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
+                >
+                  HTML 미리보기
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
 
           {/* 2. Device simulation switcher */}
           {activeTab === 'preview' && (
@@ -172,7 +194,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
           <div className="flex items-center gap-1.5">
             <button
               onClick={handleCopyCode}
-              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-755'}`}
+              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-750'}`}
             >
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
@@ -186,12 +208,22 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
       {/* Frame Container */}
       <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}>
         {activeTab === 'preview' ? (
-          /* Live Preview Container with Simulated local Light/Dark class */
-          <div className={theme === 'dark' ? 'dark' : ''}>
-            <div className="bg-slate-50 dark:bg-[#0F172A] p-0 transition-colors duration-300 min-h-[300px] flex flex-col justify-center">
-              {children}
+          previewMode === 'react' ? (
+            /* React Component Live Preview */
+            <div className={theme === 'dark' ? 'dark' : ''}>
+              <div className="bg-slate-50 dark:bg-[#0F172A] p-0 transition-colors duration-300 min-h-[300px] flex flex-col justify-center">
+                {children}
+              </div>
             </div>
-          </div>
+          ) : (
+            /* Static HTML iframe Preview (applying simulated theme) */
+            <iframe
+              srcDoc={theme === 'dark' ? snippet.fullHtml.replace('<body class="', '<body class="dark ') : snippet.fullHtml}
+              title={`${title} HTML Preview`}
+              className="w-full min-h-[400px] border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
+              sandbox="allow-scripts"
+            />
+          )
         ) : (
           /* Code Preview Panel with inner sub-tabs for static HTML */
           <div className="bg-[#0F172A] flex flex-col min-h-[350px]">
@@ -468,7 +500,7 @@ const PersonalInfoFormPreview: React.FC = () => {
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">국가</label>
               <div className="relative">
-                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
                   <option>--국가 선택--</option>
                   <option>미국</option>
                   <option>영국</option>
@@ -739,8 +771,7 @@ export default MessageForm;`,
           <option>옵션 3</option>
         </select>
         <div class="absolute right-4 pointer-events-none flex items-center justify-center">
-          <!-- Chevron SVG -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
         </div>
       </div>
     </div>
@@ -844,17 +875,17 @@ const IconForm = () => {
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <User className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+            <User className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
           </div>
           <input 
             type="text" 
             placeholder="사용자 이름" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
           </div>
           <input 
             type="email" 
@@ -864,7 +895,7 @@ const IconForm = () => {
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
           </div>
           <input 
             type="password" 
@@ -874,7 +905,7 @@ const IconForm = () => {
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-550 transition-colors" />
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-555 transition-colors" />
           </div>
           <input 
             type="password" 
@@ -928,7 +959,7 @@ export default IconForm;`,
       <input 
         type="email" 
         placeholder="이메일 주소" 
-        class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+        class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
       />
     </div>
     <div class="relative group flex items-center">
@@ -938,7 +969,7 @@ export default IconForm;`,
       <input 
         type="password" 
         placeholder="비밀번호" 
-        class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+        class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
       />
     </div>
     <div class="relative group flex items-center">
@@ -948,7 +979,7 @@ export default IconForm;`,
       <input 
         type="password" 
         placeholder="비밀번호 확인" 
-        class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+        class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
       />
     </div>
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
@@ -959,7 +990,6 @@ export default IconForm;`,
           id="keep-login"
         />
         <div class="custom-checkbox w-5 h-5 rounded-[0.25rem] border border-slate-350 flex items-center justify-center transition-all bg-white dark:bg-slate-800 dark:border-slate-600">
-          <!-- Check icon SVG -->
           <svg class="check-icon hidden w-3.5 h-3.5 text-white" stroke="currentColor" stroke-width="3" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
         </div>
         <span class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-white">로그인 유지</span>
@@ -973,8 +1003,7 @@ export default IconForm;`,
     </div>
   </div>
 </div>`,
-      css: `/* 커스텀 체크박스 인터랙션 스타일링 */
-.checkbox-container input[type="checkbox"]:checked ~ .custom-checkbox {
+      css: `.checkbox-container input[type="checkbox"]:checked ~ .custom-checkbox {
   background-color: #3b82f6;
   border-color: #3b82f6;
 }
@@ -992,7 +1021,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('로그인 유지 상태:', e.target.checked);
     });
   }
-  // Lucide 아이콘 활성화
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
@@ -1038,7 +1066,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <input 
           type="email" 
           placeholder="이메일 주소" 
-          class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          class="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
         />
       </div>
       <div class="relative group flex items-center">
@@ -1099,124 +1127,124 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     form4: {
       react: `import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-
-const PersonalInfoForm = () => {
-  const [membership, setMembership] = useState('free');
-
-  return (
-    <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
-      <div className="space-y-6 sm:space-y-8 text-left">
-        
-        {/* Personal Info section */}
-        <div className="space-y-4 sm:space-y-6">
-          <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-[15px]">개인 정보</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">이름</label>
-              <input type="text" placeholder="이름 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
-            </div>
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성</label>
-              <input type="text" placeholder="성 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
-            </div>
-          </div>
-          <div className="space-y-1.5 sm:space-y-2">
-            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성별</label>
-            <div className="relative">
-              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
-                <option>남성</option>
-                <option>여성</option>
-                <option>기타</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-            </div>
-          </div>
-          <div className="space-y-1.5 sm:space-y-2">
-            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">생년월일</label>
-            <input type="date" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
-          </div>
-          <div className="space-y-1.5 sm:space-y-2">
-            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">카테고리</label>
-            <div className="relative">
-              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
-                <option>카테고리 1</option>
-                <option>카테고리 2</option>
-                <option>카테고리 3</option>
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-            </div>
-          </div>
-        </div>
-
-        {/* Address section */}
-        <div className="space-y-4 sm:space-y-6 pt-6 border-t border-slate-100 dark:border-slate-800">
-          <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-[15px]">주소</h4>
-          <div className="space-y-1.5 sm:space-y-2">
-            <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">도로명</label>
-            <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/구/군</label>
-              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
-            </div>
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/도</label>
-              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">우편번호</label>
-              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all text-xs sm:text-sm" />
-            </div>
-            <div className="space-y-1.5 sm:space-y-2">
-              <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">국가</label>
-              <div className="relative">
-                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
-                  <option>대한민국</option>
-                  <option>미국</option>
-                </select>
-                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+      import { ChevronDown } from 'lucide-react';
+      
+      const PersonalInfoForm = () => {
+        const [membership, setMembership] = useState('free');
+      
+        return (
+          <div className="w-full bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-6 transition-colors duration-300">
+            <div className="space-y-6 sm:space-y-8 text-left">
+              
+              {/* Personal Info section */}
+              <div className="space-y-4 sm:space-y-6">
+                <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-[15px]">개인 정보</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">이름</label>
+                    <input type="text" placeholder="이름 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성</label>
+                    <input type="text" placeholder="성 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
+                  </div>
+                </div>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성별</label>
+                  <div className="relative">
+                    <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+                      <option>남성</option>
+                      <option>여성</option>
+                      <option>기타</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                  </div>
+                </div>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">생년월일</label>
+                  <input type="date" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+                </div>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">카테고리</label>
+                  <div className="relative">
+                    <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+                      <option>카테고리 1</option>
+                      <option>카테고리 2</option>
+                      <option>카테고리 3</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                  </div>
+                </div>
               </div>
+      
+              {/* Address section */}
+              <div className="space-y-4 sm:space-y-6 pt-6 border-t border-slate-100 dark:border-slate-800">
+                <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-[15px]">주소</h4>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">도로명</label>
+                  <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/구/군</label>
+                    <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all text-xs sm:text-sm" />
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/도</label>
+                    <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all text-xs sm:text-sm" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">우편번호</label>
+                    <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all text-xs sm:text-sm" />
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">국가</label>
+                    <div className="relative">
+                      <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+                        <option>대한민국</option>
+                        <option>미국</option>
+                      </select>
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                    </div>
+                  </div>
+                </div>
+      
+                <div className="flex items-center gap-6 pt-2">
+                  <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">멤버십:</span>
+                  <div className="flex items-center gap-4">
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <input type="radio" name="membership" value="free" checked={membership === 'free'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
+                      <div className={"w-5 h-5 rounded-full border flex items-center justify-center transition-all " + (membership === 'free' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500')}>
+                         {membership === 'free' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
+                      </div>
+                      <span className="text-xs sm:text-sm font-bold">무료</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <input type="radio" name="membership" value="paid" checked={membership === 'paid'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
+                      <div className={"w-5 h-5 rounded-full border flex items-center justify-center transition-all " + (membership === 'paid' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500')}>
+                        {membership === 'paid' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
+                      </div>
+                      <span className="text-xs sm:text-sm font-bold">유료</span>
+                    </label>
+                  </div>
+                </div>
+      
+                <div className="flex items-center gap-4 pt-4">
+                  <button type="button" className="py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm">
+                    변경사항 저장
+                  </button>
+                  <button type="button" className="py-2.5 px-6 bg-white border border-slate-200 hover:bg-slate-50 text-slate-650 font-semibold rounded-lg transition-colors text-xs sm:text-sm">
+                    취소
+                  </button>
+                </div>
+              </div>
+      
             </div>
           </div>
-
-          <div className="flex items-center gap-6 pt-2">
-            <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">멤버십:</span>
-            <div className="flex items-center gap-4">
-              <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="radio" name="membership" value="free" checked={membership === 'free'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
-                <div className={"w-5 h-5 rounded-full border flex items-center justify-center transition-all " + (membership === 'free' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500')}>
-                   {membership === 'free' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
-                </div>
-                <span className="text-xs sm:text-sm font-bold">무료</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="radio" name="membership" value="paid" checked={membership === 'paid'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
-                <div className={"w-5 h-5 rounded-full border flex items-center justify-center transition-all " + (membership === 'paid' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500')}>
-                  {membership === 'paid' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
-                </div>
-                <span className="text-xs sm:text-sm font-bold">유료</span>
-              </label>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 pt-4">
-            <button type="button" className="py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm">
-              변경사항 저장
-            </button>
-            <button type="button" className="py-2.5 px-6 bg-white border border-slate-200 hover:bg-slate-50 text-slate-650 font-semibold rounded-lg transition-colors text-xs sm:text-sm">
-              취소
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-};
+        );
+      };
 
 export default PersonalInfoForm;`,
       html: `<!-- 상세 개인정보 & 주소 폼 HTML (Tailwind CSS 기반) -->
@@ -1501,7 +1529,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <button type="button" class="py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm">
             변경사항 저장
           </button>
-          <button type="button" class="py-2.5 px-6 bg-white border border-slate-200 hover:bg-slate-50 text-slate-650 font-semibold rounded-lg transition-colors text-xs sm:text-sm">
+          <button type="button" class="py-2.5 px-6 bg-white border border-slate-200 hover:bg-slate-50 text-slate-655 font-semibold rounded-lg transition-colors text-xs sm:text-sm">
             취소
           </button>
         </div>

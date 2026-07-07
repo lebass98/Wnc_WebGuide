@@ -31,6 +31,7 @@ interface FaqSectionWrapperProps {
 
 const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, description, snippet, children }) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
+  const [previewMode, setPreviewMode] = useState<'react' | 'html'>('react');
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
@@ -73,6 +74,27 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
           </div>
 
           <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+
+          {/* 1.5 Preview Mode Switcher (React vs HTML) */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
+                <button
+                  onClick={() => setPreviewMode('react')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                >
+                  React 미리보기
+                </button>
+                <button
+                  onClick={() => setPreviewMode('html')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                >
+                  HTML 미리보기
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
 
           {/* 2. Device Responsive simulation switcher (only for preview) */}
           {activeTab === 'preview' && (
@@ -182,12 +204,22 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
       {/* Frame Container */}
       <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto' : 'w-full'}`}>
         {activeTab === 'preview' ? (
-          /* Live Preview Container with Simulated local Light/Dark class */
-          <div className={theme === 'dark' ? 'dark' : ''}>
-            <div className="bg-white dark:bg-[#0F172A] p-6 sm:p-9 transition-colors duration-300 min-h-[250px] flex flex-col justify-center">
-              {children}
+          previewMode === 'react' ? (
+            /* React Component Live Preview */
+            <div className={theme === 'dark' ? 'dark' : ''}>
+              <div className="bg-white dark:bg-[#0F172A] p-6 sm:p-9 transition-colors duration-300 min-h-[250px] flex flex-col justify-center">
+                {children}
+              </div>
             </div>
-          </div>
+          ) : (
+            /* Static HTML iframe Preview (applying simulated theme) */
+            <iframe
+              srcDoc={theme === 'dark' ? snippet.fullHtml.replace('<body class="', '<body class="dark ') : snippet.fullHtml}
+              title={`${title} HTML Preview`}
+              className="w-full min-h-[400px] border-none bg-white dark:bg-[#0F172A] transition-colors"
+              sandbox="allow-scripts"
+            />
+          )
         ) : (
           /* Code Preview Panel with inner sub-tabs for static HTML */
           <div className="bg-[#0F172A] flex flex-col min-h-[350px]">
