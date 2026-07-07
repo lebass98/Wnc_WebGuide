@@ -1072,7 +1072,7 @@ const MinimalistImageHero = () => {
         description="깔끔한 타이포그래피와 중앙 집중형 레이아웃의 기본형 히어로 섹션입니다."
         snippet={codeSnippets.hero1}
       >
-        <div className="relative isolate px-4 sm:px-6 pt-12 sm:pt-14 bg-white dark:bg-slate-950 min-h-[500px] sm:min-h-[600px] flex flex-col w-full rounded-xl overflow-hidden">
+        <div className="relative isolate px-3 sm:px-6 pt-10 sm:pt-14 bg-white dark:bg-slate-950 min-h-[420px] sm:min-h-[600px] flex flex-col w-full rounded-xl overflow-hidden">
           {/* Navbar */}
           <nav className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
             <div className="flex lg:flex-1">
@@ -1104,7 +1104,7 @@ const MinimalistImageHero = () => {
           </div>
 
           {/* Hero Content */}
-          <div className="mx-auto max-w-2xl py-20 sm:py-28 lg:py-36 text-center animate-in fade-in slide-in-from-bottom-10 duration-1000">
+          <div className="mx-auto max-w-2xl py-12 sm:py-28 lg:py-36 text-center animate-in fade-in slide-in-from-bottom-10 duration-1000">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-4 py-1.5 text-xs sm:text-sm leading-6 text-slate-600 dark:text-slate-400 ring-1 ring-slate-900/10 dark:ring-white/10 hover:ring-slate-900/20 dark:hover:ring-white/20 transition-all flex items-center gap-2">
                 투자 유치 라운드 발표
@@ -1139,7 +1139,7 @@ const MinimalistImageHero = () => {
         description="한눈에 띄는 뱃지와 소셜 신뢰도 증명 리스트를 결합한 좌우 분할식 컴포넌트입니다."
         snippet={codeSnippets.hero2}
       >
-        <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full px-4 sm:px-8 py-10 lg:py-24">
+        <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full px-3 sm:px-8 py-6 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 sm:space-y-8 animate-in slide-in-from-left duration-700 text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
@@ -1160,7 +1160,7 @@ const MinimalistImageHero = () => {
                   <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" /> 데모 영상
                 </button>
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-slate-100 dark:border-slate-800/80">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-4 sm:pt-8 border-t border-slate-100 dark:border-slate-800/80">
                 <div className="flex -space-x-2.5">
                   {[1, 2, 3, 4].map((i) => (
                     <img key={i} src={`https://i.pravatar.cc/150?u=${i}`} alt="사용자" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white dark:border-slate-850" />
@@ -1212,12 +1212,12 @@ const MinimalistImageHero = () => {
         description="다크 모드와 그라디언트 글로우 백드롭으로 고급스러운 브랜드 이미지를 심어주는 레이아웃입니다."
         snippet={codeSnippets.hero3}
       >
-        <section className="relative w-full overflow-hidden bg-slate-950 px-4 sm:px-8 py-12 sm:py-24 text-center">
+        <section className="relative w-full overflow-hidden bg-slate-950 px-4 sm:px-8 py-8 sm:py-24 text-center">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
           </div>
-          <div className="relative z-10 max-w-4xl mx-auto space-y-6 sm:space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div className="relative z-10 max-w-4xl mx-auto space-y-4 sm:space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             <div className="mx-auto w-fit px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center gap-2 text-white/80 text-xs">
               <span className="bg-emerald-500 w-1.5 h-1.5 rounded-full animate-pulse"></span>
               엔터프라이즈 지원. SOC2 준수.
@@ -1236,7 +1236,7 @@ const MinimalistImageHero = () => {
                 영업팀 문의하기
               </button>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 pt-8 sm:pt-12 border-t border-white/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8 pt-5 sm:pt-12 border-t border-white/10">
                {[
                  { val: "99.9%", lab: "가동률" },
                  { val: "24/7", lab: "고객 지원" },
@@ -1261,7 +1261,7 @@ const MinimalistImageHero = () => {
         description="검색 인풋 필드를 상단 중앙에 배치하여 도움말이나 서비스 탐색에 특화된 레이아웃입니다."
         snippet={codeSnippets.hero4}
       >
-        <section className="relative w-full overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 sm:p-10 lg:p-20 shadow-sm">
+        <section className="relative w-full overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-3 sm:p-10 lg:p-20 shadow-sm">
           <div className="absolute top-0 right-0 p-8 opacity-10">
              <Sparkles className="w-64 h-64 text-indigo-500" />
           </div>
@@ -1275,11 +1275,11 @@ const MinimalistImageHero = () => {
               </div>
               <input 
                 type="text" 
-                className="block w-full pl-11 sm:pl-16 pr-24 sm:pr-32 py-4 sm:py-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-3xl text-sm sm:text-lg focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all dark:text-white dark:placeholder:text-slate-500"
-                placeholder="문서, 컴포넌트, 또는 튜토리얼 검색..."
+                className="block w-full pl-10 sm:pl-16 pr-16 sm:pr-32 py-3 sm:py-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-3xl text-xs sm:text-lg focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all dark:text-white dark:placeholder:text-slate-500"
+                placeholder="컴포넌트 검색..."
               />
-              <div className="absolute inset-y-0 right-0 py-2 pr-2 sm:py-3 sm:pr-3 flex items-center">
-                <button className="h-full px-4 sm:px-6 bg-indigo-600 text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all">
+              <div className="absolute inset-y-0 right-0 py-1.5 pr-1.5 sm:py-3 sm:pr-3 flex items-center">
+                <button className="h-full px-3 sm:px-6 bg-indigo-600 text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all">
                   검색
                 </button>
               </div>
@@ -1293,27 +1293,33 @@ const MinimalistImageHero = () => {
               ))}
             </div>
           </div>
-          <div className="mt-10 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 text-left">
-             <div className="p-6 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" />
+          <div className="mt-5 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 text-left">
+             <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group flex sm:flex-col items-start gap-3">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                  <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-emerald-500" />
                 </div>
-                <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2">시작하기</h4>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">프로젝트를 단시간에 시작하고 실행할 수 있는 필수 가이드입니다.</p>
+                <div>
+                  <h4 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white mb-1">시작하기</h4>
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">프로젝트를 단시간에 시작하고 실행할 수 있는 필수 가이드입니다.</p>
+                </div>
              </div>
-             <div className="p-6 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-500" />
+             <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group flex sm:flex-col items-start gap-3">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                  <Users className="w-4 h-4 sm:w-6 sm:h-6 text-indigo-500" />
                 </div>
-                <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2">팀 협업</h4>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">프로젝트 전반에 걸쳐 팀과 역할을 효과적으로 관리하는 방법을 알아보세요.</p>
+                <div>
+                  <h4 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white mb-1">팀 협업</h4>
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">팀과 역할을 효과적으로 관리하는 방법을 알아보세요.</p>
+                </div>
              </div>
-             <div className="p-6 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-                  <Box className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+             <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group flex sm:flex-col items-start gap-3">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                  <Box className="w-4 h-4 sm:w-6 sm:h-6 text-purple-500" />
                 </div>
-                <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2">컴포넌트 라이브러리</h4>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">미리 구축된 아름다운 컴포넌트의 방대한 라이브러리를 둘러보세요.</p>
+                <div>
+                  <h4 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white mb-1">컴포넌트 라이브러리</h4>
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">미리 구축된 컴포넌트 라이브러리를 탐색하세요.</p>
+                </div>
              </div>
           </div>
         </section>
@@ -1327,7 +1333,7 @@ const MinimalistImageHero = () => {
         description="아름다운 사무실 전경 배경을 깔아 입체적인 시인성을 확보하는 정적인 무드의 히어로 섹션입니다."
         snippet={codeSnippets.hero5}
       >
-        <section className="relative h-[380px] sm:h-[500px] lg:h-[550px] w-full rounded-[32px] overflow-hidden group">
+        <section className="relative h-[320px] sm:h-[500px] lg:h-[550px] w-full rounded-[24px] sm:rounded-[32px] overflow-hidden group">
            <img 
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070" 
             alt="사무실" 
@@ -1335,19 +1341,19 @@ const MinimalistImageHero = () => {
            />
            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent"></div>
            <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-center px-6 sm:px-12 md:px-24 max-w-4xl space-y-4 sm:space-y-6 text-left">
-              <h2 className="text-2xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
-                 모든 픽셀에 <br className="hidden sm:block" /> 담긴 우아함.
+              <h2 className="text-xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
+                 모든 픽셀에 담긴 우아함.
               </h2>
-              <p className="text-xs sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-lg">
-                 우리는 단순함과 집중의 힘을 믿습니다. 보이지 않는 곳에서 강력한 도구를 제공하여 여러분의 콘텐츠가 빛날 수 있도록 플랫폼을 설계했습니다.
+              <p className="hidden sm:block text-xs sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-lg">
+                 우리는 단순함과 집중의 힘을 믿습니다. 보이지 않는 곳에서 강력한 도구를 제공합니다.
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
-                 <button className="px-6 py-3 sm:px-10 sm:py-4 bg-indigo-600 text-white rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg hover:-translate-y-1 w-fit">
+              <div className="flex flex-row items-center gap-3 sm:gap-4 pt-1">
+                 <button className="px-4 py-2 sm:px-10 sm:py-4 bg-indigo-600 text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg">
                     무료 체험 시작
                  </button>
-                 <div className="flex items-center gap-2 group/link cursor-pointer text-xs sm:text-sm">
-                    <span className="text-white font-bold group-hover/link:underline">우리의 철학에 대해 자세히 알아보기</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover/link:translate-x-1 transition-transform" />
+                 <div className="flex items-center gap-1 group/link cursor-pointer text-xs">
+                    <span className="text-white font-bold group-hover/link:underline">철학 보기</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white group-hover/link:translate-x-1 transition-transform" />
                  </div>
               </div>
            </div>
