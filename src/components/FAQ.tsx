@@ -5,15 +5,17 @@ import {
   Minus, 
   Info, 
   ChevronRight, 
-  Code, 
+  Monitor, 
+  Smartphone, 
+  Tablet, 
+  Sun, 
+  Moon, 
   Copy, 
   Check, 
-  X,
   FileCode
 } from 'lucide-react';
 
 interface CodeSnippet {
-  title: string;
   react: string;
   html: string;
   css: string;
@@ -21,21 +23,207 @@ interface CodeSnippet {
   fullHtml: string;
 }
 
+interface FaqSectionWrapperProps {
+  title: string;
+  description: string;
+  snippet: CodeSnippet;
+  children: React.ReactNode;
+}
+
+const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, description, snippet, children }) => {
+  const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
+  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
+  const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
+  
+  const [copied, setCopied] = useState(false);
+  const [fullCopied, setFullCopied] = useState(false);
+
+  const handleCopyCode = () => {
+    const textToCopy = codeMode === 'react' ? snippet.react : snippet[htmlSubTab];
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
+
+  const handleCopyFullSource = () => {
+    navigator.clipboard.writeText(snippet.fullHtml).then(() => {
+      setFullCopied(true);
+      setTimeout(() => setFullCopied(false), 1500);
+    });
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* Wrapper Header: Controls Toolbar */}
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 bg-slate-50/50 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/60 shadow-sm">
+        <div>
+          <h3 className="text-base font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
+          <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
+        </div>
+
+        {/* Action Controls Toolbar */}
+        <div className="flex flex-wrap items-center gap-3">
+          {/* 1. Preview/Code toggle tab */}
+          <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
+            <button 
+              onClick={() => setActiveTab('preview')}
+              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              미리보기
+            </button>
+            <button 
+              onClick={() => setActiveTab('code')}
+              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${activeTab === 'code' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              코드 보기
+            </button>
+          </div>
+
+          <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+
+          {/* 2. Device Responsive simulation switcher (only for preview) */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="flex items-center gap-1">
+                <button 
+                  onClick={() => setDevice('desktop')} 
+                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="데스크톱 뷰"
+                >
+                  <Monitor className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => setDevice('tablet')} 
+                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="태블릿 뷰"
+                >
+                  <Tablet className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => setDevice('mobile')} 
+                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="모바일 뷰"
+                >
+                  <Smartphone className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
+
+          {/* 3. Embedded Theme simulator switcher (only for preview) */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="flex items-center gap-1">
+                <button 
+                  onClick={() => setTheme('light')} 
+                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="라이트 모드 테마"
+                >
+                  <Sun className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => setTheme('dark')} 
+                  className={`p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="다크 모드 테마"
+                >
+                  <Moon className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
+
+          {/* 4. Code type toggler (only for code mode) */}
+          {activeTab === 'code' && (
+            <>
+              <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
+                <button
+                  onClick={() => setCodeMode('react')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                >
+                  React
+                </button>
+                <button
+                  onClick={() => setCodeMode('html')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                >
+                  일반 HTML
+                </button>
+              </div>
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
+
+          {/* 5. Copy Actions */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={handleCopyCode}
+              className={`p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
+              title={copied ? "복사 완료!" : "코드 복사"}
+            >
+              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            </button>
+
+            {codeMode === 'html' && activeTab === 'code' && (
+              <button
+                onClick={handleCopyFullSource}
+                className={`p-2 rounded-xl transition-all cursor-pointer ${fullCopied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-emerald-50 text-slate-500 hover:text-emerald-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
+                title={fullCopied ? "전체 소스 복사됨!" : "전체 소스 복사 (바로 실행용)"}
+              >
+                {fullCopied ? <Check className="w-4 h-4" /> : <FileCode className="w-4 h-4" />}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Frame Container */}
+      <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto' : 'w-full'}`}>
+        {activeTab === 'preview' ? (
+          /* Live Preview Container with Simulated local Light/Dark class */
+          <div className={theme === 'dark' ? 'dark' : ''}>
+            <div className="bg-white dark:bg-[#0F172A] p-6 sm:p-9 transition-colors duration-300 min-h-[250px] flex flex-col justify-center">
+              {children}
+            </div>
+          </div>
+        ) : (
+          /* Code Preview Panel with inner sub-tabs for static HTML */
+          <div className="bg-[#0F172A] flex flex-col min-h-[350px]">
+            {/* HTML Mode Sub Tab Bar */}
+            {codeMode === 'html' && (
+              <div className="flex gap-2 px-5 py-2.5 border-b border-slate-800/80 bg-[#141C2F]">
+                {(['html', 'css', 'js'] as const).map(tab => (
+                  <button
+                    key={tab}
+                    onClick={() => setHtmlSubTab(tab)}
+                    className={`px-3 py-1 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer ${htmlSubTab === tab ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                  >
+                    {tab === 'html' ? 'HTML 마크업' : tab === 'css' ? 'CSS 스타일' : 'JS 인터랙션'}
+                  </button>
+                ))}
+              </div>
+            )}
+            
+            {/* Syntax Code block view */}
+            <div className="flex-1 overflow-auto p-6 font-mono text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text max-h-[450px]">
+              <pre className="whitespace-pre">
+                {codeMode === 'react' ? snippet.react : snippet[htmlSubTab]}
+              </pre>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const FAQ: React.FC = () => {
   const [openFaq1, setOpenFaq1] = useState<number | null>(0);
   const [openFaq2, setOpenFaq2] = useState<number | null>(0);
-
-  // Code preview modal states
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSnippet, setSelectedSnippet] = useState<CodeSnippet | null>(null);
-  
-  // 'react' for React version code, 'html' for HTML, CSS, JS version code
-  const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
-  // Sub-tabs when codeMode is 'html'
-  const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
-  
-  const [isCopied, setIsCopied] = useState(false);
-  const [isFullCopied, setIsFullCopied] = useState(false);
 
   const faqData1 = [
     {
@@ -109,7 +297,6 @@ const FAQ: React.FC = () => {
   // Code snippets data map
   const codeSnippets: Record<string, CodeSnippet> = {
     faq1: {
-      title: "FAQ 유형 1 (보더 아코디언)",
       react: `import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -433,34 +620,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-trigger">
-          <span class="faq-question">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
-          <div class="icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-        </button>
-        <div class="faq-content">
-          <div class="faq-answer">
-            네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경하거나 구성을 추가할 수 있습니다.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-trigger">
-          <span class="faq-question">"무제한 프로젝트"는 무슨 뜻인가요?</span>
-          <div class="icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-        </button>
-        <div class="faq-content">
-          <div class="faq-answer">
-            무제한 프로젝트란 본 서비스를 활용하여 진행할 수 있는 웹, 앱 등의 프로젝트 생성 개수에 어떠한 제한도 두지 않는다는 것을 의미합니다. 하나의 라이선스로 원하는 만큼 프로젝트를 구축할 수 있습니다.
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -503,7 +662,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </html>`
     },
     faq2: {
-      title: "FAQ 유형 2 (스위칭 배경 아코디언)",
       react: `import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
@@ -546,7 +704,7 @@ const SwitchingBgFaq = () => {
   
   <div class="faq-group">
     
-    <!-- 항목 1 (활성화 상태 - 연한 인디고 배경) -->
+    <!-- 항목 1 (활성화 상태) -->
     <div class="faq-card active">
       <button class="faq-btn">
         <span class="faq-question">무료 업데이트가 지원되나요?</span>
@@ -559,38 +717,6 @@ const SwitchingBgFaq = () => {
       <div class="faq-content">
         <div class="faq-answer">
           우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 따라서 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 관련된 릴리즈 노트는 업데이트마다 주기적으로 확인하실 수 있습니다.
-        </div>
-      </div>
-    </div>
-
-    <!-- 항목 2 (비활성화 상태) -->
-    <div class="faq-card">
-      <button class="faq-btn">
-        <span class="faq-question">어떤 라이선스가 제게 적합한가요?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-        </svg>
-      </button>
-      <div class="faq-content">
-        <div class="faq-answer">
-          스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
-        </div>
-      </div>
-    </div>
-
-    <!-- 항목 3 (비활성화 상태) -->
-    <div class="faq-card">
-      <button class="faq-btn">
-        <span class="faq-question">가격 정책에 언급된 "시트(Seats)"는 무엇인가요?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-        </svg>
-      </button>
-      <div class="faq-content">
-        <div class="faq-answer">
-          시트(Seats)는 대시보드 관리자 페이지에 접근하거나 프로젝트 개발에 직접 참여하는 개발자 혹은 관리자 계정의 수를 의미합니다.
         </div>
       </div>
     </div>
@@ -722,7 +848,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const isActive = card.classList.contains('active');
 
-      // 다른 열려있는 모든 카드 닫기
       cards.forEach((otherCard) => {
         otherCard.classList.remove('active');
         const otherContent = otherCard.querySelector('.faq-content');
@@ -730,7 +855,6 @@ document.addEventListener('DOMContentLoaded', () => {
         otherContent.style.opacity = '0';
       });
 
-      // 현재 누른 것 열어주기
       if (!isActive) {
         card.classList.add('active');
         content.style.maxHeight = content.scrollHeight + 'px';
@@ -769,7 +893,6 @@ document.addEventListener('DOMContentLoaded', () => {
       color: #0f172a;
       margin-bottom: 24px;
     }
-    
     .faq-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -822,7 +945,6 @@ document.addEventListener('DOMContentLoaded', () => {
       line-height: 1.6;
       color: #64748b;
     }
-    
     .faq-card.active .faq-btn {
       background-color: #e0e7ff;
     }
@@ -844,13 +966,10 @@ document.addEventListener('DOMContentLoaded', () => {
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="title">자주 묻는 질문 (FAQ) - 배경 스위칭 테마</div>
-
     <div class="faq-grid">
       <div class="faq-group">
-        
         <div class="faq-card active">
           <button class="faq-btn">
             <span class="faq-question">무료 업데이트가 지원되나요?</span>
@@ -865,66 +984,27 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         </div>
-
-        <div class="faq-card">
-          <button class="faq-btn">
-            <span class="faq-question">어떤 라이선스가 제게 적합한가요?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="faq-answer">
-              스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-card">
-          <button class="faq-btn">
-            <span class="faq-question">가격 정책에 언급된 "시트(Seats)"는 무엇인가요?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="math-icon">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
-            </svg>
-          </button>
-          <div class="faq-content">
-            <div class="faq-answer">
-              시트(Seats)는 대시보드 관리자 페이지에 접근하거나 프로젝트 개발에 직접 참여하는 개발자 혹은 관리자 계정의 수를 의미합니다.
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const cards = document.querySelectorAll('.faq-card');
-
       cards.forEach((card) => {
         const btn = card.querySelector('.faq-btn');
         const content = card.querySelector('.faq-content');
-
         if (card.classList.contains('active')) {
           content.style.maxHeight = content.scrollHeight + 'px';
           content.style.opacity = '1';
         }
-
         btn.addEventListener('click', () => {
           const isActive = card.classList.contains('active');
-
-          // 다른 열려있는 모든 카드 닫기
           cards.forEach((otherCard) => {
             otherCard.classList.remove('active');
             const otherContent = otherCard.querySelector('.faq-content');
             otherContent.style.maxHeight = '0px';
             otherContent.style.opacity = '0';
           });
-
-          // 현재 누른 것 열어주기
           if (!isActive) {
             card.classList.add('active');
             content.style.maxHeight = content.scrollHeight + 'px';
@@ -938,15 +1018,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </html>`
     },
     faq3: {
-      title: "FAQ 유형 3 (아이콘 정보형 플랫 리스트)",
       react: `import React from 'react';
 import { Info } from 'lucide-react';
 
 const FlatIconFaq = () => {
   const faqData = [
     { question: "무료 업데이트가 지원되나요?", answer: "우리의 서비스는 지속적인 개선을 목표로..." },
-    { question: "대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?", answer: "네, 대시보드는 모듈화되어 있으며..." },
-    { question: "어떤 라이선스가 제게 적합한가요?", answer: "개인 개발자라면 기본 라이선스를..." }
+    { question: "대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?", answer: "네, 대시보드는 모듈화되어 있으며..." }
   ];
 
   return (
@@ -972,7 +1050,6 @@ const FlatIconFaq = () => {
       html: `<!-- FAQ 유형 3 (플랫 아이콘 그리드 마크업) -->
 <div class="faq-grid-list">
   
-  <!-- 항목 1 -->
   <div class="faq-grid-item">
     <div class="icon-wrapper">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -981,19 +1058,6 @@ const FlatIconFaq = () => {
       <h4 class="faq-grid-title">무료 업데이트가 지원되나요?</h4>
       <p class="faq-grid-desc">
         우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내에는 모든 주요 업데이트 및 패치를 무료로 제공받으실 수 있습니다. 기능 개선 사항을 주기적으로 고객님께 안내해 드립니다.
-      </p>
-    </div>
-  </div>
-
-  <!-- 항목 2 -->
-  <div class="faq-grid-item">
-    <div class="icon-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    </div>
-    <div class="faq-text-group">
-      <h4 class="faq-grid-title">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</h4>
-      <p class="faq-grid-desc">
-        네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다.
       </p>
     </div>
   </div>
@@ -1096,7 +1160,6 @@ const FlatIconFaq = () => {
       color: #0f172a;
       margin-bottom: 32px;
     }
-    
     .faq-grid-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1143,12 +1206,9 @@ const FlatIconFaq = () => {
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="title">자주 묻는 질문 (FAQ) - 플랫 아이콘 그리드</div>
-
     <div class="faq-grid-list">
-      
       <div class="faq-grid-item">
         <div class="icon-wrapper">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -1160,71 +1220,15 @@ const FlatIconFaq = () => {
           </p>
         </div>
       </div>
-
-      <div class="faq-grid-item">
-        <div class="icon-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        </div>
-        <div class="faq-text-group">
-          <h4 class="faq-grid-title">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</h4>
-          <p class="faq-grid-desc">
-            네, 대시보드는 모듈화되어 있으며, 각 컴포넌트들을 필요와 설정에 맞춰서 수정할 수 있도록 설계되어 있습니다. 손쉽게 디자인을 변경할 수 있습니다.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-grid-item">
-        <div class="icon-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        </div>
-        <div class="faq-text-group">
-          <h4 class="faq-grid-title">어떤 라이선스가 제게 적합한가요?</h4>
-          <p class="faq-grid-desc">
-            스타트업이나 소규모 팀인 경우 스탠다드 라이선스가 적합하며, 다수의 프로젝트와 여러 명의 협업 개발자가 있는 대규모 에이전시나 엔터프라이즈의 경우 팀 혹은 엔터프라이즈 라이선스를 권장합니다.
-          </p>
-        </div>
-      </div>
-
     </div>
   </div>
-
 </body>
 </html>`
     }
   };
 
-  const openCodeModal = (snippetKey: string) => {
-    setSelectedSnippet(codeSnippets[snippetKey]);
-    setCodeMode('react');
-    setHtmlSubTab('html');
-    setIsCopied(false);
-    setIsFullCopied(false);
-    setIsModalOpen(true);
-  };
-
-  const handleCopyCode = () => {
-    if (!selectedSnippet) return;
-    const textToCopy = codeMode === 'react' ? selectedSnippet.react : selectedSnippet[htmlSubTab];
-    navigator.clipboard.writeText(textToCopy).then(() => {
-      setIsCopied(true);
-      setTimeout(() => {
-        setIsCopied(false);
-      }, 1500);
-    });
-  };
-
-  const handleCopyFullSource = () => {
-    if (!selectedSnippet) return;
-    navigator.clipboard.writeText(selectedSnippet.fullHtml).then(() => {
-      setIsFullCopied(true);
-      setTimeout(() => {
-        setIsFullCopied(false);
-      }, 1500);
-    });
-  };
-
   return (
-    <div className="space-y-10 pb-10 font-sans relative">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -1241,23 +1245,13 @@ const FlatIconFaq = () => {
         </div>
       </div>
 
-      {/* FAQ Type 1 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        {/* Header flex row (Responsive layout) */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-50 dark:border-slate-800/60">
-          <div>
-            <h3 className="text-base font-bold text-slate-800 dark:text-white">FAQ 유형 1</h3>
-            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">기본형 보더 아코디언 스타일 레이아웃입니다.</p>
-          </div>
-          <button
-            onClick={() => openCodeModal('faq1')}
-            className="rounded-lg bg-indigo-600 dark:bg-white px-4 py-2 text-center text-xs font-bold leading-6 text-white dark:text-indigo-600 shadow-md hover:bg-indigo-500 dark:hover:bg-blue-50 hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-1.5 cursor-pointer"
-          >
-            <Code className="w-3.5 h-3.5" />
-            코드 보기
-          </button>
-        </div>
-        <div className="space-y-4">
+      {/* FAQ Variation 1 */}
+      <FaqSectionWrapper 
+        title="FAQ 유형 1" 
+        description="기본형 보더 아코디언 스타일 레이아웃입니다."
+        snippet={codeSnippets.faq1}
+      >
+        <div className="space-y-4 w-full">
           {faqData1.map((item, idx) => (
             <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
               <button 
@@ -1277,25 +1271,17 @@ const FlatIconFaq = () => {
             </div>
           ))}
         </div>
-      </div>
+      </FaqSectionWrapper>
 
-      {/* FAQ Type 2 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        {/* Header flex row (Responsive layout) */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-50 dark:border-slate-800/60">
-          <div>
-            <h3 className="text-base font-bold text-slate-800 dark:text-white">FAQ 유형 2</h3>
-            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">배경색이 반전 스위칭되는 미려한 아코디언 스타일입니다.</p>
-          </div>
-          <button
-            onClick={() => openCodeModal('faq2')}
-            className="rounded-lg bg-indigo-600 dark:bg-white px-4 py-2 text-center text-xs font-bold leading-6 text-white dark:text-indigo-600 shadow-md hover:bg-indigo-500 dark:hover:bg-blue-50 hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-1.5 cursor-pointer"
-          >
-            <Code className="w-3.5 h-3.5" />
-            코드 보기
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
+
+      {/* FAQ Variation 2 */}
+      <FaqSectionWrapper 
+        title="FAQ 유형 2" 
+        description="배경색이 반전 스위칭되는 미려한 아코디언 스타일입니다."
+        snippet={codeSnippets.faq2}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start w-full">
           <div className="space-y-4">
             {faqData2.slice(0, 3).map((item, idx) => (
               <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
@@ -1344,25 +1330,17 @@ const FlatIconFaq = () => {
             })}
           </div>
         </div>
-      </div>
+      </FaqSectionWrapper>
 
-      {/* FAQ Type 3 */}
-      <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 sm:p-9">
-        {/* Header flex row (Responsive layout) */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-50 dark:border-slate-800/60">
-          <div>
-            <h3 className="text-base font-bold text-slate-800 dark:text-white">FAQ 유형 3</h3>
-            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">아이콘을 결합하여 가벼운 정보 전달력을 높인 플랫 리스트입니다.</p>
-          </div>
-          <button
-            onClick={() => openCodeModal('faq3')}
-            className="rounded-lg bg-indigo-600 dark:bg-white px-4 py-2 text-center text-xs font-bold leading-6 text-white dark:text-indigo-600 shadow-md hover:bg-indigo-500 dark:hover:bg-blue-50 hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-1.5 cursor-pointer"
-          >
-            <Code className="w-3.5 h-3.5" />
-            코드 보기
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
+
+      {/* FAQ Variation 3 */}
+      <FaqSectionWrapper 
+        title="FAQ 유형 3" 
+        description="아이콘을 결합하여 가벼운 정보 전달력을 높인 플랫 리스트입니다."
+        snippet={codeSnippets.faq3}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full">
           {faqData3.map((item, idx) => (
             <div key={idx} className="flex gap-4">
               <div className="shrink-0 pt-1">
@@ -1384,153 +1362,7 @@ const FlatIconFaq = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Code Previewer Modal (Mac-style look) */}
-      {isModalOpen && selectedSnippet && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-          <div 
-            className="bg-white dark:bg-[#1E293B] rounded-2xl w-full max-w-4xl h-[620px] shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col overflow-hidden animate-zoom-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Mac Header */}
-            <div className="bg-slate-50 dark:bg-[#0F172A] px-5 py-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                {/* Simulated Mac Buttons */}
-                <span className="w-3.5 h-3.5 rounded-full bg-rose-500 block hover:opacity-85 cursor-pointer" onClick={() => setIsModalOpen(false)}></span>
-                <span className="w-3.5 h-3.5 rounded-full bg-amber-400 block"></span>
-                <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 block"></span>
-                <span className="text-[13px] font-bold text-slate-600 dark:text-slate-400 ml-3">
-                  {selectedSnippet.title}
-                </span>
-              </div>
-
-              {/* Major Toggle Switch: React vs HTML */}
-              <div className="flex items-center gap-4 mr-4">
-                <div className="inline-flex rounded-xl bg-slate-200 dark:bg-slate-800 p-1 border border-slate-300/40 dark:border-slate-700/60">
-                  <button
-                    onClick={() => {
-                      setCodeMode('react');
-                      setIsCopied(false);
-                      setIsFullCopied(false);
-                    }}
-                    className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer ${
-                      codeMode === 'react'
-                        ? 'bg-[#4B62FA] text-white shadow-md'
-                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white'
-                    }`}
-                  >
-                    React 버전
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCodeMode('html');
-                      setIsCopied(false);
-                      setIsFullCopied(false);
-                    }}
-                    className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer ${
-                      codeMode === 'html'
-                        ? 'bg-[#4B62FA] text-white shadow-md'
-                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white'
-                    }`}
-                  >
-                    일반 HTML
-                  </button>
-                </div>
-
-                <button 
-                  onClick={() => setIsModalOpen(false)}
-                  className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Modal Body: Tabs and Code Viewer */}
-            <div className="flex-1 flex flex-col min-h-0 bg-[#0F172A]">
-              {/* Tab Selector Row */}
-              <div className="flex items-center justify-between px-6 py-3 border-b border-slate-800/80 bg-[#141C2F]">
-                <div className="flex gap-4">
-                  {codeMode === 'react' ? (
-                    // React Mode info tag
-                    <span className="text-[11px] font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-lg border border-indigo-500/20 uppercase tracking-wide">
-                      REACT COMPONENT SOURCE
-                    </span>
-                  ) : (
-                    // HTML Mode sub-tabs (HTML, CSS, JS)
-                    (['html', 'css', 'js'] as const).map(tab => (
-                      <button
-                        key={tab}
-                        onClick={() => {
-                          setHtmlSubTab(tab);
-                          setIsCopied(false);
-                          setIsFullCopied(false);
-                        }}
-                        className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
-                          htmlSubTab === tab 
-                            ? 'bg-slate-700 text-white shadow-sm' 
-                            : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
-                        }`}
-                      >
-                        {tab === 'html' ? 'HTML 마크업' : tab === 'css' ? 'CSS 스타일' : 'JS 인터랙션'}
-                      </button>
-                    ))
-                  )}
-                </div>
-
-                {/* Double Copy Buttons Group */}
-                <div className="flex items-center gap-2">
-                  {/* Tab Code Copy Button */}
-                  <button
-                    onClick={handleCopyCode}
-                    className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4B62FA]/10 hover:bg-[#4B62FA]/25 text-indigo-400 hover:text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
-                  >
-                    {isCopied ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-emerald-400 animate-scale-up" />
-                        <span className="text-emerald-400">복사 완료</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        코드 복사
-                      </>
-                    )}
-                  </button>
-
-                  {/* HTML Single-File Full Copy Button */}
-                  {codeMode === 'html' && (
-                    <button
-                      onClick={handleCopyFullSource}
-                      className="flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/25 text-emerald-400 hover:text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
-                    >
-                      {isFullCopied ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-400 animate-scale-up" />
-                          <span className="text-emerald-400 font-extrabold">전체 소스 복증됨</span>
-                        </>
-                      ) : (
-                        <>
-                          <FileCode className="w-3.5 h-3.5" />
-                          전체 소스 복사 (바로 실행용)
-                        </>
-                      )}
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Code Pre Container */}
-              <div className="flex-1 overflow-auto p-6 font-mono text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text">
-                <pre className="whitespace-pre">
-                  {codeMode === 'react' ? selectedSnippet.react : selectedSnippet[htmlSubTab]}
-                </pre>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      </FaqSectionWrapper>
     </div>
   );
 };
