@@ -1220,7 +1220,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   return (
-    <div className="space-y-10 pb-10 font-sans">
+    <div className="space-y-6 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -1236,6 +1236,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       </div>
+
+      {/* FAQ Sections Grid */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
 
       {/* FAQ Variation 1 */}
       <FaqSectionWrapper 
@@ -1264,8 +1267,6 @@ document.addEventListener('DOMContentLoaded', () => {
           ))}
         </div>
       </FaqSectionWrapper>
-
-      <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* FAQ Variation 2 */}
       <FaqSectionWrapper 
@@ -1324,8 +1325,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </FaqSectionWrapper>
 
-      <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
-
       {/* FAQ Variation 3 */}
       <FaqSectionWrapper 
         title="FAQ 유형 3" 
@@ -1355,6 +1354,8 @@ document.addEventListener('DOMContentLoaded', () => {
           ))}
         </div>
       </FaqSectionWrapper>
+
+      </div>{/* end grid */}
     </div>
   );
 };
