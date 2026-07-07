@@ -548,7 +548,7 @@ const FlatIconFaq = () => {
       {isModalOpen && selectedSnippet && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
           <div 
-            className="bg-white dark:bg-[#1E293B] rounded-2xl w-full max-w-4xl max-h-[85vh] shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col overflow-hidden animate-zoom-in"
+            className="bg-white dark:bg-[#1E293B] rounded-2xl w-full max-w-4xl h-[620px] shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col overflow-hidden animate-zoom-in"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Mac Header */}
