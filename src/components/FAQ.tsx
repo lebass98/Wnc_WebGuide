@@ -16,6 +16,7 @@ interface CodeSnippet {
   react: string;
   html: string;
   css: string;
+  js: string;
 }
 
 const FAQ: React.FC = () => {
@@ -25,7 +26,11 @@ const FAQ: React.FC = () => {
   // Code preview modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSnippet, setSelectedSnippet] = useState<CodeSnippet | null>(null);
-  const [activeTab, setActiveTab] = useState<'react' | 'html' | 'css'>('react');
+  
+  // 'react' for React version code, 'html' for HTML, CSS, JS version code
+  const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
+  // Sub-tabs when codeMode is 'html'
+  const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
   const [isCopied, setIsCopied] = useState(false);
 
   const faqData1 = [
@@ -177,7 +182,27 @@ const BorderAccordionFaq = () => {
 .rotate-180 { transform: rotate(180deg); }
 .max-h-96 { max-height: 24rem; }
 .max-h-0 { max-height: 0px; }
-.overflow-hidden { overflow: hidden; }`
+.overflow-hidden { overflow: hidden; }`,
+      js: `// Vanilla JavaScript 아코디언 토글 제어 이벤트 바인딩
+document.querySelectorAll('.faq-trigger').forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.parentElement;
+    const content = item.querySelector('.faq-content');
+    const circle = button.querySelector('.icon-circle');
+    
+    const isActive = item.classList.toggle('active');
+    
+    if (isActive) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      circle.style.transform = 'rotate(180deg)';
+    } else {
+      content.style.maxHeight = '0px';
+      content.style.opacity = '0';
+      circle.style.transform = 'rotate(0deg)';
+    }
+  });
+});`
     },
     faq2: {
       title: "FAQ 유형 2 (스위칭 배경 아코디언)",
@@ -253,7 +278,26 @@ const SwitchingBgFaq = () => {
 .dark .dark\\:bg-indigo-500\\/10 { background-color: rgba(99, 102, 241, 0.1); }
 .bg-slate-50 { background-color: #f8fafc; }
 .dark .dark\\:bg-slate-800 { background-color: #1e293b; }
-.transition-colors { transition-property: background-color, border-color, color, fill, stroke; }`
+.transition-colors { transition-property: background-color, border-color, color, fill, stroke; }`,
+      js: `// Vanilla JavaScript 버튼 클릭 플러스/마이너스 스위칭 제어
+document.querySelectorAll('.faq-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.parentElement;
+    const content = card.querySelector('.faq-content');
+    
+    const isOpen = card.classList.toggle('active');
+    
+    if (isOpen) {
+      button.style.backgroundColor = '#e0e7ff';
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+    } else {
+      button.style.backgroundColor = '#f8fafc';
+      content.style.maxHeight = '0px';
+      content.style.opacity = '0';
+    }
+  });
+});`
     },
     faq3: {
       title: "FAQ 유형 3 (아이콘 정보형 플랫 리스트)",
@@ -325,20 +369,22 @@ const FlatIconFaq = () => {
 .shrink-0 { flex-shrink: 0; }
 .border-slate-200 { border-color: #e2e8f0; }
 .text-slate-400 { color: #94a3b8; }
-.gap-4 { gap: 1rem; }`
+.gap-4 { gap: 1rem; }`,
+      js: `// 플랫형 질문 리스트는 일반 정적 마크업으로 별도 JS 로직이 관여하지 않습니다.`
     }
   };
 
   const openCodeModal = (snippetKey: string) => {
     setSelectedSnippet(codeSnippets[snippetKey]);
-    setActiveTab('react'); // React 버전이 기본 표시되도록 설정
+    setCodeMode('react'); // 기본 모드는 React로 지정
+    setHtmlSubTab('html'); // HTML 모드 서브탭 초기화
     setIsCopied(false);
     setIsModalOpen(true);
   };
 
   const handleCopyCode = () => {
     if (!selectedSnippet) return;
-    const textToCopy = selectedSnippet[activeTab];
+    const textToCopy = codeMode === 'react' ? selectedSnippet.react : selectedSnippet[htmlSubTab];
     navigator.clipboard.writeText(textToCopy).then(() => {
       setIsCopied(true);
       setTimeout(() => {
@@ -512,44 +558,86 @@ const FlatIconFaq = () => {
                 <span className="w-3.5 h-3.5 rounded-full bg-rose-500 block hover:opacity-85 cursor-pointer" onClick={() => setIsModalOpen(false)}></span>
                 <span className="w-3.5 h-3.5 rounded-full bg-amber-400 block"></span>
                 <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 block"></span>
-                <span className="text-[13px] font-bold text-slate-600 dark:text-slate-400 ml-3 hidden sm:inline">
+                <span className="text-[13px] font-bold text-slate-600 dark:text-slate-400 ml-3">
                   {selectedSnippet.title}
                 </span>
               </div>
-              <button 
-                onClick={() => setIsModalOpen(false)}
-                className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
+
+              {/* Major Toggle Switch: React vs HTML */}
+              <div className="flex items-center gap-4 mr-4">
+                <div className="inline-flex rounded-xl bg-slate-200 dark:bg-slate-800 p-1 border border-slate-300/40 dark:border-slate-700/60">
+                  <button
+                    onClick={() => {
+                      setCodeMode('react');
+                      setIsCopied(false);
+                    }}
+                    className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer ${
+                      codeMode === 'react'
+                        ? 'bg-[#4B62FA] text-white shadow-md'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white'
+                    }`}
+                  >
+                    React 버전
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCodeMode('html');
+                      setIsCopied(false);
+                    }}
+                    className={`px-3 py-1 rounded-lg text-xs font-black transition-all cursor-pointer ${
+                      codeMode === 'html'
+                        ? 'bg-[#4B62FA] text-white shadow-md'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white'
+                    }`}
+                  >
+                    일반 HTML
+                  </button>
+                </div>
+
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
             {/* Modal Body: Tabs and Code Viewer */}
             <div className="flex-1 flex flex-col min-h-0 bg-[#0F172A]">
-              {/* Tab Selector Row */}
+              {/* Tab Selector Row (Only shown when codeMode is 'html') */}
               <div className="flex items-center justify-between px-6 py-3 border-b border-slate-800/80 bg-[#141C2F]">
                 <div className="flex gap-4">
-                  {(['react', 'html', 'css'] as const).map(tab => (
-                    <button
-                      key={tab}
-                      onClick={() => {
-                        setActiveTab(tab);
-                        setIsCopied(false);
-                      }}
-                      className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
-                        activeTab === tab 
-                          ? 'bg-[#4B62FA] text-white' 
-                          : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
-                      }`}
-                    >
-                      {tab === 'react' ? 'React 버전' : tab === 'html' ? '일반 HTML' : 'CSS 스타일'}
-                    </button>
-                  ))}
+                  {codeMode === 'react' ? (
+                    // React Mode info tag
+                    <span className="text-[11px] font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1.5 rounded-lg border border-indigo-500/20 uppercase tracking-wide">
+                      REACT COMPONENT SOURCE
+                    </span>
+                  ) : (
+                    // HTML Mode sub-tabs (HTML, CSS, JS)
+                    (['html', 'css', 'js'] as const).map(tab => (
+                      <button
+                        key={tab}
+                        onClick={() => {
+                          setHtmlSubTab(tab);
+                          setIsCopied(false);
+                        }}
+                        className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
+                          htmlSubTab === tab 
+                            ? 'bg-slate-700 text-white shadow-sm' 
+                            : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                        }`}
+                      >
+                        {tab === 'html' ? 'HTML 마크업' : tab === 'css' ? 'CSS 스타일' : 'JS 인터랙션'}
+                      </button>
+                    ))
+                  )}
                 </div>
+
                 {/* Copy Button */}
                 <button
                   onClick={handleCopyCode}
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4B62FA]/10 hover:bg-[#4B62FA]/25 text-indigo-400 hover:text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
                 >
                   {isCopied ? (
                     <>
@@ -567,7 +655,9 @@ const FlatIconFaq = () => {
 
               {/* Code Pre Container */}
               <div className="flex-1 overflow-auto p-6 font-mono text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text">
-                <pre className="whitespace-pre">{selectedSnippet[activeTab]}</pre>
+                <pre className="whitespace-pre">
+                  {codeMode === 'react' ? selectedSnippet.react : selectedSnippet[htmlSubTab]}
+                </pre>
               </div>
             </div>
           </div>
