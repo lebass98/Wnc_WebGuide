@@ -13,9 +13,9 @@ import {
 
 interface CodeSnippet {
   title: string;
+  react: string;
   html: string;
   css: string;
-  js: string;
 }
 
 const FAQ: React.FC = () => {
@@ -25,7 +25,7 @@ const FAQ: React.FC = () => {
   // Code preview modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSnippet, setSelectedSnippet] = useState<CodeSnippet | null>(null);
-  const [activeTab, setActiveTab] = useState<'html' | 'css' | 'js'>('html');
+  const [activeTab, setActiveTab] = useState<'react' | 'html' | 'css'>('react');
   const [isCopied, setIsCopied] = useState(false);
 
   const faqData1 = [
@@ -101,27 +101,74 @@ const FAQ: React.FC = () => {
   const codeSnippets: Record<string, CodeSnippet> = {
     faq1: {
       title: "FAQ 유형 1 (보더 아코디언)",
-      html: `<div className="space-y-4">
-  {faqData.map((item, idx) => (
-    <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
-      <button 
-        onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-        className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-      >
-        <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
-        <div className={\`w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300 \${openIdx === idx ? 'rotate-180' : ''}\`}>
-          <ChevronDown className="w-4 h-4 text-slate-500" />
+      react: `import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+const BorderAccordionFaq = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const faqData = [
+    { question: "무료 업데이트가 지원되나요?", answer: "..." },
+    { question: "대시보드 커스터마이징 가능 여부", answer: "..." }
+  ];
+  
+  return (
+    <div className="space-y-4">
+      {faqData.map((item, idx) => (
+        <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
+          <button 
+            onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+            className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          >
+            <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
+            <div className={\`w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-transform duration-300 \${openIdx === idx ? 'rotate-180' : ''}\`}>
+              <ChevronDown className="w-4 h-4 text-slate-500" />
+            </div>
+          </button>
+          <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
+            <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
+              {item.answer}
+            </div>
+          </div>
         </div>
-      </button>
-      <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
-        <div className="p-6 pt-0 text-sm leading-relaxed text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800">
-          {item.answer}
-        </div>
+      ))}
+    </div>
+  );
+};`,
+      html: `<!-- 일반 정적 HTML 마크업 (3개 항목 펼침 버전) -->
+<div class="faq-container" style="display: flex; flex-direction: column; gap: 16px;">
+  
+  <!-- 항목 1 (활성화 상태) -->
+  <div class="faq-item active" style="border: 1px solid #f1f5f9; border-radius: 8px; overflow: hidden; transition: all 0.3s ease;">
+    <button class="faq-trigger" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px; border: none; background: transparent; text-align: left; cursor: pointer;">
+      <span style="font-weight: 700; color: #1e293b;">무료 업데이트가 지원되나요?</span>
+      <div class="icon-circle" style="width: 32px; height: 32px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; transform: rotate(180deg); transition: transform 0.3s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </button>
+    <div class="faq-content" style="max-height: 400px; opacity: 1; transition: all 0.3s ease; border-top: 1px solid #f1f5f9;">
+      <div style="padding: 24px; padding-top: 0px; font-size: 14px; line-height: 1.6; color: #64748b;">
+        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내 모든 주요 패치를 무료 제공합니다.
       </div>
     </div>
-  ))}
+  </div>
+
+  <!-- 항목 2 (비활성화 상태) -->
+  <div class="faq-item" style="border: 1px solid #f1f5f9; border-radius: 8px; overflow: hidden; transition: all 0.3s ease;">
+    <button class="faq-trigger" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px; border: none; background: transparent; text-align: left; cursor: pointer;">
+      <span style="font-weight: 700; color: #1e293b;">대시보드를 제 필요에 맞게 커스터마이징할 수 있나요?</span>
+      <div class="icon-circle" style="width: 32px; height: 32px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; transform: rotate(0deg); transition: transform 0.3s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </button>
+    <div class="faq-content" style="max-height: 0px; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
+      <div style="padding: 24px; padding-top: 0px; font-size: 14px; line-height: 1.6; color: #64748b;">
+        네, 모듈화되어 있으며, 각 컴포넌트들을 설정에 맞춰 수정할 수 있도록 정교하게 설계되어 있습니다.
+      </div>
+    </div>
+  </div>
+
 </div>`,
-      css: `/* Tailwind CSS Utility Classes */
+      css: `/* CSS / Tailwind CSS Utility Classes */
 .border-slate-100 { border-color: #f1f5f9; }
 .dark .dark\\:border-slate-800 { border-color: #1e293b; }
 .rounded-lg { border-radius: 0.5rem; }
@@ -130,104 +177,161 @@ const FAQ: React.FC = () => {
 .rotate-180 { transform: rotate(180deg); }
 .max-h-96 { max-height: 24rem; }
 .max-h-0 { max-height: 0px; }
-.overflow-hidden { overflow: hidden; }`,
-      js: `import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-
-const AccordionFaq = () => {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
-  const faqData = [...]; // 질문 답변 데이터 배열
-  
-  return (
-    // HTML 구조 매핑...
-  );
-};`
+.overflow-hidden { overflow: hidden; }`
     },
     faq2: {
       title: "FAQ 유형 2 (스위칭 배경 아코디언)",
-      html: `<div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-  <div className="space-y-4">
-    {faqData.map((item, idx) => (
-      <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
-        <button 
-          onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-          className={\`w-full flex items-center justify-between p-5 text-left transition-colors \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}\`}
-        >
-          <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
-          {openIdx === idx ? (
-            <Minus className="w-4 h-4 text-slate-600" />
-          ) : (
-            <Plus className="w-4 h-4 text-slate-600" />
-          )}
-        </button>
-        <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
-          <div className={\`p-5 pt-2 text-sm leading-relaxed text-slate-500 \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}\`}>
-            {item.answer}
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>`,
-      css: `/* Tailwind CSS Utility Classes */
-.bg-indigo-50 { background-color: #e0e7ff; }
-.dark .dark\\:bg-indigo-500\\/10 { background-color: rgba(99, 102, 241, 0.1); }
-.bg-slate-50 { background-color: #f8fafc; }
-.dark .dark\\:bg-slate-800 { background-color: #1e293b; }
-.transition-colors { transition-property: background-color, border-color, color, fill, stroke; }`,
-      js: `import React, { useState } from 'react';
+      react: `import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
 const SwitchingBgFaq = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
-  const faqData = [...]; // 질문 답변 데이터 배열
+  const faqData = [
+    { question: "무료 업데이트가 지원되나요?", answer: "..." },
+    { question: "어떤 라이선스가 제게 적합한가요?", answer: "..." }
+  ];
 
   return (
-    // HTML 구조 매핑...
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <div className="space-y-4">
+        {faqData.map((item, idx) => (
+          <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
+            <button 
+              onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+              className={\`w-full flex items-center justify-between p-5 text-left transition-colors \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}\`}
+            >
+              <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
+              {openIdx === idx ? (
+                <Minus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+              ) : (
+                <Plus className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+              )}
+            </button>
+            <div className={\`transition-all duration-300 ease-in-out \${openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden\`}>
+              <div className={\`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 \${openIdx === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}\`}>
+                {item.answer}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
-};`
+};`,
+      html: `<!-- 일반 정적 HTML 마크업 (배경 스위칭 테마형) -->
+<div class="faq-switching-container" style="display: grid; grid-template-cols: 1fr; gap: 16px;">
+  
+  <!-- 활성화된 카드 (연한 보라/인디고 배경) -->
+  <div class="faq-card active" style="border-radius: 8px; overflow: hidden; transition: background 0.3s;">
+    <button class="faq-btn" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px; border: none; background: #e0e7ff; text-align: left; cursor: pointer;">
+      <span style="font-weight: 700; color: #1e293b;">무료 업데이트가 지원되나요?</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <div class="faq-content" style="max-height: 400px; opacity: 1; background: #e0e7ff;">
+      <div style="padding: 20px; padding-top: 8px; font-size: 14px; line-height: 1.6; color: #4f46e5;">
+        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내 패치를 무료로 제공받으실 수 있습니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 비활성화된 카드 (회색 배경) -->
+  <div class="faq-card" style="border-radius: 8px; overflow: hidden; transition: background 0.3s;">
+    <button class="faq-btn" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px; border: none; background: #f8fafc; text-align: left; cursor: pointer;">
+      <span style="font-weight: 700; color: #1e293b;">어떤 라이선스가 제게 적합한가요?</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+    <div class="faq-content" style="max-height: 0px; opacity: 0; overflow: hidden;">
+      <div style="padding: 20px; padding-top: 8px; font-size: 14px; line-height: 1.6; color: #64748b;">
+        소규모 팀의 경우 스탠다드 라이선스가 좋으며, 대규모 기업의 경우 엔터프라이즈 라이선스를 추천합니다.
+      </div>
+    </div>
+  </div>
+
+</div>`,
+      css: `/* CSS / Tailwind CSS Utility Classes */
+.bg-indigo-50 { background-color: #e0e7ff; }
+.dark .dark\\:bg-indigo-500\\/10 { background-color: rgba(99, 102, 241, 0.1); }
+.bg-slate-50 { background-color: #f8fafc; }
+.dark .dark\\:bg-slate-800 { background-color: #1e293b; }
+.transition-colors { transition-property: background-color, border-color, color, fill, stroke; }`
     },
     faq3: {
       title: "FAQ 유형 3 (아이콘 정보형 플랫 리스트)",
-      html: `<div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-  {faqData.map((item, idx) => (
-    <div key={idx} className="flex gap-4">
-      <div className="shrink-0 pt-1">
-        <div className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
-          <Info className="w-3.5 h-3.5 text-slate-400" />
+      react: `import React from 'react';
+import { Info } from 'lucide-react';
+
+const FlatIconFaq = () => {
+  const faqData = [
+    { question: "무료 업데이트가 지원되나요?", answer: "..." },
+    { question: "대시보드 커스터마이징 가능 여부", answer: "..." }
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      {faqData.map((item, idx) => (
+        <div key={idx} className="flex gap-4">
+          <div className="shrink-0 pt-1">
+            <div className="w-6 h-6 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+              <Info className="w-3.5 h-3.5 text-slate-400" />
+            </div>
+          </div>
+          <div className="space-y-3">
+            <h4 className="font-bold text-slate-800 dark:text-white leading-tight">{item.question}</h4>
+            <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+              {item.answer}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="space-y-3">
-        <h4 className="font-bold text-slate-800 dark:text-white leading-tight">{item.question}</h4>
-        <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-          {item.answer}
-        </p>
+      ))}
+    </div>
+  );
+};`,
+      html: `<!-- 일반 정적 HTML 마크업 (플랫 그리드형) -->
+<div class="faq-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px;">
+  
+  <!-- 질문 항목 1 -->
+  <div class="faq-grid-item" style="display: flex; gap: 16px;">
+    <div style="flex-shrink: 0; padding-top: 4px;">
+      <div style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       </div>
     </div>
-  ))}
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h4 style="margin: 0; font-weight: 700; color: #1e293b; line-height: 1.25;">무료 업데이트가 지원되나요?</h4>
+      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #64748b;">
+        우리의 서비스는 지속적인 개선을 목표로 하고 있습니다. 라이선스 기간 내 무료 패치를 제공받으실 수 있습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 질문 항목 2 -->
+  <div class="faq-grid-item" style="display: flex; gap: 16px;">
+    <div style="flex-shrink: 0; padding-top: 4px;">
+      <div style="width: 24px; height: 24px; border-radius: 50%; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <h4 style="margin: 0; font-weight: 700; color: #1e293b; line-height: 1.25;">대시보드 커스터마이징 가능 여부</h4>
+      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #64748b;">
+        네, 모듈화되어 있으며, 각 컴포넌트들을 필요에 맞춰 자유롭게 수정하고 적용하도록 지원하고 있습니다.
+      </p>
+    </div>
+  </div>
+
 </div>`,
-      css: `/* Tailwind CSS Utility Classes */
+      css: `/* CSS / Tailwind CSS Utility Classes */
 .flex { display: flex; }
 .shrink-0 { flex-shrink: 0; }
 .border-slate-200 { border-color: #e2e8f0; }
 .text-slate-400 { color: #94a3b8; }
-.gap-4 { gap: 1rem; }`,
-      js: `import React from 'react';
-import { Info } from 'lucide-react';
-
-const FlatIconFaq = () => {
-  const faqData = [...]; // 질문 답변 데이터 배열
-
-  return (
-    // HTML 구조 매핑...
-  );
-};`
+.gap-4 { gap: 1rem; }`
     }
   };
 
   const openCodeModal = (snippetKey: string) => {
     setSelectedSnippet(codeSnippets[snippetKey]);
-    setActiveTab('html');
+    setActiveTab('react'); // React 버전이 기본 표시되도록 설정
     setIsCopied(false);
     setIsModalOpen(true);
   };
@@ -425,20 +529,20 @@ const FlatIconFaq = () => {
               {/* Tab Selector Row */}
               <div className="flex items-center justify-between px-6 py-3 border-b border-slate-800/80 bg-[#141C2F]">
                 <div className="flex gap-4">
-                  {(['html', 'css', 'js'] as const).map(tab => (
+                  {(['react', 'html', 'css'] as const).map(tab => (
                     <button
                       key={tab}
                       onClick={() => {
                         setActiveTab(tab);
                         setIsCopied(false);
                       }}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
+                      className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition-all cursor-pointer ${
                         activeTab === tab 
                           ? 'bg-[#4B62FA] text-white' 
                           : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
                       }`}
                     >
-                      {tab}
+                      {tab === 'react' ? 'React 버전' : tab === 'html' ? '일반 HTML' : 'CSS 스타일'}
                     </button>
                   ))}
                 </div>
