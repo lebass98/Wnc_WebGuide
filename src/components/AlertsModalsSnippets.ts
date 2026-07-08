@@ -91,16 +91,16 @@ const ToastSimulator = () => {
 <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-xl relative min-h-[160px]">
   <div class="grid grid-cols-2 gap-3">
     <button onclick="triggerToast('success', '작업 완료', '정상적으로 데이터가 저장되었습니다.')" class="flex items-center justify-center gap-2 p-3 bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all">
-      성공 토스트
+      <i data-lucide="check-circle" class="w-4 h-4"></i> 성공 토스트
     </button>
     <button onclick="triggerToast('error', '오류 발생', '서버 접속이 원활하지 않습니다. 다시 시도해 주세요.')" class="flex items-center justify-center gap-2 p-3 bg-rose-500 text-white rounded-xl text-xs font-bold transition-all">
-      실패 토스트
+      <i data-lucide="x-circle" class="w-4 h-4"></i> 실패 토스트
     </button>
     <button onclick="triggerToast('warning', '권한 제한', '수정 권한이 없는 계정입니다.')" class="flex items-center justify-center gap-2 p-3 bg-amber-500 text-white rounded-xl text-xs font-bold transition-all">
-      경고 토스트
+      <i data-lucide="alert-triangle" class="w-4 h-4"></i> 경고 토스트
     </button>
     <button onclick="triggerToast('info', '안내 사항', '신규 템플릿 안내 페이지가 업데이트되었습니다.')" class="flex items-center justify-center gap-2 p-3 bg-sky-500 text-white rounded-xl text-xs font-bold transition-all">
-      정보 토스트
+      <i data-lucide="info" class="w-4 h-4"></i> 정보 토스트
     </button>
   </div>
 
@@ -181,7 +181,7 @@ function triggerToast(type, title, message) {
     }
     @keyframes fadeOut {
       from { opacity: 1; }
-      to { opacity: 0; }
+      to { transform: opacity 0.2s ease-out forwards; }
     }
     .animate-slide-in { animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-fade-out { animation: fadeOut 0.2s ease-out forwards; }
@@ -192,16 +192,16 @@ function triggerToast(type, title, message) {
     <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm relative min-h-[160px]">
       <div class="grid grid-cols-2 gap-3">
         <button onclick="triggerToast('success', '작업 완료', '정상적으로 데이터가 저장되었습니다.')" class="flex items-center justify-center gap-2 p-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-all">
-          성공 토스트
+          <i data-lucide="check-circle" class="w-4 h-4"></i> 성공 토스트
         </button>
         <button onclick="triggerToast('error', '오류 발생', '서버 접속이 원활하지 않습니다. 다시 시도해 주세요.')" class="flex items-center justify-center gap-2 p-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-xs font-bold transition-all">
-          실패 토스트
+          <i data-lucide="x-circle" class="w-4 h-4"></i> 실패 토스트
         </button>
         <button onclick="triggerToast('warning', '권한 제한', '수정 권한이 없는 계정입니다.')" class="flex items-center justify-center gap-2 p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition-all">
-          경고 토스트
+          <i data-lucide="alert-triangle" class="w-4 h-4"></i> 경고 토스트
         </button>
         <button onclick="triggerToast('info', '안내 사항', '신규 템플릿 안내 페이지가 업데이트되었습니다.')" class="flex items-center justify-center gap-2 p-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold transition-all">
-          정보 토스트
+          <i data-lucide="info" class="w-4 h-4"></i> 정보 토스트
         </button>
       </div>
 
@@ -243,6 +243,8 @@ function triggerToast(type, title, message) {
         toast.addEventListener('animationend', () => toast.remove());
       }, 3000);
     }
+    // Initialize icons
+    if (window.lucide) window.lucide.createIcons();
   </script>
 </body>
 </html>`
@@ -364,14 +366,14 @@ const ModalShowcase = () => {
 };`,
     html: `<!-- HTML 마크업 (Tailwind CSS 기반) -->
 <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-xl flex gap-3">
-  <button onclick="openModal('confirm')" class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold">
-    경고/삭제 모달
+  <button onclick="openModal('confirm')" class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold transition-all">
+    <i data-lucide="trash-2" class="w-4 h-4"></i> 경고/삭제 모달
   </button>
-  <button onclick="openModal('form')" class="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] text-white rounded-xl text-xs font-bold">
-    정보 입력 모달
+  <button onclick="openModal('form')" class="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] text-white rounded-xl text-xs font-bold transition-all">
+    <i data-lucide="plus" class="w-4 h-4"></i> 정보 입력 모달
   </button>
-  <button onclick="openModal('drawer')" class="flex items-center gap-2 px-5 py-2.5 bg-indigo-500 text-white rounded-xl text-xs font-bold">
-    우측 슬라이드 오버
+  <button onclick="openModal('drawer')" class="flex items-center gap-2 px-5 py-2.5 bg-indigo-500 text-white rounded-xl text-xs font-bold transition-all">
+    <i data-lucide="settings" class="w-4 h-4"></i> 우측 슬라이드 오버
   </button>
 </div>
 
@@ -387,7 +389,7 @@ const ModalShowcase = () => {
         <h4 class="text-lg font-bold text-slate-900 dark:text-white">프로젝트 영구 삭제</h4>
       </div>
     </div>
-    <p class="text-sm text-slate-600 dark:text-slate-300">정말로 삭제하시겠습니까? 데이터 베이스와 연결된 모든 테이블과 미디어가 제거됩니다.</p>
+    <p class="text-sm text-slate-600 dark:text-slate-350">정말로 삭제하시겠습니까? 데이터 베이스와 연결된 모든 테이블과 미디어가 제거됩니다.</p>
     <div class="flex gap-3 justify-end">
       <button onclick="closeModal('confirm')" class="px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-bold">취소</button>
       <button onclick="closeModal('confirm')" class="px-5 py-2.5 bg-rose-500 text-white rounded-xl text-sm font-bold">삭제하기</button>
@@ -401,16 +403,16 @@ const ModalShowcase = () => {
   <div class="relative w-full max-w-md bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden z-10">
     <div class="p-6 border-b flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
       <h4 class="text-lg font-bold text-slate-900 dark:text-white">새 구성원 추가</h4>
-      <button onclick="closeModal('form')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <button onclick="closeModal('form')" class="text-slate-400 hover:text-slate-655"><i data-lucide="x" class="w-5 h-5"></i></button>
     </div>
     <div class="p-6 space-y-4">
       <div class="space-y-2 text-left">
-        <label class="text-xs font-bold text-slate-750">이름</label>
-        <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-850" placeholder="예: 홍길동" />
+        <label class="text-xs font-bold text-slate-755">이름</label>
+        <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-855" placeholder="예: 홍길동" />
       </div>
       <div class="space-y-2 text-left">
-        <label class="text-xs font-bold text-slate-750">이메일</label>
-        <input type="email" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-850" placeholder="name@example.com" />
+        <label class="text-xs font-bold text-slate-755">이메일</label>
+        <input type="email" class="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-855" placeholder="name@example.com" />
       </div>
       <div class="flex gap-3 justify-end pt-4">
         <button onclick="closeModal('form')" class="px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-bold">취소</button>
@@ -476,13 +478,13 @@ function closeModal(id) {
 <body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
   <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex gap-3">
     <button onclick="openModal('confirm')" class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold transition-all">
-      경고/삭제 모달
+      <i data-lucide="trash-2" class="w-4 h-4"></i> 경고/삭제 모달
     </button>
     <button onclick="openModal('form')" class="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all">
-      정보 입력 모달
+      <i data-lucide="plus" class="w-4 h-4"></i> 정보 입력 모달
     </button>
     <button onclick="openModal('drawer')" class="flex items-center gap-2 px-5 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all">
-      우측 슬라이드 오버
+      <i data-lucide="settings" class="w-4 h-4"></i> 우측 슬라이드 오버
     </button>
   </div>
 
@@ -560,6 +562,8 @@ function closeModal(id) {
       const modal = document.getElementById('modal-' + id);
       if (modal) modal.classList.add('hidden');
     }
+    // Initialize icons
+    if (window.lucide) window.lucide.createIcons();
   </script>
 </body>
 </html>`
@@ -598,7 +602,7 @@ const AlertBanners = () => {
         <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
         <div>
           <p className="text-sm font-bold">라이선스 만료 주의</p>
-          <p className="text-xs text-slate-500 dark:text-amber-500/80 mt-1 leading-normal">
+          <p className="text-xs text-slate-500 dark:text-amber-550/80 mt-1 leading-normal">
             현재 사용 중인 템플릿의 기간이 만료되기까지 3일 남았습니다. 지속적인 혜택 유지를 위해 갱신을 부탁드립니다.
           </p>
         </div>
@@ -609,7 +613,7 @@ const AlertBanners = () => {
         <Info className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
         <div>
           <p className="text-sm font-bold">정기 서비스 점검 안내</p>
-          <p className="text-xs text-slate-500 dark:text-sky-500/80 mt-1 leading-normal">
+          <p className="text-xs text-slate-500 dark:text-sky-555 mt-1 leading-normal">
             내일 오전 02:00 ~ 04:00 사이에 서버 업그레이드 및 정기 점검이 실시될 예정입니다. 작업 시간 중 접속이 제한될 수 있습니다.
           </p>
         </div>
