@@ -79,16 +79,16 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
   };
 
   return (
-    <div className="space-y-4 font-sans">
+    <div className="space-y-4 font-sans mb-[40px]">
       {/* Wrapper Header: Controls Toolbar */}
-      <div className="flex flex-col items-start gap-3 bg-slate-50/50 dark:bg-slate-800/40 p-4 rounded-2xl">
+      <div className="flex flex-col items-start gap-3 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl">
         <div>
-          <h3 className="text-base font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
+          <h3 className="text-base text-[22px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
           <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
         </div>
 
         {/* Action Controls Toolbar */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 justify-end w-full">
 
           {/* 1. Preview Mode Group: React | HTML */}
           {activeTab === 'preview' && (
