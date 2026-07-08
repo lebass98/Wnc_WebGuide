@@ -2,15 +2,14 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
-  Calendar,
   ChevronDown,
   X,
   SquarePen,
   ListTodo,
   Table,
   Layers,
-  BarChart3,
-  Component
+  Component,
+  Grid
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -141,18 +140,22 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           isActive={currentPath.startsWith('/pages')}
         />
 
-        {/* ECharts Submenu */}
+        {/* Applications Submenu */}
         <NavItem
-          icon={BarChart3}
-          label="ECharts"
+          icon={Grid}
+          label="Applications"
           hasSubmenu
-          subItems={['선형 차트']}
+          subItems={['Echarts', '캘린더']}
           onSubItemClick={(sub) => {
-            if (sub === '선형 차트') navigate('/charts/line-charts');
+            if (sub === 'Echarts') navigate('/charts/line-charts');
+            if (sub === '캘린더') navigate('/calendar');
             onClose();
           }}
-          activeSubItem={currentPath === '/charts/line-charts' ? '선형 차트' : undefined}
-          isActive={currentPath.startsWith('/charts')}
+          activeSubItem={
+            currentPath === '/charts/line-charts' ? 'Echarts' :
+              currentPath === '/calendar' ? '캘린더' : undefined
+          }
+          isActive={currentPath === '/charts/line-charts' || currentPath === '/calendar'}
         />
 
         {/* UI Elements Submenu */}
@@ -178,16 +181,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           }
           isActive={currentPath.startsWith('/ui')}
         />
-
-        <div
-          onClick={() => { navigate('/calendar'); onClose(); }}
-          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPath === '/calendar' ? 'bg-indigo-50/30 dark:bg-slate-800/30 text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
-        >
-          <div className="flex items-center gap-3">
-            <Calendar className={`w-5 h-5 ${currentPath === '/calendar' ? 'text-indigo-600 dark:text-white' : ''}`} />
-            <span className={`text-sm ${currentPath === '/calendar' ? 'font-bold' : 'font-medium'}`}>캘린더</span>
-          </div>
-        </div>
       </div>
 
     </aside>
