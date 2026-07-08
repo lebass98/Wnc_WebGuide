@@ -273,7 +273,7 @@ const AlertsModalsWrapper: React.FC<AlertsModalsWrapperProps> = ({ title, descri
       {/* Frame Container */}
       <div 
         className={`overflow-hidden rounded-2xl bg-white dark:bg-slate-900 transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}
-        style={{ boxShadow: 'rgba(0, 0, 0, 0.05) 0px 20px 27px 0' }}
+        style={{ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 20px 27px 0' }}
       >
         {activeTab === 'preview' ? (
           previewMode === 'react' ? (
