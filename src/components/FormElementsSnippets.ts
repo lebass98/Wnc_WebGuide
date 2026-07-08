@@ -1324,7 +1324,7 @@ function DropzoneInput() {
   };
 
   return (
-    <div className="p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+    <div className="p-4 dark:bg-slate-900 rounded-xl">
       <div 
         className={\`border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all \${dragActive ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-500/10 scale-[1.02]' : 'border-indigo-100 dark:border-slate-700 bg-indigo-50/5 dark:bg-slate-800 hover:border-indigo-300'}\`}
         onDragEnter={handleDrag}
@@ -1363,7 +1363,7 @@ function DropzoneInput() {
     </div>
   );
 }`,
-    html: `<div class="p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+    html: `<div class="p-4 dark:bg-slate-900 rounded-xl">
   <div class="border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all border-indigo-100 dark:border-slate-700 bg-indigo-50/5 dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500" id="dropzone-html">
     <input type="file" class="hidden" id="drop-file-input" multiple />
     <div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800" id="upload-icon-wrapper">
@@ -1445,7 +1445,7 @@ function DropzoneInput() {
 </head>
 <body class="bg-slate-50 dark:bg-[#0F172A] flex justify-center items-center min-h-[350px]">
   <div class="w-full max-h-full bg-white dark:bg-[#1A222C] p-6 rounded-xl border border-slate-100 dark:border-slate-800 transition-colors">
-    <div class="p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+    <div class="p-4 dark:bg-slate-900 rounded-xl">
       <div class="border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all border-indigo-100 dark:border-slate-700 bg-indigo-50/5 dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500" id="dropzone-html">
         <input type="file" class="hidden" id="drop-file-input" multiple />
         <div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800" id="upload-icon-wrapper">

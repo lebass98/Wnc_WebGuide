@@ -415,7 +415,7 @@ const ShowcaseAlertsModals: React.FC = () => {
           description="클릭하면 우측 상단에 실시간으로 플로팅 토스트 카드가 3초간 노출됩니다."
           snippet={codeSnippets.toasts}
         >
-          <div className="grid grid-cols-2 gap-3 p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+          <div className="grid grid-cols-2 gap-3 p-4 dark:bg-slate-900 rounded-xl">
             <button
               onClick={() => showToast('success', '작업 완료', '정상적으로 데이터가 저장되었습니다.')}
               className="flex items-center justify-center gap-2 p-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-all cursor-pointer"
@@ -453,7 +453,7 @@ const ShowcaseAlertsModals: React.FC = () => {
           description="배경 흐림(Backdrop Blur) 효과와 부드러운 오버레이가 가미된 팝업 예시입니다."
           snippet={codeSnippets.modals}
         >
-          <div className="flex flex-wrap gap-3 p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+          <div className="flex flex-wrap gap-3 p-4 dark:bg-slate-900 rounded-xl">
             <button
               onClick={() => setActiveModal('confirm')}
               className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold transition-all cursor-pointer"
@@ -485,7 +485,7 @@ const ShowcaseAlertsModals: React.FC = () => {
             description="상황별로 사용자 정보 영역이나 피드백 섹션에 고정하여 메시지를 강조하는 컴포넌트입니다."
             snippet={codeSnippets.alerts}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 dark:bg-slate-900 rounded-xl">
               {/* Success Alert */}
               <div className="flex items-start gap-3 p-4 rounded-xl border border-emerald-100 dark:border-emerald-950 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-400">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />

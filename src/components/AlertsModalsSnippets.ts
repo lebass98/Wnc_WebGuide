@@ -32,7 +32,7 @@ const ToastSimulator = () => {
   };
 
   return (
-    <div className="p-6 space-y-6 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+    <div className="p-6 space-y-6 dark:bg-slate-900 rounded-xl">
       {/* Toast Floating Container */}
       <div className="fixed top-6 right-6 z-50 flex flex-col gap-3 w-full max-w-sm pointer-events-none">
         {toasts.map(toast => (
@@ -258,7 +258,7 @@ const ModalShowcase = () => {
   const [formData, setFormData] = useState({ name: '', email: '' });
 
   return (
-    <div className="p-6 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl relative">
+    <div className="p-6 dark:bg-slate-900 rounded-xl relative">
       <div className="flex flex-wrap gap-3">
         <button
           onClick={() => setActiveModal('confirm')}
@@ -574,7 +574,7 @@ import { CheckCircle, XCircle, AlertTriangle, Info } from 'lucide-react';
 
 const AlertBanners = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-[#F8FAFC] dark:bg-slate-900 rounded-xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 dark:bg-slate-900 rounded-xl">
       {/* Success Alert */}
       <div className="flex items-start gap-3 p-4 rounded-xl border border-emerald-100 dark:border-emerald-950 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-400">
         <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
