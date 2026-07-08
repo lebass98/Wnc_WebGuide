@@ -39,28 +39,59 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
 
   const [copied, setCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [iframeHeight, setIframeHeight] = useState('400px');
+  const [iframeHeight, setIframeHeight] = useState('100px');
 
   const updateIframeHeight = () => {
     const iframe = iframeRef.current;
-    if (iframe && iframe.contentDocument) {
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
       const body = iframe.contentDocument.body;
-      const html = iframe.contentDocument.documentElement;
       if (body) {
-        const height = Math.max(
-          body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight
-        );
-        setIframeHeight(`${height}px`);
+        let contentHeight = body.scrollHeight;
+        const firstChild = body.firstElementChild as HTMLElement;
+        if (firstChild) {
+          const rectHeight = firstChild.getBoundingClientRect().height;
+          contentHeight = Math.max(contentHeight, Math.ceil(rectHeight));
+        }
+        const finalHeight = Math.max(contentHeight + 12, 100);
+        setIframeHeight(`${finalHeight}px`);
       }
     }
   };
 
   useEffect(() => {
-    if (activeTab === 'preview' && previewMode === 'html') {
-      const timer = setTimeout(updateIframeHeight, 150);
-      return () => clearTimeout(timer);
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    let mutationObserver: MutationObserver | null = null;
+
+    const handleLoad = () => {
+      updateIframeHeight();
+      const iframeDoc = iframe.contentDocument;
+      if (iframeDoc && iframeDoc.body) {
+        mutationObserver = new MutationObserver(() => {
+          updateIframeHeight();
+        });
+        mutationObserver.observe(iframeDoc.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      }
+    };
+
+    iframe.addEventListener('load', handleLoad);
+
+    if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+      handleLoad();
     }
+
+    return () => {
+      iframe.removeEventListener('load', handleLoad);
+      if (mutationObserver) {
+        mutationObserver.disconnect();
+      }
+    };
   }, [activeTab, previewMode, device, theme, snippet.fullHtml]);
 
   const handleCopyCode = () => {
@@ -233,7 +264,7 @@ const FaqSectionWrapper: React.FC<FaqSectionWrapperProps> = ({ title, descriptio
               title={`${title} HTML Preview`}
               className="w-full border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
               style={{ height: iframeHeight }}
-              sandbox="allow-scripts"
+              sandbox="allow-scripts allow-same-origin"
             />
           )
         ) : (

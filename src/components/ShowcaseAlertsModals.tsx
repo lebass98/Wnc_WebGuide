@@ -76,7 +76,7 @@ const AlertsModalsWrapper: React.FC<AlertsModalsWrapperProps> = ({ title, descri
         }
 
         // Add safety padding to prevent scrollbar flicker
-        const finalHeight = Math.max(contentHeight + 24, 250);
+        const finalHeight = Math.max(contentHeight + 12, 80);
         setIframeHeight(`${finalHeight}px`);
       }
     }
@@ -289,7 +289,7 @@ const AlertsModalsWrapper: React.FC<AlertsModalsWrapperProps> = ({ title, descri
               title={`${title} HTML Preview`}
               className="w-full border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
               style={{ height: iframeHeight }}
-              sandbox="allow-scripts"
+              sandbox="allow-scripts allow-same-origin"
             />
           )
         ) : (
