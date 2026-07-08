@@ -250,7 +250,10 @@ const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, descri
       </div>
 
       {/* Frame Container */}
-      <div className={`overflow-hidden border border-slate-200/80 dark:border-slate-800/80 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}>
+      <div 
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-slate-900 transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}
+        style={{ boxShadow: 'rgba(0, 0, 0, 0.05) 0px 20px 27px 0' }}
+      >
         {activeTab === 'preview' ? (
           previewMode === 'react' ? (
             /* React Component Live Preview */
