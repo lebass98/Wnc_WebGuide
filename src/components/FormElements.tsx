@@ -16,7 +16,7 @@ import {
   Moon
 } from 'lucide-react';
 import CustomDatePicker from './CustomDatePicker';
-import { codeSnippets } from './FormElementsSnippets';
+import codeSnippets from './FormElementsSnippets.json';
 
 interface CodeSnippet {
   react: string;

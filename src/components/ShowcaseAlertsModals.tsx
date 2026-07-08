@@ -18,8 +18,15 @@ import {
   Copy,
   Check
 } from 'lucide-react';
-import { codeSnippets } from './AlertsModalsSnippets';
-import type { CodeSnippet } from './AlertsModalsSnippets';
+import codeSnippets from './AlertsModalsSnippets.json';
+
+interface CodeSnippet {
+  react: string;
+  html: string;
+  css: string;
+  js: string;
+  fullHtml: string;
+}
 
 interface AlertsModalsWrapperProps {
   title: string;
