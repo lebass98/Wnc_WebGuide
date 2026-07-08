@@ -187,8 +187,8 @@ function triggerToast(type, title, message) {
     .animate-fade-out { animation: fadeOut 0.2s ease-out forwards; }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
-  <div class="w-full max-w-lg mx-auto">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-full mx-auto">
     <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm relative min-h-[160px]">
       <div class="grid grid-cols-2 gap-3">
         <button onclick="triggerToast('success', '작업 완료', '정상적으로 데이터가 저장되었습니다.')" class="flex items-center justify-center gap-2 p-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-all">
@@ -475,8 +475,8 @@ function closeModal(id) {
     .animate-zoom-in { animation: zoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
-  <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex gap-3">
+<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen">
+  <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex gap-3 max-w-full w-full">
     <button onclick="openModal('confirm')" class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold transition-all">
       <i data-lucide="trash-2" class="w-4 h-4"></i> 경고/삭제 모달
     </button>
@@ -670,8 +670,8 @@ const AlertBanners = () => {
   <script src="https://unpkg.com/lucide@latest"></script>
   <title>인라인 알림 배너 실시간 미리보기</title>
 </head>
-<body class="bg-slate-50 dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
-  <div class="w-full max-w-4xl mx-auto">
+<body class="bg-white dark:bg-[#0F172A] flex items-center justify-center min-h-screen p-6">
+  <div class="w-full max-w-full mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <!-- Success Alert -->
       <div class="flex items-start gap-3 p-4 rounded-xl border border-emerald-100 dark:border-emerald-950 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-400">

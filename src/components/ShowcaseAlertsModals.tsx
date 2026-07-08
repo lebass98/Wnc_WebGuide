@@ -44,27 +44,79 @@ const AlertsModalsWrapper: React.FC<AlertsModalsWrapperProps> = ({ title, descri
     const iframe = iframeRef.current;
     if (iframe && iframe.contentWindow && iframe.contentDocument) {
       const body = iframe.contentDocument.body;
-      const html = iframe.contentDocument.documentElement;
       if (body) {
-        const height = Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.clientHeight,
-          html.scrollHeight,
-          html.offsetHeight
-        );
-        setIframeHeight(`${height}px`);
+        // 1. Calculate height based on regular document layout flow
+        let contentHeight = body.scrollHeight;
+
+        const firstChild = body.firstElementChild as HTMLElement;
+        if (firstChild) {
+          const rectHeight = firstChild.getBoundingClientRect().height;
+          contentHeight = Math.max(contentHeight, Math.ceil(rectHeight));
+        }
+
+        // 2. Adjust height if modals/drawers are open (since they are fixed/absolute and out of normal flow)
+        const openModals = iframe.contentDocument.querySelectorAll('[id^="modal-"]:not(.hidden)');
+        if (openModals.length > 0) {
+          let maxModalHeight = 450; // minimum comfortable viewport size for open modals
+          openModals.forEach(modal => {
+            const contentBox = modal.querySelector('.relative, .w-screen');
+            if (contentBox) {
+              const modalRect = contentBox.getBoundingClientRect();
+              maxModalHeight = Math.max(maxModalHeight, modalRect.height + 80);
+            }
+          });
+          contentHeight = Math.max(contentHeight, maxModalHeight);
+        }
+
+        // 3. Adjust height if toast floating alerts are currently showing
+        const toastContainer = iframe.contentDocument.getElementById('toast-container');
+        if (toastContainer && toastContainer.children.length > 0) {
+          const toastsRect = toastContainer.getBoundingClientRect();
+          contentHeight = Math.max(contentHeight, toastsRect.bottom + 24);
+        }
+
+        // Add safety padding to prevent scrollbar flicker
+        const finalHeight = Math.max(contentHeight + 24, 250);
+        setIframeHeight(`${finalHeight}px`);
       }
     }
   };
 
   useEffect(() => {
-    if (activeTab === 'preview' && previewMode === 'html') {
-      const timer = setTimeout(() => {
-        updateIframeHeight();
-      }, 150);
-      return () => clearTimeout(timer);
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    let mutationObserver: MutationObserver | null = null;
+
+    const handleLoad = () => {
+      updateIframeHeight();
+      const iframeDoc = iframe.contentDocument;
+      if (iframeDoc && iframeDoc.body) {
+        // Observe mutations (modals toggled via classes, toasts added/removed via children list)
+        mutationObserver = new MutationObserver(() => {
+          updateIframeHeight();
+        });
+        mutationObserver.observe(iframeDoc.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      }
+    };
+
+    iframe.addEventListener('load', handleLoad);
+
+    if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+      handleLoad();
     }
+
+    return () => {
+      iframe.removeEventListener('load', handleLoad);
+      if (mutationObserver) {
+        mutationObserver.disconnect();
+      }
+    };
   }, [activeTab, previewMode, device, theme, snippet.fullHtml]);
 
   const handleCopyCode = () => {
