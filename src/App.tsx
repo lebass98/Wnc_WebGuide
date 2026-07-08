@@ -12,6 +12,7 @@ import StatCard from './components/StatCard';
 import RecentOrders from './components/RecentOrders';
 import FormElements from './components/FormElements';
 import FormLayout from './components/FormLayout';
+import InputComponent from './components/InputComponent';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import MonthlyTargetCard from './components/MonthlyTargetCard';
@@ -208,6 +209,7 @@ const App: React.FC = () => {
                       <Route path="/tasks/kanban" element={<TaskKanban />} />
                       <Route path="/forms/elements" element={<FormElements />} />
                       <Route path="/forms/layout" element={<FormLayout />} />
+                      <Route path="/components/input" element={<InputComponent />} />
                       <Route path="/tables/basic" element={<BasicTables />} />
                       <Route path="/pages/faq" element={<FAQ />} />
                       <Route path="/pages/integrations" element={<Integrations />} />

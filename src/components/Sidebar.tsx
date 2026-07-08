@@ -181,6 +181,20 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           }
           isActive={currentPath.startsWith('/ui')}
         />
+
+        {/* Components Submenu */}
+        <NavItem
+          icon={Component}
+          label="컴포넌트"
+          hasSubmenu
+          subItems={['인풋']}
+          onSubItemClick={(sub) => {
+            if (sub === '인풋') navigate('/components/input');
+            onClose();
+          }}
+          activeSubItem={currentPath === '/components/input' ? '인풋' : undefined}
+          isActive={currentPath.startsWith('/components')}
+        />
       </div>
 
     </aside>
