@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import ShowcaseWrapper from './ShowcaseWrapper';
+import React, { useState, useRef } from 'react';
 import { 
   Mail, 
   Copy, 
@@ -8,302 +9,10 @@ import {
   Eye, 
   X, 
   Check, 
-  ChevronRight,
-  Monitor,
-  Smartphone,
-  Tablet,
-  Sun,
-  Moon
-} from 'lucide-react';
+  ChevronRight } from 'lucide-react';
 import CustomDatePicker from './CustomDatePicker';
 import codeSnippets from './FormElementsSnippets.json';
 
-interface CodeSnippet {
-  react: string;
-  html: string;
-  css: string;
-  js: string;
-  fullHtml: string;
-}
-
-interface FormElementsWrapperProps {
-  title: string;
-  description: string;
-  snippet: CodeSnippet;
-  children: React.ReactNode;
-}
-
-const FormElementsWrapper: React.FC<FormElementsWrapperProps> = ({ title, description, snippet, children }) => {
-  const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
-  const [previewMode, setPreviewMode] = useState<'react' | 'html'>('react');
-  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
-  const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
-  
-  const [copied, setCopied] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [iframeHeight, setIframeHeight] = useState('100px');
-
-  const updateIframeHeight = () => {
-    const iframe = iframeRef.current;
-    if (iframe && iframe.contentWindow && iframe.contentDocument) {
-      const body = iframe.contentDocument.body;
-      if (body) {
-        let contentHeight = body.scrollHeight;
-        const firstChild = body.firstElementChild as HTMLElement;
-        if (firstChild) {
-          const rectHeight = firstChild.getBoundingClientRect().height;
-          contentHeight = Math.max(contentHeight, Math.ceil(rectHeight));
-        }
-        const finalHeight = Math.max(contentHeight + 12, 100);
-        setIframeHeight(`${finalHeight}px`);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-
-    let mutationObserver: MutationObserver | null = null;
-
-    const handleLoad = () => {
-      updateIframeHeight();
-      const iframeDoc = iframe.contentDocument;
-      if (iframeDoc && iframeDoc.body) {
-        mutationObserver = new MutationObserver(() => {
-          updateIframeHeight();
-        });
-        mutationObserver.observe(iframeDoc.body, {
-          childList: true,
-          subtree: true,
-          attributes: true,
-          attributeFilter: ['class']
-        });
-      }
-    };
-
-    iframe.addEventListener('load', handleLoad);
-
-    if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
-      handleLoad();
-    }
-
-    return () => {
-      iframe.removeEventListener('load', handleLoad);
-      if (mutationObserver) {
-        mutationObserver.disconnect();
-      }
-    };
-  }, [activeTab, previewMode, device, theme, snippet.fullHtml]);
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(snippet.fullHtml).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
-
-  return (
-    <div className="space-y-4 font-sans mb-[40px]">
-      {/* Wrapper Header: Controls Toolbar (세로 줄내림 레이아웃 적용) */}
-      <div className="flex flex-col items-start gap-3 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl">
-        <div>
-          <h3 className="text-base text-[22px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
-          <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
-        </div>
-
-        {/* Action Controls Toolbar */}
-        <div className="flex flex-wrap items-center gap-2 justify-end w-full">
-          {/* 1. Preview Mode Group: React | HTML */}
-          {activeTab === 'preview' && (
-            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
-              <button
-                onClick={() => setPreviewMode('react')}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                React
-              </button>
-              <button
-                onClick={() => setPreviewMode('html')}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                HTML
-              </button>
-            </div>
-          )}
-
-          {/* 코드보기 button (separate, always visible) */}
-          <button
-            onClick={() => setActiveTab(activeTab === 'code' ? 'preview' : 'code')}
-            className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer border ${activeTab === 'code' ? 'bg-[#4B62FA] text-white border-[#4B62FA] shadow-sm' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-800 dark:hover:text-white hover:border-slate-300'}`}
-          >
-            코드보기
-          </button>
-
-          <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-
-          {/* Code type toggler (only in code tab) */}
-          {activeTab === 'code' && (
-            <>
-              <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
-                <button
-                  onClick={() => setCodeMode('react')}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-                >
-                  React
-                </button>
-                <button
-                  onClick={() => setCodeMode('html')}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-                >
-                  일반 HTML
-                </button>
-              </div>
-              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-
-          {/* Device simulation switcher (preview only) */}
-          {activeTab === 'preview' && (
-            <>
-              <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => setDevice('desktop')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Monitor className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    데스크톱 뷰
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-                <button 
-                  onClick={() => setDevice('tablet')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Tablet className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    태블릿 뷰
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-                <button 
-                  onClick={() => setDevice('mobile')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Smartphone className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    모바일 뷰
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-              </div>
-              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-
-          {/* Theme switcher (preview only) */}
-          {activeTab === 'preview' && (
-            <>
-              <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => setTheme('light')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'light' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Sun className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    라이트 모드 테마
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-                <button 
-                  onClick={() => setTheme('dark')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Moon className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    다크 모드 테마
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-              </div>
-              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-
-          {/* Copy Actions */}
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={handleCopyCode}
-              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
-            >
-              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                {copied ? "복사 완료!" : "HTML/CSS/JS 전체 소스 복사"}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Frame Container */}
-      <div 
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-slate-900 transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}
-        style={{ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 20px 27px 0' }}
-      >
-        {activeTab === 'preview' ? (
-          previewMode === 'react' ? (
-            /* React Component Live Preview */
-            <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-white dark:bg-[#0F172A] transition-colors duration-300 w-full p-4">
-                {children}
-              </div>
-            </div>
-          ) : (
-            /* Static HTML iframe Preview (applying simulated theme) */
-            <iframe
-              ref={iframeRef}
-              onLoad={updateIframeHeight}
-              srcDoc={theme === 'dark' ? snippet.fullHtml.replace('<body class="', '<body class="dark ') : snippet.fullHtml}
-              title={`${title} HTML Preview`}
-              className="w-full border-none bg-slate-50 dark:bg-[#0F172A] transition-colors"
-              style={{ height: iframeHeight }}
-              sandbox="allow-scripts allow-same-origin"
-            />
-          )
-        ) : (
-          /* Code Preview Panel with inner sub-tabs for static HTML */
-          <div className="bg-[#0F172A] flex flex-col min-h-[350px]">
-            {/* HTML Mode Sub Tab Bar */}
-            {codeMode === 'html' && (
-              <div className="flex gap-2 px-5 py-2.5 border-b border-slate-800/80 bg-[#141C2F]">
-                {(['html', 'css', 'js'] as const).map(tab => (
-                  <button
-                    key={tab}
-                    onClick={() => setHtmlSubTab(tab)}
-                    className={`px-3 py-1 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer ${htmlSubTab === tab ? 'bg-slate-700 text-white shadow-sm' : 'text-slate-400 hover:text-white'}`}
-                  >
-                    {tab === 'html' ? 'HTML 마크업' : tab === 'css' ? 'CSS 스타일' : 'JS 인터랙션'}
-                  </button>
-                ))}
-              </div>
-            )}
-            
-            {/* Syntax Code block view */}
-            <div className="flex-1 overflow-x-auto p-4 sm:p-6 font-mono text-[11px] sm:text-[13px] leading-relaxed text-slate-300 custom-scrollbar select-text max-h-[450px]">
-              <pre className="whitespace-pre-wrap sm:whitespace-pre break-all sm:break-normal">
-                {codeMode === 'react' ? snippet.react : snippet[htmlSubTab]}
-              </pre>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 
 const FormElements: React.FC = () => {
@@ -399,7 +108,7 @@ const FormElements: React.FC = () => {
         <div className="space-y-6">
           
           {/* Default Inputs */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="기본 입력란"
             description="가장 널리 활용되는 텍스트 및 비밀번호 입력 필드 형태입니다."
             snippet={codeSnippets.defaultInputs}
@@ -446,10 +155,10 @@ const FormElements: React.FC = () => {
                 </div>
               </label>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* Select Inputs */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="선택 입력란 (Select)"
             description="다양한 선택 옵션을 보여주거나 여러 옵션을 멀티 셀렉트 형태로 선택할 수 있습니다."
             snippet={codeSnippets.selectInputs}
@@ -507,10 +216,10 @@ const FormElements: React.FC = () => {
                 </div>
               </label>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* Textarea input field */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="텍스트 영역 (Textarea)"
             description="긴 안내글이나 설명 입력을 지원하는 다크모드 대응 텍스트 영역입니다."
             snippet={codeSnippets.textarea}
@@ -526,7 +235,7 @@ const FormElements: React.FC = () => {
                 <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-100 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500" disabled></textarea>
               </label>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
         </div>
 
@@ -534,7 +243,7 @@ const FormElements: React.FC = () => {
         <div className="space-y-6">
 
           {/* Input Group */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="입력 그룹"
             description="메일 및 URL 등 복사 기능이 통합된 복합 입력 필드 그룹입니다."
             snippet={codeSnippets.inputGroup}
@@ -563,10 +272,10 @@ const FormElements: React.FC = () => {
                 </div>
               </label>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* File Input */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="파일 입력"
             description="버튼 디자인과 연결된 실시간 업로드 파일 표시 입력 필드입니다."
             snippet={codeSnippets.fileInput}
@@ -585,10 +294,10 @@ const FormElements: React.FC = () => {
                 </div>
               </div>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* Checkboxes */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="체크박스"
             description="다양한 상태를 가지는 다크모드 지원 맞춤형 체크박스 컴포넌트입니다."
             snippet={codeSnippets.checkboxes}
@@ -609,10 +318,10 @@ const FormElements: React.FC = () => {
                 <span className={`text-sm font-medium ${checkbox2 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
               </label>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* Radio Buttons */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="라디오 버튼"
             description="상호 배타적인 두 가지 옵션을 나타내기 위한 라디오 버튼 인터페이스입니다."
             snippet={codeSnippets.radioButtons}
@@ -633,10 +342,10 @@ const FormElements: React.FC = () => {
                 <span className={`text-sm font-medium ${radioValue === 'secondary' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>보조</span>
               </label>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* Toggle switch input */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="토글 스위치 설정"
             description="상태 On/Off를 한 번의 클릭으로 신속하게 변경하는 토글 스위치 형태입니다."
             snippet={codeSnippets.toggleSwitch}
@@ -672,10 +381,10 @@ const FormElements: React.FC = () => {
                 </label>
               </div>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
           {/* Dropzone */}
-          <FormElementsWrapper
+          <ShowcaseWrapper
             title="드롭존 (파일 끌어다 놓기)"
             description="컴퓨터 내부 파일을 브라우저 영역에 직접 끌어다 올리는 드롭존 형태입니다."
             snippet={codeSnippets.dropzone}
@@ -717,7 +426,7 @@ const FormElements: React.FC = () => {
                 )}
               </div>
             </div>
-          </FormElementsWrapper>
+          </ShowcaseWrapper>
 
         </div>
 

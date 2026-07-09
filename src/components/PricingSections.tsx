@@ -1,106 +1,8 @@
-import React, { useState } from 'react';
+import ShowcaseWrapper from './ShowcaseWrapper';
+import React from 'react';
 import {
-  Check, ChevronRight, Monitor, Smartphone, Tablet, Sun, Moon, ChevronDown, Copy, CheckCircle, Sparkles, Zap
+  Check, ChevronRight,        CheckCircle, Sparkles, Zap
 } from 'lucide-react';
-
-interface PricingCardProps {
-  title: string;
-  htmlCode: string;
-  children: React.ReactNode;
-}
-
-const PricingSectionWrapper: React.FC<PricingCardProps> = ({ title, htmlCode, children }) => {
-  const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
-  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(htmlCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">{title}</h3>
-        <div className="flex items-center gap-4">
-          {/* Preview/Code Toggle */}
-          <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
-            <button
-              onClick={() => setActiveTab('preview')}
-              className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-            >
-              미리보기
-            </button>
-            <button
-              onClick={() => setActiveTab('code')}
-              className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${activeTab === 'code' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-            >
-              코드
-            </button>
-          </div>
-
-          <div className="hidden md:block w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-
-          {/* Device Icons */}
-          <div className="hidden md:flex items-center gap-1">
-            <button onClick={() => setDevice('desktop')} className={`p-1.5 rounded-md transition-colors ${device === 'desktop' ? 'bg-slate-100 dark:bg-slate-800 text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}>
-              <Monitor className="w-4 h-4" />
-            </button>
-            <button onClick={() => setDevice('tablet')} className={`p-1.5 rounded-md transition-colors ${device === 'tablet' ? 'bg-slate-100 dark:bg-slate-800 text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}>
-              <Tablet className="w-4 h-4" />
-            </button>
-            <button onClick={() => setDevice('mobile')} className={`p-1.5 rounded-md transition-colors ${device === 'mobile' ? 'bg-slate-100 dark:bg-slate-800 text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}>
-              <Smartphone className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="hidden md:block w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-
-          {/* Theme Icons */}
-          <div className="hidden md:flex items-center gap-1">
-            <button onClick={() => setTheme('light')} className={`p-1.5 rounded-md transition-colors ${theme === 'light' ? 'bg-slate-100 dark:bg-slate-800 text-amber-500' : 'text-slate-400 hover:text-slate-600'}`}>
-              <Sun className="w-4 h-4" />
-            </button>
-            <button onClick={() => setTheme('dark')} className={`p-1.5 rounded-md transition-colors ${theme === 'dark' ? 'bg-slate-100 dark:bg-slate-800 text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}>
-              <Moon className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-
-          {/* Format Dropdown */}
-          <button className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400">
-            HTML <ChevronDown className="w-3 h-3" />
-          </button>
-
-          <button
-            onClick={handleCopy}
-            className={`p-1.5 rounded-md transition-all ${copied ? 'text-emerald-500' : 'text-slate-400 hover:text-slate-600'}`}
-          >
-            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-          </button>
-        </div>
-      </div>
-
-      <div className={`overflow-hidden border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 ${device === 'mobile' ? 'max-w-[375px] mx-auto' : device === 'tablet' ? 'max-w-[768px] mx-auto' : 'w-full'}`}>
-        {activeTab === 'preview' ? (
-          <div className={theme === 'dark' ? 'dark' : ''}>
-            <div className="bg-white dark:bg-[#0F172A] transition-colors duration-300">
-              {children}
-            </div>
-          </div>
-        ) : (
-          <div className="bg-[#1e1e1e] p-6 font-mono text-sm text-slate-300 overflow-x-auto max-h-[600px] custom-scrollbar">
-            <pre><code>{htmlCode}</code></pre>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const PricingSections: React.FC = () => {
   const section1Html = `<!-- Two tiers with emphasized right tier -->
@@ -284,7 +186,7 @@ const PricingSections: React.FC = () => {
       </div>
 
       {/* Variation 1: Two tiers with emphasized right tier */}
-      <PricingSectionWrapper title="우측이 강조된 두 가지 티어" htmlCode={section1Html}>
+      <ShowcaseWrapper title="우측이 강조된 두 가지 티어" description="" snippet={{ react: '', html: section1Html, css: '', js: '', fullHtml: section1Html }}>
         <div className="relative isolate bg-white dark:bg-slate-950 px-6 py-24 sm:py-32 lg:px-8 overflow-hidden rounded-2xl">
           <div className="absolute inset-x-0 -top-3 px-3 -z-10 transform-gpu opacity-30 blur-3xl" aria-hidden="true">
             <div className="ml-[50%] aspect-[1155/678] w-[72.1875rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc]"></div>
@@ -349,12 +251,12 @@ const PricingSections: React.FC = () => {
             </div>
           </div>
         </div>
-      </PricingSectionWrapper>
+      </ShowcaseWrapper>
 
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* Variation 2: Three tiers with emphasized middle tier */}
-      <PricingSectionWrapper title="본문이 강조되는 3가지 티어" htmlCode={section2Html}>
+      <ShowcaseWrapper title="본문이 강조되는 3가지 티어" description="" snippet={{ react: '', html: section2Html, css: '', js: '', fullHtml: section2Html }}>
         <div className="bg-slate-50 dark:bg-slate-900 py-24 sm:py-32 rounded-2xl">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
@@ -420,12 +322,12 @@ const PricingSections: React.FC = () => {
             </div>
           </div>
         </div>
-      </PricingSectionWrapper>
+      </ShowcaseWrapper>
 
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* Variation 3: Simple horizontal tiers */}
-      <PricingSectionWrapper title="간단한 세 개의 기준열" htmlCode={`<!-- Simple three column -->
+      <ShowcaseWrapper title="간단한 세 개의 기준열" description="" snippet={{ react: '', html: `<!-- Simple three column -->
 <div class="bg-white dark:bg-slate-950 py-24 sm:py-32 rounded-2xl">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-x-8">
@@ -449,7 +351,31 @@ const PricingSections: React.FC = () => {
       </div>
     </div>
   </div>
-</div>`}>
+</div>`, css: '', js: '', fullHtml: `<!-- Simple three column -->
+<div class="bg-white dark:bg-slate-950 py-24 sm:py-32 rounded-2xl">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-x-8">
+      <!-- Tier 1 -->
+      <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-3xl">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">퍼스널</h3>
+        <p class="mt-4 text-4xl font-black text-slate-900 dark:text-white">$0 <span class="text-sm font-normal text-slate-500">/월</span></p>
+        <button class="mt-8 w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 transition-all">시작하기</button>
+      </div>
+      <!-- Tier 2 -->
+      <div class="p-8 bg-indigo-600 rounded-3xl shadow-xl shadow-indigo-200 dark:shadow-none">
+        <h3 class="text-lg font-bold text-white">스타트업</h3>
+        <p class="mt-4 text-4xl font-black text-white">$24 <span class="text-sm font-normal text-indigo-200">/월</span></p>
+        <button class="mt-8 w-full py-3 bg-white text-indigo-600 rounded-xl font-bold hover:bg-slate-100 transition-all">시작하기</button>
+      </div>
+      <!-- Tier 3 -->
+      <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-3xl">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">비즈니스</h3>
+        <p class="mt-4 text-4xl font-black text-slate-900 dark:text-white">$48 <span class="text-sm font-normal text-slate-500">/월</span></p>
+        <button class="mt-8 w-full py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold hover:bg-slate-100 transition-all">시작하기</button>
+      </div>
+    </div>
+  </div>
+</div>` }}>
         <div className="bg-white dark:bg-slate-950 py-24 sm:py-32 rounded-2xl transition-all">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-x-8">
@@ -472,12 +398,12 @@ const PricingSections: React.FC = () => {
             </div>
           </div>
         </div>
-      </PricingSectionWrapper>
+      </ShowcaseWrapper>
 
       <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* Variation 4: Centered with badges and micro-animations */}
-      <PricingSectionWrapper title="기능이 풍부한 중앙 정렬" htmlCode={`<!-- Content omitted for brevity in this mock -->`}>
+      <ShowcaseWrapper title="기능이 풍부한 중앙 정렬" description="" snippet={{ react: '', html: `<!-- Content omitted for brevity in this mock -->`, css: '', js: '', fullHtml: `<!-- Content omitted for brevity in this mock -->` }}>
         <div className="relative overflow-hidden bg-slate-50 dark:bg-slate-900 py-24 sm:py-32 rounded-2xl">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
           <div className="mx-auto max-w-4xl px-6 text-center">
@@ -529,7 +455,7 @@ const PricingSections: React.FC = () => {
             </div>
           </div>
         </div>
-      </PricingSectionWrapper>
+      </ShowcaseWrapper>
     </div>
   );
 };
