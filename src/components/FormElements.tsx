@@ -405,18 +405,18 @@ const FormElements: React.FC = () => {
             snippet={codeSnippets.defaultInputs}
           >
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-355">입력란</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-355">입력란</span>
                 <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">플레이스홀더가 있는 입력란</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">플레이스홀더가 있는 입력란</span>
                 <input type="text" placeholder="info@gmail.com" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">비밀번호 입력란</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">비밀번호 입력란</span>
                 <div className="relative">
                   <input type={showPassword ? "text" : "password"} placeholder="비밀번호를 입력하세요" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
                   <Eye 
@@ -424,27 +424,27 @@ const FormElements: React.FC = () => {
                     onClick={() => setShowPassword(!showPassword)}
                   />
                 </div>
-              </div>
+              </label>
 
-              <div className="space-y-2 relative z-50">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">날짜 선택 입력란</label>
+              <label className="block space-y-2 relative z-50">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">날짜 선택 입력란</span>
                 <CustomDatePicker placeholder="mm/dd/yyyy" />
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">시간 선택 입력란</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">시간 선택 입력란</span>
                 <div className="relative">
                   <input type="time" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all" />
                 </div>
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">결제 입력란</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">결제 입력란</span>
                 <div className="relative">
                   <input type="text" placeholder="카드 번호" className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
                   <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-indigo-500" />
                 </div>
-              </div>
+              </label>
             </div>
           </FormElementsWrapper>
 
@@ -455,8 +455,8 @@ const FormElements: React.FC = () => {
             snippet={codeSnippets.selectInputs}
           >
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">선택 입력란</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">선택 입력란</span>
                 <div className="relative">
                   <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
                     <option>옵션 선택</option>
@@ -465,10 +465,10 @@ const FormElements: React.FC = () => {
                   </select>
                   <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                 </div>
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">다중 선택 옵션</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">다중 선택 옵션</span>
                 <div className="relative">
                   <div 
                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center bg-white dark:bg-slate-800 cursor-pointer min-h-[50px] transition-all relative z-10"
@@ -505,7 +505,7 @@ const FormElements: React.FC = () => {
                     </div>
                   )}
                 </div>
-              </div>
+              </label>
             </div>
           </FormElementsWrapper>
 
@@ -516,15 +516,15 @@ const FormElements: React.FC = () => {
             snippet={codeSnippets.textarea}
           >
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">설명</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">설명</span>
                 <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">설명 (비활성화)</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">설명 (비활성화)</span>
                 <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-100 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500" disabled></textarea>
-              </div>
+              </label>
             </div>
           </FormElementsWrapper>
 
@@ -540,18 +540,18 @@ const FormElements: React.FC = () => {
             snippet={codeSnippets.inputGroup}
           >
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">이메일</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">이메일</span>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Mail className="w-5 h-5 text-slate-400" />
                   </div>
                   <input type="text" placeholder="info@gmail.com" className="w-full pl-11 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all" />
                 </div>
-              </div>
+              </label>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">웹사이트</label>
+              <label className="block space-y-2">
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">웹사이트</span>
                 <div className="flex">
                   <input type="text" value="www.tailadmin.com" readOnly className="flex-1 px-4 py-3 rounded-l-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none text-slate-650 dark:text-slate-400 dark:text-slate-300" />
                   <button 
@@ -561,7 +561,7 @@ const FormElements: React.FC = () => {
                     {copied ? <span className="text-emerald-500 text-sm">복사됨!</span> : <><Copy className="w-4 h-4" /> 복사</>}
                   </button>
                 </div>
-              </div>
+              </label>
             </div>
           </FormElementsWrapper>
 
@@ -573,7 +573,7 @@ const FormElements: React.FC = () => {
           >
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">파일 업로드</label>
+                <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">파일 업로드</span>
                 <div className="relative">
                   <input type="file" className="hidden" id="file-upload" onChange={handleFileChange} />
                   <label htmlFor="file-upload" className="flex items-center w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-500 transition-all overflow-hidden whitespace-nowrap">

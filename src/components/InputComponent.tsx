@@ -233,19 +233,19 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
       </div>
 
       {/* Frame Container */}
-      <div className="bg-slate-100 dark:bg-slate-900 rounded-3xl p-4 sm:p-8 border border-slate-200/50 dark:border-slate-800/50">
+      <div className="">
         <div className="flex justify-center w-full">
           
           {/* Active preview Tab */}
           {activeTab === 'preview' ? (
             <div 
-              className="bg-white dark:bg-[#1A222C] rounded-2xl shadow-sm overflow-hidden border border-slate-200/40 dark:border-slate-800/40 transition-all duration-300 w-full"
+              className="bg-white dark:bg-[#1A222C] rounded-2xl shadow-[0rem_1.25rem_1.6875rem_0rem_rgba(0,0,0,0.02)] overflow-hidden transition-all duration-300 w-full"
               style={{
                 maxWidth: device === 'mobile' ? '400px' : device === 'tablet' ? '768px' : '100%'
               }}
             >
               {previewMode === 'react' ? (
-                <div className="p-4 transition-colors duration-300">
+                <div className="transition-colors duration-300">
                   {children}
                 </div>
               ) : (
@@ -318,7 +318,7 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
 // React component representation of the input states card
 const InputStatePreview: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-10 flex flex-col gap-8 items-start justify-start w-full border border-slate-100 dark:border-slate-800/50 transition-colors duration-300">
+    <div className="bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-10 flex flex-col gap-8 items-start justify-start w-full transition-colors duration-300">
       <div className="flex flex-col gap-1 items-start justify-start self-stretch shrink-0 relative">
         <div className="text-[#111111] dark:text-white text-left font-bold text-xl leading-[1.5] relative">
           State
@@ -340,91 +340,73 @@ const InputStatePreview: React.FC = () => {
       <div className="rounded-2xl border border-solid border-[#dadada] dark:border-slate-700 p-6 flex flex-col xl:flex-row gap-10 items-start justify-start w-full overflow-x-auto">
         
         {/* Default */}
-        <div className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative">
+        <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative cursor-pointer">
           <div className="text-[#111111] dark:text-white text-left font-semibold text-base leading-[1.5] relative self-stretch">
             Default
           </div>
           <div className="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative">
-            <div className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative">
-              <div className="text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                Label
-              </div>
-            </div>
-            <div className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] flex flex-row gap-2 items-center justify-start shrink-0 w-[240px] h-[56px] relative bg-white dark:bg-slate-800">
-              <div className="flex flex-row gap-1 items-center justify-start flex-1 relative">
-                <div className="text-[#767676] dark:text-slate-400 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                  내용을 입력하세요
-                </div>
-              </div>
-            </div>
-            <div className="pt-[8px] pr-[0px] pb-[0px] pl-[0px] flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative">
-              <div className="text-[#256ef4] dark:text-indigo-400 text-left text-[15px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                * 필수 입력 항목입니다.
-              </div>
-            </div>
+            <span className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative text-[#464648] dark:text-slate-350 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal">
+              Label
+            </span>
+            <input 
+              type="text" 
+              placeholder="내용을 입력하세요" 
+              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#256ef4] transition-all"
+            />
+            <span className="pt-[8px] pr-[0px] pb-[0px] pl-[0px] flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative text-[#256ef4] dark:text-indigo-400 text-left text-[15px] leading-[1.6] tracking-[-0.025em] font-normal">
+              * 필수 입력 항목입니다.
+            </span>
           </div>
-        </div>
+        </label>
 
         {/* Focused */}
-        <div className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative">
+        <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative cursor-pointer">
           <div className="text-[#111111] dark:text-white text-left font-semibold text-base leading-[1.5] relative self-stretch">
             Focused
           </div>
           <div className="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative">
-            <div className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative">
-              <div className="text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                Label
-              </div>
-            </div>
-            <div className="rounded-md border border-solid border-[#256ef4] py-[6px] px-[24px] flex flex-row gap-2 items-center justify-start shrink-0 w-[240px] h-[56px] relative bg-white dark:bg-slate-800 ring-2 ring-blue-100 dark:ring-blue-900/30">
-              <div className="flex flex-row gap-1 items-center justify-start flex-1 relative">
-                <div className="text-[#111111] dark:text-white text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                  내용을 입력하세요
-                </div>
-              </div>
-            </div>
+            <span className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal">
+              Label
+            </span>
+            <input 
+              type="text" 
+              placeholder="내용을 입력하세요" 
+              className="rounded-md border border-solid border-[#256ef4] py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none ring-2 ring-blue-100 dark:ring-blue-900/30 transition-all"
+            />
           </div>
-        </div>
+        </label>
 
         {/* Completed */}
-        <div className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative">
+        <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative cursor-pointer">
           <div className="text-[#111111] dark:text-white text-left font-semibold text-base leading-[1.5] relative self-stretch">
             Completed
           </div>
           <div className="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative">
-            <div className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative">
-              <div className="text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                Label
-              </div>
-            </div>
-            <div className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] flex flex-row gap-2 items-center justify-start shrink-0 w-[240px] h-[56px] relative bg-white dark:bg-slate-800">
-              <div className="flex flex-row gap-1 items-center justify-start flex-1 relative">
-                <div className="text-[#111111] dark:text-white text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                  내용을 입력하세요
-                </div>
-              </div>
-            </div>
+            <span className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal">
+              Label
+            </span>
+            <input 
+              type="text" 
+              defaultValue="내용을 입력하세요" 
+              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#256ef4] transition-all"
+            />
           </div>
-        </div>
+        </label>
 
         {/* Error */}
-        <div className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative">
+        <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative cursor-pointer">
           <div className="text-[#111111] dark:text-white text-left font-semibold text-base leading-[1.5] relative self-stretch">
             Error
           </div>
           <div className="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative">
-            <div className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative">
-              <div className="text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                Label
-              </div>
-            </div>
-            <div className="rounded-md border border-solid border-[#c7332a] py-[6px] px-[24px] flex flex-row gap-2 items-center justify-start shrink-0 w-[240px] h-[56px] relative bg-white dark:bg-slate-800">
-              <div className="flex flex-row gap-1 items-center justify-start flex-1 relative">
-                <div className="text-[#767676] dark:text-slate-400 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                  내용을 입력하세요
-                </div>
-              </div>
-            </div>
+            <span className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative text-[#464648] dark:text-slate-300 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal">
+              Label
+            </span>
+            <input 
+              type="text" 
+              placeholder="내용을 입력하세요" 
+              className="rounded-md border border-solid border-[#c7332a] py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#c7332a] transition-all"
+            />
             <div className="pt-[8px] pr-[0px] pb-[0px] pl-[0px] flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative">
               <svg className="flex-shrink-0 w-5 h-5 text-[#c7332a]" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M4.64973 9.03711C6.98407 5.01211 8.15124 3 10 3C11.848 3 13.0159 5.01211 15.3503 9.03711L15.6415 9.538C17.5814 12.8824 18.5518 14.5547 17.675 15.7773C16.7982 17 14.6287 17 10.2912 17H9.70881C5.37131 17 3.20176 17 2.32498 15.7773C1.44821 14.5547 2.41858 12.8824 4.35854 9.538L4.64973 9.03711ZM10 6.30556C10.1591 6.30556 10.3117 6.36701 10.4243 6.47641C10.5368 6.58581 10.6 6.73418 10.6 6.88889V10.7778C10.6 10.9325 10.5368 11.0809 10.4243 11.1903C10.3117 11.2997 10.1591 11.3611 10 11.3611C9.84087 11.3611 9.68827 11.2997 9.57575 11.1903C9.46323 11.0809 9.40001 10.9325 9.40001 10.7778V6.88889C9.40001 6.73418 9.46323 6.58581 9.57575 6.47641C9.68827 6.36701 9.84087 6.30556 10 6.30556ZM10 13.8889C10.2122 13.8889 10.4156 13.8069 10.5657 13.6611C10.7157 13.5152 10.8 13.3174 10.8 13.1111C10.8 12.9048 10.7157 12.707 10.5657 12.5611C10.4156 12.4153 10.2122 12.3333 10 12.3333C9.78783 12.3333 9.58435 12.4153 9.43433 12.5611C9.2843 12.707 9.20002 12.9048 9.20002 13.1111C9.20002 13.3174 9.2843 13.5152 9.43433 13.6611C9.58435 13.8069 9.78783 13.8889 10 13.8889Z" fill="#C7332A" />
@@ -434,49 +416,43 @@ const InputStatePreview: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </label>
 
         {/* Disabled */}
-        <div className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative">
+        <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative opacity-60 cursor-not-allowed">
           <div className="text-[#111111] dark:text-white text-left font-semibold text-base leading-[1.5] relative self-stretch">
             Disabled
           </div>
           <div className="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative">
-            <div className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative">
-              <div className="text-[#464648] dark:text-slate-350 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                Label
-              </div>
-            </div>
-            <div className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] flex flex-row gap-2 items-center justify-start shrink-0 w-[240px] h-[56px] relative bg-[#f5f5f5] dark:bg-slate-800/50 opacity-60">
-              <div className="flex flex-row gap-1 items-center justify-start flex-1 relative">
-                <div className="text-[#999999] dark:text-slate-500 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                  내용을 입력하세요
-                </div>
-              </div>
-            </div>
+            <span className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative text-[#464648] dark:text-slate-350 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal">
+              Label
+            </span>
+            <input 
+              type="text" 
+              placeholder="내용을 입력하세요" 
+              disabled
+              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-[#f5f5f5] dark:bg-slate-800/50 text-[#999999] dark:text-slate-500 placeholder-[#999999] dark:placeholder-slate-500 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none cursor-not-allowed"
+            />
           </div>
-        </div>
+        </label>
 
         {/* View */}
-        <div className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative">
+        <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative cursor-pointer">
           <div className="text-[#111111] dark:text-white text-left font-semibold text-base leading-[1.5] relative self-stretch">
             View (내용만 확인)
           </div>
           <div className="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative">
-            <div className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative">
-              <div className="text-[#464648] dark:text-slate-350 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                Label
-              </div>
-            </div>
-            <div className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] flex flex-row gap-2 items-center justify-start shrink-0 w-[240px] h-[56px] relative bg-[#f5f5f5] dark:bg-slate-800/50">
-              <div className="flex flex-row gap-1 items-center justify-start flex-1 relative">
-                <div className="text-[#111111] dark:text-white text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal relative flex-1">
-                  내용을 입력하세요
-                </div>
-              </div>
-            </div>
+            <span className="py-[4px] px-[0px] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 h-[40px] relative text-[#464648] dark:text-slate-350 text-left text-[17px] leading-[1.6] tracking-[-0.025em] font-normal">
+              Label
+            </span>
+            <input 
+              type="text" 
+              defaultValue="내용을 입력하세요" 
+              readOnly
+              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-[#f5f5f5] dark:bg-slate-800/50 text-[#111111] dark:text-white text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none"
+            />
           </div>
-        </div>
+        </label>
 
       </div>
     </div>
