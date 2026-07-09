@@ -317,6 +317,37 @@ const FormLayoutWrapper: React.FC<FormLayoutWrapperProps> = ({ title, descriptio
 
 // React component representation of the input states card
 const InputStatePreview: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.dataset.isDown = 'true';
+    container.dataset.startX = String(e.pageX - container.offsetLeft);
+    container.dataset.scrollLeft = String(container.scrollLeft);
+    container.style.cursor = 'grabbing';
+    container.style.userSelect = 'none';
+  };
+
+  const handleMouseLeaveOrUp = () => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.dataset.isDown = 'false';
+    container.style.cursor = 'grab';
+    container.style.removeProperty('user-select');
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const container = containerRef.current;
+    if (!container || container.dataset.isDown !== 'true') return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const startX = Number(container.dataset.startX);
+    const scrollLeft = Number(container.dataset.scrollLeft);
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <div className="bg-white dark:bg-[#1A222C] rounded-xl p-4 sm:p-10 flex flex-col gap-8 items-start justify-start w-full transition-colors duration-300">
       <div className="flex flex-col gap-1 items-start justify-start self-stretch shrink-0 relative">
@@ -337,7 +368,14 @@ const InputStatePreview: React.FC = () => {
           View : 이미 입력된 내용을 확인만 할 수 있는 상태, 입력 불가능
         </div>
       </div>
-      <div className="rounded-2xl border border-solid border-[#dadada] dark:border-slate-700 p-6 flex flex-col xl:flex-row gap-10 items-start justify-start w-full overflow-x-auto">
+      <div 
+        ref={containerRef}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeaveOrUp}
+        onMouseUp={handleMouseLeaveOrUp}
+        onMouseMove={handleMouseMove}
+        className="rounded-2xl border border-solid border-[#dadada] dark:border-slate-700 p-6 flex flex-col xl:flex-row gap-10 items-start justify-start w-full overflow-x-auto cursor-grab active:cursor-grabbing"
+      >
         
         {/* Default */}
         <label className="flex flex-col gap-6 items-start justify-start shrink-0 w-[240px] relative cursor-pointer">
