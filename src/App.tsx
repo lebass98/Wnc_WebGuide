@@ -1,28 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
-import ErrorPage from './pages/errors/ErrorPage';
-import ShowcaseAlertsModals from './components/ui/ShowcaseAlertsModals';
-import ShowcaseButtonsBadges from './components/ui/ShowcaseButtonsBadges';
-import ShowcaseDataDisplay from './components/ui/ShowcaseDataDisplay';
-import ShowcaseProgressNav from './components/ui/ShowcaseProgressNav';
-import ShowcaseStatesLoaders from './components/ui/ShowcaseStatesLoaders';
-import FormElements from './pages/forms/FormElements';
-import FormLayout from './pages/forms/FormLayout';
-import InputComponent from './components/ui/InputComponent';
-import LoginPage from './pages/auth/LoginPage';
-import SignUpPage from './pages/auth/SignUpPage';
-import TaskList from './pages/tasks/TaskList';
-import TaskKanban from './pages/tasks/TaskKanban';
-import BasicTables from './pages/tables/BasicTables';
-import FAQ from './pages/faq/FAQ';
-import Integrations from './pages/integrations/Integrations';
-import Calendar from './pages/Calendar';
-import LineCharts from './pages/charts/LineCharts';
-import HeroSections from './pages/hero/HeroSections';
-import PricingSections from './pages/pricing/PricingSections';
-import Dashboard from './pages/Dashboard';
+
+// Lazy loaded page components
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Calendar = lazy(() => import('./pages/Calendar'));
+const TaskList = lazy(() => import('./pages/tasks/TaskList'));
+const TaskKanban = lazy(() => import('./pages/tasks/TaskKanban'));
+const FormElements = lazy(() => import('./pages/forms/FormElements'));
+const FormLayout = lazy(() => import('./pages/forms/FormLayout'));
+const InputComponent = lazy(() => import('./components/ui/InputComponent'));
+const BasicTables = lazy(() => import('./pages/tables/BasicTables'));
+const FAQ = lazy(() => import('./pages/faq/FAQ'));
+const Integrations = lazy(() => import('./pages/integrations/Integrations'));
+const HeroSections = lazy(() => import('./pages/hero/HeroSections'));
+const PricingSections = lazy(() => import('./pages/pricing/PricingSections'));
+const LineCharts = lazy(() => import('./pages/charts/LineCharts'));
+const ErrorPage = lazy(() => import('./pages/errors/ErrorPage'));
+const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
+const SignUpPage = lazy(() => import('./pages/auth/SignUpPage'));
+
+// Lazy loaded UI components
+const ShowcaseAlertsModals = lazy(() => import('./components/ui/ShowcaseAlertsModals'));
+const ShowcaseButtonsBadges = lazy(() => import('./components/ui/ShowcaseButtonsBadges'));
+const ShowcaseDataDisplay = lazy(() => import('./components/ui/ShowcaseDataDisplay'));
+const ShowcaseProgressNav = lazy(() => import('./components/ui/ShowcaseProgressNav'));
+const ShowcaseStatesLoaders = lazy(() => import('./components/ui/ShowcaseStatesLoaders'));
+
+const LoadingFallback: React.FC = () => (
+  <div className="flex items-center justify-center min-h-[400px] w-full">
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-10 h-10 border-4 border-slate-200 border-t-[#3C50E0] rounded-full animate-spin" />
+      <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">로딩 중...</p>
+    </div>
+  </div>
+);
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -76,7 +89,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <Routes>
+    <Suspense fallback={<LoadingFallback />}>
+      <Routes>
       {/* 1. 풀 스크린 에러 페이지 라우트 그룹 */}
       <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
       <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
@@ -175,6 +189,7 @@ const App: React.FC = () => {
         }
       />
     </Routes>
+    </Suspense>
   );
 };
 

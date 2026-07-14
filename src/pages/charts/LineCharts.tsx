@@ -1,5 +1,31 @@
 import React, { useState } from 'react';
-import ReactECharts from 'echarts-for-react';
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { LineChart } from 'echarts/charts';
+import {
+  GridComponent,
+  TooltipComponent,
+  TitleComponent,
+  LegendComponent,
+  DataZoomComponent,
+  MarkLineComponent,
+  MarkPointComponent
+} from 'echarts/components';
+import { CanvasRenderer, SVGRenderer } from 'echarts/renderers';
+
+echarts.use([
+  LineChart,
+  GridComponent,
+  TooltipComponent,
+  TitleComponent,
+  LegendComponent,
+  DataZoomComponent,
+  MarkLineComponent,
+  MarkPointComponent,
+  CanvasRenderer,
+  SVGRenderer
+]);
+
 import { ChevronRight, Copy, Eye, EyeOff, Check } from 'lucide-react';
 
 interface ChartCardProps {
@@ -80,7 +106,8 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
       )}
 
       <div className="p-6 relative z-10">
-        <ReactECharts 
+        <ReactEChartsCore 
+          echarts={echarts}
           option={option} 
           style={{ height: '350px' }} 
           opts={{ renderer: 'svg' }}
