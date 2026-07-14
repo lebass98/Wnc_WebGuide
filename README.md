@@ -39,6 +39,12 @@
    - **ECharts 트리쉐이킹(Tree Shaking)**: ECharts를 불러오는 유일한 페이지인 [LineCharts.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/pages/charts/LineCharts.tsx)에 `ReactEChartsCore` 및 필요한 구성 모듈만 선별 임포트하여 ECharts 빌드 번들 크기를 줄였습니다.
    - **Vite manualChunks 청크 분할 설정**: [vite.config.ts](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/vite.config.ts)를 갱신하여 묵직한 패키지들(`react`, `react-dom`, `echarts`, `lucide-react`)을 별도의 벤더 청크 파일로 분할해 순환 참조를 제어하고, 빌드 단계에서 발생하던 청크 크기 500kB 한도 초과 경고를 완벽히 해결했습니다.
 
+7. **🛡️ 코드 품질 및 안정성 고도화 (최신 업데이트)**
+   - **ESLint 정밀 규칙 확장**: [eslint.config.js](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/eslint.config.js)를 확장하여 미사용 변수 에러 강제(`@typescript-eslint/no-unused-vars`), 콘솔 노출 경고(`no-console`), React Hooks 공식 규칙 엄격 규제 등 정적 코드 품질을 통제하기 위한 커스텀 정적 분석 규칙을 구성했습니다.
+   - **전역 에러 바운더리(Error Boundary)**: 특정 하위 컴포넌트의 렌더링 런타임 에러로 인해 대시보드가 통째로 화이트아웃되는 크래시 현상을 차단하고자 [ErrorBoundary.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/components/common/ErrorBoundary.tsx) 예외 복구 장치를 신규 개발하고 [App.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/App.tsx)의 최상단 렌더링 스코프를 감싸 런타임 안정성을 확보했습니다.
+   - **Vitest 테스팅 프레임워크 구축**: Vite 환경에 최적화된 고성능 테스트 엔진인 **Vitest**와 **React Testing Library**를 통합 도입하여 가상 DOM 환경(`jsdom`)에서 컴포넌트 렌더링 무결성을 주기적으로 검증할 수 있는 인프라를 마련했습니다.
+   - **테스트 및 환경 모킹 자동화**: [setupTests.ts](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/setupTests.ts)를 통해 DOM 테스팅을 위한 단언식 확장 바인딩 및 `window.matchMedia` 같은 테스팅 환경 미지원 브라우저 API들의 모킹 구성을 자동화하여 테스트 구동 신뢰성을 높였습니다.
+
 ---
 
 ## 🛠 기술 스택 (Technology Stack)
@@ -51,6 +57,7 @@
 | **Icons** | Lucide React 0.577.0 |
 | **Charts** | ECharts 6.0.0, ECharts-for-React 3.0.6, JSVectorMap 1.7.0 |
 | **Drag & Drop**| @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities |
+| **Testing** | Vitest 4.1.10, JSDOM, Testing-Library (React/Jest-DOM) |
 | **Deployment** | gh-pages (GitHub Pages 자동 배포 지원) |
 
 ---
@@ -64,6 +71,8 @@ DashBoard_01/
 ├── src/                      # 애플리케이션의 핵심 소스 코드 폴더
 │   ├── assets/               # 이미지, SVG 아이콘 등 에셋 관리
 │   ├── components/           # 대시보드를 구성하는 단위 컴포넌트 모음
+│   │   ├── common/           # 공통 기능 및 예외 처리 컴포넌트
+│   │   │   └── ErrorBoundary.tsx         # 런타임 에러 감지 및 화면 복구 Fallback 컴포넌트
 │   │   ├── dashboard/        # 대시보드 내 개별 통계 요약 카드 및 그래프 위젯
 │   │   │   ├── ActivityFeed.tsx          # 최근 사용자 활동 로그 피드
 │   │   │   ├── CustomersDemographic.tsx  # 지도 기반 고객 지역 통계 (JSVectorMap 활용)
@@ -100,20 +109,23 @@ DashBoard_01/
 │   │   ├── tables/           # BasicTables.tsx
 │   │   ├── tasks/            # TaskList.tsx, TaskKanban.tsx
 │   │   ├── Calendar.tsx      # 캘린더 메인 일정 페이지
-│   │   └── Dashboard.tsx     # 대시보드 메인 홈 페이지 (기존 App.tsx에서 별도 페이지 파일로 추출)
+│   │   └── Dashboard.tsx     # 대시보드 메인 홈 페이지 (App.tsx에서 추출 분리)
 │   ├── styles/               # 스타일 세분화 폴더
 │   │   ├── fonts.css         # Pretendard 웹 폰트 임포트 전용 파일
 │   │   └── scrollbar.css     # 스크롤바 디자인 전용 커스텀 CSS
 │   ├── types/                # 글로벌 TS 타입 정의 폴더 (jsvectormap.d.ts)
-│   ├── App.tsx               # 메인 라우터 선언, 다크 모드/인증 등 전역 상태 및 React.lazy() 바인딩
+│   ├── __tests__/            # 테스팅 스펙 코드 폴더
+│   │   └── App.test.tsx      # App 컴포넌트 렌더링 및 로더 폴백 단언 테스트
+│   ├── App.tsx               # 메인 라우터 선언, 다크 모드/인증 등 전역 상태, lazy 로드 및 ErrorBoundary 래핑
 │   ├── index.css             # 스타일 엔트리 (Tailwind CSS, fonts.css, scrollbar.css 취합)
-│   └── main.tsx              # React 가상 DOM 시작점 및 Router 마운트
+│   ├── main.tsx              # React 가상 DOM 시작점 및 Router 마운트
+│   └── setupTests.ts         # Vitest 글로벌 셋업 및 브라우저 API 모킹 파일
 ├── eslint.config.js          # ESLint 정적 분석 린트 설정 파일
 ├── package.json              # 프로젝트 의존성 리스트 및 실행 스크립트 정보
 ├── tsconfig.json             # TypeScript 전체 전역 설정
 ├── tsconfig.app.json         # 클라이언트 App 전용 TypeScript 세부 설정
 ├── tsconfig.node.json        # Node 환경(Vite Config 등)을 위한 TypeScript 설정
-└── vite.config.ts            # Vite 빌드, 플러그인, Base URL 및 manualChunks 분할 설정 파일
+└── vite.config.ts            # Vite 빌드, 플러그인, Base URL, manualChunks 및 Vitest 설정 파일
 ```
 
 ---
@@ -140,7 +152,17 @@ npm run build
 ```
 - 빌드 결과물은 `dist/` 폴더 하위에 생성됩니다.
 
-### 4. GitHub Pages 배포
+### 4. 테스트 실행
+작성된 컴포넌트 및 로직 테스트 스펙을 일회성 또는 워치 모드로 실행합니다.
+```bash
+# 단발성 전체 테스트 실행
+npm run test
+
+# 테스트 실시간 감시(Watch) 모드 실행
+npm run test:watch
+```
+
+### 5. GitHub Pages 배포
 설정되어 있는 스크립트를 사용하여 GitHub Pages에 손쉽게 빌드 결과물을 배포할 수 있습니다.
 ```bash
 npm run deploy
