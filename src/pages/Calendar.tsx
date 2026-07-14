@@ -1,12 +1,12 @@
-import ShowcaseWrapper from './ShowcaseWrapper';
+import ShowcaseWrapper from '../components/ui/ShowcaseWrapper';
 import React, { useState } from 'react';
 import { 
   ChevronLeft, 
   ChevronRight, 
   Plus, 
   X as CloseIcon } from 'lucide-react';
-import CustomDatePicker from './CustomDatePicker';
-import codeSnippets from './CalendarSnippets.json';
+import CustomDatePicker from '../components/ui/CustomDatePicker';
+import codeSnippets from '../data/CalendarSnippets.json';
 
 
 

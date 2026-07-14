@@ -1,4 +1,4 @@
-import ShowcaseWrapper from './ShowcaseWrapper';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
 import React, { useState } from 'react';
 import { 
   Mail, 
@@ -8,8 +8,8 @@ import {
   ChevronDown, 
   Check, 
   ChevronRight } from 'lucide-react';
-import CustomDatePicker from './CustomDatePicker';
-import codeSnippets from './FormLayoutSnippets.json';
+import CustomDatePicker from '../../components/ui/CustomDatePicker';
+import codeSnippets from '../../data/FormLayoutSnippets.json';
 
 
 

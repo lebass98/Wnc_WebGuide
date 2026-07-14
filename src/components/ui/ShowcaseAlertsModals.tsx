@@ -11,7 +11,7 @@ import {
   Maximize2,
   Settings,
   Trash2 } from 'lucide-react';
-import codeSnippets from './AlertsModalsSnippets.json';
+import codeSnippets from '../../data/AlertsModalsSnippets.json';
 
 
 

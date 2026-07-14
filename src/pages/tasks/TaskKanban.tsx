@@ -32,7 +32,7 @@ import {
   ChevronRight,
   X as CloseIcon
 } from 'lucide-react';
-import CustomDatePicker from './CustomDatePicker';
+import CustomDatePicker from '../../components/ui/CustomDatePicker';
 
 // --- Types ---
 

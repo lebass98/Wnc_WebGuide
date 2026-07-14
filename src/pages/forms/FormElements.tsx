@@ -1,4 +1,4 @@
-import ShowcaseWrapper from './ShowcaseWrapper';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
 import React, { useState, useRef } from 'react';
 import { 
   Mail, 
@@ -10,8 +10,8 @@ import {
   X, 
   Check, 
   ChevronRight } from 'lucide-react';
-import CustomDatePicker from './CustomDatePicker';
-import codeSnippets from './FormElementsSnippets.json';
+import CustomDatePicker from '../../components/ui/CustomDatePicker';
+import codeSnippets from '../../data/FormElementsSnippets.json';
 
 
 

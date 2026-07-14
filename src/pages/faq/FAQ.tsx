@@ -1,4 +1,4 @@
-import ShowcaseWrapper from './ShowcaseWrapper';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
 import React, { useState } from 'react';
 import {
   ChevronDown,
@@ -6,7 +6,7 @@ import {
   Minus,
   Info,
   ChevronRight } from 'lucide-react';
-import codeSnippets from './FAQSnippets.json';
+import codeSnippets from '../../data/FAQSnippets.json';
 
 
 

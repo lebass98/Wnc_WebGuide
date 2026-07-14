@@ -1,85 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import ErrorPage from './components/ErrorPage';
-import ShowcaseAlertsModals from './components/ShowcaseAlertsModals';
-import ShowcaseButtonsBadges from './components/ShowcaseButtonsBadges';
-import ShowcaseDataDisplay from './components/ShowcaseDataDisplay';
-import ShowcaseProgressNav from './components/ShowcaseProgressNav';
-import ShowcaseStatesLoaders from './components/ShowcaseStatesLoaders';
-import StatCard from './components/StatCard';
-import RecentOrders from './components/RecentOrders';
-import FormElements from './components/FormElements';
-import FormLayout from './components/FormLayout';
-import InputComponent from './components/InputComponent';
-import LoginPage from './components/LoginPage';
-import SignUpPage from './components/SignUpPage';
-import MonthlyTargetCard from './components/MonthlyTargetCard';
-import MonthlySalesChart from './components/MonthlySalesChart';
-import StatisticsChart from './components/StatisticsChart';
-import CustomersDemographic from './components/CustomersDemographic';
-import TaskList from './components/TaskList';
-import TaskKanban from './components/TaskKanban';
-import BasicTables from './components/BasicTables';
-import FAQ from './components/FAQ';
-import Integrations from './components/Integrations';
-import Calendar from './components/Calendar';
-import LineCharts from './components/LineCharts';
-import HeroSections from './components/HeroSections';
-import PricingSections from './components/PricingSections';
-import { Users, Package } from 'lucide-react';
-
-const DashboardHome: React.FC = () => {
-  return (
-    <div className="space-y-6">
-      {/* Top Section */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        <div className="xl:col-span-2 flex flex-col gap-6">
-          {/* Stat Cards Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <StatCard
-              title="고객"
-              value="3,782"
-              icon={<Users className="w-5 h-5 text-[#3C50E0]" />}
-              trend={11.01}
-              className="h-full"
-            />
-            <StatCard
-              title="주문"
-              value="5,359"
-              icon={<Package className="w-5 h-5 text-[#3C50E0]" />}
-              trend={-9.05}
-              className="h-full"
-            />
-          </div>
-          {/* Monthly Sales Chart takes remaining space */}
-          <div className="flex-1 min-h-[350px]">
-            <MonthlySalesChart />
-          </div>
-        </div>
-        <div className="xl:col-span-1 h-full min-h-[514px]">
-          <MonthlyTargetCard />
-        </div>
-      </div>
-
-      {/* Middle Section: Statistics Chart */}
-      <div className="w-full">
-        <StatisticsChart />
-      </div>
-
-      {/* Bottom Section: Demographic and Orders */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pb-8">
-        <div className="xl:col-span-1">
-          <CustomersDemographic />
-        </div>
-        <div className="xl:col-span-2 overflow-x-auto">
-          <RecentOrders />
-        </div>
-      </div>
-    </div>
-  );
-};
+import Sidebar from './components/layout/Sidebar';
+import Header from './components/layout/Header';
+import ErrorPage from './pages/errors/ErrorPage';
+import ShowcaseAlertsModals from './components/ui/ShowcaseAlertsModals';
+import ShowcaseButtonsBadges from './components/ui/ShowcaseButtonsBadges';
+import ShowcaseDataDisplay from './components/ui/ShowcaseDataDisplay';
+import ShowcaseProgressNav from './components/ui/ShowcaseProgressNav';
+import ShowcaseStatesLoaders from './components/ui/ShowcaseStatesLoaders';
+import FormElements from './pages/forms/FormElements';
+import FormLayout from './pages/forms/FormLayout';
+import InputComponent from './components/ui/InputComponent';
+import LoginPage from './pages/auth/LoginPage';
+import SignUpPage from './pages/auth/SignUpPage';
+import TaskList from './pages/tasks/TaskList';
+import TaskKanban from './pages/tasks/TaskKanban';
+import BasicTables from './pages/tables/BasicTables';
+import FAQ from './pages/faq/FAQ';
+import Integrations from './pages/integrations/Integrations';
+import Calendar from './pages/Calendar';
+import LineCharts from './pages/charts/LineCharts';
+import HeroSections from './pages/hero/HeroSections';
+import PricingSections from './pages/pricing/PricingSections';
+import Dashboard from './pages/Dashboard';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -204,7 +147,7 @@ const App: React.FC = () => {
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pt-[100px] lg:pt-[112px] custom-scrollbar">
                   <div className="w-full">
                     <Routes>
-                      <Route path="/" element={<DashboardHome />} />
+                      <Route path="/" element={<Dashboard />} />
                       <Route path="/tasks/list" element={<TaskList />} />
                       <Route path="/tasks/kanban" element={<TaskKanban />} />
                       <Route path="/forms/elements" element={<FormElements />} />

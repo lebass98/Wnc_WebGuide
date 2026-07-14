@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar } from 'lucide-react';
-import CustomDatePicker from './CustomDatePicker';
+import CustomDatePicker from '../ui/CustomDatePicker';
 
 const StatisticsChart: React.FC = () => {
     const [activeTab, setActiveTab] = React.useState('개요');
@@ -62,7 +62,7 @@ const StatisticsChart: React.FC = () => {
                     <CustomDatePicker 
                         isRange 
                         defaultRange={dateRange}
-                        onChange={(val) => {
+                        onChange={(val: Date | { start: Date; end: Date }) => {
                             if (typeof val === 'object' && 'start' in val) {
                                 setDateRange(val);
                             }

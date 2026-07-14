@@ -2,7 +2,7 @@ import ShowcaseWrapper from './ShowcaseWrapper';
 import React, { useRef } from 'react';
 import { 
   ChevronRight } from 'lucide-react';
-import codeSnippets from './InputComponentSnippets.json';
+import codeSnippets from '../../data/InputComponentSnippets.json';
 
 
 

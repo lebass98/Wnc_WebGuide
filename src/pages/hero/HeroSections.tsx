@@ -1,4 +1,4 @@
-import ShowcaseWrapper from './ShowcaseWrapper';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
 import React from 'react';
 import {
   ArrowRight,
@@ -10,7 +10,7 @@ import {
   Users,
   Box,
   ChevronRight } from 'lucide-react';
-import codeSnippets from './HeroSectionsSnippets.json';
+import codeSnippets from '../../data/HeroSectionsSnippets.json';
 
 
 

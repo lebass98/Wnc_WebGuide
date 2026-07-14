@@ -1,4 +1,4 @@
-import ShowcaseWrapper from './ShowcaseWrapper';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
 import React from 'react';
 import {
   Check, ChevronRight,        CheckCircle, Sparkles, Zap

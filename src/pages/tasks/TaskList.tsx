@@ -12,7 +12,7 @@ import {
   ChevronDown,
   ChevronRight
 } from 'lucide-react';
-import CustomDatePicker from './CustomDatePicker';
+import CustomDatePicker from '../../components/ui/CustomDatePicker';
 
 interface Task {
   id: string;
