@@ -19,14 +19,25 @@
    - **ECharts Charts**: 매출 추이, 목표 달성률, 고객 현황 등을 화려한 그래프로 렌더링하기 위해 `echarts`와 `echarts-for-react`가 최적화되어 도입되어 있습니다.
    - **Calendar & Forms**: 다양한 포맷의 일정 관리 기능과, 캘린더 피커를 포함한 정교한 폼 레이아웃 요소를 제공합니다.
 
-4. **📐 대시보드 레이아웃 개선 및 실시간 미리보기 고도화 (최신 업데이트)**
-   - **사이드바 fixed 고정**: 좌측 사이드바([Sidebar.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/Sidebar.tsx))를 `fixed` 형태로 완전 고정하고, 메인 콘텐츠 영역([App.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/App.tsx))에 패딩(`lg:pl-[280px]`)을 확보하여 콘텐츠 가려짐 현상을 근본적으로 해결했습니다.
-   - **FAQ 2열 반응형 그리드 배치**: FAQ 아코디언 카드들([FAQ.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/FAQ.tsx))을 `grid-cols-1 xl:grid-cols-2` 그리드로 정렬하고, 불필요한 구분선을 제거해 탁월한 공간 활용도와 심미성을 구현했습니다.
-   - **카드 헤더 세로 줄내림(flex-col) 디자인 고정**: 2열 그리드가 적용된 FAQ, 폼 레이아웃([FormLayout.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/FormLayout.tsx)), 폼 요소([FormElements.tsx](file:///Volumes/외장하드/React/DashBoard/react_dashboard_01/src/components/FormElements.tsx)) 카드의 상단 도구 바(미리보기, 코드보기, 테마 등)가 가로폭 부족으로 깨지거나 찌그러지지 않도록 항상 세로 정렬(`flex flex-col items-start gap-3`)로 디자인을 고정했습니다.
+4. **📐 대시보드 레이아웃 개선 및 실시간 미리보기 고도화**
+   - **사이드바 fixed 고정**: 좌측 사이드바를 `fixed` 형태로 완전 고정하고, 메인 콘텐츠 영역에 패딩(`lg:pl-[280px]`)을 확보하여 콘텐츠 가려짐 현상을 근본적으로 해결했습니다.
+   - **FAQ 2열 반응형 그리드 배치**: FAQ 아코디언 카드들을 `grid-cols-1 xl:grid-cols-2` 그리드로 정렬하고, 불필요한 구분선을 제거해 탁월한 공간 활용도와 심미성을 구현했습니다.
+   - **카드 헤더 세로 줄내림(flex-col) 디자인 고정**: 2열 그리드가 적용된 FAQ, 폼 레이아웃, 폼 요소 카드의 상단 도구 바가 가로폭 부족으로 깨지거나 찌그러지지 않도록 항상 세로 정렬(`flex flex-col items-start gap-3`)로 디자인을 고정했습니다.
    - **폼 요소 및 폼 레이아웃 실시간 미리보기(Wrapper) 연동**:
      - 각 카드 영역에 대해 **React 탭 / 일반 HTML 탭 실시간 미리보기** 탭을 탑재했습니다.
      - **기기 뷰포트 시뮬레이터**(데스크톱/태블릿/모바일) 및 **실시간 테마 스위처**(라이트/다크 모드 변경)를 제공하여 뷰 상태를 반응형으로 즉각 테스트할 수 있습니다.
-     - 전체 소스코드(React, HTML, CSS, JS 개별 서브 탭 분류) **코드보기 및 클립보드 간편 복사** 기능이 연동되어 개발자의 템플릿 사용성을 대폭 끌어올렸습니다.
+     - 전체 소스코드 **코드보기 및 클립보드 간편 복사** 기능이 연동되어 개발자의 템플릿 사용성을 대폭 끌어올렸습니다.
+
+5. **📐 아키텍처 및 폴더 구조 리팩토링 (최신 업데이트)**
+   - **폴더 세분화**: 기존 `src/components/` 하위에 평면적으로 흩어져 있던 약 40여 개의 컴포넌트를 `components/layout/` (공통 레이아웃), `components/ui/` (재사용 UI), `components/dashboard/` (대시보드 위젯)으로 분류하여 파일의 독립성과 응집도를 강화했습니다.
+   - **페이지(Pages) 컴포넌트 격리**: 라우터와 직접 매핑되는 각 페이지 컴포넌트들을 `src/pages/` 디렉토리 하위의 도메인 분류 폴더로 물리적으로 이동시켰습니다.
+   - **Dashboard 추출**: [App.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/App.tsx) 내부의 메인 대시보드 코드를 [Dashboard.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/pages/Dashboard.tsx) 페이지 파일로 깔끔하게 추출하여 최상단 라우터 소스코드의 가독성을 대폭 개선했습니다.
+   - **데이터 격리 및 스타일 분할**: JSON 형식의 정적 모의 데이터(`.json`)를 `src/data/` 로 격리 보관하였고, Pretendard 폰트 불러오기 및 스크롤바 스타일 코드를 `src/styles/` 폴더 내 개별 CSS 파일로 구조화했습니다.
+
+6. **⚡ 성능 및 빌드 최적화 (최신 업데이트)**
+   - **라우트 단위 코드 스플리팅(Code Splitting)**: `React.lazy()`와 `Suspense`를 활용해 모든 페이지 및 쇼케이스 컴포넌트를 지연 로드(Dynamic Import)하도록 구성했습니다. 이로 인해 초기 로딩 시 다운받는 메인 JS 번들 용량이 **2.32MB에서 56.45KB로 약 97.5% 대폭 감축**되어 초기 웹 진입 성능이 혁신적으로 개선되었습니다.
+   - **ECharts 트리쉐이킹(Tree Shaking)**: ECharts를 불러오는 유일한 페이지인 [LineCharts.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/pages/charts/LineCharts.tsx)에 `ReactEChartsCore` 및 필요한 구성 모듈만 선별 임포트하여 ECharts 빌드 번들 크기를 줄였습니다.
+   - **Vite manualChunks 청크 분할 설정**: [vite.config.ts](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/vite.config.ts)를 갱신하여 묵직한 패키지들(`react`, `react-dom`, `echarts`, `lucide-react`)을 별도의 벤더 청크 파일로 분할해 순환 참조를 제어하고, 빌드 단계에서 발생하던 청크 크기 500kB 한도 초과 경고를 완벽히 해결했습니다.
 
 ---
 
@@ -53,42 +64,56 @@ DashBoard_01/
 ├── src/                      # 애플리케이션의 핵심 소스 코드 폴더
 │   ├── assets/               # 이미지, SVG 아이콘 등 에셋 관리
 │   ├── components/           # 대시보드를 구성하는 단위 컴포넌트 모음
-│   │   ├── ActivityFeed.tsx          # 최근 사용자 활동 로그 피드
-│   │   ├── BasicTables.tsx           # 정렬 및 상세 보기 기능을 제공하는 기본 데이터 테이블
-│   │   ├── Calendar.tsx              # 일정 등록 및 달력 뷰
-│   │   ├── CustomDatePicker.tsx      # 커스텀 날짜 선택기
-│   │   ├── CustomersDemographic.tsx  # 지도 기반 고객 지역 통계 (JSVectorMap 활용)
-│   │   ├── FAQ.tsx                   # 아코디언 스타일의 자주 묻는 질문(FAQ) 목록
-│   │   ├── FormElements.tsx          # 체크박스, 라디오, 인풋 등 각종 폼 필수 입력 요소
-│   │   ├── FormLayout.tsx            # 프로필 수정, 비밀번호 변경 등 폼 페이지 레이아웃
-│   │   ├── Header.tsx                # 검색창, 알림/프로필 드롭다운, 테마 스위치 포함 헤더
-│   │   ├── HeroSections.tsx          # 서비스 대표 소개(히어로) 영역 컴포넌트
-│   │   ├── Integrations.tsx          # 연결된 써드파티 앱 목록 관리 화면
-│   │   ├── LineCharts.tsx            # 선형 분석 그래프 모음 컴포넌트
-│   │   ├── LoginPage.tsx             # 아이디/비밀번호 및 소셜 로그인 지원 로그인 뷰
-│   │   ├── MapOne.tsx                # 지도 시각화 컴포넌트
-│   │   ├── MonthlySalesChart.tsx     # 월간 판매 데이터 꺾은선/막대 혼합 그래프
-│   │   ├── MonthlyTargetCard.tsx     # 당월 실적 및 원형 진행도 목표 카드
-│   │   ├── PricingSections.tsx       # 다크/라이트 모드 맞춤형 요금제 비교 테이블
-│   │   ├── RecentOrders.tsx          # 최근 주문 내역 리스트 및 상태(Status) 배지
-│   │   ├── RevenueChart.tsx          # 총 수익률 비교 분석 차트
-│   │   ├── SalesChart.tsx            # 판매 실적 도넛/원형 차트
-│   │   ├── Sidebar.tsx               # 반응형 사이드 네비게이션 바 (모바일 드로워 기능 포함)
-│   │   ├── SignUpPage.tsx            # 회원 가입 폼 뷰
-│   │   ├── StatCard.tsx              # 상단 통계 요약 카드 (고객 수, 주문 수 등)
-│   │   ├── StatisticsChart.tsx       # 상세 주간/월간 실적 대비 그래프
-│   │   ├── TaskKanban.tsx            # 드래그 앤 드롭 드래그 기능이 적용된 칸반 태스크 보드
-│   │   └── TaskList.tsx              # 표 형식의 전체 할 일 목록 및 관리
-│   ├── App.tsx               # 메인 라우터(Route) 선언, 다크 모드/인증 등 전역 상태 핸들러
-│   ├── index.css             # 전역 스타일 및 Pretendard 폰트 로드, Tailwind 설정
-│   ├── jsvectormap.d.ts      # JSVectorMap TypeScript 환경 사용을 위한 타입 파일
-│   └── main.tsx              # React 가상 DOM의 시작점 (BrowserRouter 바인딩)
+│   │   ├── dashboard/        # 대시보드 내 개별 통계 요약 카드 및 그래프 위젯
+│   │   │   ├── ActivityFeed.tsx          # 최근 사용자 활동 로그 피드
+│   │   │   ├── CustomersDemographic.tsx  # 지도 기반 고객 지역 통계 (JSVectorMap 활용)
+│   │   │   ├── MapOne.tsx                # 지도 시각화 컴포넌트
+│   │   │   ├── MonthlySalesChart.tsx     # 월간 판매 데이터 꺾은선/막대 혼합 그래프
+│   │   │   ├── MonthlyTargetCard.tsx     # 당월 실적 및 원형 진행도 목표 카드
+│   │   │   ├── RecentOrders.tsx          # 최근 주문 내역 리스트 및 상태(Status) 배지
+│   │   │   ├── RevenueChart.tsx          # 총 수익률 비교 분석 차트
+│   │   │   ├── SalesChart.tsx            # 판매 실적 도넛/원형 차트
+│   │   │   ├── StatCard.tsx              # 상단 통계 요약 카드 (고객 수, 주문 수 등)
+│   │   │   └── StatisticsChart.tsx       # 상세 주간/월간 실적 대비 그래프
+│   │   ├── layout/           # 서비스 전체 공통 레이아웃 컴포넌트
+│   │   │   ├── Header.tsx                # 검색창, 알림/프로필 드롭다운, 테마 스위치 포함 헤더
+│   │   │   └── Sidebar.tsx               # 반응형 사이드 네비게이션 바 (모바일 드로워 기능 포함)
+│   │   └── ui/               # 실시간 미리보기 쇼케이스 및 재사용 가능 공통 UI 컴포넌트
+│   │       ├── CustomDatePicker.tsx      # 커스텀 날짜 선택기
+│   │       ├── InputComponent.tsx        # 반응형 인풋 컨트롤 미리보기
+│   │       ├── ShowcaseAlertsModals.tsx  # 토스트 알림, 모달 팝업 가이드
+│   │       ├── ShowcaseButtonsBadges.tsx # 버튼 종류 및 상태 배지 쇼케이스
+│   │       ├── ShowcaseDataDisplay.tsx   # 유저 정보 카드 등의 데이터 표시 UI
+│   │       ├── ShowcaseProgressNav.tsx   # 프로그레스 바 및 탭 네비게이션 쇼케이스
+│   │       ├── ShowcaseStatesLoaders.tsx # 빈 상태(Empty), 로딩 상태 컴포넌트
+│   │       └── ShowcaseWrapper.tsx       # 뷰포트 시뮬레이터 및 코드 뷰 탭 미리보기 래퍼
+│   ├── data/                 # 소스코드와 격리된 정적 목데이터 (.json Snippet 데이터 모음)
+│   ├── pages/                # 라우터와 직접적으로 맵핑되는 웹진/대시보드 페이지 컴포넌트
+│   │   ├── auth/             # LoginPage.tsx, SignUpPage.tsx
+│   │   ├── charts/           # LineCharts.tsx
+│   │   ├── errors/           # ErrorPage.tsx (404, 500, 503 대응)
+│   │   ├── faq/              # FAQ.tsx (아코디언 질문 페이지)
+│   │   ├── forms/            # FormElements.tsx, FormLayout.tsx
+│   │   ├── hero/             # HeroSections.tsx (서비스 소개)
+│   │   ├── integrations/     # Integrations.tsx (써드파티 연동)
+│   │   ├── pricing/          # PricingSections.tsx (요금제 테이블)
+│   │   ├── tables/           # BasicTables.tsx
+│   │   ├── tasks/            # TaskList.tsx, TaskKanban.tsx
+│   │   ├── Calendar.tsx      # 캘린더 메인 일정 페이지
+│   │   └── Dashboard.tsx     # 대시보드 메인 홈 페이지 (기존 App.tsx에서 별도 페이지 파일로 추출)
+│   ├── styles/               # 스타일 세분화 폴더
+│   │   ├── fonts.css         # Pretendard 웹 폰트 임포트 전용 파일
+│   │   └── scrollbar.css     # 스크롤바 디자인 전용 커스텀 CSS
+│   ├── types/                # 글로벌 TS 타입 정의 폴더 (jsvectormap.d.ts)
+│   ├── App.tsx               # 메인 라우터 선언, 다크 모드/인증 등 전역 상태 및 React.lazy() 바인딩
+│   ├── index.css             # 스타일 엔트리 (Tailwind CSS, fonts.css, scrollbar.css 취합)
+│   └── main.tsx              # React 가상 DOM 시작점 및 Router 마운트
 ├── eslint.config.js          # ESLint 정적 분석 린트 설정 파일
 ├── package.json              # 프로젝트 의존성 리스트 및 실행 스크립트 정보
 ├── tsconfig.json             # TypeScript 전체 전역 설정
 ├── tsconfig.app.json         # 클라이언트 App 전용 TypeScript 세부 설정
 ├── tsconfig.node.json        # Node 환경(Vite Config 등)을 위한 TypeScript 설정
-└── vite.config.ts            # Vite 서버 포트, 플러그인, Base URL 설정 파일
+└── vite.config.ts            # Vite 빌드, 플러그인, Base URL 및 manualChunks 분할 설정 파일
 ```
 
 ---
