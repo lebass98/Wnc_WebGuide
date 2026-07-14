@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 
@@ -89,8 +90,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <Suspense fallback={<LoadingFallback />}>
-      <Routes>
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
       {/* 1. 풀 스크린 에러 페이지 라우트 그룹 */}
       <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
       <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
@@ -189,7 +191,8 @@ const App: React.FC = () => {
         }
       />
     </Routes>
-    </Suspense>
+      </Suspense>
+    </ErrorBoundary>
   );
 };
 
