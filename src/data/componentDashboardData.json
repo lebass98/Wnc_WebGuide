@@ -1,0 +1,118 @@
+{
+  "kpis": [
+    {
+      "id": "components",
+      "title": "총 컴포넌트 수",
+      "value": "142",
+      "trend": 5.2,
+      "suffix": "개"
+    },
+    {
+      "id": "copied",
+      "title": "누적 코드 복사",
+      "value": "3,820",
+      "trend": 18.4,
+      "suffix": "회"
+    },
+    {
+      "id": "updates",
+      "title": "금주 신규 업데이트",
+      "value": "8",
+      "trend": 33.3,
+      "suffix": "개"
+    },
+    {
+      "id": "timeSaved",
+      "title": "누적 개발 단축 시간",
+      "value": "42.5",
+      "trend": 12.1,
+      "suffix": "시간"
+    }
+  ],
+  "categories": [
+    { "name": "Form & Input", "value": 35 },
+    { "name": "Data Display & Tables", "value": 25 },
+    { "name": "Advanced Layouts", "value": 20 },
+    { "name": "Feedback & Modals", "value": 15 },
+    { "name": "Navigation & Tabs", "value": 5 }
+  ],
+  "releases": [
+    {
+      "name": "TaskKanban.tsx",
+      "category": "Advanced Board",
+      "publisher": "퍼블리셔A",
+      "size": "67.1 KB",
+      "date": "2026.07.15",
+      "status": "new"
+    },
+    {
+      "name": "CustomDatePicker.tsx",
+      "category": "UI/Form Element",
+      "publisher": "퍼블리셔B",
+      "size": "5.4 KB",
+      "date": "2026.07.14",
+      "status": "stable"
+    },
+    {
+      "name": "Header.tsx",
+      "category": "Common Layout",
+      "publisher": "어드민C",
+      "size": "5.1 KB",
+      "date": "2026.07.13",
+      "status": "stable"
+    },
+    {
+      "name": "ErrorBoundary.tsx",
+      "category": "Common Logic",
+      "publisher": "어드민C",
+      "size": "3.5 KB",
+      "date": "2026.07.12",
+      "status": "stable"
+    },
+    {
+      "name": "DashboardSkeleton.tsx",
+      "category": "Common UI",
+      "publisher": "퍼블리셔A",
+      "size": "4.2 KB",
+      "date": "2026.07.11",
+      "status": "stable"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "type": "copy",
+      "message": "개발자 K님이 'TaskKanban.tsx' 컴포넌트 소스코드를 클립보드에 복사했습니다.",
+      "time": "1분 전",
+      "author": "개발자 K"
+    },
+    {
+      "id": 2,
+      "type": "commit",
+      "message": "퍼블리셔A님이 'DashboardSkeleton.tsx' 컴포넌트 마크업 개선안을 반영했습니다.",
+      "time": "12분 전",
+      "author": "퍼블리셔A"
+    },
+    {
+      "id": 3,
+      "type": "fix",
+      "message": "어드민C님이 'App.tsx' 및 'Header.tsx' 전역 Context 리팩토링 머지 작업을 완료했습니다.",
+      "time": "30분 전",
+      "author": "어드민C"
+    },
+    {
+      "id": 4,
+      "type": "issue",
+      "message": "개발자 P님이 'CustomDatePicker' 모바일 포커스 아웃라인 버그 이슈를 등록했습니다.",
+      "time": "2시간 전",
+      "author": "개발자 P"
+    },
+    {
+      "id": 5,
+      "type": "copy",
+      "message": "개발자 S님이 'ShowcaseAlertsModals' 알림창 미리보기 템플릿을 복사해갔습니다.",
+      "time": "5시간 전",
+      "author": "개발자 S"
+    }
+  ]
+}

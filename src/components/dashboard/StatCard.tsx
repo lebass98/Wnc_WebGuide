@@ -6,6 +6,7 @@ interface StatCardProps {
   value: string;
   icon: React.ReactNode;
   trend: number;
+  suffix?: string;
   className?: string;
 }
 
@@ -14,6 +15,7 @@ const StatCard: React.FC<StatCardProps> = ({
   value,
   icon,
   trend,
+  suffix = "",
   className = "",
 }) => {
   const isPositive = trend >= 0;
@@ -28,7 +30,10 @@ const StatCard: React.FC<StatCardProps> = ({
 
       <div className="mt-4 flex items-end justify-between">
         <div>
-          <h4 className="text-2xl font-bold text-[#1C2434] dark:text-white mb-1 leading-none">{value}</h4>
+          <h4 className="text-2xl font-bold text-[#1C2434] dark:text-white mb-1.5 leading-none">
+            {value}
+            {suffix && <span className="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">{suffix}</span>}
+          </h4>
           <span className="text-sm font-medium text-[#64748B] dark:text-[#8A99AF] leading-none">{title}</span>
         </div>
 
