@@ -99,7 +99,7 @@ const YiArchiveHero: React.FC = () => {
   }, []);
 
   return (
-    <div className="wrap mx-auto box-border relative w-full max-w-full overflow-hidden font-sans rounded-xl bg-slate-900 border border-slate-800">
+    <div className="wrap @container mx-auto box-border relative w-full max-w-full overflow-hidden font-sans rounded-xl bg-slate-900 border border-slate-800">
       <style dangerouslySetInnerHTML={{ __html: `
         .list_kv_img .img-wrap {
           position: absolute;
@@ -138,6 +138,81 @@ const YiArchiveHero: React.FC = () => {
         @media (max-width: 1024px) {
           .list_kv_img .img-wrap {
             height: 570px;
+          }
+        }
+        @container (max-width: 1024px) {
+          .mainVisual {
+            height: auto !important;
+          }
+          .list_kv_img {
+            height: 570px !important;
+          }
+          .list_kv_img .img-wrap {
+            height: 570px !important;
+          }
+          .info-area {
+            top: 140px !important;
+            width: 100% !important;
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+          }
+          .txt-wrap {
+            width: 336px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .txt-wrap .tit {
+            font-size: 14px !important;
+          }
+          .txt-wrap .txt {
+            font-size: 32px !important;
+            word-break: keep-all !important;
+          }
+          .sch-bar {
+            width: 100% !important;
+            height: 52px !important;
+            margin-top: 32px !important;
+          }
+          .sch-bar .sch-input {
+            font-size: 16px !important;
+            padding-left: 24px !important;
+            padding-right: 20px !important;
+          }
+          .sch-bar .sch-input::placeholder {
+            font-size: 16px !important;
+          }
+          .sch-bar .btnSch {
+            right: 20px !important;
+          }
+          .tag-wrap {
+            padding: 0 !important;
+            flex-direction: column !important;
+            margin-top: 24px !important;
+          }
+          .tag-wrap .tit {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+            font-size: 16px !important;
+            padding: 0 !important;
+          }
+          .tag-wrap .tags {
+            margin-top: 8px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin-bottom: 0 !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          .tag-wrap .tags li a {
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+            padding-top: 6px !important;
+            padding-bottom: 6px !important;
+            font-weight: 400 !important;
+            font-size: 15px !important;
           }
         }
       `}} />
