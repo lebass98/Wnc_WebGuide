@@ -29,14 +29,7 @@ const ShowcaseDataDisplay = lazy(() => import('./components/ui/ShowcaseDataDispl
 const ShowcaseProgressNav = lazy(() => import('./components/ui/ShowcaseProgressNav'));
 const ShowcaseStatesLoaders = lazy(() => import('./components/ui/ShowcaseStatesLoaders'));
 
-const LoadingFallback: React.FC = () => (
-  <div className="flex items-center justify-center min-h-[400px] w-full">
-    <div className="flex flex-col items-center space-y-4">
-      <div className="w-10 h-10 border-4 border-slate-200 border-t-[#3C50E0] rounded-full animate-spin" />
-      <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">로딩 중...</p>
-    </div>
-  </div>
-);
+import DashboardSkeleton from './components/common/DashboardSkeleton';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -91,7 +84,7 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingFallback />}>
+      <Suspense fallback={<DashboardSkeleton />}>
         <Routes>
       {/* 1. 풀 스크린 에러 페이지 라우트 그룹 */}
       <Route path="/pages/error-404" element={<ErrorPage code="404" />} />

@@ -304,15 +304,15 @@ const FormElements: React.FC = () => {
           >
             <div className="p-4 dark:bg-slate-900 rounded-xl flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="hidden" checked={checkbox1} onChange={(e) => setCheckbox1(e.target.checked)} />
-                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${checkbox1 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600'}`}>
+                <input type="checkbox" className="sr-only peer" checked={checkbox1} onChange={(e) => setCheckbox1(e.target.checked)} />
+                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-blue-500/25 ${checkbox1 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600'}`}>
                   {checkbox1 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
                 <span className={`text-sm font-medium ${checkbox1 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="hidden" checked={checkbox2} onChange={(e) => setCheckbox2(e.target.checked)} />
-                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${checkbox2 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600'}`}>
+                <input type="checkbox" className="sr-only peer" checked={checkbox2} onChange={(e) => setCheckbox2(e.target.checked)} />
+                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-blue-500/25 ${checkbox2 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600'}`}>
                   {checkbox2 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
                 <span className={`text-sm font-medium ${checkbox2 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
@@ -328,15 +328,15 @@ const FormElements: React.FC = () => {
           >
             <div className="p-4 dark:bg-slate-900 rounded-xl flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="radio" name="radio-test" value="default" checked={radioValue === 'default'} onChange={(e) => setRadioValue(e.target.value)} className="hidden" />
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${radioValue === 'default' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600'}`}>
+                <input type="radio" name="radio-test" value="default" checked={radioValue === 'default'} onChange={(e) => setRadioValue(e.target.value)} className="sr-only peer" />
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${radioValue === 'default' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600'}`}>
                    {radioValue === 'default' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
                 <span className={`text-sm font-medium ${radioValue === 'default' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="radio" name="radio-test" value="secondary" checked={radioValue === 'secondary'} onChange={(e) => setRadioValue(e.target.value)} className="hidden" />
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${radioValue === 'secondary' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600'}`}>
+                <input type="radio" name="radio-test" value="secondary" checked={radioValue === 'secondary'} onChange={(e) => setRadioValue(e.target.value)} className="sr-only peer" />
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${radioValue === 'secondary' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600'}`}>
                   {radioValue === 'secondary' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
                 <span className={`text-sm font-medium ${radioValue === 'secondary' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>보조</span>
@@ -352,14 +352,16 @@ const FormElements: React.FC = () => {
           >
             <div className="p-4 dark:bg-slate-900 rounded-xl space-y-4 pt-2">
               <div className="flex gap-8 items-center">
-                <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle1(!toggle1)}>
-                  <div className={`relative w-11 h-6 rounded-full transition-colors ${toggle1 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input type="checkbox" className="sr-only peer" checked={toggle1} onChange={() => setToggle1(!toggle1)} />
+                  <div className={`relative w-11 h-6 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${toggle1 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${toggle1 ? 'left-[calc(100%-1.25rem)]' : 'left-1'}`}></div>
                   </div>
                   <span className={`text-sm font-medium ${toggle1 ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
                 </label>
-                <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle2(!toggle2)}>
-                  <div className={`relative w-11 h-6 rounded-full transition-colors ${toggle2 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input type="checkbox" className="sr-only peer" checked={toggle2} onChange={() => setToggle2(!toggle2)} />
+                  <div className={`relative w-11 h-6 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${toggle2 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${toggle2 ? 'translate-x-6' : 'translate-x-1'}`}></div>
                   </div>
                   <span className={`text-sm font-medium ${toggle2 ? 'text-indigo-650 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
@@ -367,14 +369,16 @@ const FormElements: React.FC = () => {
               </div>
 
               <div className="flex gap-8 items-center">
-                <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle3(!toggle3)}>
-                  <div className={`relative w-12 h-6 border-2 rounded-full transition-colors flex items-center px-1 ${toggle3 ? 'border-slate-800 dark:border-white' : 'border-slate-200 group-hover:border-slate-300'}`}>
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input type="checkbox" className="sr-only peer" checked={toggle3} onChange={() => setToggle3(!toggle3)} />
+                  <div className={`relative w-12 h-6 border-2 rounded-full transition-colors flex items-center px-1 peer-focus:ring-2 peer-focus:ring-slate-500/25 ${toggle3 ? 'border-slate-800 dark:border-white' : 'border-slate-200 group-hover:border-slate-300'}`}>
                     <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${toggle3 ? 'bg-slate-800 dark:bg-white translate-x-6' : 'bg-slate-200 translate-x-0'}`}></div>
                   </div>
                   <span className={`text-sm font-medium ${toggle3 ? 'text-slate-800 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
                 </label>
-                <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setToggle4(!toggle4)}>
-                   <div className={`relative w-12 h-6 border-2 rounded-full transition-colors flex items-center px-1 ${toggle4 ? 'border-slate-800 dark:border-white' : 'border-slate-200 group-hover:border-slate-300'}`}>
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <input type="checkbox" className="sr-only peer" checked={toggle4} onChange={() => setToggle4(!toggle4)} />
+                   <div className={`relative w-12 h-6 border-2 rounded-full transition-colors flex items-center px-1 peer-focus:ring-2 peer-focus:ring-slate-500/25 ${toggle4 ? 'border-slate-800 dark:border-white' : 'border-slate-200 group-hover:border-slate-300'}`}>
                     <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${toggle4 ? 'bg-slate-800 dark:bg-white translate-x-6' : 'bg-slate-200 translate-x-0'}`}></div>
                   </div>
                   <span className={`text-sm font-medium ${toggle4 ? 'text-slate-800 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
