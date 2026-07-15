@@ -9,7 +9,8 @@ import {
   CheckCircle,
   Users,
   Box,
-  ChevronRight } from 'lucide-react';
+  ChevronRight
+} from 'lucide-react';
 import codeSnippets from '../../data/HeroSectionsSnippets.json';
 
 
@@ -99,8 +100,9 @@ const YiArchiveHero: React.FC = () => {
   }, []);
 
   return (
-    <div className="wrap @container mx-auto box-border relative w-full max-w-full overflow-hidden font-sans rounded-xl bg-slate-900 border border-slate-800">
-      <style dangerouslySetInnerHTML={{ __html: `
+    <div className="wrap @container mx-auto box-border relative w-full max-w-full overflow-hidden font-sans rounded-xl border-slate-800">
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .list_kv_img .img-wrap {
           position: absolute;
           inset: 0;
