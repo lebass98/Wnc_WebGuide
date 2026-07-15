@@ -14,6 +14,176 @@ import codeSnippets from '../../data/HeroSectionsSnippets.json';
 
 
 
+const YiArchiveHero: React.FC = () => {
+  const sliderRef = React.useRef<HTMLDivElement>(null);
+  const kvSectionRef = React.useRef<HTMLDivElement>(null);
+  const kvImgListRef = React.useRef<HTMLDivElement>(null);
+
+  const getImageUrl = (num: number) => {
+    return new URL(`../../assets/visual_background${num}.jpg`, import.meta.url).href;
+  };
+
+  React.useEffect(() => {
+    const slides = sliderRef.current?.querySelectorAll('.img-wrap');
+    if (!slides || slides.length === 0) return;
+
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    const autoplayDelay = 4000;
+    const transitionDuration = 3000;
+    let autoplayTimer: any = null;
+    let lastIndex = -1;
+
+    function showSlide(index: number) {
+      slides.forEach((slide: any, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+          slide.classList.remove('last-active');
+        } else if (i === lastIndex) {
+          slide.classList.add('last-active');
+          slide.classList.remove('active');
+        } else {
+          slide.classList.remove('active', 'last-active');
+        }
+      });
+      lastIndex = index;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      showSlide(currentIndex);
+    }
+
+    const initTimeout = setTimeout(() => {
+      showSlide(currentIndex);
+    }, 100);
+
+    autoplayTimer = setTimeout(() => {
+      nextSlide();
+      autoplayTimer = setInterval(nextSlide, autoplayDelay + transitionDuration);
+    }, 3000);
+
+    const handleScroll = () => {
+      const kvSection = kvSectionRef.current;
+      const kvImgList = kvImgListRef.current;
+      if (!kvSection || !kvImgList) return;
+
+      const kvHeight = kvSection.offsetHeight;
+      const scrollY = window.scrollY;
+
+      if (scrollY <= 0) {
+        kvImgList.style.transform = 'scale(1)';
+        kvImgList.style.opacity = '1';
+        return;
+      }
+
+      if (scrollY >= kvHeight) return;
+
+      const scrollRatio = Math.min(1, Math.max(0, scrollY / kvHeight));
+      const nextScale = 1 + 0.5 * scrollRatio;
+      const nextOpacity = 1 - scrollRatio;
+
+      kvImgList.style.transform = `scale(${nextScale})`;
+      kvImgList.style.opacity = `${nextOpacity}`;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('load', handleScroll);
+    handleScroll();
+
+    return () => {
+      clearTimeout(initTimeout);
+      clearTimeout(autoplayTimer);
+      clearInterval(autoplayTimer);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('load', handleScroll);
+    };
+  }, []);
+
+  return (
+    <div className="wrap mx-auto box-border relative w-full max-w-full overflow-hidden font-sans rounded-xl bg-slate-900 border border-slate-800">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .list_kv_img .img-wrap {
+          position: absolute;
+          inset: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          z-index: 0;
+          overflow: hidden;
+          transition: opacity 0s 3s, z-index 0s 3s;
+        }
+        .list_kv_img .img-wrap.active {
+          opacity: 1;
+          z-index: 20;
+          transition: opacity 3s ease-in-out, z-index 0s 0s;
+        }
+        .list_kv_img .img-wrap.last-active {
+          opacity: 1;
+          z-index: 10;
+          transition: opacity 0s 3s, z-index 0s 3s;
+        }
+        .list_kv_img .img-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          transform-origin: top center;
+          transform: scale(1.3);
+          transition: transform 0s 3.5s;
+        }
+        .list_kv_img .img-wrap.active img {
+          transform: scale(1);
+          transition: transform 7.5s ease-out;
+        }
+        @media (max-width: 1024px) {
+          .list_kv_img .img-wrap {
+            height: 570px;
+          }
+        }
+      `}} />
+
+      <div className="container w-[1920px] max-w-full mx-auto relative max-lg:w-full">
+        <section className="main-sec se1 relative max-lg:z-0">
+          <div ref={kvSectionRef} className="mainVisual relative h-[820px] inset-0 bg-white/30 max-lg:h-auto max-w-full">
+            <div ref={kvImgListRef} className="list_kv_img swiper-container relative w-full h-[820px] max-lg:h-[570px] overflow-hidden origin-center transition-[transform,opacity] duration-100 ease-out">
+              <div ref={sliderRef} className="swiper-wrapper relative w-full h-full">
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                  <span key={num} className="img-wrap swiper-slide group absolute inset-0 block w-full h-full max-lg:h-[570px] overflow-hidden" style={num === 1 ? { opacity: 1, zIndex: 10 } : undefined}>
+                    <img className="cover pc w-full h-full object-cover object-center origin-top" src={getImageUrl(num)} alt="" />
+                    <img className="cover pc w-full h-full object-cover object-center origin-top" src={getImageUrl(num)} alt="" />
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="info-area absolute left-1/2 top-[240px] -translate-x-1/2 w-[1300px] max-lg:w-full max-lg:top-[140px] max-lg:px-[12px]">
+              <div className="txt-wrap max-lg:w-[336px] max-lg:mx-auto">
+                <p className="tit text-[22px] font-semibold text-white leading-[1.5] text-center max-lg:text-[14px]">용인디지털기록관</p>
+                <p className="txt mt-2 font-['GyeonggiBatang'] text-[64px] font-bold text-white leading-[1.4] text-center max-lg:break-keep max-lg:text-[32px]">용인의 어제와 오늘을 담아 내일로 이어갑니다.</p>
+              </div>
+              <div className="sch-bar group relative w-[920px] rounded-full border-3 border-white bg-white/10 shadow-[0_0_20px_0_rgba(0,0,0,0.15)] backdrop-blur-[4px] h-[78px] mt-[64px] mx-auto has-[:focus]:border-[#7D03FF] has-[:focus]:bg-white max-lg:w-full max-lg:h-[52px] max-lg:mt-[32px]">
+                <input type="text" className="sch-input w-full h-full text-[20px] font-medium text-white leading-[1.6] pl-[37px] pr-[100px] bg-transparent border-none outline-none placeholder:text-[20px] placeholder:font-medium placeholder:text-white focus:text-[#05020F] focus:outline-none focus:rounded-full focus:placeholder:text-[#05020F] max-lg:text-[16px] max-lg:pl-[24px] max-lg:pr-[20px] max-lg:placeholder:text-[16px]" placeholder="검색어를 입력하세요." />
+                <button className="btn btn-icon-sch white btnSch absolute right-[36px] top-1/2 -translate-y-1/2 w-[28px] h-[28px] bg-[url('https://www.yiarchive.or.kr/inc/user/resource/image/main/sch-btn.svg')] bg-center bg-contain bg-no-repeat group-focus-within:invert max-lg:w-[28px] max-lg:h-[28px] max-lg:right-[20px]"></button>
+              </div>
+              <div className="tag-wrap flex items-start justify-center mx-auto pl-[40px] mt-6 max-lg:p-0 max-lg:flex-col max-lg:mt-[24px]">
+                <p className="tit text-[18px] font-bold text-white leading-[1.6] w-[100px] mr-[24px] py-[6px] max-lg:mx-auto max-lg:text-center max-lg:text-[16px] max-lg:p-0">인기검색어</p>
+                <ul className="tags text-center flex items-center justify-start flex-wrap gap-[6px] max-w-[calc(100%-101px)] max-lg:mt-[8px] max-lg:mx-auto max-lg:mb-0 max-lg:justify-center max-lg:gap-[8px] max-lg:max-w-full max-lg:w-full">
+                  {['임진산성', '김량천', '처인성', '묘소', '제단', '파담마을'].map((tag) => (
+                    <li key={tag} className="flex items-center">
+                      <a href="javascript:void(0)" className="schEx rounded-full bg-[#05020F]/40 backdrop-blur-[2px] text-[18px] font-medium text-white leading-[1.6] px-[16px] py-[6px] transition-all duration-200 ease lg:hover:bg-[#7D03FF] max-lg:px-[14px] max-lg:py-[6px] max-lg:font-normal max-lg:text-[15px]">{tag}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
 const HeroSections: React.FC = () => {
   // Code snippets data map for 5 Hero Variations
   return (
@@ -33,6 +203,17 @@ const HeroSections: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* 0. YiArchive custom fade slider hero */}
+      <ShowcaseWrapper
+        title="용인디지털기록관 히어로 (바닐라 JS & Tailwind)"
+        description="외부 jQuery 및 Swiper 종속성 없이 바닐라 자바스크립트 타이머와 네이티브 CSS 3D/Z-Index 레이어 트랜지션을 사용하여 완성한 최첨단 크로스페이드 슬라이더 및 스크롤 연동 줌아웃 히어로 섹션입니다."
+        snippet={codeSnippets.hero_yiarchive}
+      >
+        <YiArchiveHero />
+      </ShowcaseWrapper>
+
+      <div className="h-[1px] bg-slate-200 dark:bg-slate-800" />
 
       {/* 1. Simple centered hero */}
       <ShowcaseWrapper
