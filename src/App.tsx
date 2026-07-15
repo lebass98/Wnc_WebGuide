@@ -1,5 +1,6 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import React, { useState, lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
@@ -32,35 +33,8 @@ const ShowcaseStatesLoaders = lazy(() => import('./components/ui/ShowcaseStatesL
 import DashboardSkeleton from './components/common/DashboardSkeleton';
 
 const App: React.FC = () => {
-  const navigate = useNavigate();
-
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const { isAuthenticated } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        return savedTheme === 'dark';
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDarkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -68,18 +42,6 @@ const App: React.FC = () => {
 
   const closeSidebar = () => {
     setIsSidebarOpen(false);
-  };
-
-  const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', 'true');
-    navigate('/');
-  };
-
-  const handleLogout = () => {
-    // 임시로 로그아웃 시에도 메인에 머물도록 설정
-    setIsAuthenticated(true);
-    navigate('/');
   };
 
   return (
@@ -98,12 +60,7 @@ const App: React.FC = () => {
           isAuthenticated ? (
             <Navigate to="/" replace />
           ) : (
-            <LoginPage 
-              onLoginSuccess={handleLoginSuccess} 
-              onSignUpClick={() => navigate('/signup')} 
-              isDarkMode={isDarkMode}
-              toggleDarkMode={toggleDarkMode}
-            />
+            <LoginPage />
           )
         } 
       />
@@ -113,12 +70,7 @@ const App: React.FC = () => {
           isAuthenticated ? (
             <Navigate to="/" replace />
           ) : (
-            <SignUpPage 
-              onSignUpSuccess={handleLoginSuccess} 
-              onSignInClick={() => navigate('/signin')} 
-              isDarkMode={isDarkMode}
-              toggleDarkMode={toggleDarkMode}
-            />
+            <SignUpPage />
           )
         } 
       />
@@ -145,11 +97,8 @@ const App: React.FC = () => {
               )}
 
               <div className="flex-1 lg:pl-[280px] flex flex-col min-h-screen overflow-hidden transition-all duration-300">
-                <Header
+                 <Header
                   onMenuClick={toggleSidebar}
-                  isDarkMode={isDarkMode}
-                  toggleDarkMode={toggleDarkMode}
-                  onLogout={handleLogout}
                 />
 
                 {/* Main Content Area */}

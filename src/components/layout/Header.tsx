@@ -10,14 +10,17 @@ import {
   Settings
 } from 'lucide-react';
 
+import { useTheme } from '../../context/ThemeContext';
+import { useAuth } from '../../context/AuthContext';
+
 interface HeaderProps {
   onMenuClick: () => void;
-  isDarkMode: boolean;
-  toggleDarkMode: () => void;
-  onLogout: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode, onLogout }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+  const { isDarkMode, toggleTheme } = useTheme();
+  const { logout } = useAuth();
+
   return (
     <header className="fixed top-0 right-0 left-0 lg:left-[280px] h-[72px] lg:h-[80px] px-4 sm:px-6 lg:px-8 flex items-center justify-between bg-white dark:bg-[#1A222C] border-b border-slate-200 dark:border-slate-800 z-10 transition-all duration-300 backdrop-blur-[20px] bg-white/10">
       {/* Left side: Title and Greetings */}
@@ -62,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
 
         <div className="flex items-center gap-0.5 sm:gap-1 mx-1 sm:mx-2">
           <button
-            onClick={toggleDarkMode}
+            onClick={toggleTheme}
             className="hidden sm:block p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
           >
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -82,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
 
         {/* Profile block */}
         <div
-          onClick={onLogout}
+          onClick={logout}
           className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-l border-slate-200 dark:border-slate-800 cursor-pointer hover:opacity-80 group relative"
         >
           <img

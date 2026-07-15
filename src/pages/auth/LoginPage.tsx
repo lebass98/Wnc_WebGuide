@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ChevronLeft, Moon, Sun } from 'lucide-react';
-
-interface LoginPageProps {
-    onLoginSuccess: () => void;
-    onSignUpClick: () => void;
-    isDarkMode: boolean;
-    toggleDarkMode: () => void;
-}
+import { useTheme } from '../../context/ThemeContext';
+import { useAuth } from '../../context/AuthContext';
 
 const GoogleIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,22 +28,24 @@ const TailAdminLogo = () => (
     </svg>
 );
 
-const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, isDarkMode, toggleDarkMode }) => {
+const LoginPage: React.FC = () => {
     const navigate = useNavigate();
+    const { login } = useAuth();
+    const { isDarkMode, toggleTheme } = useTheme();
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('adminnextjs@gmail.com');
     const [password, setPassword] = useState('1234567890');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onLoginSuccess();
+        login();
     };
 
     return (
         <div className="flex justify-center min-h-screen bg-white font-sans max-h-screen overflow-hidden dark:bg-slate-900 transition-colors duration-300">
             {/* Theme Toggle Button */}
             <button
-                onClick={toggleDarkMode}
+                onClick={toggleTheme}
                 className="fixed bottom-6 right-6 w-12 h-12 bg-[#4B62FA] hover:bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50 transition-colors z-50"
             >
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -148,7 +145,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, is
                     </form>
 
                     <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">
-                        계정이 없으신가요? <button onClick={onSignUpClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">회원가입</button>
+                        계정이 없으신가요? <button onClick={() => navigate('/signup')} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">회원가입</button>
                     </p>
                 </div>
             </div>

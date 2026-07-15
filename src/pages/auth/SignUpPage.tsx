@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ChevronLeft, Moon, Sun } from 'lucide-react';
-
-interface SignUpPageProps {
-    onSignUpSuccess: () => void;
-    onSignInClick: () => void;
-    isDarkMode: boolean;
-    toggleDarkMode: () => void;
-}
+import { useTheme } from '../../context/ThemeContext';
+import { useAuth } from '../../context/AuthContext';
 
 const GoogleIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,8 +29,10 @@ const TailAdminLogo = () => (
 );
 
 
-const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick, isDarkMode, toggleDarkMode }) => {
+const SignUpPage: React.FC = () => {
     const navigate = useNavigate();
+    const { login } = useAuth();
+    const { isDarkMode, toggleTheme } = useTheme();
     const [showPassword, setShowPassword] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -44,14 +41,14 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onSignUpSuccess();
+        login();
     };
 
     return (
         <div className="flex justify-center min-h-screen bg-white font-sans max-h-screen overflow-hidden dark:bg-slate-900 transition-colors duration-300">
             {/* Theme Toggle Button */}
             <button
-                onClick={toggleDarkMode}
+                onClick={toggleTheme}
                 className="fixed bottom-6 right-6 w-12 h-12 bg-[#4B62FA] hover:bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50 transition-colors z-50"
             >
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -179,7 +176,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onSignUpSuccess, onSignInClick,
                     </form>
 
                     <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">
-                        이미 계정이 있으신가요? <button onClick={onSignInClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">로그인</button>
+                        이미 계정이 있으신가요? <button onClick={() => navigate('/signin')} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">로그인</button>
                     </p>
                 </div>
             </div>
