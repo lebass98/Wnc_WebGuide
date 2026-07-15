@@ -149,8 +149,8 @@ const YiArchiveHero: React.FC = () => {
               <div ref={sliderRef} className="swiper-wrapper relative w-full h-full">
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                   <span key={num} className="img-wrap swiper-slide group absolute inset-0 block w-full h-full max-lg:h-[570px] overflow-hidden" style={num === 1 ? { opacity: 1, zIndex: 10 } : undefined}>
-                    <img className="cover pc w-full h-full object-cover object-center origin-top" src={`/assets/hero_yiarchive/visual_background${num}.jpg`} alt="" />
-                    <img className="cover pc w-full h-full object-cover object-center origin-top" src={`/assets/hero_yiarchive/visual_background${num}.jpg`} alt="" />
+                    <img className="cover pc w-full h-full object-cover object-center origin-top" src={`${import.meta.env.BASE_URL}assets/hero_yiarchive/visual_background${num}.jpg`} alt="" />
+                    <img className="cover pc w-full h-full object-cover object-center origin-top" src={`${import.meta.env.BASE_URL}assets/hero_yiarchive/visual_background${num}.jpg`} alt="" />
                   </span>
                 ))}
               </div>
