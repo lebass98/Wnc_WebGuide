@@ -1,12 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Home, RotateCcw, AlertTriangle, ShieldAlert, Cpu } from 'lucide-react';
+import { ArrowLeft, Home, RotateCcw, AlertTriangle, ShieldAlert, Cpu, ChevronRight, ExternalLink } from 'lucide-react';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
+import errorSnippets from '../../data/ErrorPageSnippets.json';
 
 interface ErrorPageProps {
   code: '404' | '500' | '503';
+  standalone?: boolean;
+  isEmbed?: boolean;
 }
 
-const ErrorPage: React.FC<ErrorPageProps> = ({ code }) => {
+const ErrorPage: React.FC<ErrorPageProps> = ({ code, standalone = false, isEmbed = false }) => {
   const navigate = useNavigate();
 
   const errorData = {
@@ -90,53 +94,97 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code }) => {
     }
   };
 
-  return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 px-4 py-16 transition-colors duration-300 font-sans">
-      <div className="w-full max-w-xl text-center space-y-8 bg-white dark:bg-[#1A222C] p-8 sm:p-12 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl transition-all duration-300">
+  if (standalone) {
+    return (
+      <div className={`w-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 px-4 transition-colors duration-300 font-sans ${isEmbed ? 'min-h-[500px] py-10' : 'min-h-screen py-16'}`}>
+        <div className="w-full max-w-xl text-center space-y-8 bg-white dark:bg-[#1A222C] p-8 sm:p-12 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl transition-all duration-300">
+          
+          {/* Error Badge & Illustration */}
+          <div className="relative">
+            {currentError.illustration}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 rounded-full border shadow-lg bg-white dark:bg-[#18202b] ${currentError.colorClass}`}>
+              {currentError.icon}
+            </div>
+          </div>
 
-        {/* Error Badge & Illustration */}
-        <div className="relative">
-          {currentError.illustration}
-          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 rounded-full border shadow-lg bg-white dark:bg-[#18202b] ${currentError.colorClass}`}>
-            {currentError.icon}
+          {/* Code Label */}
+          <div className="space-y-3 pt-6">
+            <span className="text-[64px] font-black tracking-widest text-slate-300 dark:text-slate-700 leading-none">
+              {code}
+            </span>
+            <h2 className="text-[26px] font-extrabold text-slate-800 dark:text-white leading-tight">
+              {currentError.title}
+            </h2>
+            <p className="text-lg font-bold text-slate-700 dark:text-slate-300">
+              {currentError.subtitle}
+            </p>
+            <p className="text-sm font-medium text-slate-400 dark:text-slate-500 max-h-full mx-auto leading-relaxed">
+              {currentError.description}
+            </p>
+          </div>
+
+          {/* Navigation Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              이전으로
+            </button>
+
+            <button
+              onClick={handleAction}
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#4B62FA] hover:bg-indigo-600 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none cursor-pointer"
+            >
+              {code === '500' ? <RotateCcw className="w-4 h-4" /> : <Home className="w-4 h-4" />}
+              {currentError.actionText}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Showcase view (within Dashboard Layout)
+  return (
+    <div className="space-y-12 pb-20 font-sans">
+      {/* Page Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
+            에러 {code} 페이지
+          </h1>
+          <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
+            <span>홈</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span>페이지</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">에러 {code}</span>
           </div>
         </div>
 
-        {/* Code Label */}
-        <div className="space-y-3 pt-6">
-          <span className="text-[64px] font-black tracking-widest text-slate-300 dark:text-slate-700 leading-none">
-            {code}
-          </span>
-          <h2 className="text-[26px] font-extrabold text-slate-800 dark:text-white leading-tight">
-            {currentError.title}
-          </h2>
-          <p className="text-lg font-bold text-slate-700 dark:text-slate-300">
-            {currentError.subtitle}
-          </p>
-          <p className="text-sm font-medium text-slate-400 dark:text-slate-500 max-h-full mx-auto leading-relaxed">
-            {currentError.description}
-          </p>
-        </div>
-
-        {/* Navigation Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-          <button
-            onClick={() => navigate(-1)}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer"
+        {/* External Link Button */}
+        <div>
+          <a
+            href={`${import.meta.env.BASE_URL}pages/error-${code}-raw`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1A222C] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-350 shadow-sm transition-all cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
-            이전으로
-          </button>
-
-          <button
-            onClick={handleAction}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#4B62FA] hover:bg-indigo-600 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none cursor-pointer"
-          >
-            {code === '500' ? <RotateCcw className="w-4 h-4" /> : <Home className="w-4 h-4" />}
-            {currentError.actionText}
-          </button>
+            <ExternalLink className="w-3.5 h-3.5" />
+            전체 화면으로 보기
+          </a>
         </div>
       </div>
+
+      <ShowcaseWrapper
+        title={`에러 ${code} (${currentError.title})`}
+        description={`시스템 오류 상태를 안내하기 위해 최첨단 글래스모피즘 뱃지와 다이내믹 모션 벡터 그래픽이 적용된 프리미엄 ${code} 에러 페이지 컴포넌트입니다.`}
+        snippet={errorSnippets[code as keyof typeof errorSnippets]}
+      >
+        <ErrorPage code={code} standalone={true} isEmbed={true} />
+      </ShowcaseWrapper>
     </div>
   );
 };

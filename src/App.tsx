@@ -49,9 +49,9 @@ const App: React.FC = () => {
       <Suspense fallback={<DashboardSkeleton />}>
         <Routes>
       {/* 1. 풀 스크린 에러 페이지 라우트 그룹 */}
-      <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
-      <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
-      <Route path="/pages/error-503" element={<ErrorPage code="503" />} />
+      <Route path="/pages/error-404-raw" element={<ErrorPage code="404" standalone={true} />} />
+      <Route path="/pages/error-500-raw" element={<ErrorPage code="500" standalone={true} />} />
+      <Route path="/pages/error-503-raw" element={<ErrorPage code="503" standalone={true} />} />
 
       {/* 2. 로그인 관련 풀 스크린 라우트 */}
       <Route 
@@ -116,6 +116,9 @@ const App: React.FC = () => {
                       <Route path="/pages/integrations" element={<Integrations />} />
                       <Route path="/pages/hero-sections" element={<HeroSections />} />
                       <Route path="/pages/pricing-sections" element={<PricingSections />} />
+                      <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
+                      <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
+                      <Route path="/pages/error-503" element={<ErrorPage code="503" />} />
                       <Route path="/charts/line-charts" element={<LineCharts />} />
                       <Route path="/calendar" element={<Calendar />} />
                       <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
