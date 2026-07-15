@@ -263,7 +263,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ title, description, s
           previewMode === 'react' ? (
             /* React Component Live Preview */
             <div className={theme === 'dark' ? 'dark' : ''}>
-              <div className="bg-white dark:bg-[#0F172A] transition-colors duration-300 w-full p-4">
+              <div className="bg-white dark:bg-[#0F172A] transition-colors duration-300 w-full">
                 {children}
               </div>
             </div>
