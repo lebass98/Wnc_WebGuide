@@ -45,6 +45,13 @@
    - **Vitest 테스팅 프레임워크 구축**: Vite 환경에 최적화된 고성능 테스트 엔진인 **Vitest**와 **React Testing Library**를 통합 도입하여 가상 DOM 환경(`jsdom`)에서 컴포넌트 렌더링 무결성을 주기적으로 검증할 수 있는 인프라를 마련했습니다.
    - **테스트 및 환경 모킹 자동화**: [setupTests.ts](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/setupTests.ts)를 통해 DOM 테스팅을 위한 단언식 확장 바인딩 및 `window.matchMedia` 같은 테스팅 환경 미지원 브라우저 API들의 모킹 구성을 자동화하여 테스트 구동 신뢰성을 높였습니다.
 
+8. **🎨 UI/UX 및 웹 접근성(a11y) 고도화 (최신 업데이트)**
+   - **다크 모드 Flicker 방지**: [index.html](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/index.html) 헤더 내에 테마 즉시 감지 스크립트를 삽입하여, 다크 모드 활성화 상태에서 페이지 진입 시 흰색 테마 화면이 순간적으로 보였다 사라지는 현상을 완벽히 차단했습니다.
+   - **프리미엄 스켈레톤 UI 도입**: 대시보드의 실루엣을 모사하고 은은하게 깜빡이는 `animate-pulse` 점멸 애니메이션을 담은 [DashboardSkeleton.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/components/common/DashboardSkeleton.tsx)를 구현 및 Suspense 로더에 매핑하여 동적 로딩 지연 중 이탈감을 해결했습니다.
+   - **웹 접근성(a11y) 표준 및 키보드 조작성 보완**: [FormElements.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/pages/forms/FormElements.tsx) 내의 커스텀 체크박스, 라디오, 토글 스위치 등에 `sr-only peer` 및 `peer-focus:ring` 기법을 적용하여 스크린 리더 인식 및 키보드 조작(Tab, Space/Enter)이 완벽하게 지원되도록 개선했습니다.
+   - **Sidebar 접근성 마크업 보완**: [Sidebar.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/components/layout/Sidebar.tsx) 네비게이션 태그에 `role="navigation"` 속성을 주입하고 모바일 닫기 버튼에 스크린 리더용 레이블(`aria-label="메뉴 닫기"`)을 보완했습니다.
+   - **마이크로 인터랙션 모션 추가**: [StatCard.tsx](file:///Users/ijaegwang/wordncode/React/Project/DashBoard_01/src/components/dashboard/StatCard.tsx)에 마우스 hover 시 살짝 떠오르며 입체적인 그림자가 강조되는 인터랙티브 효과를 적용했습니다.
+
 ---
 
 ## 🛠 기술 스택 (Technology Stack)
@@ -72,6 +79,7 @@ DashBoard_01/
 │   ├── assets/               # 이미지, SVG 아이콘 등 에셋 관리
 │   ├── components/           # 대시보드를 구성하는 단위 컴포넌트 모음
 │   │   ├── common/           # 공통 기능 및 예외 처리 컴포넌트
+│   │   │   ├── DashboardSkeleton.tsx     # 페이지 지연 로딩 시 렌더링되는 점멸 스켈레톤 UI
 │   │   │   └── ErrorBoundary.tsx         # 런타임 에러 감지 및 화면 복구 Fallback 컴포넌트
 │   │   ├── dashboard/        # 대시보드 내 개별 통계 요약 카드 및 그래프 위젯
 │   │   │   ├── ActivityFeed.tsx          # 최근 사용자 활동 로그 피드
