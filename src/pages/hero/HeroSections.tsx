@@ -33,7 +33,7 @@ const YiArchiveHero: React.FC = () => {
     let lastIndex = -1;
 
     function showSlide(index: number) {
-      slides.forEach((slide: any, i) => {
+      slides?.forEach((slide: any, i) => {
         if (i === index) {
           slide.classList.add('active');
           slide.classList.remove('last-active');
