@@ -5,9 +5,10 @@ import {
   Filter, 
   Trash2, 
   ChevronLeft, 
-  ChevronRight,
-  MoreVertical
+  ChevronRight
 } from 'lucide-react';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
+import codeSnippets from '../../data/BasicTablesSnippets.json';
 
 const BasicTables: React.FC = () => {
   return (
@@ -31,12 +32,13 @@ const BasicTables: React.FC = () => {
       {/* Basic Table 1 Section */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 1</h3>
-        <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-slate-50 dark:border-slate-800">
-            <h4 className="text-lg font-bold text-slate-800 dark:text-white">인기 채널</h4>
-          </div>
+        <ShowcaseWrapper
+          title="인기 채널"
+          description="사용자 프로필, 프로젝트명, 팀원 아바타 스페이스, 상태 배지 및 예산을 표시하는 테이블입니다."
+          snippet={codeSnippets.table1}
+        >
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse bg-white dark:bg-[#1A222C]">
               <thead>
                 <tr className="bg-slate-50/50 dark:bg-slate-800/50">
                   <th className="px-6 py-4 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">사용자</th>
@@ -117,16 +119,20 @@ const BasicTables: React.FC = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ShowcaseWrapper>
       </div>
 
       {/* Basic Table 2 Section */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 2</h3>
-        <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="p-6">
+        <ShowcaseWrapper
+          title="최근 주문"
+          description="검색 및 필터 기능이 포함되어 있고 다중 선택용 체크박스를 갖춘 주문 내역 리스트입니다."
+          snippet={codeSnippets.table2}
+        >
+          <div className="p-6 bg-white dark:bg-[#1A222C]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-              <h4 className="text-lg font-bold text-slate-800 dark:text-white">최근 주문</h4>
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white">최근 주문 목록</h4>
               <div className="flex items-center gap-2">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -200,16 +206,20 @@ const BasicTables: React.FC = () => {
               </table>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
       </div>
 
       {/* Basic Table 3 Section */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 3</h3>
-        <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="p-6">
+        <ShowcaseWrapper
+          title="최근 거래"
+          description="금융, IT 등 주식 매매 및 거래 현황을 관리하고 하단 페이지네이션을 탑재한 테이블입니다."
+          snippet={codeSnippets.table3}
+        >
+          <div className="p-6 bg-white dark:bg-[#1A222C]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-              <h4 className="text-lg font-bold text-slate-800 dark:text-white">최근 거래</h4>
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white">최근 거래 내역</h4>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input 
@@ -288,20 +298,18 @@ const BasicTables: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
       </div>
 
       {/* Basic Table 4 Section */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 4</h3>
-        <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-slate-50 dark:border-slate-800 flex justify-between items-center">
-            <h4 className="text-lg font-bold text-slate-800 dark:text-white">주요 캠페인</h4>
-            <button className="text-slate-400 hover:text-slate-600 transition-colors">
-              <MoreVertical className="w-5 h-5" />
-            </button>
-          </div>
-          <div className="p-6">
+        <ShowcaseWrapper
+          title="주요 캠페인"
+          description="크리에이터 리스트 및 소셜 미디어 플랫폼별 마케팅 캠페인의 성과 상태를 나타내는 테이블입니다."
+          snippet={codeSnippets.table4}
+        >
+          <div className="p-6 bg-white dark:bg-[#1A222C]">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -358,16 +366,20 @@ const BasicTables: React.FC = () => {
               </table>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
       </div>
 
       {/* Basic Table 5 Section */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 5</h3>
-        <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-slate-50 dark:border-slate-800">
-            <div className="flex justify-between items-center">
-              <h4 className="text-lg font-bold text-slate-800 dark:text-white">최근 주문</h4>
+        <ShowcaseWrapper
+          title="최근 주문 목록"
+          description="국가별 주문 상품, 카테고리 분류, 마케팅 효율 분석 및 거래 가치(총액)를 보여주는 요약 테이블입니다."
+          snippet={codeSnippets.table5}
+        >
+          <div className="p-6 bg-white dark:bg-[#1A222C]">
+            <div className="flex justify-between items-center mb-6">
+              <h4 className="text-lg font-bold text-slate-800 dark:text-white">최근 주문 현황</h4>
               <div className="flex gap-2">
                 <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors">
                   <Filter className="w-4 h-4" />
@@ -378,8 +390,6 @@ const BasicTables: React.FC = () => {
                 </button>
               </div>
             </div>
-          </div>
-          <div className="p-6">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -413,7 +423,7 @@ const BasicTables: React.FC = () => {
               </table>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
       </div>
     </div>
   );
