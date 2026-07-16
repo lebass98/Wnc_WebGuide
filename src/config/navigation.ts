@@ -80,13 +80,6 @@ export const menuItems: MenuItem[] = [
       { key: 'data-display', labelKey: 'sidebar.dataDisplay', path: '/ui/data-display' },
       { key: 'progress', labelKey: 'sidebar.progressNav', path: '/ui/progress-nav' },
       { key: 'states', labelKey: 'sidebar.statesLoaders', path: '/ui/states-loaders' },
-    ],
-  },
-  {
-    key: 'components',
-    icon: 'Component',
-    labelKey: 'sidebar.components',
-    subItems: [
       { key: 'input', labelKey: 'sidebar.input', path: '/components/input' },
     ],
   },
