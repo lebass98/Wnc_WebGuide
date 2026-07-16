@@ -9,8 +9,20 @@ import {
   Table,
   Layers,
   Component,
-  Grid
+  Grid,
 } from 'lucide-react';
+import { useI18n } from '../../i18n/config';
+import { menuItems, type SubMenuItem } from '../../config/navigation';
+
+const iconMap: Record<string, React.ElementType> = {
+  LayoutDashboard,
+  ListTodo,
+  SquarePen,
+  Table,
+  Layers,
+  Component,
+  Grid,
+};
 
 interface SidebarProps {
   isOpen: boolean;
@@ -20,7 +32,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const currentPath = location.pathname;
+  const { t } = useI18n();
 
   return (
     <aside
@@ -38,8 +50,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </svg>
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">Template GUIDE</h1>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">WordNCode</p>
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">{t('sidebar.brand')}</h1>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{t('sidebar.subtitle')}</p>
           </div>
         </div>
         <button
@@ -53,196 +65,72 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
       {/* Navigation */}
       <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C]">
-        {/* Dashboard Item */}
-        <div
-          onClick={() => { navigate('/'); onClose(); }}
-          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPath === '/' ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
-        >
-          <div className="flex items-center gap-3">
-            <LayoutDashboard className="w-5 h-5" />
-            <span className="font-semibold text-sm">대시보드</span>
-          </div>
-          {currentPath === '/' && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">신규</span>}
-        </div>
-
-        {/* Task Menu */}
-        <NavItem
-          icon={ListTodo}
-          label="작업"
-          hasSubmenu
-          subItems={['목록', '칸반']}
-          onSubItemClick={(sub) => {
-            if (sub === '목록') navigate('/tasks/list');
-            if (sub === '칸반') navigate('/tasks/kanban');
-            onClose();
-          }}
-          activeSubItem={
-            currentPath === '/tasks/list' ? '목록' : 
-              currentPath === '/tasks/kanban' ? '칸반' : undefined
+        {menuItems.map((item) => {
+          const Icon = iconMap[item.icon];
+          if (!item.subItems) {
+            const isActive = location.pathname === item.path;
+            return (
+              <div
+                key={item.key}
+                onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
+                className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${isActive ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
+              >
+                <div className="flex items-center gap-3">
+                  {Icon && <Icon className="w-5 h-5" />}
+                  <span className="font-semibold text-sm">{t(item.labelKey)}</span>
+                </div>
+                {isActive && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">{t('common.new')}</span>}
+              </div>
+            );
           }
-          isActive={currentPath.startsWith('/tasks')}
-        />
 
-        {/* Forms Submenu */}
-        <NavItem
-          icon={SquarePen}
-          label="폼"
-          hasSubmenu
-          subItems={['폼 요소', '폼 레이아웃']}
-          onSubItemClick={(sub) => {
-            if (sub === '폼 요소') navigate('/forms/elements');
-            if (sub === '폼 레이아웃') navigate('/forms/layout');
-            onClose();
-          }}
-          activeSubItem={
-            currentPath === '/forms/elements' ? '폼 요소' :
-              currentPath === '/forms/layout' ? '폼 레이아웃' : undefined
-          }
-          isActive={currentPath.startsWith('/forms')}
-        />
-
-        {/* Tables Submenu */}
-        <NavItem
-          icon={Table}
-          label="테이블"
-          hasSubmenu
-          subItems={['기본 테이블']}
-          onSubItemClick={(sub) => {
-            if (sub === '기본 테이블') navigate('/tables/basic');
-            onClose();
-          }}
-          activeSubItem={currentPath === '/tables/basic' ? '기본 테이블' : undefined}
-          isActive={currentPath.startsWith('/tables')}
-        />
-
-        {/* Pages Submenu */}
-        <NavItem
-          icon={Layers}
-          label="페이지"
-          hasSubmenu
-          subItems={['자주 묻는 질문', '연동', '히어로 섹션', '가격 정책 섹션', '에러 404', '에러 500', '에러 503']}
-          onSubItemClick={(sub) => {
-            if (sub === '자주 묻는 질문') navigate('/pages/faq');
-            if (sub === '연동') navigate('/pages/integrations');
-            if (sub === '히어로 섹션') navigate('/pages/hero-sections');
-            if (sub === '가격 정책 섹션') navigate('/pages/pricing-sections');
-            if (sub === '에러 404') navigate('/pages/error-404');
-            if (sub === '에러 500') navigate('/pages/error-500');
-            if (sub === '에러 503') navigate('/pages/error-503');
-            onClose();
-          }}
-          activeSubItem={
-            currentPath === '/pages/faq' ? '자주 묻는 질문' :
-              currentPath === '/pages/integrations' ? '연동' : 
-                currentPath === '/pages/hero-sections' ? '히어로 섹션' : 
-                  currentPath === '/pages/pricing-sections' ? '가격 정책 섹션' : 
-                    currentPath === '/pages/error-404' ? '에러 404' :
-                      currentPath === '/pages/error-500' ? '에러 500' :
-                        currentPath === '/pages/error-503' ? '에러 503' : undefined
-          }
-          isActive={currentPath.startsWith('/pages')}
-        />
-
-        {/* Applications Submenu */}
-        <NavItem
-          icon={Grid}
-          label="Applications"
-          hasSubmenu
-          subItems={['Echarts', '캘린더']}
-          onSubItemClick={(sub) => {
-            if (sub === 'Echarts') navigate('/charts/line-charts');
-            if (sub === '캘린더') navigate('/calendar');
-            onClose();
-          }}
-          activeSubItem={
-            currentPath === '/charts/line-charts' ? 'Echarts' :
-              currentPath === '/calendar' ? '캘린더' : undefined
-          }
-          isActive={currentPath === '/charts/line-charts' || currentPath === '/calendar'}
-        />
-
-        {/* UI Elements Submenu */}
-        <NavItem
-          icon={Component}
-          label="UI 요소"
-          hasSubmenu
-          subItems={['알림 & 모달', '버튼 & 배지', '데이터 표시', '진행률 & 네비게이션', '상태 & 로더']}
-          onSubItemClick={(sub) => {
-            if (sub === '알림 & 모달') navigate('/ui/alerts-modals');
-            if (sub === '버튼 & 배지') navigate('/ui/buttons-badges');
-            if (sub === '데이터 표시') navigate('/ui/data-display');
-            if (sub === '진행률 & 네비게이션') navigate('/ui/progress-nav');
-            if (sub === '상태 & 로더') navigate('/ui/states-loaders');
-            onClose();
-          }}
-          activeSubItem={
-            currentPath === '/ui/alerts-modals' ? '알림 & 모달' :
-              currentPath === '/ui/buttons-badges' ? '버튼 & 배지' :
-                currentPath === '/ui/data-display' ? '데이터 표시' :
-                  currentPath === '/ui/progress-nav' ? '진행률 & 네비게이션' :
-                    currentPath === '/ui/states-loaders' ? '상태 & 로더' : undefined
-          }
-          isActive={currentPath.startsWith('/ui')}
-        />
-
-        {/* Components Submenu */}
-        <NavItem
-          icon={Component}
-          label="컴포넌트"
-          hasSubmenu
-          subItems={['인풋']}
-          onSubItemClick={(sub) => {
-            if (sub === '인풋') navigate('/components/input');
-            onClose();
-          }}
-          activeSubItem={currentPath === '/components/input' ? '인풋' : undefined}
-          isActive={currentPath.startsWith('/components')}
-        />
+          return (
+            <NavItem
+              key={item.key}
+              Icon={Icon}
+              label={t(item.labelKey)}
+              badge={item.badge}
+              badgeColor={item.badgeColor}
+              subItems={item.subItems}
+              activePath={location.pathname}
+              onClose={onClose}
+            />
+          );
+        })}
       </div>
-
     </aside>
   );
 };
 
 // Helper component for navigation items
 interface NavItemProps {
-  icon: React.ElementType;
+  Icon: React.ElementType;
   label: string;
   badge?: string;
   badgeColor?: string;
-  hasSubmenu?: boolean;
-  subItems?: string[];
-  onSubItemClick?: (label: string) => void;
-  activeSubItem?: string;
-  isActive?: boolean;
+  subItems: SubMenuItem[];
+  activePath: string;
+  onClose: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({
-  icon: Icon,
-  label,
-  badge,
-  badgeColor = "bg-slate-100 text-slate-600",
-  hasSubmenu,
-  subItems = [],
-  onSubItemClick,
-  activeSubItem,
-  isActive
-}) => {
-  const [isOpen, setIsOpen] = React.useState(isActive || false);
+const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-slate-100 text-slate-600", subItems, activePath, onClose }) => {
+  const { t } = useI18n();
+  const [isOpen, setIsOpen] = React.useState(subItems.some((sub) => sub.path === activePath));
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (isActive) setIsOpen(true);
-  }, [isActive]);
+    if (subItems.some((sub) => sub.path === activePath)) setIsOpen(true);
+  }, [activePath, subItems]);
 
   return (
     <div>
       <div
-        onClick={() => hasSubmenu && setIsOpen(!isOpen)}
-        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 cursor-pointer transition-all ${isOpen || isActive ? 'bg-indigo-50/30 dark:bg-slate-800/30' : ''} ${isActive ? 'text-indigo-600 dark:text-white' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 cursor-pointer transition-all ${isOpen ? 'bg-indigo-50/30 dark:bg-slate-800/30' : ''}`}
       >
         <div className="flex items-center gap-3">
-          <Icon className={`w-5 h-5 ${isActive ? 'text-indigo-600 dark:text-white' : ''}`} />
-          <span className={`font-medium text-sm ${isActive ? 'font-bold' : ''}`}>{label}</span>
+          <Icon className={`w-5 h-5`} />
+          <span className="font-medium text-sm">{label}</span>
         </div>
         <div className="flex items-center gap-2">
           {badge && (
@@ -250,27 +138,28 @@ const NavItem: React.FC<NavItemProps> = ({
               {badge}
             </span>
           )}
-          {hasSubmenu && (
-            <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-          )}
+          <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </div>
       </div>
 
       {/* Submenu Dropdown */}
-      {hasSubmenu && (
+      {subItems.length > 0 && (
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-11 pr-3 py-1">
-            {subItems.map((item, idx) => (
-              <div
-                key={idx}
-                onClick={() => onSubItemClick && onSubItemClick(item)}
-                className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${activeSubItem === item ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
-              >
-                {item}
-              </div>
-            ))}
+            {subItems.map((item, idx) => {
+              const isActive = activePath === item.path;
+              return (
+                <div
+                  key={idx}
+                  onClick={() => { navigate(item.path); onClose(); }}
+                  className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
+                >
+                  {t(item.labelKey)}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -279,4 +168,3 @@ const NavItem: React.FC<NavItemProps> = ({
 };
 
 export default Sidebar;
-

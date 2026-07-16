@@ -1,26 +1,28 @@
 import React from 'react';
 import { SlidersHorizontal, FileCode2 } from 'lucide-react';
 import dashboardData from '../../data/componentDashboardData.json';
+import { useI18n } from '../../i18n/config';
 
 const RecentOrders: React.FC = () => {
+  const { t } = useI18n();
   const releases = dashboardData.releases;
 
   const statusStyles: { [key: string]: { text: string; css: string } } = {
-    'new': { text: '신규 추가', css: 'text-indigo-600 bg-indigo-50 dark:text-indigo-400 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-800' },
-    'stable': { text: '안정화', css: 'text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/20' },
+    'new': { text: t('dashboard.newRelease'), css: 'text-indigo-600 bg-indigo-50 dark:text-indigo-400 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-800' },
+    'stable': { text: t('dashboard.stable'), css: 'text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/20' },
   };
 
   return (
     <div className="bg-white dark:bg-[#1A222C] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col h-full">
       <div className="flex justify-between items-center mb-10">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white">최근 업데이트 컴포넌트</h3>
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white">{t('dashboard.recentUpdates')}</h3>
         <div className="flex gap-2">
           <button className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 shadow-sm hover:bg-slate-50 transition-all">
             <SlidersHorizontal className="w-3.5 h-3.5" />
-            <span>필터</span>
+            <span>{t('dashboard.filter')}</span>
           </button>
           <button className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 shadow-sm hover:bg-slate-50 transition-all">
-            전체 보기
+            {t('dashboard.viewAll')}
           </button>
         </div>
       </div>
@@ -29,12 +31,12 @@ const RecentOrders: React.FC = () => {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-              <th className="pb-6 w-[45%]">컴포넌트 이름</th>
-              <th className="pb-6">카테고리</th>
-              <th className="pb-6">퍼블리셔</th>
-              <th className="pb-6">빌드 용량</th>
-              <th className="pb-6">최종 패치</th>
-              <th className="pb-6 text-right">상태</th>
+              <th className="pb-6 w-[45%]">{t('dashboard.componentName')}</th>
+              <th className="pb-6">{t('dashboard.category')}</th>
+              <th className="pb-6">{t('dashboard.publisher')}</th>
+              <th className="pb-6">{t('dashboard.buildSize')}</th>
+              <th className="pb-6">{t('dashboard.lastPatch')}</th>
+              <th className="pb-6 text-right">{t('dashboard.status')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-50 dark:divide-slate-800">

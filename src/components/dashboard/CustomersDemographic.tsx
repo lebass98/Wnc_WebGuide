@@ -1,8 +1,10 @@
 import React from 'react';
 import { MoreVertical, Copy, GitCommit, CheckCircle2, AlertCircle } from 'lucide-react';
 import dashboardData from '../../data/componentDashboardData.json';
+import { useI18n } from '../../i18n/config';
 
 const CustomersDemographic: React.FC = () => {
+  const { t } = useI18n();
   const activities = dashboardData.activities;
 
   const iconComponents: { [key: string]: React.ReactNode } = {
@@ -23,8 +25,8 @@ const CustomersDemographic: React.FC = () => {
     <div className="bg-white dark:bg-[#1A222C] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col h-full">
       <div className="flex justify-between items-start mb-8">
         <div>
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">실시간 개발 활동 로그</h3>
-          <p className="text-xs text-[#64748B] dark:text-[#8A99AF] font-medium">컴포넌트 복사 및 커밋 히스토리</p>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">{t('dashboard.realTimeDevLog')}</h3>
+          <p className="text-xs text-[#64748B] dark:text-[#8A99AF] font-medium">{t('dashboard.componentCopyHistory')}</p>
         </div>
         <button className="text-[#64748B] hover:text-[#1C2434] dark:hover:text-white">
           <MoreVertical className="w-5 h-5" />
@@ -35,7 +37,6 @@ const CustomersDemographic: React.FC = () => {
         <div className="relative pl-6 border-l border-slate-100 dark:border-slate-800 space-y-6">
           {activities.map((log) => (
             <div key={log.id} className="relative group">
-              {/* Dot Icon Indicator */}
               <div className={`absolute -left-[38px] top-0 w-8 h-8 rounded-full flex items-center justify-center border-4 border-white dark:border-[#1A222C] shadow-sm transition-transform group-hover:scale-110 ${bgStyles[log.type] || 'bg-slate-100'}`}>
                 {iconComponents[log.type] || <Copy className="w-4 h-4 text-slate-500" />}
               </div>

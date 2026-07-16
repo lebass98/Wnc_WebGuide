@@ -7,7 +7,9 @@ import CustomersDemographic from '../components/dashboard/CustomersDemographic';
 import RecentOrders from '../components/dashboard/RecentOrders';
 import dashboardData from '../data/componentDashboardData.json';
 
+
 const Dashboard: React.FC = () => {
+
   const kpis = dashboardData.kpis;
 
   const iconComponents: { [key: string]: React.ReactNode } = {

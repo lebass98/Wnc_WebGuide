@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ChevronLeft, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
+import { useI18n } from '../../i18n/config';
 
 const GoogleIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,11 +29,11 @@ const TailAdminLogo = () => (
     </svg>
 );
 
-
 const SignUpPage: React.FC = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
     const { isDarkMode, toggleTheme } = useTheme();
+    const { t } = useI18n();
     const [showPassword, setShowPassword] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -46,163 +47,36 @@ const SignUpPage: React.FC = () => {
 
     return (
         <div className="flex justify-center min-h-screen bg-white font-sans max-h-screen overflow-hidden dark:bg-slate-900 transition-colors duration-300">
-            {/* Theme Toggle Button */}
-            <button
-                onClick={toggleTheme}
-                className="fixed bottom-6 right-6 w-12 h-12 bg-[#4B62FA] hover:bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50 transition-colors z-50"
-            >
+            <button onClick={toggleTheme} className="fixed bottom-6 right-6 w-12 h-12 bg-[#4B62FA] hover:bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50 transition-colors z-50">
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-
-            {/* Left Panel: Form Area */}
             <div className="w-full lg:w-1/2 flex flex-col pt-8 px-6 sm:px-12 md:px-24">
-                <button 
-                  onClick={() => navigate('/')} 
-                  className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors self-start mb-auto"
-                >
-                    <ChevronLeft className="w-4 h-4" />
-                    대시보드로 돌아가기
-                </button>
-
+                <button onClick={() => navigate('/')} className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors self-start mb-auto"><ChevronLeft className="w-4 h-4" />{t('dashboard.title')}</button>
                 <div className="w-full max-w-[420px] mx-auto mb-auto mt-16">
-                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">회원가입</h1>
-                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">이메일과 비밀번호를 입력하여 회원가입하세요!</p>
-
-                    {/* Social Logins */}
+                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">{t('auth.signUp')}</h1>
+                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">{t('auth.createAccount')}</p>
                     <div className="flex gap-4 mb-8">
-                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
-                            <GoogleIcon />
-                            Google로 가입
-                        </button>
-                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
-                            <XIcon />
-                            X로 가입
-                        </button>
+                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent"><GoogleIcon />Google</button>
+                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent"><XIcon />X</button>
                     </div>
-
-                    <div className="relative mb-8 flex items-center">
-                        <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
-                        <span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">또는</span>
-                        <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
-                    </div>
-
+                    <div className="relative mb-8 flex items-center"><div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div><span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">또는</span><div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div></div>
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-1.5">
-                                <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                    이름<span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
-                                    placeholder="이름을 입력하세요"
-                                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
-                                />
-                            </div>
-                            
-                            <div className="space-y-1.5">
-                                <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                    성<span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
-                                    placeholder="성을 입력하세요"
-                                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
-                                />
-                            </div>
+                            <div className="space-y-1.5"><label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">{t('auth.name')}<span className="text-red-500">*</span></label><input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="이름" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all" /></div>
+                            <div className="space-y-1.5"><label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">성<span className="text-red-500">*</span></label><input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="성" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all" /></div>
                         </div>
-
-                        <div className="space-y-1.5">
-                            <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                이메일<span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="이메일을 입력하세요"
-                                className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
-                            />
-                        </div>
-
-                        <div className="space-y-1.5">
-                            <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
-                                비밀번호<span className="text-red-500">*</span>
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="비밀번호를 입력하세요"
-                                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                                >
-                                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-3 pt-2">
-                            <label className="flex items-start gap-3 cursor-pointer group w-full">
-                                <div className="relative flex items-center mt-1">
-                                    <input 
-                                        type="checkbox" 
-                                        className="peer appearance-none w-4 h-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-800 checked:bg-indigo-600 checked:border-indigo-600 transition-all cursor-pointer shrink-0" 
-                                    />
-                                    <svg className="absolute w-2.5 h-2.5 ml-[-1px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </div>
-                                <span className="text-[13px] font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors leading-[1.6]">
-                                    계정을 생성하면 <span className="text-slate-700 dark:text-slate-200 font-bold">이용약관</span> 및 <span className="text-slate-700 dark:text-slate-200 font-bold">개인정보 처리방침</span>에 동의하는 것으로 간주됩니다.
-                                </span>
-                            </label>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full py-3.5 bg-[#4B62FA] hover:bg-indigo-600 text-white font-bold text-sm rounded-lg transition-colors mt-2"
-                        >
-                            회원가입
-                        </button>
+                        <div className="space-y-1.5"><label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">{t('auth.email')}<span className="text-red-500">*</span></label><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all" /></div>
+                        <div className="space-y-1.5"><label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">{t('auth.password')}<span className="text-red-500">*</span></label><div className="relative"><input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all" /><button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}</button></div></div>
+                        <div className="flex items-start gap-3 pt-2"><label className="flex items-start gap-3 cursor-pointer group w-full"><div className="relative flex items-center mt-1"><input type="checkbox" className="peer appearance-none w-4 h-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-800 checked:bg-indigo-600 checked:border-indigo-600 transition-all cursor-pointer shrink-0" /><svg className="absolute w-2.5 h-2.5 ml-[-1px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg></div><span className="text-[13px] font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors leading-[1.6]">계정을 생성하면 <span className="text-slate-700 dark:text-slate-200 font-bold">이용약관</span> 및 <span className="text-slate-700 dark:text-slate-200 font-bold">개인정보 처리방침</span>에 동의하는 것으로 간주됩니다.</span></label></div>
+                        <button type="submit" className="w-full py-3.5 bg-[#4B62FA] hover:bg-indigo-600 text-white font-bold text-sm rounded-lg transition-colors mt-2">{t('auth.signUp')}</button>
                     </form>
-
-                    <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">
-                        이미 계정이 있으신가요? <button onClick={() => navigate('/signin')} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">로그인</button>
-                    </p>
+                    <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">{t('auth.alreadyHaveAccount')} <button onClick={() => navigate('/signin')} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">{t('auth.signIn')}</button></p>
                 </div>
             </div>
-
-            {/* Right Panel: Branding Area */}
             <div className="hidden lg:flex w-1/2 bg-[#1B1E40] relative overflow-hidden flex-col items-center justify-center">
-                {/* Decorative Grid Overlay */}
-                <div 
-                  className="absolute inset-0 opacity-10 pointer-events-none"
-                  style={{
-                    backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
-                    backgroundSize: '40px 40px'
-                  }}
-                ></div>
-                {/* Highlight active block for decoration (top right) */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
                 <div className="absolute top-[80px] right-[40px] w-10 h-10 bg-white/5 pointer-events-none"></div>
-
-                <div className="relative z-10 flex flex-col items-center text-center px-12">
-                    <div className="flex items-center gap-3 mb-4">
-                        <TailAdminLogo />
-                        <span className="text-3xl font-bold text-white tracking-tight">TailAdmin</span>
-                    </div>
-                    <p className="text-[15px] font-medium text-slate-400 max-w-sm leading-relaxed">
-                        무료 오픈소스 Tailwind CSS 관리자<br />대시보드 템플릿
-                    </p>
-                </div>
+                <div className="relative z-10 flex flex-col items-center text-center px-12"><div className="flex items-center gap-3 mb-4"><TailAdminLogo /><span className="text-3xl font-bold text-white tracking-tight">TailAdmin</span></div><p className="text-[15px] font-medium text-slate-400 max-w-sm leading-relaxed">무료 오픈소스 Tailwind CSS 관리자<br />대시보드 템플릿</p></div>
             </div>
         </div>
     );

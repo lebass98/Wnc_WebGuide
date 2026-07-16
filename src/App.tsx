@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Sidebar from './components/layout/Sidebar';
@@ -77,7 +77,6 @@ const App: React.FC = () => {
 
       {/* 3. 대시보드 레이아웃 영역 (비인증 상태라면 signin으로 강제 리다이렉션) */}
       <Route 
-        path="/*" 
         element={
           !isAuthenticated ? (
             <Navigate to="/signin" replace />
@@ -104,37 +103,37 @@ const App: React.FC = () => {
                 {/* Main Content Area */}
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pt-[100px] lg:pt-[112px] custom-scrollbar">
                   <div className="w-full">
-                    <Routes>
-                      <Route path="/" element={<Dashboard />} />
-                      <Route path="/tasks/list" element={<TaskList />} />
-                      <Route path="/tasks/kanban" element={<TaskKanban />} />
-                      <Route path="/forms/elements" element={<FormElements />} />
-                      <Route path="/forms/layout" element={<FormLayout />} />
-                      <Route path="/components/input" element={<InputComponent />} />
-                      <Route path="/tables/basic" element={<BasicTables />} />
-                      <Route path="/pages/faq" element={<FAQ />} />
-                      <Route path="/pages/integrations" element={<Integrations />} />
-                      <Route path="/pages/hero-sections" element={<HeroSections />} />
-                      <Route path="/pages/pricing-sections" element={<PricingSections />} />
-                      <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
-                      <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
-                      <Route path="/pages/error-503" element={<ErrorPage code="503" />} />
-                      <Route path="/charts/line-charts" element={<LineCharts />} />
-                      <Route path="/calendar" element={<Calendar />} />
-                      <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
-                      <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
-                      <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
-                      <Route path="/ui/progress-nav" element={<ShowcaseProgressNav />} />
-                      <Route path="/ui/states-loaders" element={<ShowcaseStatesLoaders />} />
-                      <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
-                    </Routes>
+                    <Outlet />
                   </div>
                 </main>
               </div>
             </div>
           )
         }
-      />
+      >
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/tasks/list" element={<TaskList />} />
+        <Route path="/tasks/kanban" element={<TaskKanban />} />
+        <Route path="/forms/elements" element={<FormElements />} />
+        <Route path="/forms/layout" element={<FormLayout />} />
+        <Route path="/components/input" element={<InputComponent />} />
+        <Route path="/tables/basic" element={<BasicTables />} />
+        <Route path="/pages/faq" element={<FAQ />} />
+        <Route path="/pages/integrations" element={<Integrations />} />
+        <Route path="/pages/hero-sections" element={<HeroSections />} />
+        <Route path="/pages/pricing-sections" element={<PricingSections />} />
+        <Route path="/pages/error-404" element={<ErrorPage code="404" />} />
+        <Route path="/pages/error-500" element={<ErrorPage code="500" />} />
+        <Route path="/pages/error-503" element={<ErrorPage code="503" />} />
+        <Route path="/charts/line-charts" element={<LineCharts />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
+        <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
+        <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
+        <Route path="/ui/progress-nav" element={<ShowcaseProgressNav />} />
+        <Route path="/ui/states-loaders" element={<ShowcaseStatesLoaders />} />
+        <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
+      </Route>
     </Routes>
       </Suspense>
     </ErrorBoundary>

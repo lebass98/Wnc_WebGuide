@@ -7,11 +7,13 @@ import {
   Moon,
   Sun,
   Bell,
-  Settings
+  Settings,
+  Languages
 } from 'lucide-react';
 
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
+import { useI18n } from '../../i18n/config';
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -20,6 +22,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const { isDarkMode, toggleTheme } = useTheme();
   const { logout } = useAuth();
+  const { locale, setLocale } = useI18n();
 
   return (
     <header className="fixed top-0 right-0 left-0 lg:left-[280px] h-[72px] lg:h-[80px] px-4 sm:px-6 lg:px-8 flex items-center justify-between bg-white dark:bg-[#1A222C] border-b border-slate-200 dark:border-slate-800 z-10 transition-all duration-300 backdrop-blur-[20px] bg-white/10">
@@ -69,6 +72,15 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
             className="hidden sm:block p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
           >
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+
+          {/* Language toggle */}
+          <button
+            onClick={() => setLocale(locale === 'ko' ? 'en' : 'ko')}
+            className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
+            title={locale === 'ko' ? 'English' : '한국어'}
+          >
+            <Languages className="w-5 h-5" />
           </button>
 
           <div className="relative">
