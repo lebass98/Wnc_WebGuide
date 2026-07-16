@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import CustomDatePicker from '../../components/ui/CustomDatePicker';
 import { useI18n } from '../../i18n/config';
+import ShowcaseWrapper from '../../components/ui/ShowcaseWrapper';
+import codeSnippets from '../../data/TaskListSnippets.json';
 
 interface Task {
   id: string;
@@ -89,37 +91,45 @@ const TaskList: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#1A222C] p-2 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
-        <div className="flex flex-wrap gap-1 p-1">
-          {[
-            { id: 'all', label: '전체 작업' },
-            { id: 'todo', label: '할 일' },
-            { id: 'inprogress', label: '진행 중' },
-            { id: 'completed', label: '완료' }
-          ].map(filter => (
-            <button key={filter.id} onClick={() => setActiveFilter(filter.id as any)} className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeFilter === filter.id ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'}`}>
-              {filter.label}
-              <span className={`px-1.5 py-0.5 rounded text-[10px] ${activeFilter === filter.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>{getTaskCount(filter.id as any)}</span>
-            </button>
-          ))}
-        </div>
-        <div className="flex items-center gap-3 px-2">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"><Filter className="w-4 h-4" />필터 및 정렬</button>
-          <button onClick={() => setIsModalOpen(true)} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors">새 작업 추가 <Plus className="w-4 h-4" /></button>
-        </div>
-      </div>
+      <ShowcaseWrapper
+        title="작업 목록 관리"
+        description="할 일, 진행 중, 완료의 세 가지 상태를 가지며 필터링과 드래그 앤 드롭을 지원하는 작업 목록 컴포넌트입니다."
+        snippet={codeSnippets.taskList}
+      >
+        <div className="space-y-6 bg-slate-50/30 dark:bg-slate-900/10 p-6 rounded-2xl">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#1A222C] p-2 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+            <div className="flex flex-wrap gap-1 p-1">
+              {[
+                { id: 'all', label: '전체 작업' },
+                { id: 'todo', label: '할 일' },
+                { id: 'inprogress', label: '진행 중' },
+                { id: 'completed', label: '완료' }
+              ].map(filter => (
+                <button key={filter.id} onClick={() => setActiveFilter(filter.id as any)} className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${activeFilter === filter.id ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'}`}>
+                  {filter.label}
+                  <span className={`px-1.5 py-0.5 rounded text-[10px] ${activeFilter === filter.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>{getTaskCount(filter.id as any)}</span>
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 px-2">
+              <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"><Filter className="w-4 h-4" />필터 및 정렬</button>
+              <button onClick={() => setIsModalOpen(true)} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors">새 작업 추가 <Plus className="w-4 h-4" /></button>
+            </div>
+          </div>
 
-      <div className="space-y-8 pb-10">
-        {activeFilter !== 'inprogress' && activeFilter !== 'completed' && todoTasks.length > 0 && (
-          <TaskGroup title="할 일" status="todo" count={todoTasks.length} tasks={todoTasks} onToggle={toggleTask} onDragStart={handleDragStart} onDragOver={handleDragOver} onDrop={handleDrop} />
-        )}
-        {activeFilter !== 'todo' && activeFilter !== 'completed' && inProgressTasks.length > 0 && (
-          <TaskGroup title="진행 중" status="inprogress" count={inProgressTasks.length} tasks={inProgressTasks} onToggle={toggleTask} onDragStart={handleDragStart} onDragOver={handleDragOver} onDrop={handleDrop} />
-        )}
-        {activeFilter !== 'todo' && activeFilter !== 'inprogress' && completedTasks.length > 0 && (
-          <TaskGroup title="완료" status="completed" count={completedTasks.length} tasks={completedTasks} onToggle={toggleTask} onDragStart={handleDragStart} onDragOver={handleDragOver} onDrop={handleDrop} />
-        )}
-      </div>
+          <div className="space-y-8 pb-10">
+            {activeFilter !== 'inprogress' && activeFilter !== 'completed' && todoTasks.length > 0 && (
+              <TaskGroup title="할 일" status="todo" count={todoTasks.length} tasks={todoTasks} onToggle={toggleTask} onDragStart={handleDragStart} onDragOver={handleDragOver} onDrop={handleDrop} />
+            )}
+            {activeFilter !== 'todo' && activeFilter !== 'completed' && inProgressTasks.length > 0 && (
+              <TaskGroup title="진행 중" status="inprogress" count={inProgressTasks.length} tasks={inProgressTasks} onToggle={toggleTask} onDragStart={handleDragStart} onDragOver={handleDragOver} onDrop={handleDrop} />
+            )}
+            {activeFilter !== 'todo' && activeFilter !== 'inprogress' && completedTasks.length > 0 && (
+              <TaskGroup title="완료" status="completed" count={completedTasks.length} tasks={completedTasks} onToggle={toggleTask} onDragStart={handleDragStart} onDragOver={handleDragOver} onDrop={handleDrop} />
+            )}
+          </div>
+        </div>
+      </ShowcaseWrapper>
 
       {/* Modal */}
       {isModalOpen && (
