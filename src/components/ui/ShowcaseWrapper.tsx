@@ -113,7 +113,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ title, description, s
   return (
     <div className="space-y-4 font-sans mb-[40px] w-full @container">
       {/* Wrapper Header: Controls Toolbar */}
-      <div className="flex flex-col @[720px]:flex-row @[720px]:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800">
+      <div className="flex flex-col @[960px]:flex-row @[960px]:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800">
         <div>
           <h3 className="text-base text-[22px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
           <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
