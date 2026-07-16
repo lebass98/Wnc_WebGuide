@@ -120,7 +120,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ title, description, s
         </div>
 
         {/* Action Controls Toolbar */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 @[960px]:ml-0 ml-auto">
           {/* 1. Preview Mode Group: React | HTML */}
           {activeTab === 'preview' && (
             <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
