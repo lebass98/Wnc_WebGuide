@@ -13,7 +13,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
   const [htmlCode, setHtmlCode] = useState(initialHtml);
   const [isCopied, setIsCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [iframeHeight, setIframeHeight] = useState('300px');
+  const [iframeHeight, setIframeHeight] = useState('495px');
 
   const updateIframeHeight = () => {
     const iframe = iframeRef.current;
@@ -308,7 +308,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
               title="Arte Preview Content"
               className="w-full bg-white rounded-xl shadow-inner border border-slate-200 dark:border-slate-800 block transition-all duration-150"
               style={{ height: iframeHeight }}
-              sandbox="allow-scripts"
+              sandbox="allow-scripts allow-same-origin"
             />
           </div>
         ) : (
