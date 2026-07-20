@@ -21,19 +21,32 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       const doc = iframe.contentDocument;
       const body = doc.body;
       const html = doc.documentElement;
+      const postallW = doc.querySelector('.postall_w') as HTMLElement;
       
       if (body && html) {
-        // body 및 documentElement의 scrollHeight, offsetHeight 중 최대값을 도출하여 마진/패딩 누락 방지
-        const height = Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.scrollHeight,
-          html.offsetHeight,
-          html.clientHeight
-        );
+        let height = 0;
         
-        // 브라우저 렌더링 오차와 하단 여백 마진 보정을 위해 넉넉한 보정값(48px) 추가
-        const finalHeight = Math.max(height + 48, 200);
+        if (postallW) {
+          // postall_w 요소가 존재하는 경우 그 실제 크기를 타겟으로 우선 산출 (오차 최소화)
+          const rect = postallW.getBoundingClientRect();
+          height = Math.max(
+            rect.height,
+            postallW.offsetHeight,
+            postallW.scrollHeight
+          );
+        } else {
+          // 예외 처리용 전체 문서 계산
+          height = Math.max(
+            body.scrollHeight,
+            body.offsetHeight,
+            html.scrollHeight,
+            html.offsetHeight,
+            html.clientHeight
+          );
+        }
+        
+        // 상하 패딩 및 마진 렌더링에 필요한 보정(16px) 추가 적용
+        const finalHeight = Math.max(height + 16, 150);
         setIframeHeight(`${finalHeight}px`);
       }
     }
@@ -52,7 +65,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       const iframeDoc = iframe.contentDocument;
       
       if (iframeDoc && iframeDoc.body && iframeWindow) {
-        // 비동기 외부 리소스(폰트, 스타일, 이미지) 로딩에 따른 리플로우(Reflow)를 전부 감지
+        // 1. ResizeObserver 등록 (리플로우 및 DOM 동적 변화 감시)
         try {
           if (iframeWindow.ResizeObserver) {
             resizeObserver = new iframeWindow.ResizeObserver(() => {
@@ -63,6 +76,17 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
         } catch (e) {
           console.warn("ResizeObserver binding failed inside sandbox iframe: ", e);
         }
+
+        // 2. 비동기 이미지 로딩 완료 이벤트 모니터링 (src 치환 완료 이후 실제 렌더링 높이 갱신)
+        const images = iframeDoc.querySelectorAll('img');
+        images.forEach((img) => {
+          if (img.complete) {
+            updateIframeHeight();
+          } else {
+            img.addEventListener('load', updateIframeHeight);
+            img.addEventListener('error', updateIframeHeight);
+          }
+        });
       }
     };
 
@@ -72,7 +96,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       handleLoad();
     }
 
-    // 스타일시트 비동기 로드 지연을 대비하여 1초, 2초 후에 추가 강제 보정 실행
+    // 1초, 2.5초 후 최종 리소스 로딩에 따른 강제 업데이트
     const timer1 = setTimeout(updateIframeHeight, 1000);
     const timer2 = setTimeout(updateIframeHeight, 2500);
 
