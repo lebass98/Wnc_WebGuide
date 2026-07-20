@@ -133,16 +133,16 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
 
       {subItems.length > 0 && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mt-1 pl-4' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
-          <div className="flex flex-col gap-1 border-l border-slate-200 dark:border-slate-800 pl-3">
+          <div className="flex flex-col gap-1 pl-4">
             {subItems.map((item, idx) => {
               const isActive = activePath === item.path;
               return (
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
-                  className={`text-xs font-semibold py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
+                  className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
                 >
                   {t(item.labelKey)}
                 </div>
