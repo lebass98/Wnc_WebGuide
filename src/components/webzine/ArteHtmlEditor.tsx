@@ -205,7 +205,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
         </div>
 
         {/* Right side controls */}
-        <div className="flex flex-wrap items-center gap-4 xl:ml-auto">
+        <div className="flex flex-wrap items-center gap-4 xl:ml-auto justify-between w-full xl:w-auto">
           {/* Toggle Tab Buttons: Preview / HTML Source */}
           <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
             <button
@@ -223,7 +223,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
           </div>
 
           {/* Toolbar Controls based on active tab */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-auto">
             {/* Device Simulators (Only in Preview Tab) */}
             {activeTab === 'preview' && (
               <div className="flex items-center gap-1.5">
