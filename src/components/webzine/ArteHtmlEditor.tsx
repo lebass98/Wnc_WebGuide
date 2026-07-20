@@ -224,29 +224,50 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
           {/* Toolbar Controls based on active tab */}
           <div className="flex items-center gap-4 ml-auto">
-            {/* Device Simulators (Only in Preview Tab) */}
+            {/* Device Simulators & Copy Action (Only in Preview Tab) */}
             {activeTab === 'preview' && (
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => setDevice('desktop')}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    title="데스크톱 뷰"
+                  >
+                    <Monitor className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setDevice('tablet')}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    title="태블릿 뷰"
+                  >
+                    <Tablet className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setDevice('mobile')}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    title="모바일 뷰"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+
                 <button
-                  onClick={() => setDevice('desktop')}
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="데스크톱 뷰"
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
                 >
-                  <Monitor className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setDevice('tablet')}
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="태블릿 뷰"
-                >
-                  <Tablet className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setDevice('mobile')}
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                  title="모바일 뷰"
-                >
-                  <Smartphone className="w-4 h-4" />
+                  {isCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-500" />
+                      <span className="text-emerald-500">복사 완료</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-slate-400" />
+                      <span>복사하기</span>
+                    </>
+                  )}
                 </button>
               </div>
             )}
