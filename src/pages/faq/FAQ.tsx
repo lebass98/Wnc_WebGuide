@@ -111,7 +111,7 @@ const FAQ: React.FC = () => {
           description="기본형 보더 아코디언 스타일 레이아웃입니다."
           snippet={codeSnippets.faq1}
         >
-          <div className="space-y-4 w-full max-h-full mx-auto">
+          <div className="space-y-4 w-full max-h-full mx-auto p-6">
             {faqData1.map((item, idx) => (
               <div key={idx} className="border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden transition-all duration-300">
                 <button
