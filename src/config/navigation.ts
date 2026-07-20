@@ -94,7 +94,6 @@ export const menuItems: MenuItem[] = [
         key: 'arte',
         labelKey: 'sidebar.arte',
         subItems: [
-          { key: 'main', labelKey: 'sidebar.arteMain', path: '/webzine/arte' },
           { key: 'image', labelKey: 'sidebar.arteImage', path: '/webzine/arte/image' },
           { key: 'link', labelKey: 'sidebar.arteLink', path: '/webzine/arte/link' },
           { key: 'video', labelKey: 'sidebar.arteVideo', path: '/webzine/arte/video' },
