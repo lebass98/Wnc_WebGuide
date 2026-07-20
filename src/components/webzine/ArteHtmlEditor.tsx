@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Copy, RotateCcw, Check, Monitor, Tablet, Smartphone } from 'lucide-react';
 
 interface ArteHtmlEditorProps {
@@ -13,6 +13,60 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
   const [htmlCode, setHtmlCode] = useState(initialHtml);
   const [isCopied, setIsCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeHeight, setIframeHeight] = useState('300px');
+
+  const updateIframeHeight = () => {
+    const iframe = iframeRef.current;
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
+      const body = iframe.contentDocument.body;
+      if (body) {
+        let contentHeight = body.scrollHeight;
+        const firstChild = body.firstElementChild as HTMLElement;
+        if (firstChild) {
+          const rectHeight = firstChild.getBoundingClientRect().height;
+          contentHeight = Math.max(contentHeight, Math.ceil(rectHeight));
+        }
+        const finalHeight = Math.max(contentHeight + 24, 150);
+        setIframeHeight(`${finalHeight}px`);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    let mutationObserver: MutationObserver | null = null;
+
+    const handleLoad = () => {
+      updateIframeHeight();
+      const iframeDoc = iframe.contentDocument;
+      if (iframeDoc && iframeDoc.body) {
+        mutationObserver = new MutationObserver(() => {
+          updateIframeHeight();
+        });
+        mutationObserver.observe(iframeDoc.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      }
+    };
+
+    iframe.addEventListener('load', handleLoad);
+
+    if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+      handleLoad();
+    }
+
+    return () => {
+      iframe.removeEventListener('load', handleLoad);
+      if (mutationObserver) {
+        mutationObserver.disconnect();
+      }
+    };
+  }, [activeTab, htmlCode]);
 
   // CSS and Scripts baseline from test.html
   const cssLinks = `
@@ -189,16 +243,28 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
       {/* 2. Content Pane Area */}
       <div
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 shadow-sm h-[calc(100vh-280px)] min-h-[500px] transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 ${
+          activeTab === 'preview' 
+            ? 'h-auto min-h-0' 
+            : 'h-[calc(100vh-280px)] min-h-[500px]'
+        } ${
+          activeTab === 'preview' && device === 'mobile' 
+            ? 'max-w-[375px] mx-auto w-full' 
+            : activeTab === 'preview' && device === 'tablet' 
+            ? 'max-w-[768px] mx-auto w-full' 
+            : 'w-full'
+        }`}
       >
         {activeTab === 'preview' ? (
-          /* iframe Sandbox Preview Mode */
-          <div className="w-full h-full bg-slate-50 dark:bg-slate-950 p-2">
+          /* iframe Sandbox Preview Mode (Auto-resized based on content) */
+          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950 p-2">
             <iframe
               ref={iframeRef}
+              onLoad={updateIframeHeight}
               srcDoc={generateSrcDoc()}
               title="Arte Preview Content"
-              className="w-full h-full bg-white rounded-xl shadow-inner border border-slate-200 dark:border-slate-800 block"
+              className="w-full bg-white rounded-xl shadow-inner border border-slate-200 dark:border-slate-800 block transition-all duration-150"
+              style={{ height: iframeHeight }}
               sandbox="allow-scripts"
             />
           </div>
