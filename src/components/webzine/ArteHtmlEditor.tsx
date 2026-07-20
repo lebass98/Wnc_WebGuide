@@ -243,7 +243,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
       {/* 2. Content Pane Area */}
       <div
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 ${
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300 ${
           activeTab === 'preview' 
             ? 'h-auto min-h-0' 
             : 'h-[calc(100vh-280px)] min-h-[500px]'
@@ -254,6 +254,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
             ? 'max-w-[768px] mx-auto w-full' 
             : 'w-full'
         }`}
+        style={activeTab === 'preview' ? { height: `calc(${iframeHeight} + 16px)` } : undefined}
       >
         {activeTab === 'preview' ? (
           /* iframe Sandbox Preview Mode (Auto-resized based on content) */
