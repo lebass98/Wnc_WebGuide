@@ -18,15 +18,22 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
   const updateIframeHeight = () => {
     const iframe = iframeRef.current;
     if (iframe && iframe.contentWindow && iframe.contentDocument) {
-      const body = iframe.contentDocument.body;
-      if (body) {
-        let contentHeight = body.scrollHeight;
-        const firstChild = body.firstElementChild as HTMLElement;
-        if (firstChild) {
-          const rectHeight = firstChild.getBoundingClientRect().height;
-          contentHeight = Math.max(contentHeight, Math.ceil(rectHeight));
-        }
-        const finalHeight = Math.max(contentHeight + 24, 150);
+      const doc = iframe.contentDocument;
+      const body = doc.body;
+      const html = doc.documentElement;
+      
+      if (body && html) {
+        // body 및 documentElement의 scrollHeight, offsetHeight 중 최대값을 도출하여 마진/패딩 누락 방지
+        const height = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.scrollHeight,
+          html.offsetHeight,
+          html.clientHeight
+        );
+        
+        // 브라우저 렌더링 오차와 하단 여백 마진 보정을 위해 넉넉한 보정값(48px) 추가
+        const finalHeight = Math.max(height + 48, 200);
         setIframeHeight(`${finalHeight}px`);
       }
     }
@@ -36,21 +43,26 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    let mutationObserver: MutationObserver | null = null;
+    let resizeObserver: any = null;
 
     const handleLoad = () => {
       updateIframeHeight();
+      
+      const iframeWindow = iframe.contentWindow as any;
       const iframeDoc = iframe.contentDocument;
-      if (iframeDoc && iframeDoc.body) {
-        mutationObserver = new MutationObserver(() => {
-          updateIframeHeight();
-        });
-        mutationObserver.observe(iframeDoc.body, {
-          childList: true,
-          subtree: true,
-          attributes: true,
-          attributeFilter: ['class']
-        });
+      
+      if (iframeDoc && iframeDoc.body && iframeWindow) {
+        // 비동기 외부 리소스(폰트, 스타일, 이미지) 로딩에 따른 리플로우(Reflow)를 전부 감지
+        try {
+          if (iframeWindow.ResizeObserver) {
+            resizeObserver = new iframeWindow.ResizeObserver(() => {
+              updateIframeHeight();
+            });
+            resizeObserver.observe(iframeDoc.body);
+          }
+        } catch (e) {
+          console.warn("ResizeObserver binding failed inside sandbox iframe: ", e);
+        }
       }
     };
 
@@ -60,10 +72,16 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       handleLoad();
     }
 
+    // 스타일시트 비동기 로드 지연을 대비하여 1초, 2초 후에 추가 강제 보정 실행
+    const timer1 = setTimeout(updateIframeHeight, 1000);
+    const timer2 = setTimeout(updateIframeHeight, 2500);
+
     return () => {
       iframe.removeEventListener('load', handleLoad);
-      if (mutationObserver) {
-        mutationObserver.disconnect();
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
       }
     };
   }, [activeTab, htmlCode]);
