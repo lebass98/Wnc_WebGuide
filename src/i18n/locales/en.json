@@ -37,7 +37,10 @@
     "dataDisplay": "Data Display",
     "progressNav": "Progress & Nav",
     "statesLoaders": "States & Loaders",
-    "input": "Input"
+    "input": "Input",
+    "webzine": "Webzine",
+    "eeum": "Eeum",
+    "arte": "Arte"
   },
   "dashboard": {
     "title": "Dashboard",

@@ -22,6 +22,8 @@ const LineCharts = lazy(() => import('./pages/charts/LineCharts'));
 const ErrorPage = lazy(() => import('./pages/errors/ErrorPage'));
 const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/auth/SignUpPage'));
+const Eeum = lazy(() => import('./pages/webzine/Eeum'));
+const Arte = lazy(() => import('./pages/webzine/Arte'));
 
 // Lazy loaded UI components
 const ShowcaseAlertsModals = lazy(() => import('./components/ui/ShowcaseAlertsModals'));
@@ -127,6 +129,8 @@ const App: React.FC = () => {
         <Route path="/pages/error-503" element={<ErrorPage code="503" />} />
         <Route path="/charts/line-charts" element={<LineCharts />} />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/webzine/eeum" element={<Eeum />} />
+        <Route path="/webzine/arte" element={<Arte />} />
         <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
         <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
         <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />

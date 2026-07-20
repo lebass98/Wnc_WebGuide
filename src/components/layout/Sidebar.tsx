@@ -10,6 +10,7 @@ import {
   Layers,
   Component,
   Grid,
+  BookOpen,
 } from 'lucide-react';
 import { useI18n } from '../../i18n/config';
 import { menuItems, type SubMenuItem } from '../../config/navigation';
@@ -22,6 +23,7 @@ const iconMap: Record<string, React.ElementType> = {
   Layers,
   Component,
   Grid,
+  BookOpen,
 };
 
 interface SidebarProps {

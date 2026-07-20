@@ -83,4 +83,13 @@ export const menuItems: MenuItem[] = [
       { key: 'input', labelKey: 'sidebar.input', path: '/components/input' },
     ],
   },
+  {
+    key: 'webzine',
+    icon: 'BookOpen',
+    labelKey: 'sidebar.webzine',
+    subItems: [
+      { key: 'eeum', labelKey: 'sidebar.eeum', path: '/webzine/eeum' },
+      { key: 'arte', labelKey: 'sidebar.arte', path: '/webzine/arte' },
+    ],
+  },
 ];

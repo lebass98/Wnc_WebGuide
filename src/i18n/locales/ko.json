@@ -37,7 +37,10 @@
     "dataDisplay": "데이터 표시",
     "progressNav": "진행률 & 네비게이션",
     "statesLoaders": "상태 & 로더",
-    "input": "인풋"
+    "input": "인풋",
+    "webzine": "웹진",
+    "eeum": "이음",
+    "arte": "아르떼"
   },
   "dashboard": {
     "title": "대시보드",
