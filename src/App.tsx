@@ -24,6 +24,16 @@ const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/auth/SignUpPage'));
 const Eeum = lazy(() => import('./pages/webzine/Eeum'));
 const Arte = lazy(() => import('./pages/webzine/Arte'));
+const ArteImage = lazy(() => import('./pages/webzine/arte/ArteImage'));
+const ArteLink = lazy(() => import('./pages/webzine/arte/ArteLink'));
+const ArteVideo = lazy(() => import('./pages/webzine/arte/ArteVideo'));
+const ArteText = lazy(() => import('./pages/webzine/arte/ArteText'));
+const ArteProfile = lazy(() => import('./pages/webzine/arte/ArteProfile'));
+const ArteBox = lazy(() => import('./pages/webzine/arte/ArteBox'));
+const ArteNew = lazy(() => import('./pages/webzine/arte/ArteNew'));
+const ArteTable = lazy(() => import('./pages/webzine/arte/ArteTable'));
+const ArteNotice = lazy(() => import('./pages/webzine/arte/ArteNotice'));
+const ArteNewsletter = lazy(() => import('./pages/webzine/arte/ArteNewsletter'));
 
 // Lazy loaded UI components
 const ShowcaseAlertsModals = lazy(() => import('./components/ui/ShowcaseAlertsModals'));
@@ -131,6 +141,16 @@ const App: React.FC = () => {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/webzine/eeum" element={<Eeum />} />
         <Route path="/webzine/arte" element={<Arte />} />
+        <Route path="/webzine/arte/image" element={<ArteImage />} />
+        <Route path="/webzine/arte/link" element={<ArteLink />} />
+        <Route path="/webzine/arte/video" element={<ArteVideo />} />
+        <Route path="/webzine/arte/text" element={<ArteText />} />
+        <Route path="/webzine/arte/profile" element={<ArteProfile />} />
+        <Route path="/webzine/arte/box" element={<ArteBox />} />
+        <Route path="/webzine/arte/new" element={<ArteNew />} />
+        <Route path="/webzine/arte/table" element={<ArteTable />} />
+        <Route path="/webzine/arte/notice" element={<ArteNotice />} />
+        <Route path="/webzine/arte/newsletter" element={<ArteNewsletter />} />
         <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
         <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
         <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />

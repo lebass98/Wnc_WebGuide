@@ -1,7 +1,8 @@
 export interface SubMenuItem {
   key: string;
   labelKey: string;
-  path: string;
+  path?: string;
+  subItems?: SubMenuItem[];
 }
 
 export interface MenuItem {
@@ -89,7 +90,23 @@ export const menuItems: MenuItem[] = [
     labelKey: 'sidebar.webzine',
     subItems: [
       { key: 'eeum', labelKey: 'sidebar.eeum', path: '/webzine/eeum' },
-      { key: 'arte', labelKey: 'sidebar.arte', path: '/webzine/arte' },
+      {
+        key: 'arte',
+        labelKey: 'sidebar.arte',
+        subItems: [
+          { key: 'main', labelKey: 'sidebar.arteMain', path: '/webzine/arte' },
+          { key: 'image', labelKey: 'sidebar.arteImage', path: '/webzine/arte/image' },
+          { key: 'link', labelKey: 'sidebar.arteLink', path: '/webzine/arte/link' },
+          { key: 'video', labelKey: 'sidebar.arteVideo', path: '/webzine/arte/video' },
+          { key: 'text', labelKey: 'sidebar.arteText', path: '/webzine/arte/text' },
+          { key: 'profile', labelKey: 'sidebar.arteProfile', path: '/webzine/arte/profile' },
+          { key: 'box', labelKey: 'sidebar.arteBox', path: '/webzine/arte/box' },
+          { key: 'new', labelKey: 'sidebar.arteNew', path: '/webzine/arte/new' },
+          { key: 'table', labelKey: 'sidebar.arteTable', path: '/webzine/arte/table' },
+          { key: 'notice', labelKey: 'sidebar.arteNotice', path: '/webzine/arte/notice' },
+          { key: 'newsletter', labelKey: 'sidebar.arteNewsletter', path: '/webzine/arte/newsletter' },
+        ],
+      },
     ],
   },
 ];

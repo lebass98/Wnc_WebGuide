@@ -40,7 +40,18 @@
     "input": "Input",
     "webzine": "Webzine",
     "eeum": "Eeum",
-    "arte": "Arte"
+    "arte": "Arte",
+    "arteMain": "Main Menu",
+    "arteImage": "Image",
+    "arteLink": "Link (a tag)",
+    "arteVideo": "Video",
+    "arteText": "Text",
+    "arteProfile": "Profile",
+    "arteBox": "Box Layout",
+    "arteNew": "New",
+    "arteTable": "Table",
+    "arteNotice": "Notice & Event",
+    "arteNewsletter": "Newsletter"
   },
   "dashboard": {
     "title": "Dashboard",
