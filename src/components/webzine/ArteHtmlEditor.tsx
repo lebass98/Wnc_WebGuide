@@ -3,9 +3,11 @@ import { Copy, RotateCcw, Check, Monitor, Tablet, Smartphone } from 'lucide-reac
 
 interface ArteHtmlEditorProps {
   initialHtml: string;
+  title: string;
+  description: string;
 }
 
-const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml }) => {
+const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, description }) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'html'>('preview');
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [htmlCode, setHtmlCode] = useState(initialHtml);
@@ -99,80 +101,89 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml }) => {
   return (
     <div className="flex flex-col space-y-4 w-full">
       {/* 1. Header Toolbar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-850 shadow-sm">
-        {/* Toggle Tab Buttons: Preview / HTML Source */}
-        <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
-          <button
-            onClick={() => setActiveTab('preview')}
-            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-          >
-            미리보기
-          </button>
-          <button
-            onClick={() => setActiveTab('html')}
-            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${activeTab === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-          >
-            HTML 소스
-          </button>
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-850 shadow-sm">
+        {/* Title and Description */}
+        <div>
+          <h3 className="text-base text-[20px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
+          <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
         </div>
 
-        {/* Toolbar Controls based on active tab */}
-        <div className="flex items-center gap-4 ml-auto">
-          {/* Device Simulators (Only in Preview Tab) */}
-          {activeTab === 'preview' && (
-            <div className="flex items-center gap-1.5">
-              <button
-                onClick={() => setDevice('desktop')}
-                className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                title="데스크톱 뷰"
-              >
-                <Monitor className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setDevice('tablet')}
-                className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                title="태블릿 뷰"
-              >
-                <Tablet className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setDevice('mobile')}
-                className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                title="모바일 뷰"
-              >
-                <Smartphone className="w-4 h-4" />
-              </button>
-            </div>
-          )}
+        {/* Right side controls */}
+        <div className="flex flex-wrap items-center gap-4 xl:ml-auto">
+          {/* Toggle Tab Buttons: Preview / HTML Source */}
+          <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
+            <button
+              onClick={() => setActiveTab('preview')}
+              className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              미리보기
+            </button>
+            <button
+              onClick={() => setActiveTab('html')}
+              className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${activeTab === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              HTML 소스
+            </button>
+          </div>
 
-          {/* Action buttons (Only in HTML Tab) */}
-          {activeTab === 'html' && (
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleCopy}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
-              >
-                {isCopied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-500" />
-                    <span className="text-emerald-500">복사 완료</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-slate-400" />
-                    <span>복사하기</span>
-                  </>
-                )}
-              </button>
-              <button
-                onClick={handleReset}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
-                <span>초기화</span>
-              </button>
-            </div>
-          )}
+          {/* Toolbar Controls based on active tab */}
+          <div className="flex items-center gap-4">
+            {/* Device Simulators (Only in Preview Tab) */}
+            {activeTab === 'preview' && (
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => setDevice('desktop')}
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="데스크톱 뷰"
+                >
+                  <Monitor className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setDevice('tablet')}
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="태블릿 뷰"
+                >
+                  <Tablet className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setDevice('mobile')}
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  title="모바일 뷰"
+                >
+                  <Smartphone className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+
+            {/* Action buttons (Only in HTML Tab) */}
+            {activeTab === 'html' && (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
+                >
+                  {isCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-500" />
+                      <span className="text-emerald-500">복사 완료</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-slate-400" />
+                      <span>복사하기</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+                  <span>초기화</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

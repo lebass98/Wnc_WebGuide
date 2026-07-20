@@ -61,7 +61,11 @@ const ArteImage: React.FC = () => {
       </div>
 
       {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor initialHtml={initialHtml} />
+      <ArteHtmlEditor 
+        title="아르떼 이미지 포스트 에디터" 
+        description="아르떼 이미지 포스트에 반영할 HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
+        initialHtml={initialHtml} 
+      />
     </div>
   );
 };
