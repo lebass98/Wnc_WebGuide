@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight, LayoutList, Grid2X2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ArteHtmlEditor from './ArteHtmlEditor';
 import { useArteLayout } from '../../hooks/useArteLayout';
 
@@ -30,7 +31,12 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
   const col2Templates = templates.filter((_, idx) => idx % 2 === 1);
 
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <motion.div 
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      className="space-y-6 pb-10 font-sans"
+    >
       {/* Page Header with Bottom Border */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
@@ -50,7 +56,9 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
 
         {/* 카드 정렬 토글 버튼 */}
         <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl w-fit self-end sm:self-auto">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setLayoutColumns(1)}
             className={`p-1.5 rounded-lg transition-all cursor-pointer ${
               layoutColumns === 1
@@ -60,8 +68,10 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             title="1행 보기"
           >
             <LayoutList className="w-4 h-4" />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setLayoutColumns(2)}
             className={`p-1.5 rounded-lg transition-all cursor-pointer ${
               layoutColumns === 2
@@ -71,63 +81,90 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             title="2행 보기"
           >
             <Grid2X2 className="w-4 h-4" />
-          </button>
+          </motion.button>
         </div>
       </div>
 
-      {/* Multiple Reusable Editors based on Templates */}
-      {layoutColumns === 1 ? (
-        <div className="space-y-8">
-          {templates.map((template) => (
-            <div
-              key={template.id}
-              className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
-            >
-              <ArteHtmlEditor
-                title={template.title}
-                description={template.description}
-                initialHtml={template.html}
-              />
+      {/* Multiple Reusable Editors with Framer Motion Animation */}
+      <AnimatePresence mode="wait">
+        {layoutColumns === 1 ? (
+          <motion.div 
+            key="layout-1-col"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="space-y-8"
+          >
+            {templates.map((template, idx) => (
+              <motion.div
+                key={template.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
+                className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900 shadow-xs hover:shadow-md transition-shadow duration-300"
+              >
+                <ArteHtmlEditor
+                  title={template.title}
+                  description={template.description}
+                  initialHtml={template.html}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div 
+            key="layout-2-cols"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start"
+          >
+            {/* Column 1 (Left) */}
+            <div className="space-y-8">
+              {col1Templates.map((template, idx) => (
+                <motion.div
+                  key={template.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
+                  className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900 shadow-xs hover:shadow-md transition-shadow duration-300"
+                >
+                  <ArteHtmlEditor
+                    title={template.title}
+                    description={template.description}
+                    initialHtml={template.html}
+                  />
+                </motion.div>
+              ))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
-          {/* Column 1 (Left) */}
-          <div className="space-y-8">
-            {col1Templates.map((template) => (
-              <div
-                key={template.id}
-                className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
-              >
-                <ArteHtmlEditor
-                  title={template.title}
-                  description={template.description}
-                  initialHtml={template.html}
-                />
-              </div>
-            ))}
-          </div>
 
-          {/* Column 2 (Right) */}
-          <div className="space-y-8">
-            {col2Templates.map((template) => (
-              <div
-                key={template.id}
-                className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
-              >
-                <ArteHtmlEditor
-                  title={template.title}
-                  description={template.description}
-                  initialHtml={template.html}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+            {/* Column 2 (Right) */}
+            <div className="space-y-8">
+              {col2Templates.map((template, idx) => (
+                <motion.div
+                  key={template.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: Math.min(idx * 0.04 + 0.02, 0.44) }}
+                  className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900 shadow-xs hover:shadow-md transition-shadow duration-300"
+                >
+                  <ArteHtmlEditor
+                    title={template.title}
+                    description={template.description}
+                    initialHtml={template.html}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
+
+export default WebzineTemplatePageLayout;
 
 export default WebzineTemplatePageLayout;
