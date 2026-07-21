@@ -35,13 +35,13 @@ const newsletterTemplates = [
     id: 'newsletter-type-2',
     title: '뉴스레터 타입 2',
     description: '추가 뉴스레터 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   },
   {
     id: 'newsletter-type-3',
     title: '뉴스레터 타입 3',
     description: '추가 뉴스레터 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   }
 ];
 

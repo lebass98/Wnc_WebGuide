@@ -36,13 +36,13 @@ const newTemplates = [
     id: 'new-type-2',
     title: '새소식 카드 타입 2',
     description: '추가 새소식 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   },
   {
     id: 'new-type-3',
     title: '새소식 카드 타입 3',
     description: '추가 새소식 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   }
 ];
 

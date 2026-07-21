@@ -56,13 +56,13 @@ const tableTemplates = [
     id: 'table-type-2',
     title: '표 타입 2',
     description: '추가 표 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   },
   {
     id: 'table-type-3',
     title: '표 타입 3',
     description: '추가 표 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   }
 ];
 

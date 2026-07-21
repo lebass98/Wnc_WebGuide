@@ -33,13 +33,13 @@ const profileTemplates = [
     id: 'profile-type-2',
     title: '프로필 카드 타입 2',
     description: '추가 프로필 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   },
   {
     id: 'profile-type-3',
     title: '프로필 카드 타입 3',
     description: '추가 프로필 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   }
 ];
 

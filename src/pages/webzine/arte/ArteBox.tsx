@@ -37,13 +37,13 @@ const boxTemplates = [
     id: 'box-type-2',
     title: '박스 타입 2',
     description: '추가 박스 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   },
   {
     id: 'box-type-3',
     title: '박스 타입 3',
     description: '추가 박스 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   }
 ];
 

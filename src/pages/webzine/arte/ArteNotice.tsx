@@ -31,13 +31,13 @@ const noticeTemplates = [
     id: 'notice-type-2',
     title: '공지사항 타입 2',
     description: '추가 공지사항 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   },
   {
     id: 'notice-type-3',
     title: '공지사항 타입 3',
     description: '추가 공지사항 레이아웃 템플릿입니다.',
-    html: ''
+    html: ``
   }
 ];
 

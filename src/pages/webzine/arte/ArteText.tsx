@@ -4,9 +4,9 @@ import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
 const textTemplates = [
   {
-    id: 'text-type-1',
-    title: '글씨 타입 1',
-    description: '본문 텍스트 단락, 소제목 및 인용구 레이아웃 양식입니다.',
+    id: 'black-underline-mid',
+    title: '검은 밑줄 중',
+    description: '검은 밑줄 중 레이아웃 템플릿입니다.',
     html: `<div class="post_text_section">
     <h3 class="title_type1" style="font-size: 22px; font-weight: bold; color: #111; border-left: 4px solid #E2001A; padding-left: 12px; margin-bottom: 18px; line-height: 1.4;">
         예술로 빚어내는 삶의 이야기
@@ -29,15 +29,93 @@ const textTemplates = [
 </div>`
   },
   {
-    id: 'text-type-2',
-    title: '글씨 타입 2',
-    description: '추가 본문 글씨 레이아웃 템플릿입니다.',
+    id: 'blue-middle-title',
+    title: '파란 중제 (동틀/리포트)',
+    description: '파란 중제 (동틀/리포트) 레이아웃 템플릿입니다.',
     html: ''
   },
   {
-    id: 'text-type-3',
-    title: '글씨 타입 3',
-    description: '추가 본문 글씨 레이아웃 템플릿입니다.',
+    id: 'blue-small-text',
+    title: '파란색 작은 글씨 (괄호로 많이 씀)',
+    description: '파란색 작은 글씨 (괄호로 많이 씀) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'bold-text-right-name',
+    title: '진한 글씨 + 오른쪽 이름',
+    description: '진한 글씨 + 오른쪽 이름 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'light-blue-text',
+    title: '연한 파란글씨',
+    description: '연한 파란글씨 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'indent-bullet',
+    title: '들여쓰기 (앞에 동그라미 표시)',
+    description: '들여쓰기 (앞에 동그라미 표시) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'blue-second-title',
+    title: '파란색 두번째 타이틀',
+    description: '파란색 두번째 타이틀 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'red-middle-subtitle',
+    title: '빨간 중제의 소제',
+    description: '빨간 중제의 소제 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'blue-body-text',
+    title: '파란색 본문',
+    description: '파란색 본문 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'blue-footnote-body',
+    title: '파란색 주석 (본문주석)',
+    description: '파란색 주석 (본문주석) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'blue-footnote-desc',
+    title: '파란색 주석 (하단주석설명)',
+    description: '파란색 주석 (하단주석설명) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'span-bold-word',
+    title: 'span 굵은 단어',
+    description: 'span 굵은 단어 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'italic-text',
+    title: 'italic',
+    description: 'italic 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'text-center-align',
+    title: 'text center 텍스트 가운데 정렬',
+    description: 'text center 텍스트 가운데 정렬 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'qna-txt-indent',
+    title: 'qna_txt qna가 아닌데 들여쓰기',
+    description: 'qna_txt qna가 아닌데 들여쓰기 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'black-small-subtitle-center',
+    title: '검은글씨(작음) 부제 가운데 정렬',
+    description: '검은글씨(작음) 부제 가운데 정렬 레이아웃 템플릿입니다.',
     html: ''
   }
 ];
