@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Copy, Check, RotateCcw, Eye, Code, FileText } from 'lucide-react';
+import { Copy, Check, RotateCcw, Monitor, Tablet, Smartphone } from 'lucide-react';
 
 interface IeumHtmlEditorProps {
   title?: string;
@@ -14,17 +14,16 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
 }) => {
   const [htmlCode, setHtmlCode] = useState(initialHtml);
   const [activeTab, setActiveTab] = useState<'preview' | 'html'>('preview');
+  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [isCopied, setIsCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // /template/ 경로 앞에 https://ieum.or.kr 자동 치환 처리 함수
   const processImageUrls = (code: string): string => {
     if (!code) return '';
-    // /template/ 로 시작하는 href 또는 src 상대 경로를 https://ieum.or.kr 도메인 추가
     return code.replace(/(src|href)=["'](\/template\/[^"']+)["']/g, '$1="https://ieum.or.kr$2"');
   };
 
-  // 1. 이미지 URL 자동 치환 적용
   const processedHtmlCode = processImageUrls(htmlCode);
 
   useEffect(() => {
@@ -104,7 +103,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
         resizeObserver.disconnect();
       }
     };
-  }, [activeTab, processedHtmlCode]);
+  }, [activeTab, processedHtmlCode, device]);
 
   // 이음 온라인 baseline CSS 링크
   const ieumCssLinks = `
@@ -135,7 +134,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     </style>
   `;
 
-  // 이음.html 프레임워크 기반 렌더링 HTML 문서 생성 (컨텐츠 부분만 iframe 렌더링)
+  // 이음.html 본문 부분만 렌더링하는 iframe 생성
   const fullIframeHtml = `
     <!DOCTYPE html>
     <html lang="ko">
@@ -170,141 +169,137 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     </html>
   `;
 
-  // 클립보드 복사
-  const handleCopyCode = async () => {
-    try {
-      await navigator.clipboard.writeText(processedHtmlCode);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(processedHtmlCode).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy text: ', err);
-    }
+    });
   };
 
-  // 초기화
-  const handleResetCode = () => {
-    if (window.confirm('편집한 HTML 코드를 초기화하시겠습니까?')) {
+  const handleReset = () => {
+    if (window.confirm("입력한 코드를 초기값으로 복원하시겠습니까?")) {
       setHtmlCode(initialHtml);
     }
   };
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden font-sans">
-      {/* Header Info */}
-      <div className="p-5 sm:p-6 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-800/40">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400">
-            <FileText className="w-5 h-5" />
+    <div className="flex flex-col space-y-4 w-full">
+      {/* 1. Header Toolbar (ArteHtmlEditor와 동일 스타일) */}
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl dark:border-slate-850">
+        {/* Title and Description */}
+        <div>
+          <h3 className="text-base text-[20px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
+          <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
+        </div>
+
+        {/* Right side controls */}
+        <div className="flex flex-wrap items-center gap-4 xl:ml-auto justify-end w-full xl:w-auto">
+          {/* Toggle Tab Buttons: Preview / HTML Source */}
+          <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
+            <button
+              onClick={() => setActiveTab('preview')}
+              className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${activeTab === 'preview' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              미리보기
+            </button>
+            <button
+              onClick={() => setActiveTab('html')}
+              className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${activeTab === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+            >
+              HTML 소스
+            </button>
           </div>
-          <div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight">
-              {title}
-            </h3>
-            {description && (
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                {description}
-              </p>
+
+          {/* Toolbar Controls based on active tab */}
+          <div className="flex items-center gap-4 ml-auto">
+            {activeTab === 'preview' && (
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => setDevice('desktop')}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    title="데스크톱 뷰"
+                  >
+                    <Monitor className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setDevice('tablet')}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    title="태블릿 뷰"
+                  >
+                    <Tablet className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setDevice('mobile')}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    title="모바일 뷰"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors shadow-xs cursor-pointer"
+                >
+                  {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{isCopied ? '복사됨' : '소소 복사'}</span>
+                </button>
+              </div>
+            )}
+
+            {activeTab === 'html' && (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer border border-slate-200 dark:border-slate-700"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>초기화</span>
+                </button>
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors shadow-xs cursor-pointer"
+                >
+                  {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{isCopied ? '복사됨' : '소소 복사'}</span>
+                </button>
+              </div>
             )}
           </div>
         </div>
       </div>
 
-      {/* Editor Control Toolbar */}
-      <div className="px-5 py-3 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-900">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">
-            이음온라인 (ieum.or.kr)
-          </span>
-          <span className="text-xs text-slate-400">
-            ※ /template/ 상대경로가 https://ieum.or.kr 로 자동 전환됩니다.
-          </span>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-4 xl:ml-auto justify-end w-full xl:w-auto">
-          {/* Tab Buttons */}
-          <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
-            <button
-              onClick={() => setActiveTab('preview')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'preview'
-                  ? 'bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Eye className="w-3.5 h-3.5" />
-              미리보기 (Preview)
-            </button>
-            <button
-              onClick={() => setActiveTab('html')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'html'
-                  ? 'bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Code className="w-3.5 h-3.5" />
-              HTML 소스
-            </button>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleResetCode}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-lg transition-colors cursor-pointer border border-slate-200 dark:border-slate-700"
-              title="초기화"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              초기화
-            </button>
-            <button
-              onClick={handleCopyCode}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer border ${
-                isCopied
-                  ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800'
-                  : 'bg-purple-600 hover:bg-purple-700 text-white border-transparent shadow-xs'
-              }`}
-            >
-              {isCopied ? (
-                <>
-                  <Check className="w-3.5 h-3.5" />
-                  복사완료!
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  HTML 복사
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="p-4 sm:p-6 bg-slate-50/50 dark:bg-slate-950/30">
-        {activeTab === 'preview' ? (
-          <div className="w-full bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden transition-all duration-300">
+      {/* 2. Content View Area */}
+      {activeTab === 'preview' ? (
+        <div className="flex justify-center w-full bg-slate-100/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div
+            className={`transition-all duration-300 w-full bg-white rounded-xl shadow-sm overflow-hidden ${
+              device === 'mobile' ? 'max-w-[375px]' : device === 'tablet' ? 'max-w-[768px]' : 'w-full'
+            }`}
+          >
             <iframe
               ref={iframeRef}
               srcDoc={fullIframeHtml}
               title={title}
-              className="w-full border-0 block min-h-[300px] transition-all duration-300"
+              className="w-full border-0 block min-h-[300px]"
               sandbox="allow-same-origin allow-scripts"
             />
           </div>
-        ) : (
-          <div className="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner">
-            <textarea
-              value={htmlCode}
-              onChange={(e) => setHtmlCode(e.target.value)}
-              placeholder="HTML 소스 코드를 입력하세요..."
-              className="w-full h-[450px] p-4 font-mono text-sm bg-slate-900 text-slate-100 dark:bg-slate-950 dark:text-slate-200 focus:outline-none resize-y leading-relaxed custom-scrollbar"
-              spellCheck={false}
-            />
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+          <textarea
+            value={htmlCode}
+            onChange={(e) => setHtmlCode(e.target.value)}
+            className="w-full h-[500px] p-4 font-mono text-xs bg-[#1A222C] text-slate-200 focus:outline-none resize-y leading-relaxed custom-scrollbar"
+            placeholder="HTML 소스를 입력하세요..."
+            spellCheck={false}
+          />
+        </div>
+      )}
     </div>
   );
 };
