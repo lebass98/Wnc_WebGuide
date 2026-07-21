@@ -103,7 +103,6 @@ export const menuItems: MenuItem[] = [
           { key: 'new', labelKey: 'sidebar.arteNew', path: '/webzine/arte/new' },
           { key: 'table', labelKey: 'sidebar.arteTable', path: '/webzine/arte/table' },
           { key: 'notice', labelKey: 'sidebar.arteNotice', path: '/webzine/arte/notice' },
-          { key: 'newsletter', labelKey: 'sidebar.arteNewsletter', path: '/webzine/arte/newsletter' },
         ],
       },
     ],

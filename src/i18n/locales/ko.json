@@ -49,8 +49,7 @@
     "arteBox": "박스 양식",
     "arteNew": "New",
     "arteTable": "표",
-    "arteNotice": "공지사항 이벤트",
-    "arteNewsletter": "뉴스레터"
+    "arteNotice": "공지사항 이벤트"
   },
   "dashboard": {
     "title": "대시보드",

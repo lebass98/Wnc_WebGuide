@@ -33,7 +33,6 @@ const ArteBox = lazy(() => import('./pages/webzine/arte/ArteBox'));
 const ArteNew = lazy(() => import('./pages/webzine/arte/ArteNew'));
 const ArteTable = lazy(() => import('./pages/webzine/arte/ArteTable'));
 const ArteNotice = lazy(() => import('./pages/webzine/arte/ArteNotice'));
-const ArteNewsletter = lazy(() => import('./pages/webzine/arte/ArteNewsletter'));
 
 // Lazy loaded UI components
 const ShowcaseAlertsModals = lazy(() => import('./components/ui/ShowcaseAlertsModals'));
@@ -150,7 +149,6 @@ const App: React.FC = () => {
         <Route path="/webzine/arte/new" element={<ArteNew />} />
         <Route path="/webzine/arte/table" element={<ArteTable />} />
         <Route path="/webzine/arte/notice" element={<ArteNotice />} />
-        <Route path="/webzine/arte/newsletter" element={<ArteNewsletter />} />
         <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
         <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
         <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
