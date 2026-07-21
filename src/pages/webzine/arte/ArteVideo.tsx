@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="post_video_section mt_25">
+const videoTemplates = [
+  {
+    id: 'video-type-1',
+    title: '영상 타입 1',
+    description: '유튜브 외부 동영상 링크 임베드를 아르떼 스타일 프레임으로 렌더링하는 양식입니다.',
+    html: `<div class="post_video_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 20px;">
         문화예술교육 현장의 역동적인 순간들을 담은 스케치 영상입니다. 유튜브 등 외부 동영상 링크 임베드를 아르떼 스타일 프레임으로 렌더링합니다.
     </p>
@@ -20,12 +24,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
             [아르떼365 현장 스케치] 일상의 쉼표, 예술을 나누다
         </div>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'video-type-2',
+    title: '영상 타입 2',
+    description: '추가 영상 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'video-type-3',
+    title: '영상 타입 3',
+    description: '추가 영상 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteVideo: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -44,12 +61,18 @@ const ArteVideo: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 영상 포스트 에디터" 
-        description="아르떼 본문 동영상 임베드(iframe, video) HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {videoTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="post_text_section">
+const textTemplates = [
+  {
+    id: 'text-type-1',
+    title: '글씨 타입 1',
+    description: '본문 텍스트 단락, 소제목 및 인용구 레이아웃 양식입니다.',
+    html: `<div class="post_text_section">
     <h3 class="title_type1" style="font-size: 22px; font-weight: bold; color: #111; border-left: 4px solid #E2001A; padding-left: 12px; margin-bottom: 18px; line-height: 1.4;">
         예술로 빚어내는 삶의 이야기
     </h3>
@@ -22,12 +26,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
     <p class="desc_type2" style="font-size: 15px; line-height: 1.7; color: #555; margin-bottom: 20px;">
         참가자들은 둥글게 모여 서로의 눈빛을 맞추는 것으로 시작합니다. 연극 놀이와 신체 훈련은 닫혀 있던 마음의 문을 여는 열쇠가 되며, 서로의 다른 목소리가 하나의 하모니를 만들어내는 합창 연습은 나와 다름을 포용하는 공동체적 경험을 선사합니다.
     </p>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'text-type-2',
+    title: '글씨 타입 2',
+    description: '추가 본문 글씨 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'text-type-3',
+    title: '글씨 타입 3',
+    description: '추가 본문 글씨 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteText: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -46,12 +63,18 @@ const ArteText: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 텍스트 포스트 에디터" 
-        description="아르떼 본문 서식(제목, 문단, 인용구 등) HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {textTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

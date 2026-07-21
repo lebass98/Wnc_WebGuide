@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="post_box_section mt_25">
+const boxTemplates = [
+  {
+    id: 'box-type-1',
+    title: '박스 타입 1',
+    description: '안내문 및 팁 표시용 하이라이트 박스 양식입니다.',
+    html: `<div class="post_box_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 25px;">
         안내문, 공지, 주의사항 및 참고 팁 등을 본문에 돋보이게 처리하는 하이라이트 박스 영역 템플릿입니다.
     </p>
@@ -27,12 +31,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
             </li>
         </ul>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'box-type-2',
+    title: '박스 타입 2',
+    description: '추가 박스 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'box-type-3',
+    title: '박스 타입 3',
+    description: '추가 박스 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteBox: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -51,12 +68,18 @@ const ArteBox: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 하이라이트 박스 에디터" 
-        description="아르떼 본문 중요 안내/참고 박스 HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {boxTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

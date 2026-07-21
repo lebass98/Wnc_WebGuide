@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="post_link_section" style="padding: 10px 0;">
+const linkTemplates = [
+  {
+    id: 'link-type-1',
+    title: '링크 타입 1',
+    description: '공고문 및 자료 다운로드 형태의 링크 리스트 양식입니다.',
+    html: `<div class="post_link_section" style="padding: 10px 0;">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 20px;">
         문화예술교육 아르떼365 웹진에서 다루는 다채로운 정보와 지원 사업 공고를 아래 링크들을 통해 상세히 확인하실 수 있습니다.
     </p>
@@ -31,12 +35,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
             </a>
         </div>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'link-type-2',
+    title: '링크 타입 2',
+    description: '추가 링크 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'link-type-3',
+    title: '링크 타입 3',
+    description: '추가 링크 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteLink: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -55,12 +72,18 @@ const ArteLink: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 링크 포스트 에디터" 
-        description="아르떼 본문 링크(a 태그) 및 버튼 양식 HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {linkTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

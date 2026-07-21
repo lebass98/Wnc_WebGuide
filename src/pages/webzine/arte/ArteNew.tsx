@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="new_badge_section mt_25">
+const newTemplates = [
+  {
+    id: 'new-type-1',
+    title: '새소식 카드 타입 1',
+    description: '가장 기본적인 새소식 공고물 카드 양식입니다.',
+    html: `<div class="new_badge_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 25px;">
         신규 발간 웹진이나 새로 올라온 공고물 카드 등 주목해야 할 신규 이벤트를 위한 카드 형태 템플릿입니다.
     </p>
@@ -26,12 +30,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
             </div>
         </div>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'new-type-2',
+    title: '새소식 카드 타입 2',
+    description: '추가 새소식 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'new-type-3',
+    title: '새소식 카드 타입 3',
+    description: '추가 새소식 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteNew: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -50,12 +67,18 @@ const ArteNew: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 신규 카드 에디터" 
-        description="아르떼 본문 신규 카드(NEW 배지 포함) 및 콘텐츠 소개 블록 HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {newTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

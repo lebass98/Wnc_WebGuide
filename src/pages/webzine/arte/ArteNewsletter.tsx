@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="newsletter_subscribe_section mt_25">
+const newsletterTemplates = [
+  {
+    id: 'newsletter-type-1',
+    title: '뉴스레터 타입 1',
+    description: '메일링 서비스 신청 안내 디자인 템플릿입니다.',
+    html: `<div class="newsletter_subscribe_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 25px;">
         웹진 독자들의 뉴스레터 구독을 유도하기 위해 본문 하단이나 독립 영역에 부착하는 메일링 신청 폼 템플릿입니다.
     </p>
@@ -25,12 +29,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
         </div>
         <span style="display: block; font-size: 12px; color: #888; margin-top: 15px;">※ 입력하신 정보는 뉴스레터 발송 목적으로만 사용되며, 언제든 해지하실 수 있습니다.</span>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'newsletter-type-2',
+    title: '뉴스레터 타입 2',
+    description: '추가 뉴스레터 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'newsletter-type-3',
+    title: '뉴스레터 타입 3',
+    description: '추가 뉴스레터 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteNewsletter: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -49,12 +66,18 @@ const ArteNewsletter: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 뉴스레터 메일링 에디터" 
-        description="아르떼 본문 하단 뉴스레터 구독/신청용 안내 폼 HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {newsletterTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

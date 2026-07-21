@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="post_table_section mt_25">
+const tableTemplates = [
+  {
+    id: 'table-type-1',
+    title: '표 타입 1',
+    description: '교육 일정 및 안내를 위한 기본적인 테이블 구조 양식입니다.',
+    html: `<div class="post_table_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 25px;">
         교육 일정, 커리큘럼, 선정 현황 발표 등 복합 구조의 원 데이터를 일목요연하게 표시하는 표 양식 템플릿입니다.
     </p>
@@ -46,12 +50,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
             </tbody>
         </table>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'table-type-2',
+    title: '표 타입 2',
+    description: '추가 표 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'table-type-3',
+    title: '표 타입 3',
+    description: '추가 표 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteTable: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -70,12 +87,18 @@ const ArteTable: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 데이터 표 에디터" 
-        description="아르떼 본문 테이블(표 양식) HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {tableTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

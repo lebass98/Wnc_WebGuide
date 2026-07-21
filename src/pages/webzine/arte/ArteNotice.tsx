@@ -2,8 +2,12 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
-const initialHtml = `<!-- 컨텐츠 시작 -->
-<div class="notice_event_section mt_25">
+const noticeTemplates = [
+  {
+    id: 'notice-type-1',
+    title: '공지사항 타입 1',
+    description: '공지사항 및 독자 이벤트 안내 배너 양식입니다.',
+    html: `<div class="notice_event_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 25px;">
         웹진 독자 대상 이벤트 안내 및 주요 공식 공지사항 알림 블록을 배치하기 위한 템플릿입니다.
     </p>
@@ -21,12 +25,25 @@ const initialHtml = `<!-- 컨텐츠 시작 -->
             </div>
         </div>
     </div>
-</div>
-<!-- 컨텐츠 끝 -->`;
+</div>`
+  },
+  {
+    id: 'notice-type-2',
+    title: '공지사항 타입 2',
+    description: '추가 공지사항 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'notice-type-3',
+    title: '공지사항 타입 3',
+    description: '추가 공지사항 레이아웃 템플릿입니다.',
+    html: ''
+  }
+];
 
 const ArteNotice: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
+    <div className="space-y-10 pb-10 font-sans">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -45,12 +62,18 @@ const ArteNotice: React.FC = () => {
         </div>
       </div>
 
-      {/* Reusable Editor & Preview Component */}
-      <ArteHtmlEditor 
-        title="아르떼 이벤트 공지사항 에디터" 
-        description="아르떼 독자 참여 이벤트 및 주요 공지용 디자인 배너 블록 HTML 코드를 복사/붙여넣기하고 실시간 렌더링 스타일을 시뮬레이션합니다." 
-        initialHtml={initialHtml} 
-      />
+      {/* Multiple Reusable Editors based on Templates */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        {noticeTemplates.map((template) => (
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
+            <ArteHtmlEditor 
+              title={template.title} 
+              description={template.description} 
+              initialHtml={template.html} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
