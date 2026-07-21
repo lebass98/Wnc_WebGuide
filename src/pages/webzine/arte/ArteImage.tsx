@@ -140,9 +140,9 @@ const ArteImage: React.FC = () => {
       </div>
 
       {/* Multiple Reusable Editors based on Templates */}
-      <div className="space-y-12">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         {imageTemplates.map((template) => (
-          <div key={template.id} className="border-t border-slate-200 dark:border-slate-800 pt-8 first:border-0 first:pt-0">
+          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
             <ArteHtmlEditor 
               title={template.title} 
               description={template.description} 
