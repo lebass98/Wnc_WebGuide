@@ -4,49 +4,63 @@ import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
 const linkTemplates = [
   {
-    id: 'link-type-1',
-    title: '링크 타입 1',
-    description: '공고문 및 자료 다운로드 형태의 링크 리스트 양식입니다.',
-    html: `<div class="post_link_section" style="padding: 10px 0;">
-    <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 20px;">
-        문화예술교육 아르떼365 웹진에서 다루는 다채로운 정보와 지원 사업 공고를 아래 링크들을 통해 상세히 확인하실 수 있습니다.
-    </p>
-    
-    <div class="link_list_w" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
-        <div style="padding: 15px; border: 1px solid #eaeaea; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <strong style="display: block; font-size: 15px; color: #111;">[공고] 2026년 문화예술교육 지원사업 통합 공모</strong>
-                <span style="font-size: 13px; color: #888;">접수 기간: ~ 2026.08.31</span>
-            </div>
-            <a href="https://arte365.kr" target="_blank" rel="noopener noreferrer" 
-               style="display: inline-block; padding: 8px 16px; background-color: #E2001A; color: #fff; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 13px;">
-                자세히 보기
-            </a>
-        </div>
-
-        <div style="padding: 15px; border: 1px solid #eaeaea; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <strong style="display: block; font-size: 15px; color: #111;">[자료실] 문화예술교육 트렌드 리포트 다운로드</strong>
-                <span style="font-size: 13px; color: #888;">포맷: PDF (12.4 MB)</span>
-            </div>
-            <a href="/wp-content/uploads/2023/06/trend_report_2026.pdf" target="_blank" rel="noopener noreferrer" 
-               style="display: inline-block; padding: 8px 16px; background-color: #333; color: #fff; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 13px;">
-                파일 다운로드
-            </a>
-        </div>
-    </div>
-</div>`
+    id: 'image-link',
+    title: '이미지 링크',
+    description: '이미지에 적용하는 링크 레이아웃 템플릿입니다.',
+    html: `<a style="font-size: 16px; text-decoration: underline;" title="새창 이미지 열기" target="_blank" rel="noopener noreferrer" href="https://gongu.copyright.or.kr/gongu/bbs/B0000018/list.do?menuNo=200195&#038;pageIndex=1&#038;searchCnd=1&#038;searchWrd=%EC%B9%A0%EA%B3%A1">공유마당</a>`
   },
   {
-    id: 'link-type-2',
-    title: '링크 타입 2',
-    description: '추가 링크 레이아웃 템플릿입니다.',
+    id: 'article-body-link',
+    title: '기사 본문 링크',
+    description: '기사 본문에 삽입되는 링크 레이아웃 템플릿입니다.',
     html: ''
   },
   {
-    id: 'link-type-3',
-    title: '링크 타입 3',
-    description: '추가 링크 레이아웃 템플릿입니다.',
+    id: 'small-related-link-box',
+    title: '(작은) 관련 링크 박스 - 움틀',
+    description: '(작은) 관련 링크 박스 - 움틀 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'large-related-link-article',
+    title: '(큰) 관련 링크 및 기사 - 동틀',
+    description: '(큰) 관련 링크 및 기사 - 동틀 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'press-release-guide-link',
+    title: '동틀 보도자료 및 안내 링크',
+    description: '동틀 보도자료 및 안내 링크 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'download-link',
+    title: '다운로드',
+    description: '첨부파일 다운로드 형태의 링크 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'discussion-tab-5',
+    title: '좌담 탭 5개',
+    description: '5개 버튼으로 구성된 좌담 탭 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'discussion-tab-4',
+    title: '좌담 탭 4개',
+    description: '4개 버튼으로 구성된 좌담 탭 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'blue-small-link',
+    title: '본문 파란색 작은 링크',
+    description: '본문 내 파란색으로 스타일링된 작은 링크 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'discussion-tab-2',
+    title: '좌담 탭 2개',
+    description: '2개 버튼으로 구성된 좌담 탭 레이아웃 템플릿입니다.',
     html: ''
   }
 ];
