@@ -1,5 +1,5 @@
 import React from 'react';
-import WebzineTemplatePageLayout, { TemplateItem } from '../../../components/webzine/WebzineTemplatePageLayout';
+import WebzineTemplatePageLayout from '../../../components/webzine/WebzineTemplatePageLayout';
 
 const newTemplates = [
   {
@@ -54,7 +54,5 @@ const ArteNew: React.FC = () => {
     />
   );
 };
-
-export default ArteNew;
 
 export default ArteNew;

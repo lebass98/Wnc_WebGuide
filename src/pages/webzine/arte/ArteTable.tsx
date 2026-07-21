@@ -1,5 +1,5 @@
 import React from 'react';
-import WebzineTemplatePageLayout, { TemplateItem } from '../../../components/webzine/WebzineTemplatePageLayout';
+import WebzineTemplatePageLayout from '../../../components/webzine/WebzineTemplatePageLayout';
 
 const tableTemplates = [
   {
@@ -74,7 +74,5 @@ const ArteTable: React.FC = () => {
     />
   );
 };
-
-export default ArteTable;
 
 export default ArteTable;

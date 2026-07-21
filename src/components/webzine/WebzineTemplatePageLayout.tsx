@@ -166,5 +166,3 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
 };
 
 export default WebzineTemplatePageLayout;
-
-export default WebzineTemplatePageLayout;

@@ -1,5 +1,5 @@
 import React from 'react';
-import WebzineTemplatePageLayout, { TemplateItem } from '../../../components/webzine/WebzineTemplatePageLayout';
+import WebzineTemplatePageLayout from '../../../components/webzine/WebzineTemplatePageLayout';
 
 const noticeTemplates = [
   {
@@ -49,7 +49,5 @@ const ArteNotice: React.FC = () => {
     />
   );
 };
-
-export default ArteNotice;
 
 export default ArteNotice;

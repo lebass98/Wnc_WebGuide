@@ -1,5 +1,5 @@
 import React from 'react';
-import WebzineTemplatePageLayout, { TemplateItem } from '../../../components/webzine/WebzineTemplatePageLayout';
+import WebzineTemplatePageLayout from '../../../components/webzine/WebzineTemplatePageLayout';
 
 const profileTemplates = [
   {
@@ -104,7 +104,5 @@ const ArteProfile: React.FC = () => {
     />
   );
 };
-
-export default ArteProfile;
 
 export default ArteProfile;

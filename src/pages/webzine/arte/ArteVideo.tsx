@@ -1,5 +1,5 @@
 import React from 'react';
-import WebzineTemplatePageLayout, { TemplateItem } from '../../../components/webzine/WebzineTemplatePageLayout';
+import WebzineTemplatePageLayout from '../../../components/webzine/WebzineTemplatePageLayout';
 
 const videoTemplates = [
   {
@@ -85,7 +85,5 @@ const ArteVideo: React.FC = () => {
     />
   );
 };
-
-export default ArteVideo;
 
 export default ArteVideo;
