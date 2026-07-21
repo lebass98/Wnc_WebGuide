@@ -23,6 +23,7 @@ const ErrorPage = lazy(() => import('./pages/errors/ErrorPage'));
 const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/auth/SignUpPage'));
 const Eeum = lazy(() => import('./pages/webzine/Eeum'));
+const IeumText = lazy(() => import('./pages/webzine/ieum/IeumText'));
 const Arte = lazy(() => import('./pages/webzine/Arte'));
 const ArteImage = lazy(() => import('./pages/webzine/arte/ArteImage'));
 const ArteLink = lazy(() => import('./pages/webzine/arte/ArteLink'));
@@ -139,6 +140,7 @@ const App: React.FC = () => {
         <Route path="/charts/line-charts" element={<LineCharts />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/webzine/eeum" element={<Eeum />} />
+        <Route path="/webzine/eeum/text" element={<IeumText />} />
         <Route path="/webzine/arte" element={<Arte />} />
         <Route path="/webzine/arte/image" element={<ArteImage />} />
         <Route path="/webzine/arte/link" element={<ArteLink />} />

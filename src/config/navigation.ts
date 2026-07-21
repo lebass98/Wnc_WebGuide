@@ -89,7 +89,13 @@ export const menuItems: MenuItem[] = [
     icon: 'BookOpen',
     labelKey: 'sidebar.webzine',
     subItems: [
-      { key: 'eeum', labelKey: 'sidebar.eeum', path: '/webzine/eeum' },
+      {
+        key: 'eeum',
+        labelKey: 'sidebar.eeum',
+        subItems: [
+          { key: 'text', labelKey: 'sidebar.eeumText', path: '/webzine/eeum/text' },
+        ],
+      },
       {
         key: 'arte',
         labelKey: 'sidebar.arte',
