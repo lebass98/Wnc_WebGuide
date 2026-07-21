@@ -327,7 +327,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
               onLoad={updateIframeHeight}
               srcDoc={generateSrcDoc()}
               title="Arte Preview Content"
-              className="w-full bg-white rounded-xl shadow-inner border border-slate-200 dark:border-slate-800 block transition-all duration-150"
+              className="w-full rounded-xl dark:border-slate-800 block transition-all duration-150"
               style={{ height: iframeHeight }}
               sandbox="allow-scripts allow-same-origin"
             />

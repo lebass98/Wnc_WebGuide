@@ -3,6 +3,12 @@ import { ChevronRight } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
 const initialHtml = `<!-- 컨텐츠 시작 -->
+<div class="postboimg ta_c mt_25">
+<ul class="ul_floatkyh6">
+<li class="n3 m_m_10" style="margin-left: 0; float: none;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" alt=""></a>
+</li>
+</ul>
+</div>
 <div class="postbox mt_25" style="align-items: center;">
     <div class="postboimg ta_c" style="margin:0 auto">
         <ul class="ul_floatkyh6">
