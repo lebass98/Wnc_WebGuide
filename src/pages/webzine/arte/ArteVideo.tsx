@@ -4,9 +4,9 @@ import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
 const videoTemplates = [
   {
-    id: 'video-type-1',
-    title: '영상 타입 1',
-    description: '유튜브 외부 동영상 링크 임베드를 아르떼 스타일 프레임으로 렌더링하는 양식입니다.',
+    id: 'video-700-400',
+    title: '1개 (700*400 ) 주로 사용',
+    description: '가장 주로 사용되는 700*400 크기의 단일 영상 레이아웃입니다.',
     html: `<div class="post_video_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 20px;">
         문화예술교육 현장의 역동적인 순간들을 담은 스케치 영상입니다. 유튜브 등 외부 동영상 링크 임베드를 아르떼 스타일 프레임으로 렌더링합니다.
@@ -27,15 +27,21 @@ const videoTemplates = [
 </div>`
   },
   {
-    id: 'video-type-2',
-    title: '영상 타입 2',
-    description: '추가 영상 레이아웃 템플릿입니다.',
+    id: 'video-800-500',
+    title: '1개 (800*500)',
+    description: '800*500 크기의 단일 영상 레이아웃입니다.',
     html: ''
   },
   {
-    id: 'video-type-3',
-    title: '영상 타입 3',
-    description: '추가 영상 레이아웃 템플릿입니다.',
+    id: 'video-image-498-340',
+    title: '1개 (영상1, 이미지1 / 498*340)',
+    description: '영상 1개와 이미지 1개로 구성된 498*340 크기 레이아웃입니다.',
+    html: ''
+  },
+  {
+    id: 'video-double-498-340',
+    title: '2개 (498*340)',
+    description: '498*340 크기의 영상 2개 가로 정렬 레이아웃입니다.',
     html: ''
   }
 ];
