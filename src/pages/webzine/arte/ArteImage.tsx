@@ -7,28 +7,24 @@ const imageTemplates = [
     id: 'single-no-caption',
     title: '1개 (캡션 없음)',
     description: '가장 기본적인 단일 이미지 레이아웃입니다.',
-    html: `<!-- 컨텐츠 시작 -->
-<div class="postboimg ta_c mt_25">
+    html: `<div class="postboimg ta_c mt_25">
 <ul class="ul_floatkyh6">
 <li class="n3 m_m_10" style="margin-left: 0; float: none;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/interview1_20260720_01.jpg" alt=""></a>
 </li>
 </ul>
-</div>
-<!-- 컨텐츠 끝 -->`
+</div>`
   },
   {
     id: 'single-with-caption',
     title: '1개 (캡션 있음)',
     description: '단일 이미지 아래에 설명(캡션)이 포함된 레이아웃입니다.',
-    html: `<!-- 컨텐츠 시작 -->
-<div class="postboimg ta_c mt_25" style="margin:0 auto">
+    html: `<div class="postboimg ta_c mt_25" style="margin:0 auto">
 <ul class="ul_floatkyh6">
 <li class="n3 m_m_10" style="margin-left: 0; float: none"><a href="/wp-content/uploads/2026/07/review_20260223_01.jpg" target="_blank" rel="noopener noreferrer" title="새창 이미지 열기"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/review_20260223_01.jpg" alt=""></a>
 </li>
 <div class="txts ta_r">캡션입력란</div>
 </ul>
-</div>
-<!-- 컨텐츠 끝 -->`
+</div>`
   },
   {
     id: 'single-right-caption',
