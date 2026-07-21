@@ -301,7 +301,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
       {/* 2. Content Pane Area */}
       <div
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-colors duration-300 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] ${activeTab === 'preview'
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-[max-width,background-color] duration-200 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] ${activeTab === 'preview'
             ? 'h-auto min-h-0'
             : 'h-[calc(100vh-280px)] min-h-[500px]'
           } ${activeTab === 'preview' && device === 'mobile'
@@ -320,7 +320,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
               onLoad={updateIframeHeight}
               srcDoc={generateSrcDoc()}
               title="Arte Preview Content"
-              className="w-full rounded-xl dark:border-slate-800 block transition-all duration-150"
+              className="w-full rounded-xl dark:border-slate-800 block"
               style={{ height: iframeHeight }}
               sandbox="allow-scripts allow-same-origin"
             />

@@ -276,7 +276,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
       {activeTab === 'preview' ? (
         <div className="flex justify-center w-full bg-slate-100/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
           <div
-            className={`transition-all duration-300 w-full bg-white rounded-xl shadow-sm overflow-hidden ${
+            className={`transition-[max-width] duration-200 w-full bg-white rounded-xl shadow-sm overflow-hidden ${
               device === 'mobile' ? 'max-w-[375px]' : device === 'tablet' ? 'max-w-[768px]' : 'w-full'
             }`}
           >
