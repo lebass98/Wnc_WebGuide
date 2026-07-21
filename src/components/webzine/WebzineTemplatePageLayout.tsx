@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronRight, LayoutList, Grid2X2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArteHtmlEditor from './ArteHtmlEditor';
+import IeumHtmlEditor from './IeumHtmlEditor';
 import { useArteLayout } from '../../hooks/useArteLayout';
 
 export interface TemplateItem {
@@ -14,14 +15,18 @@ export interface TemplateItem {
 interface WebzineTemplatePageLayoutProps {
   title: string;
   categoryName?: string;
+  brandName?: string;
   subcategoryName: string;
+  editorType?: 'arte' | 'ieum';
   templates: TemplateItem[];
 }
 
 const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
   title,
   categoryName = '웹진',
+  brandName = '아르떼',
   subcategoryName,
+  editorType = 'arte',
   templates,
 }) => {
   const [layoutColumns, setLayoutColumns] = useArteLayout(1);
@@ -29,6 +34,25 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
   // Masonry layout column distribution (Left: EVEN index, Right: ODD index)
   const col1Templates = templates.filter((_, idx) => idx % 2 === 0);
   const col2Templates = templates.filter((_, idx) => idx % 2 === 1);
+
+  const renderEditor = (template: TemplateItem) => {
+    if (editorType === 'ieum') {
+      return (
+        <IeumHtmlEditor
+          title={template.title}
+          description={template.description}
+          initialHtml={template.html}
+        />
+      );
+    }
+    return (
+      <ArteHtmlEditor
+        title={template.title}
+        description={template.description}
+        initialHtml={template.html}
+      />
+    );
+  };
 
   return (
     <motion.div 
@@ -41,14 +65,14 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
           <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
-            {title}
+            {brandName !== '아르떼' ? `${brandName} - ${title}` : title}
           </h1>
           <div className="flex items-center gap-2 text-[13px] text-slate-500 dark:text-slate-400 mt-1">
             <span>홈</span>
             <ChevronRight className="w-3.5 h-3.5" />
             <span>{categoryName}</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span>아르떼</span>
+            <span>{brandName}</span>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-indigo-600 dark:text-indigo-400 font-medium">{subcategoryName}</span>
           </div>
@@ -104,11 +128,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                 transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
                 className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl dark:border-slate-900"
               >
-                <ArteHtmlEditor
-                  title={template.title}
-                  description={template.description}
-                  initialHtml={template.html}
-                />
+                {renderEditor(template)}
               </motion.div>
             ))}
           </motion.div>
@@ -131,11 +151,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                   transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
                   className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl"
                 >
-                  <ArteHtmlEditor
-                    title={template.title}
-                    description={template.description}
-                    initialHtml={template.html}
-                  />
+                  {renderEditor(template)}
                 </motion.div>
               ))}
             </div>
@@ -150,11 +166,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                   transition={{ duration: 0.3, delay: Math.min(idx * 0.04 + 0.02, 0.44) }}
                   className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl"
                 >
-                  <ArteHtmlEditor
-                    title={template.title}
-                    description={template.description}
-                    initialHtml={template.html}
-                  />
+                  {renderEditor(template)}
                 </motion.div>
               ))}
             </div>

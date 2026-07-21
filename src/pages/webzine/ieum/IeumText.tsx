@@ -1,15 +1,8 @@
 import React from 'react';
-import IeumHtmlEditor from '../../../components/webzine/IeumHtmlEditor';
+import WebzineTemplatePageLayout, { type TemplateItem } from '../../../components/webzine/WebzineTemplatePageLayout';
 
-export interface IeumTemplateItem {
-  id: string;
-  title: string;
-  description: string;
-  html: string;
-}
-
-// 이음 텍스트 템플릿 배열 (원하는 템플릿을 자유롭게 추가 가능)
-const ieumTextTemplates: IeumTemplateItem[] = [
+// 이음 텍스트 템플릿 항목들 (필요시 계속 추가 가능)
+const ieumTextTemplates: TemplateItem[] = [
   {
     id: 'ieum-text-basic',
     title: '이음 텍스트 기본 기사',
@@ -45,33 +38,14 @@ const ieumTextTemplates: IeumTemplateItem[] = [
 
 const IeumText: React.FC = () => {
   return (
-    <div className="space-y-6 pb-10 font-sans">
-      {/* Page Header */}
-      <div className="border-b border-slate-200 dark:border-slate-800 pb-4">
-        <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
-          이음 - 텍스트
-        </h1>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-          홈 &gt; 웹진 &gt; 이음 &gt; 텍스트
-        </p>
-      </div>
-
-      {/* Editor List */}
-      <div className="space-y-8">
-        {ieumTextTemplates.map((template) => (
-          <div
-            key={template.id}
-            className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
-          >
-            <IeumHtmlEditor
-              title={template.title}
-              description={template.description}
-              initialHtml={template.html}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+    <WebzineTemplatePageLayout
+      title="텍스트"
+      categoryName="웹진"
+      brandName="이음"
+      subcategoryName="텍스트"
+      editorType="ieum"
+      templates={ieumTextTemplates}
+    />
   );
 };
 
