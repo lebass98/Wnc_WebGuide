@@ -16,6 +16,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
   const [activeTab, setActiveTab] = useState<'preview' | 'html'>('preview');
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [isCopied, setIsCopied] = useState(false);
+  const [iframeHeight, setIframeHeight] = useState('495px');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // /template/ 경로 앞에 https://ieum.or.kr 자동 치환 처리 함수
@@ -30,48 +31,55 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     setHtmlCode(initialHtml);
   }, [initialHtml]);
 
-  // iframe 동적 높이 조절
+  // iframe 동적 높이 정확 산출 함수
+  const updateIframeHeight = () => {
+    const iframe = iframeRef.current;
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
+      const doc = iframe.contentDocument;
+      const body = doc.body;
+      const html = doc.documentElement;
+      const webzineWrap = doc.querySelector('.webzine_wrap') as HTMLElement;
+
+      if (body && html) {
+        let height = 0;
+        if (webzineWrap) {
+          const rect = webzineWrap.getBoundingClientRect();
+          height = Math.max(rect.height, webzineWrap.offsetHeight, webzineWrap.scrollHeight);
+        } else {
+          height = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
+        }
+
+        const finalHeight = Math.max(height + 20, 180);
+        setIframeHeight(`${finalHeight}px`);
+      }
+    }
+  };
+
+  // iframe 로딩 및 리사이즈 모니터링
   useEffect(() => {
     if (activeTab !== 'preview') return;
 
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    let resizeObserver: ResizeObserver | null = null;
-
-    const updateIframeHeight = () => {
-      try {
-        if (iframe.contentDocument && iframe.contentDocument.body) {
-          const body = iframe.contentDocument.body;
-          const html = iframe.contentDocument.documentElement;
-
-          const height = Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
-          );
-
-          if (height > 0) {
-            iframe.style.height = `${height + 30}px`;
-          }
-        }
-      } catch (err) {
-        console.error('Failed to calculate iframe height:', err);
-      }
-    };
+    let resizeObserver: any = null;
 
     const handleLoad = () => {
       updateIframeHeight();
 
+      const iframeWindow = iframe.contentWindow as any;
       const iframeDoc = iframe.contentDocument;
-      if (iframeDoc && iframeDoc.body) {
-        if (window.ResizeObserver) {
-          resizeObserver = new ResizeObserver(() => {
-            updateIframeHeight();
-          });
-          resizeObserver.observe(iframeDoc.body);
+
+      if (iframeDoc && iframeDoc.body && iframeWindow) {
+        try {
+          if (iframeWindow.ResizeObserver) {
+            resizeObserver = new iframeWindow.ResizeObserver(() => {
+              updateIframeHeight();
+            });
+            resizeObserver.observe(iframeDoc.body);
+          }
+        } catch (e) {
+          console.warn('ResizeObserver error in iframe: ', e);
         }
 
         const images = iframeDoc.querySelectorAll('img');
@@ -92,8 +100,8 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
       handleLoad();
     }
 
-    const timer1 = setTimeout(updateIframeHeight, 800);
-    const timer2 = setTimeout(updateIframeHeight, 2000);
+    const timer1 = setTimeout(updateIframeHeight, 500);
+    const timer2 = setTimeout(updateIframeHeight, 1500);
 
     return () => {
       iframe.removeEventListener('load', handleLoad);
@@ -129,12 +137,11 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     <style>
       ul, li { list-style: none; }
       li::marker { display: none; content: ""; }
-      body { background: #ffffff; margin: 0; padding: 15px; }
+      body { background: #ffffff; margin: 0; padding: 10px; }
       .contents { max-width: 100%; }
     </style>
   `;
 
-  // 이음.html 본문 부분만 렌더링하는 iframe 생성
   const fullIframeHtml = `
     <!DOCTYPE html>
     <html lang="ko">
@@ -153,9 +160,9 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
                     <div class="cont">
                       <div class="webzine_wrap">
                         <div class="cont">
-                          <!-- 컨텐츠 들어가는 부분 시작 -->
+                          <!-- 컨텐츠 시작 -->
                           ${processedHtmlCode}
-                          <!-- 컨텐츠 들어가는 부분 끝 -->
+                          <!-- 컨텐츠 끝 -->
                         </div>
                       </div>
                     </div>
@@ -177,24 +184,21 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
   };
 
   const handleReset = () => {
-    if (window.confirm("입력한 코드를 초기값으로 복원하시겠습니까?")) {
+    if (window.confirm('입력한 코드를 초기값으로 복원하시겠습니까?')) {
       setHtmlCode(initialHtml);
     }
   };
 
   return (
-    <div className="flex flex-col space-y-4 w-full">
-      {/* 1. Header Toolbar (ArteHtmlEditor와 동일 스타일) */}
+    <div className="flex flex-col space-y-4 w-full font-sans">
+      {/* 1. Header Toolbar */}
       <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl dark:border-slate-850">
-        {/* Title and Description */}
         <div>
           <h3 className="text-base text-[20px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
           <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{description}</p>
         </div>
 
-        {/* Right side controls */}
         <div className="flex flex-wrap items-center gap-4 xl:ml-auto justify-end w-full xl:w-auto">
-          {/* Toggle Tab Buttons: Preview / HTML Source */}
           <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
             <button
               onClick={() => setActiveTab('preview')}
@@ -210,7 +214,6 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
             </button>
           </div>
 
-          {/* Toolbar Controls based on active tab */}
           <div className="flex items-center gap-4 ml-auto">
             {activeTab === 'preview' && (
               <div className="flex items-center gap-3">
@@ -272,34 +275,45 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
         </div>
       </div>
 
-      {/* 2. Content View Area */}
-      {activeTab === 'preview' ? (
-        <div className="flex justify-center w-full bg-slate-100/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
-          <div
-            className={`transition-[max-width] duration-200 w-full bg-white rounded-xl shadow-sm overflow-hidden ${
-              device === 'mobile' ? 'max-w-[375px]' : device === 'tablet' ? 'max-w-[768px]' : 'w-full'
-            }`}
-          >
+      {/* 2. Content Pane Area */}
+      <div
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-[max-width,background-color] duration-200 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] ${
+          activeTab === 'preview'
+            ? 'h-auto min-h-0'
+            : 'h-[calc(100vh-280px)] min-h-[500px]'
+        } ${
+          activeTab === 'preview' && device === 'mobile'
+            ? 'max-w-[375px] mx-auto w-full'
+            : activeTab === 'preview' && device === 'tablet'
+            ? 'max-w-[768px] mx-auto w-full'
+            : 'w-full'
+        }`}
+        style={activeTab === 'preview' ? { height: `calc(${iframeHeight} + 16px)` } : undefined}
+      >
+        {activeTab === 'preview' ? (
+          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950">
             <iframe
               ref={iframeRef}
+              onLoad={updateIframeHeight}
               srcDoc={fullIframeHtml}
               title={title}
-              className="w-full border-0 block min-h-[300px]"
+              className="w-full rounded-xl dark:border-slate-800 block"
+              style={{ height: iframeHeight }}
               sandbox="allow-same-origin allow-scripts"
             />
           </div>
-        </div>
-      ) : (
-        <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
-          <textarea
-            value={htmlCode}
-            onChange={(e) => setHtmlCode(e.target.value)}
-            className="w-full h-[500px] p-4 font-mono text-xs bg-[#1A222C] text-slate-200 focus:outline-none resize-y leading-relaxed custom-scrollbar"
-            placeholder="HTML 소스를 입력하세요..."
-            spellCheck={false}
-          />
-        </div>
-      )}
+        ) : (
+          <div className="w-full h-full p-4 bg-slate-900">
+            <textarea
+              value={htmlCode}
+              onChange={(e) => setHtmlCode(e.target.value)}
+              className="w-full h-full bg-transparent text-slate-300 font-mono text-xs leading-relaxed outline-none resize-none custom-scrollbar"
+              placeholder="이곳에 HTML 소스코드를 입력하세요..."
+              spellCheck={false}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
