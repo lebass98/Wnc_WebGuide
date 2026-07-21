@@ -21,46 +21,104 @@ const imageTemplates = [
     title: '1개 (캡션 있음)',
     description: '단일 이미지 아래에 설명(캡션)이 포함된 레이아웃입니다.',
     html: `<!-- 컨텐츠 시작 -->
-<div class="postboimg ta_c mt_25">
+<div class="postboimg ta_c mt_25" style="margin:0 auto">
 <ul class="ul_floatkyh6">
-<li class="n3 m_m_10" style="margin-left: 0; float: none;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/interview1_20260720_01.jpg" alt=""></a>
-<p class="img_txt" style="text-align: center; margin-top: 8px; color: #666; font-size: 14px;">[사진] 이미지 캡션 텍스트를 이곳에 입력하세요.</p>
+<li class="n3 m_m_10" style="margin-left: 0; float: none"><a href="/wp-content/uploads/2026/07/review_20260223_01.jpg" target="_blank" rel="noopener noreferrer" title="새창 이미지 열기"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/review_20260223_01.jpg" alt=""></a>
 </li>
+<div class="txts ta_r">캡션입력란</div>
 </ul>
 </div>
 <!-- 컨텐츠 끝 -->`
   },
   {
-    id: 'double-horizontal',
-    title: '2개 가로 배열 (캡션 없음)',
-    description: '두 개의 이미지가 가로로 배치되는 레이아웃입니다.',
-    html: `<!-- 컨텐츠 시작 -->
-<div class="postboimg ta_c mt_25">
-<ul class="ul_floatkyh6" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-<li class="n3 m_m_10" style="margin-left: 0; float: none; flex: 1; max-width: 48%;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/interview1_20260720_01.jpg" alt="" style="width: 100%;"></a>
-</li>
-<li class="n3 m_m_10" style="margin-left: 0; float: none; flex: 1; max-width: 48%;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/interview1_20260720_01.jpg" alt="" style="width: 100%;"></a>
-</li>
-</ul>
-</div>
-<!-- 컨텐츠 끝 -->`
+    id: 'single-right-caption',
+    title: '1개 (우측 캡션)',
+    description: '1개 (우측 캡션) 레이아웃 템플릿입니다.',
+    html: ''
   },
   {
-    id: 'double-horizontal-caption',
-    title: '2개 가로 배열 (캡션 있음)',
-    description: '두 개의 이미지가 가로로 배치되며 각각의 캡션이 포함된 레이아웃입니다.',
-    html: `<!-- 컨텐츠 시작 -->
-<div class="postboimg ta_c mt_25">
-<ul class="ul_floatkyh6" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-<li class="n3 m_m_10" style="margin-left: 0; float: none; flex: 1; max-width: 48%;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/interview1_20260720_01.jpg" alt="" style="width: 100%;"></a>
-<p class="img_txt" style="text-align: center; margin-top: 8px; color: #666; font-size: 14px;">왼쪽 이미지 캡션</p>
-</li>
-<li class="n3 m_m_10" style="margin-left: 0; float: none; flex: 1; max-width: 48%;"><a title="새창 이미지 열기" href="/wp-content/uploads/2023/01/ssak_20230130_05.jpg" target="_blank" rel="noopener noreferrer"><img class="alignnone wp-image-40366 size-full" src="/wp-content/uploads/2026/07/interview1_20260720_01.jpg" alt="" style="width: 100%;"></a>
-<p class="img_txt" style="text-align: center; margin-top: 8px; color: #666; font-size: 14px;">오른쪽 이미지 캡션</p>
-</li>
-</ul>
-</div>
-<!-- 컨텐츠 끝 -->`
+    id: 'double-full-caption',
+    title: '2개 (전체 캡션)',
+    description: '2개 (전체 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'double-individual-caption',
+    title: '2개 (개별 캡션)',
+    description: '2개 (개별 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'double-no-caption',
+    title: '2개 (캡션 없음)',
+    description: '2개 (캡션 없음) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'double-vertical-full-caption',
+    title: '2개 (위1개 아래1개 + 전체 캡션)',
+    description: '2개 (위1개 아래1개 + 전체 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'triple-full-caption',
+    title: '3개 (전체 캡션)',
+    description: '3개 (전체 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'triple-two-images-one-caption',
+    title: '3개 (이미지 2개 1개 캡션)',
+    description: '3개 (이미지 2개 1개 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'triple-individual-two-lines-caption',
+    title: '3개 (개별 캡션 및 캡션 2줄 처리)',
+    description: '3개 (개별 캡션 및 캡션 2줄 처리) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'triple-discussion-full-caption',
+    title: '3개 (좌담 3명 전체 캡션)',
+    description: '3개 (좌담 3명 전체 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'triple-two-top-one-bottom-full-caption',
+    title: '3개 (위2개 아래1개 전체 캡션)',
+    description: '3개 (위2개 아래1개 전체 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'quad-discussion-full-caption',
+    title: '4개 (좌담 전체 캡션)',
+    description: '4개 (좌담 전체 캡션) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'caption-no-br',
+    title: '이미지 캡션 br 처리 없앤 캡션',
+    description: '이미지 캡션 br 처리 없앤 캡션 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'caption-width-based-on-image-size-1',
+    title: '이미지 크기에 따른 캡션 넓이',
+    description: '이미지 크기에 따른 캡션 넓이 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'caption-width-based-on-image-size-2',
+    title: '이미지 크기에 따른 캡션 넓이',
+    description: '이미지 크기에 따른 캡션 넓이 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'vertical-each-image-caption',
+    title: '위 아래 각각 이미지 하나 캡션',
+    description: '위 아래 각각 이미지 하나 캡션 템플릿입니다.',
+    html: ''
   }
 ];
 
