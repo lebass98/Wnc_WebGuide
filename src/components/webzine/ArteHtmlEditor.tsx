@@ -197,7 +197,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
   return (
     <div className="flex flex-col space-y-4 w-full">
       {/* 1. Header Toolbar */}
-      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-850 shadow-sm">
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl dark:border-slate-850">
         {/* Title and Description */}
         <div>
           <h3 className="text-base text-[20px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
@@ -306,7 +306,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
       {/* 2. Content Pane Area */}
       <div
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300 ${
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-colors duration-300 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] ${
           activeTab === 'preview' 
             ? 'h-auto min-h-0' 
             : 'h-[calc(100vh-280px)] min-h-[500px]'
@@ -321,7 +321,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       >
         {activeTab === 'preview' ? (
           /* iframe Sandbox Preview Mode (Auto-resized based on content) */
-          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950 p-2">
+          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950">
             <iframe
               ref={iframeRef}
               onLoad={updateIframeHeight}
