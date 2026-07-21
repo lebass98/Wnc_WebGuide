@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ChevronRight, LayoutList, Grid2X2 } from 'lucide-react';
 import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
+import { useArteLayout } from '../../../hooks/useArteLayout';
 
 const textTemplates = [
   {
@@ -130,7 +131,7 @@ const textTemplates = [
 ];
 
 const ArteText: React.FC = () => {
-  const [layoutColumns, setLayoutColumns] = useState<1 | 2>(2);
+  const [layoutColumns, setLayoutColumns] = useArteLayout(1);
 
   return (
     <div className="space-y-6 pb-10 font-sans">
