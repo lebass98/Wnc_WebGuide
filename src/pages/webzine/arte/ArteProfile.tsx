@@ -4,9 +4,9 @@ import ArteHtmlEditor from '../../../components/webzine/ArteHtmlEditor';
 
 const profileTemplates = [
   {
-    id: 'profile-type-1',
-    title: '프로필 카드 타입 1',
-    description: '기본적인 가로형 필진 프로필 카드 양식입니다.',
+    id: 'gungri-profile-photo',
+    title: '궁리 프로필 사진',
+    description: '궁리 프로필 사진 레이아웃 템플릿입니다.',
     html: `<div class="profile_section mt_25">
     <p style="font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 25px;">
         아르떼365 필진 및 예술 강사 등 필자들의 정보를 가독성 있게 노출하는 프로필 카드 템플릿입니다.
@@ -30,16 +30,58 @@ const profileTemplates = [
 </div>`
   },
   {
-    id: 'profile-type-2',
-    title: '프로필 카드 타입 2',
-    description: '추가 프로필 레이아웃 템플릿입니다.',
-    html: ``
+    id: 'no-profile-photo',
+    title: '프로필 사진 없음',
+    description: '프로필 사진 없음 레이아웃 템플릿입니다.',
+    html: ''
   },
   {
-    id: 'profile-type-3',
-    title: '프로필 카드 타입 3',
-    description: '추가 프로필 레이아웃 템플릿입니다.',
-    html: ``
+    id: 'email-profile',
+    title: '이메일 - 프로필',
+    description: '이메일 - 프로필 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'facebook-blog-link',
+    title: '페이스북, 블로그 링크',
+    description: '페이스북, 블로그 링크 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'photo-credit-name-only',
+    title: '사진 제공 (이름만)',
+    description: '사진 제공 (이름만) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'photo-credit-insta-link',
+    title: '사진 제공 (인스타 링크)',
+    description: '사진 제공 (인스타 링크) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'photo-credit-email',
+    title: '사진 제공 (이메일)',
+    description: '사진 제공 (이메일) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'multi-profile-gray',
+    title: '여러명 프로필 (회색)',
+    description: '여러명 프로필 (회색) 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'gungri-image-email',
+    title: '궁리 이미지 및 이메일',
+    description: '궁리 이미지 및 이메일 레이아웃 템플릿입니다.',
+    html: ''
+  },
+  {
+    id: 'no-bottom-author-profile',
+    title: '하단 필자 프로필 없음',
+    description: '하단 필자 프로필 없음 레이아웃 템플릿입니다.',
+    html: ''
   }
 ];
 
