@@ -25,6 +25,10 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
 }) => {
   const [layoutColumns, setLayoutColumns] = useArteLayout(1);
 
+  // Masonry layout column distribution (Left: EVEN index, Right: ODD index)
+  const col1Templates = templates.filter((_, idx) => idx % 2 === 0);
+  const col2Templates = templates.filter((_, idx) => idx % 2 === 1);
+
   return (
     <div className="space-y-6 pb-10 font-sans">
       {/* Page Header with Bottom Border */}
@@ -72,17 +76,56 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
       </div>
 
       {/* Multiple Reusable Editors based on Templates */}
-      <div className={`grid gap-8 ${layoutColumns === 1 ? 'grid-cols-1' : 'grid-cols-1 xl:grid-cols-2'}`}>
-        {templates.map((template) => (
-          <div key={template.id} className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900">
-            <ArteHtmlEditor 
-              title={template.title} 
-              description={template.description} 
-              initialHtml={template.html} 
-            />
+      {layoutColumns === 1 ? (
+        <div className="space-y-8">
+          {templates.map((template) => (
+            <div
+              key={template.id}
+              className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
+            >
+              <ArteHtmlEditor
+                title={template.title}
+                description={template.description}
+                initialHtml={template.html}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-start">
+          {/* Column 1 (Left) */}
+          <div className="space-y-8">
+            {col1Templates.map((template) => (
+              <div
+                key={template.id}
+                className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
+              >
+                <ArteHtmlEditor
+                  title={template.title}
+                  description={template.description}
+                  initialHtml={template.html}
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+
+          {/* Column 2 (Right) */}
+          <div className="space-y-8">
+            {col2Templates.map((template) => (
+              <div
+                key={template.id}
+                className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900"
+              >
+                <ArteHtmlEditor
+                  title={template.title}
+                  description={template.description}
+                  initialHtml={template.html}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
