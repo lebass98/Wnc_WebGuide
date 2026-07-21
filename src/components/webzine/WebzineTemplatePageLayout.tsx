@@ -102,7 +102,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
-                className="bg-slate-50/30 dark:bg-slate-900/10 p-2 rounded-2xl border border-slate-100 dark:border-slate-900 shadow-xs hover:shadow-md transition-shadow duration-300"
+                className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl dark:border-slate-900"
               >
                 <ArteHtmlEditor
                   title={template.title}

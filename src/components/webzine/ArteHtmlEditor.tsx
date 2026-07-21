@@ -132,17 +132,6 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
     <link rel='stylesheet' id='kboard-comments-skin-default-css' href='https://arte365.kr/wp-content/plugins/kboard-comments/skin/default/style.css?ver=5.2' type='text/css' media='all' />
     <link rel='stylesheet' id='kboard-editor-media-css' href='https://arte365.kr/wp-content/plugins/kboard/template/css/editor_media.css?ver=6.0' type='text/css' media='all' />
     <link rel='stylesheet' id='kboard-skin-reader_suggestion-css' href='https://arte365.kr/wp-content/plugins/kboard/skin/reader_suggestion/style.css?ver=6.0' type='text/css' media='all' />
-    <style>
-        div.postall_w {
-            max-width: 100%;
-            padding: 20px;
-        }
-        body {
-            background: #fff;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
   `;
 
   const scriptCode = `
@@ -173,8 +162,12 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       </head>
       <body>
       <article class="arte365-post-single post type-post status-publish format-standard has-post-thumbnail hentry">
+      <div class="post-body">
+				<div class="post-content">
         <div class="postall_w">
           ${htmlCode}
+        </div>
+        </div>
         </div>
       </article>
         ${scriptCode}
@@ -207,7 +200,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
         </div>
 
         {/* Right side controls */}
-        <div className="flex flex-wrap items-center gap-4 xl:ml-auto justify-between w-full xl:w-auto">
+        <div className="flex flex-wrap items-center gap-4 xl:ml-auto justify-end w-full xl:w-auto">
           {/* Toggle Tab Buttons: Preview / HTML Source */}
           <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl w-fit">
             <button
