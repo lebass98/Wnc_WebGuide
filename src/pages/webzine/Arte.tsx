@@ -4,8 +4,8 @@ import { ChevronRight } from 'lucide-react';
 const Arte: React.FC = () => {
   return (
     <div className="space-y-6 pb-10 font-sans">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Page Header with Bottom Border */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
           <h1 className="text-[26px] font-bold text-slate-900 dark:text-white leading-tight">
             아르떼
