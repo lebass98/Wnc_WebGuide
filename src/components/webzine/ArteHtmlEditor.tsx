@@ -22,10 +22,10 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       const body = doc.body;
       const html = doc.documentElement;
       const postallW = doc.querySelector('.postall_w') as HTMLElement;
-      
+
       if (body && html) {
         let height = 0;
-        
+
         if (postallW) {
           // postall_w 요소가 존재하는 경우 그 실제 크기를 타겟으로 우선 산출 (오차 최소화)
           const rect = postallW.getBoundingClientRect();
@@ -44,7 +44,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
             html.clientHeight
           );
         }
-        
+
         // 상하 패딩 및 마진 렌더링에 필요한 보정(16px) 추가 적용
         const finalHeight = Math.max(height + 16, 150);
         setIframeHeight(`${finalHeight}px`);
@@ -60,10 +60,10 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
     const handleLoad = () => {
       updateIframeHeight();
-      
+
       const iframeWindow = iframe.contentWindow as any;
       const iframeDoc = iframe.contentDocument;
-      
+
       if (iframeDoc && iframeDoc.body && iframeWindow) {
         // 1. ResizeObserver 등록 (리플로우 및 DOM 동적 변화 감시)
         try {
@@ -148,12 +148,12 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
   const scriptCode = `
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-          var images = document.querySelectorAll('img[src^="/wp-content/uploads"]');
+          var images = document.querySelectorAll('img[src^="/wp-content/"]');
           images.forEach(function (img) {
               var currentSrc = img.getAttribute('src');
               img.src = 'https://arte365.kr' + currentSrc;
           });
-          var links = document.querySelectorAll('a[href^="/wp-content/uploads"]');
+          var links = document.querySelectorAll('a[href^="/wp-content/"]');
           links.forEach(function (link) {
               var currentHref = link.getAttribute('href');
               link.href = 'https://arte365.kr' + currentHref;
@@ -172,9 +172,11 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
         ${cssLinks}
       </head>
       <body>
+      <article class="arte365-post-single post type-post status-publish format-standard has-post-thumbnail hentry">
         <div class="postall_w">
           ${htmlCode}
         </div>
+      </article>
         ${scriptCode}
       </body>
       </html>
@@ -306,17 +308,15 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
 
       {/* 2. Content Pane Area */}
       <div
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-colors duration-300 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] ${
-          activeTab === 'preview' 
-            ? 'h-auto min-h-0' 
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-colors duration-300 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] ${activeTab === 'preview'
+            ? 'h-auto min-h-0'
             : 'h-[calc(100vh-280px)] min-h-[500px]'
-        } ${
-          activeTab === 'preview' && device === 'mobile' 
-            ? 'max-w-[375px] mx-auto w-full' 
-            : activeTab === 'preview' && device === 'tablet' 
-            ? 'max-w-[768px] mx-auto w-full' 
-            : 'w-full'
-        }`}
+          } ${activeTab === 'preview' && device === 'mobile'
+            ? 'max-w-[375px] mx-auto w-full'
+            : activeTab === 'preview' && device === 'tablet'
+              ? 'max-w-[768px] mx-auto w-full'
+              : 'w-full'
+          }`}
         style={activeTab === 'preview' ? { height: `calc(${iframeHeight} + 16px)` } : undefined}
       >
         {activeTab === 'preview' ? (
