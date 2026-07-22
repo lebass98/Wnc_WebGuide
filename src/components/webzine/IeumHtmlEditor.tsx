@@ -41,15 +41,15 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
       if (container) {
         const rect = container.getBoundingClientRect();
         const height = Math.max(rect.height, container.offsetHeight, container.scrollHeight);
-        // 하단 잘림 및 스크롤바 방지를 위한 여유 보정치 적용 (기존 25px -> 60px로 확대)
-        const finalHeight = Math.max(height + 60, 180);
+        // 하단 잘림 및 스크롤바 방지를 위한 여유 보정치 적용 (기존 60px -> 100px로 확대)
+        const finalHeight = Math.max(height + 100, 180);
         setIframeHeight(`${finalHeight}px`);
       } else {
         const body = doc.body;
         const html = doc.documentElement;
         if (body && html) {
           const height = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
-          const finalHeight = Math.max(height + 60, 180);
+          const finalHeight = Math.max(height + 100, 180);
           setIframeHeight(`${finalHeight}px`);
         }
       }
