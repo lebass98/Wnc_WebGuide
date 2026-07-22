@@ -94,6 +94,12 @@ export const menuItems: MenuItem[] = [
         labelKey: 'sidebar.eeum',
         subItems: [
           { key: 'text', labelKey: 'sidebar.eeumText', path: '/webzine/eeum/text' },
+          { key: 'box', labelKey: 'sidebar.eeumBox', path: '/webzine/eeum/box' },
+          { key: 'image', labelKey: 'sidebar.eeumImage', path: '/webzine/eeum/image' },
+          { key: 'link', labelKey: 'sidebar.eeumLink', path: '/webzine/eeum/link' },
+          { key: 'video', labelKey: 'sidebar.eeumVideo', path: '/webzine/eeum/video' },
+          { key: 'profile', labelKey: 'sidebar.eeumProfile', path: '/webzine/eeum/profile' },
+          { key: 'table', labelKey: 'sidebar.eeumTable', path: '/webzine/eeum/table' },
         ],
       },
       {

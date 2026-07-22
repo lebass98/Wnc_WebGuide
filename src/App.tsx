@@ -24,6 +24,12 @@ const LoginPage = lazy(() => import('./pages/auth/LoginPage'));
 const SignUpPage = lazy(() => import('./pages/auth/SignUpPage'));
 const Eeum = lazy(() => import('./pages/webzine/Eeum'));
 const IeumText = lazy(() => import('./pages/webzine/ieum/IeumText'));
+const IeumBox = lazy(() => import('./pages/webzine/ieum/IeumBox'));
+const IeumImage = lazy(() => import('./pages/webzine/ieum/IeumImage'));
+const IeumLink = lazy(() => import('./pages/webzine/ieum/IeumLink'));
+const IeumVideo = lazy(() => import('./pages/webzine/ieum/IeumVideo'));
+const IeumProfile = lazy(() => import('./pages/webzine/ieum/IeumProfile'));
+const IeumTable = lazy(() => import('./pages/webzine/ieum/IeumTable'));
 const Arte = lazy(() => import('./pages/webzine/Arte'));
 const ArteImage = lazy(() => import('./pages/webzine/arte/ArteImage'));
 const ArteLink = lazy(() => import('./pages/webzine/arte/ArteLink'));
@@ -141,6 +147,12 @@ const App: React.FC = () => {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/webzine/eeum" element={<Eeum />} />
         <Route path="/webzine/eeum/text" element={<IeumText />} />
+        <Route path="/webzine/eeum/box" element={<IeumBox />} />
+        <Route path="/webzine/eeum/image" element={<IeumImage />} />
+        <Route path="/webzine/eeum/link" element={<IeumLink />} />
+        <Route path="/webzine/eeum/video" element={<IeumVideo />} />
+        <Route path="/webzine/eeum/profile" element={<IeumProfile />} />
+        <Route path="/webzine/eeum/table" element={<IeumTable />} />
         <Route path="/webzine/arte" element={<Arte />} />
         <Route path="/webzine/arte/image" element={<ArteImage />} />
         <Route path="/webzine/arte/link" element={<ArteLink />} />
