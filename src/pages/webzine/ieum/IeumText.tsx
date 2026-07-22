@@ -79,7 +79,10 @@ const ieumTextTemplates: TemplateItem[] = [
     id: 'ieum-text-temp-1',
     title: '',
     description: '',
-    html: ``
+    html: `<div class="comment-box" id="item1">
+<p class="sub-tit">이승규 장애인문화예술극회 휠 단장</p>
+<p class="tit">“나는 <span class="impo">모두가 똑같은 움직임을 요구받지 않을 것</span>을 요구합니다!”</p>
+</div>`
   },
   {
     id: 'ieum-text-temp-2',

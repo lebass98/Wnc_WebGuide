@@ -44,12 +44,14 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
         let height = 0;
         if (webzineWrap) {
           const rect = webzineWrap.getBoundingClientRect();
-          height = Math.max(rect.height, webzineWrap.offsetHeight, webzineWrap.scrollHeight);
+          const wrapHeight = Math.max(rect.height, webzineWrap.offsetHeight, webzineWrap.scrollHeight);
+          const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
+          height = Math.max(wrapHeight, docHeight);
         } else {
           height = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
         }
 
-        const finalHeight = Math.max(height + 20, 180);
+        const finalHeight = Math.max(height + 40, 180);
         setIframeHeight(`${finalHeight}px`);
       }
     }
@@ -76,7 +78,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
             resizeObserver = new iframeWindow.ResizeObserver(() => {
               updateIframeHeight();
             });
-            resizeObserver.observe(iframeDoc.body);
+            resizeObserver.observe(iframeDoc.documentElement);
           }
         } catch (e) {
           console.warn('ResizeObserver error in iframe: ', e);
@@ -316,7 +318,8 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
               srcDoc={fullIframeHtml}
               title={title}
               className="w-full rounded-xl dark:border-slate-800 block"
-              style={{ height: iframeHeight }}
+              style={{ height: iframeHeight, overflow: 'hidden' }}
+              scrolling="no"
               sandbox="allow-same-origin allow-scripts"
             />
           </div>
