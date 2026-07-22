@@ -10,19 +10,14 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    const storedAuth = localStorage.getItem('isAuthenticated');
-    return storedAuth === 'true';
-  });
+  const [isAuthenticated] = useState<boolean>(true);
 
   const login = () => {
-    setIsAuthenticated(true);
-    localStorage.setItem('isAuthenticated', 'true');
+    // 로그인 기능 숨김 처리로 인해 비활성화
   };
 
   const logout = () => {
-    setIsAuthenticated(false);
-    localStorage.removeItem('isAuthenticated');
+    // 로그아웃 기능 숨김 처리로 인해 비활성화
   };
 
   return (

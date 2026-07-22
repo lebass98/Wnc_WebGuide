@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 
 import { useTheme } from '../../context/ThemeContext';
-import { useAuth } from '../../context/AuthContext';
 import { useI18n } from '../../i18n/config';
 
 interface HeaderProps {
@@ -21,7 +20,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const { isDarkMode, toggleTheme } = useTheme();
-  const { logout } = useAuth();
   const { locale, setLocale } = useI18n();
 
   return (
@@ -97,8 +95,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
         {/* Profile block */}
         <div
-          onClick={logout}
-          className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-l border-slate-200 dark:border-slate-800 cursor-pointer hover:opacity-80 group relative"
+          className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-l border-slate-200 dark:border-slate-800 group relative"
         >
           <img
             src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
@@ -107,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
           />
           <div className="hidden md:block flex-1 min-w-0">
             <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">퍼블리싱팀</p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium group-hover:text-red-500 transition-colors">로그아웃</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium transition-colors">관리자</p>
           </div>
         </div>
       </div>
