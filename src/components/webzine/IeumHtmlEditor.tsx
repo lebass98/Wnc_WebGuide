@@ -31,28 +31,27 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     setHtmlCode(initialHtml);
   }, [initialHtml]);
 
-  // iframe 동적 높이 정확 산출 함수
+  // iframe 동적 높이 정확 산출 함수 (ResizeObserver 무한 루프 방지를 위해 부모 크기에 영향 받지 않는 .contents 엘리먼트 기준 측정)
   const updateIframeHeight = () => {
     const iframe = iframeRef.current;
     if (iframe && iframe.contentWindow && iframe.contentDocument) {
       const doc = iframe.contentDocument;
-      const body = doc.body;
-      const html = doc.documentElement;
-      const webzineWrap = doc.querySelector('.webzine_wrap') as HTMLElement;
+      const container = doc.querySelector('.contents') as HTMLElement;
 
-      if (body && html) {
-        let height = 0;
-        if (webzineWrap) {
-          const rect = webzineWrap.getBoundingClientRect();
-          const wrapHeight = Math.max(rect.height, webzineWrap.offsetHeight, webzineWrap.scrollHeight);
-          const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
-          height = Math.max(wrapHeight, docHeight);
-        } else {
-          height = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
-        }
-
-        const finalHeight = Math.max(height + 40, 180);
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        const height = Math.max(rect.height, container.offsetHeight, container.scrollHeight);
+        // 스크롤바 방지를 위한 여유 보정치 적용
+        const finalHeight = Math.max(height + 25, 180);
         setIframeHeight(`${finalHeight}px`);
+      } else {
+        const body = doc.body;
+        const html = doc.documentElement;
+        if (body && html) {
+          const height = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
+          const finalHeight = Math.max(height + 25, 180);
+          setIframeHeight(`${finalHeight}px`);
+        }
       }
     }
   };
@@ -78,7 +77,13 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
             resizeObserver = new iframeWindow.ResizeObserver(() => {
               updateIframeHeight();
             });
-            resizeObserver.observe(iframeDoc.documentElement);
+            // iframeDoc.documentElement 전체 대신, 내부 문서 높이에만 영향받는 .contents 엘리먼트를 감시하여 무한 루프 차단
+            const targetContainer = iframeDoc.querySelector('.contents');
+            if (targetContainer) {
+              resizeObserver.observe(targetContainer);
+            } else {
+              resizeObserver.observe(iframeDoc.body);
+            }
           }
         } catch (e) {
           console.warn('ResizeObserver error in iframe: ', e);
