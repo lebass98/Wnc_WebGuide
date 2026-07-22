@@ -110,9 +110,11 @@ interface SubNavItemProps {
   subItems: SubMenuItem[];
   activePath: string;
   onClose: () => void;
+  badge?: string;
+  badgeColor?: string;
 }
 
-const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose }) => {
+const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor }) => {
   const { t } = useI18n();
   const [isOpen, setIsOpen] = React.useState(subItems.some((sub) => sub.path === activePath));
   const navigate = useNavigate();
@@ -127,7 +129,14 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
         onClick={() => setIsOpen(!isOpen)}
         className={`group/sub flex items-center justify-between py-1.5 cursor-pointer text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all`}
       >
-        <span>{label}</span>
+        <div className="flex items-center gap-2">
+          <span>{label}</span>
+          {badge && (
+            <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${badgeColor || 'bg-slate-100 text-slate-600'} scale-90`}>
+              {badge}
+            </span>
+          )}
+        </div>
         <ChevronDown className={`w-3.5 h-3.5 text-slate-400 group-hover/sub:text-indigo-500 dark:group-hover/sub:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </div>
 
@@ -142,9 +151,14 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
-                  className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
+                  className={`flex items-center justify-between text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
                 >
-                  {t(item.labelKey)}
+                  <span>{t(item.labelKey)}</span>
+                  {item.badge && (
+                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${item.badgeColor || 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'} scale-90`}>
+                      {item.badge}
+                    </span>
+                  )}
                 </div>
               );
             })}
@@ -219,6 +233,8 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                     subItems={item.subItems}
                     activePath={activePath}
                     onClose={onClose}
+                    badge={item.badge}
+                    badgeColor={item.badgeColor}
                   />
                 );
               }

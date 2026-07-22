@@ -3,6 +3,8 @@ export interface SubMenuItem {
   labelKey: string;
   path?: string;
   subItems?: SubMenuItem[];
+  badge?: string;
+  badgeColor?: string;
 }
 
 export interface MenuItem {
@@ -92,29 +94,33 @@ export const menuItems: MenuItem[] = [
       {
         key: 'eeum',
         labelKey: 'sidebar.eeum',
+        badge: '72',
+        badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300',
         subItems: [
-          { key: 'text', labelKey: 'sidebar.eeumText', path: '/webzine/eeum/text' },
-          { key: 'box', labelKey: 'sidebar.eeumBox', path: '/webzine/eeum/box' },
-          { key: 'image', labelKey: 'sidebar.eeumImage', path: '/webzine/eeum/image' },
-          { key: 'link', labelKey: 'sidebar.eeumLink', path: '/webzine/eeum/link' },
-          { key: 'video', labelKey: 'sidebar.eeumVideo', path: '/webzine/eeum/video' },
-          { key: 'profile', labelKey: 'sidebar.eeumProfile', path: '/webzine/eeum/profile' },
-          { key: 'table', labelKey: 'sidebar.eeumTable', path: '/webzine/eeum/table' },
+          { key: 'text', labelKey: 'sidebar.eeumText', path: '/webzine/eeum/text', badge: '18', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
+          { key: 'box', labelKey: 'sidebar.eeumBox', path: '/webzine/eeum/box', badge: '17', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
+          { key: 'image', labelKey: 'sidebar.eeumImage', path: '/webzine/eeum/image', badge: '11', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
+          { key: 'link', labelKey: 'sidebar.eeumLink', path: '/webzine/eeum/link', badge: '3', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
+          { key: 'video', labelKey: 'sidebar.eeumVideo', path: '/webzine/eeum/video', badge: '3', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
+          { key: 'profile', labelKey: 'sidebar.eeumProfile', path: '/webzine/eeum/profile', badge: '14', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
+          { key: 'table', labelKey: 'sidebar.eeumTable', path: '/webzine/eeum/table', badge: '6', badgeColor: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400' },
         ],
       },
       {
         key: 'arte',
         labelKey: 'sidebar.arte',
+        badge: '91',
+        badgeColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-500/20 dark:text-indigo-300',
         subItems: [
-          { key: 'image', labelKey: 'sidebar.arteImage', path: '/webzine/arte/image' },
-          { key: 'link', labelKey: 'sidebar.arteLink', path: '/webzine/arte/link' },
-          { key: 'video', labelKey: 'sidebar.arteVideo', path: '/webzine/arte/video' },
-          { key: 'text', labelKey: 'sidebar.arteText', path: '/webzine/arte/text' },
-          { key: 'profile', labelKey: 'sidebar.arteProfile', path: '/webzine/arte/profile' },
-          { key: 'box', labelKey: 'sidebar.arteBox', path: '/webzine/arte/box' },
-          { key: 'new', labelKey: 'sidebar.arteNew', path: '/webzine/arte/new' },
-          { key: 'table', labelKey: 'sidebar.arteTable', path: '/webzine/arte/table' },
-          { key: 'notice', labelKey: 'sidebar.arteNotice', path: '/webzine/arte/notice' },
+          { key: 'image', labelKey: 'sidebar.arteImage', path: '/webzine/arte/image', badge: '16', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'link', labelKey: 'sidebar.arteLink', path: '/webzine/arte/link', badge: '10', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'video', labelKey: 'sidebar.arteVideo', path: '/webzine/arte/video', badge: '4', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'text', labelKey: 'sidebar.arteText', path: '/webzine/arte/text', badge: '16', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'profile', labelKey: 'sidebar.arteProfile', path: '/webzine/arte/profile', badge: '9', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'box', labelKey: 'sidebar.arteBox', path: '/webzine/arte/box', badge: '14', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'new', labelKey: 'sidebar.arteNew', path: '/webzine/arte/new', badge: '12', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'table', labelKey: 'sidebar.arteTable', path: '/webzine/arte/table', badge: '4', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'notice', labelKey: 'sidebar.arteNotice', path: '/webzine/arte/notice', badge: '6', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
         ],
       },
     ],

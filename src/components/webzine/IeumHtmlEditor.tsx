@@ -31,25 +31,26 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     setHtmlCode(initialHtml);
   }, [initialHtml]);
 
-  // iframe 동적 높이 정확 산출 함수 (ResizeObserver 무한 루프 방지를 위해 부모 크기에 영향 받지 않는 .contents 엘리먼트 기준 측정)
+  // iframe 동적 높이 정확 산출 함수
   const updateIframeHeight = () => {
     const iframe = iframeRef.current;
     if (iframe && iframe.contentWindow && iframe.contentDocument) {
       const doc = iframe.contentDocument;
-      const container = doc.querySelector('.contents') as HTMLElement;
+      // 외부 레이아웃 요소들의 영향을 피하기 위해 실제 웹진 감싸는 .webzine_wrap 타겟팅
+      const container = (doc.querySelector('.webzine_wrap') || doc.querySelector('.contents')) as HTMLElement;
 
       if (container) {
         const rect = container.getBoundingClientRect();
         const height = Math.max(rect.height, container.offsetHeight, container.scrollHeight);
-        // 하단 잘림 및 스크롤바 방지를 위한 여유 보정치 적용 (기존 60px -> 100px로 확대)
-        const finalHeight = Math.max(height + 100, 180);
+        // 불필요한 하단 여백 제거를 위해 보정치를 100px -> 24px로 조절
+        const finalHeight = Math.max(height + 24, 150);
         setIframeHeight(`${finalHeight}px`);
       } else {
         const body = doc.body;
         const html = doc.documentElement;
         if (body && html) {
           const height = Math.max(body.scrollHeight, body.offsetHeight, html.scrollHeight, html.offsetHeight);
-          const finalHeight = Math.max(height + 100, 180);
+          const finalHeight = Math.max(height + 24, 150);
           setIframeHeight(`${finalHeight}px`);
         }
       }
@@ -77,8 +78,8 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
             resizeObserver = new iframeWindow.ResizeObserver(() => {
               updateIframeHeight();
             });
-            // iframeDoc.documentElement 전체 대신, 내부 문서 높이에만 영향받는 .contents 엘리먼트를 감시하여 무한 루프 차단
-            const targetContainer = iframeDoc.querySelector('.contents');
+            // iframeDoc.documentElement 전체 대신, 내부 문서 높이에만 영향받는 .webzine_wrap 엘리먼트를 감시하여 무한 루프 차단
+            const targetContainer = iframeDoc.querySelector('.webzine_wrap');
             if (targetContainer) {
               resizeObserver.observe(targetContainer);
             } else {
@@ -144,7 +145,17 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
     <style>
       ul, li { list-style: none; }
       li::marker { display: none; content: ""; }
-      body { background: #ffffff; margin: 0; padding: 10px; }
+      /* 외부 레이아웃의 고정 높이 및 여백 영향 제거 */
+      body, .contents, .sub_right, .sub_con, .view_container, .sub_each, .editor_view, .webzine_wrap, .webzine_wrap > .cont {
+        min-height: 0 !important;
+        height: auto !important;
+        float: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+      }
+      body { background: #ffffff; margin: 0; padding: 16px !important; }
       .contents { max-width: 100%; }
     </style>
   `;
