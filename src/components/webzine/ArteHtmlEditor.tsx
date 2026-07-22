@@ -314,7 +314,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
       >
         {activeTab === 'preview' ? (
           /* iframe Sandbox Preview Mode (Auto-resized based on content) */
-          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950 p-4">
+          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950 p-8">
             <iframe
               ref={iframeRef}
               onLoad={updateIframeHeight}
