@@ -6,6 +6,8 @@ import {
   RefreshCw, 
   Plus 
 } from 'lucide-react';
+import ShowcaseWrapper from './ShowcaseWrapper';
+import codeSnippets from '../../data/StatesLoadersSnippets.json';
 
 const ShowcaseStatesLoaders: React.FC = () => {
   return (
@@ -31,12 +33,11 @@ const ShowcaseStatesLoaders: React.FC = () => {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         
         {/* Box 1: Skeleton Loaders */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-8">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">스켈레톤 로더 (Skeleton Loaders)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">데이터 비동기 로딩 중 화면 흐름을 유지하고 로딩 인지를 돕는 프리로더 뼈대입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="스켈레톤 로더 (Skeleton Loaders)"
+          description="데이터 비동기 로딩 중 화면 흐름을 유지하고 로딩 인지를 돕는 프리로더 뼈대입니다."
+          snippet={codeSnippets.skeletons}
+        >
           <div className="space-y-6">
             
             {/* Card Skeleton */}
@@ -80,15 +81,14 @@ const ShowcaseStatesLoaders: React.FC = () => {
             </div>
 
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 2: Empty States */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-8">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">빈 화면 상태 (Empty States)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">등록된 데이터가 없거나 조건에 맞는 결과물이 없을 때 사용자 행동을 유도하는 UI입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="빈 화면 상태 (Empty States)"
+          description="등록된 데이터가 없거나 조건에 맞는 결과물이 없을 때 사용자 행동을 유도하는 UI입니다."
+          snippet={codeSnippets.emptyStates}
+        >
           <div className="space-y-6">
             
             {/* Empty State 1: No Search Results */}
@@ -115,7 +115,7 @@ const ShowcaseStatesLoaders: React.FC = () => {
             <div className="space-y-2 pt-2">
               <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">데이터 함 비어있음</h4>
               <div className="flex flex-col items-center justify-center p-8 border border-dashed border-slate-200 dark:border-slate-700 rounded-2xl text-center space-y-4">
-                <div className="p-3 bg-indigo-50 text-indigo-500 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-full">
+                <div className="p-3 bg-indigo-50 text-indigo-505 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-full">
                   <Inbox className="w-8 h-8" />
                 </div>
                 <div>
@@ -132,7 +132,7 @@ const ShowcaseStatesLoaders: React.FC = () => {
             </div>
 
           </div>
-        </div>
+        </ShowcaseWrapper>
 
       </div>
 

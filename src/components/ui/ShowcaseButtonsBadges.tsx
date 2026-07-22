@@ -8,6 +8,8 @@ import {
   Download, 
   Check 
 } from 'lucide-react';
+import ShowcaseWrapper from './ShowcaseWrapper';
+import codeSnippets from '../../data/ButtonsBadgesSnippets.json';
 
 const ShowcaseButtonsBadges: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,12 +49,11 @@ const ShowcaseButtonsBadges: React.FC = () => {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         
         {/* Box 1: Button Themes */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">버튼 테마 스타일</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">용도와 중요도에 맞춰 세분화된 테마 스타일입니다.</p>
-          </div>
-          
+        <ShowcaseWrapper
+          title="버튼 테마 스타일"
+          description="용도와 중요도에 맞춰 세분화된 테마 스타일입니다."
+          snippet={codeSnippets.buttonThemes}
+        >
           <div className="space-y-4">
             {/* Primary Filled Buttons */}
             <div className="space-y-2">
@@ -86,15 +87,14 @@ const ShowcaseButtonsBadges: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 2: Button Sizes & Interactive */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">버튼 규격 & 상호작용</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">상황에 알맞은 크기와 아이콘 연동, 액티브 로더 예시입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="버튼 규격 & 상호작용"
+          description="상황에 알맞은 크기와 아이콘 연동, 액티브 로더 예시입니다."
+          snippet={codeSnippets.buttonSizesInteractive}
+        >
           <div className="space-y-4">
             {/* Sizes */}
             <div className="space-y-2">
@@ -153,15 +153,14 @@ const ShowcaseButtonsBadges: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 3: Button Groups */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">버튼 그룹 (Button Groups)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">밀접하게 붙여서 다중 분기를 깔끔하게 컨트롤하는 구조입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="버튼 그룹 (Button Groups)"
+          description="밀접하게 붙여서 다중 분기를 깔끔하게 컨트롤하는 구조입니다."
+          snippet={codeSnippets.buttonGroups}
+        >
           <div className="space-y-4">
             <div className="space-y-2">
               <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">가로형 버튼 그룹</h4>
@@ -188,15 +187,14 @@ const ShowcaseButtonsBadges: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 4: Badges */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">배지 및 상태 라벨 (Badges)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">상태 정보나 개수를 표현하기 적절한 스타일 칩셋입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="배지 및 상태 라벨 (Badges)"
+          description="상태 정보나 개수를 표현하기 적절한 스타일 칩셋입니다."
+          snippet={codeSnippets.badges}
+        >
           <div className="space-y-4">
             {/* Standard Soft Badges */}
             <div className="space-y-2">
@@ -250,7 +248,7 @@ const ShowcaseButtonsBadges: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
       </div>
 

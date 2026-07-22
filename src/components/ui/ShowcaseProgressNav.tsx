@@ -6,6 +6,8 @@ import {
   ChevronDown,
   Check
 } from 'lucide-react';
+import ShowcaseWrapper from './ShowcaseWrapper';
+import codeSnippets from '../../data/ProgressNavSnippets.json';
 
 const ShowcaseProgressNav: React.FC = () => {
   // Progress Bar Simulation State
@@ -68,64 +70,66 @@ const ShowcaseProgressNav: React.FC = () => {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
 
         {/* Box 1: Progress Bars */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-bold text-slate-800 dark:text-white">진행률 지표 (Progress)</h3>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">진행도를 정밀하게 전달하는 슬라이더 스케일입니다.</p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={simulateProgress}
-                className="p-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-xl transition-all cursor-pointer"
-              >
-                <Play className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setProgress(45)}
-                className="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 rounded-xl transition-all cursor-pointer"
-              >
-                <RefreshCw className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-5">
-            {/* Linear Progress */}
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
-                <span>프로젝트 진행도</span>
-                <span>{progress}%</span>
-              </div>
-              <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300 ease-out"
-                  style={{ width: `${progress}%` }}
-                />
+        <ShowcaseWrapper
+          title="진행률 지표 (Progress)"
+          description="진행도를 정밀하게 전달하는 슬라이더 스케일입니다."
+          snippet={codeSnippets.progress}
+        >
+          <div className="space-y-6">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-bold text-slate-400">시뮬레이션</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={simulateProgress}
+                  className="p-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-xl transition-all cursor-pointer"
+                >
+                  <Play className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setProgress(45)}
+                  className="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 rounded-xl transition-all cursor-pointer"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
-            {/* Danger / Warning colored Progress */}
-            <div className="space-y-2 pt-2">
-              <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
-                <span>디스크 임계치 초과 경고 (임시값 85%)</span>
-                <span className="text-rose-500">85%</span>
+            <div className="space-y-5">
+              {/* Linear Progress */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
+                  <span>프로젝트 진행도</span>
+                  <span>{progress}%</span>
+                </div>
+                <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
               </div>
-              <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full bg-rose-500 rounded-full" style={{ width: '85%' }} />
+
+              {/* Danger / Warning colored Progress */}
+              <div className="space-y-2 pt-2">
+                <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
+                  <span>디스크 임계치 초과 경고 (임시값 85%)</span>
+                  <span className="text-rose-500">85%</span>
+                </div>
+                <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-rose-500 rounded-full" style={{ width: '85%' }} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 2: Steppers */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">단계별 스태퍼 (Steps)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">업무 처리나 회원가입 시 여러 단계를 유도하는 타임라인 스태퍼입니다.</p>
-          </div>
-
-          <div className="flex items-center justify-between relative max-h-full mx-auto py-4">
+        <ShowcaseWrapper
+          title="단계별 스태퍼 (Steps)"
+          description="업무 처리나 회원가입 시 여러 단계를 유도하는 타임라인 스태퍼입니다."
+          snippet={codeSnippets.steps}
+        >
+          <div className="flex items-center justify-between relative max-h-full mx-auto py-4 w-full">
             {/* Connecting Bar */}
             <div className="absolute top-[34px] left-[30px] right-[30px] h-[2px] bg-slate-100 dark:bg-slate-700 -z-10">
               <div className="h-full bg-indigo-500 w-1/2 transition-all duration-500" />
@@ -155,15 +159,14 @@ const ShowcaseProgressNav: React.FC = () => {
               <span className="text-xs font-bold text-slate-400 dark:text-slate-500">완료</span>
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 3: Tabs Navigation */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">탭 네비게이션 (Tabs)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">부드러운 테일윈드 언더라인과 스위칭 탭 예시입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="탭 네비게이션 (Tabs)"
+          description="부드러운 테일윈드 언더라인과 스위칭 탭 예시입니다."
+          snippet={codeSnippets.tabs}
+        >
           <div className="space-y-6">
             {/* Underline Tab Layout */}
             <div className="border-b border-slate-100 dark:border-slate-700 flex gap-6">
@@ -192,15 +195,14 @@ const ShowcaseProgressNav: React.FC = () => {
               {activeTab === 'security' && '2단계 다중 로그인 차단 보호 조치 활성화 상태이며, 마지막 패스워드 갱신은 45일 전입니다.'}
             </div>
           </div>
-        </div>
+        </ShowcaseWrapper>
 
         {/* Box 4: Accordion */}
-        <div className="bg-white dark:bg-[#1A222C] p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
-          <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">아코디언 토글 (Accordions)</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">질문 답변(FAQ)이나 카테고리 확장에 자주 사용되는 구조입니다.</p>
-          </div>
-
+        <ShowcaseWrapper
+          title="아코디언 토글 (Accordions)"
+          description="질문 답변(FAQ)이나 카테고리 확장에 자주 사용되는 구조입니다."
+          snippet={codeSnippets.accordions}
+        >
           <div className="space-y-3">
             {accordionData.map((item, idx) => (
               <div
@@ -223,7 +225,7 @@ const ShowcaseProgressNav: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ShowcaseWrapper>
 
       </div>
 
