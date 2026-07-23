@@ -52,7 +52,7 @@ import DashboardSkeleton from './components/common/DashboardSkeleton';
 
 const App: React.FC = () => {
   const { isAuthenticated } = useAuth();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 1024);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -103,6 +103,7 @@ const App: React.FC = () => {
               <Sidebar
                 isOpen={isSidebarOpen}
                 onClose={closeSidebar}
+                onToggle={toggleSidebar}
               />
 
               {/* Overlay for mobile when sidebar is open */}
@@ -113,9 +114,10 @@ const App: React.FC = () => {
                 />
               )}
 
-              <div className="flex-1 lg:pl-[280px] flex flex-col min-h-screen overflow-hidden transition-all duration-300">
+              <div className={`flex-1 ${isSidebarOpen ? 'lg:pl-[280px]' : 'lg:pl-0'} flex flex-col min-h-screen overflow-hidden transition-all duration-300`}>
                  <Header
                   onMenuClick={toggleSidebar}
+                  isSidebarOpen={isSidebarOpen}
                 />
 
                 {/* Main Content Area */}

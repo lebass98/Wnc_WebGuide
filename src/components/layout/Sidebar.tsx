@@ -11,6 +11,8 @@ import {
   Component,
   Grid,
   BookOpen,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { useI18n } from '../../i18n/config';
 import { menuItems, type SubMenuItem } from '../../config/navigation';
@@ -29,9 +31,10 @@ const iconMap: Record<string, React.ElementType> = {
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onToggle: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useI18n();
@@ -40,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <aside
       role="navigation"
       aria-label="사이드바 메뉴"
-      className={`fixed inset-y-0 left-0 z-30 w-[280px] bg-white dark:bg-[#1A222C] border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
+      className={`fixed inset-y-0 left-0 z-30 w-[280px] bg-white dark:bg-[#1A222C] border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
     >
       {/* Logo Area */}
       <div className="h-[72px] lg:h-[80px] flex items-center justify-between px-6 border-b border-transparent">
@@ -100,6 +103,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           );
         })}
       </div>
+
+      {/* Toggle button for desktop */}
+      <button
+        onClick={onToggle}
+        aria-label={isOpen ? "사이드바 접기" : "사이드바 펼치기"}
+        className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 z-40 w-7 h-7 rounded-full bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 items-center justify-center cursor-pointer shadow-md text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all duration-300 ${isOpen ? '-right-3.5' : '-right-7'}`}
+      >
+        {isOpen ? (
+          <ChevronLeft className="w-4 h-4" />
+        ) : (
+          <ChevronRight className="w-4 h-4" />
+        )}
+      </button>
     </aside>
   );
 };
