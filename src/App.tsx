@@ -114,7 +114,7 @@ const App: React.FC = () => {
                 />
               )}
 
-              <div className={`flex-1 ${isSidebarOpen ? 'lg:pl-[280px]' : 'lg:pl-0'} flex flex-col min-h-screen overflow-hidden transition-all duration-300`}>
+              <div className={`flex-1 ${isSidebarOpen ? 'lg:pl-[280px]' : 'lg:pl-[80px]'} flex flex-col min-h-screen overflow-hidden transition-all duration-300`}>
                  <Header
                   onMenuClick={toggleSidebar}
                   isSidebarOpen={isSidebarOpen}

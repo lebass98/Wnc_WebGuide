@@ -43,33 +43,41 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
     <aside
       role="navigation"
       aria-label="사이드바 메뉴"
-      className={`fixed inset-y-0 left-0 z-30 w-[280px] bg-white dark:bg-[#1A222C] border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+      className={`fixed inset-y-0 left-0 z-30 bg-white dark:bg-[#1A222C] border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-all duration-300 ease-in-out ${
+        isOpen 
+          ? 'translate-x-0 w-[280px]' 
+          : '-translate-x-full lg:translate-x-0 w-[280px] lg:w-[80px]'
+      }`}
     >
       {/* Logo Area */}
-      <div className="h-[72px] lg:h-[80px] flex items-center justify-between px-6 border-b border-transparent">
+      <div className={`h-[72px] lg:h-[80px] flex items-center ${isOpen ? 'justify-between px-6' : 'justify-center px-2'} border-b border-transparent`}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-indigo-500 text-white flex items-center justify-center font-bold text-lg shadow-sm shadow-indigo-200">
+          <div className="w-8 h-8 rounded-lg bg-indigo-500 text-white flex items-center justify-center font-bold text-lg shadow-sm shadow-indigo-200 shrink-0">
             N
             <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 absolute" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg>
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">{t('sidebar.brand')}</h1>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{t('sidebar.subtitle')}</p>
-          </div>
+          {isOpen && (
+            <div>
+              <h1 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">{t('sidebar.brand')}</h1>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{t('sidebar.subtitle')}</p>
+            </div>
+          )}
         </div>
-        <button
-          onClick={onClose}
-          aria-label="메뉴 닫기"
-          className="lg:hidden p-1 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        {isOpen && (
+          <button
+            onClick={onClose}
+            aria-label="메뉴 닫기"
+            className="lg:hidden p-1 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C]">
+      <div className={`flex-1 overflow-y-auto py-6 ${isOpen ? 'px-4' : 'px-2'} space-y-2 custom-scrollbar dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C]`}>
         {menuItems.map((item) => {
           const Icon = iconMap[item.icon];
           if (!item.subItems) {
@@ -78,13 +86,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
               <div
                 key={item.key}
                 onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
-                className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${isActive ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
+                className={`group flex items-center transition-all cursor-pointer ${
+                  isOpen
+                    ? `justify-between px-3 py-2.5 rounded-xl ${isActive ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`
+                    : `justify-center w-12 h-12 rounded-xl mx-auto ${isActive ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`
+                }`}
               >
                 <div className="flex items-center gap-3">
-                  {Icon && <Icon className="w-5 h-5" />}
-                  <span className="font-semibold text-sm">{t(item.labelKey)}</span>
+                  {Icon && <Icon className="w-5 h-5 shrink-0" />}
+                  {isOpen && <span className="font-semibold text-sm">{t(item.labelKey)}</span>}
                 </div>
-                {isActive && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">{t('common.new')}</span>}
+                {isOpen && isActive && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">{t('common.new')}</span>}
               </div>
             );
           }
@@ -99,6 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
               subItems={item.subItems}
               activePath={location.pathname}
               onClose={onClose}
+              isSidebarOpen={isOpen}
             />
           );
         })}
@@ -198,9 +211,10 @@ interface NavItemProps {
   subItems: SubMenuItem[];
   activePath: string;
   onClose: () => void;
+  isSidebarOpen: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-slate-100 text-slate-600", subItems, activePath, onClose }) => {
+const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-slate-100 text-slate-600", subItems, activePath, onClose, isSidebarOpen }) => {
   const { t } = useI18n();
   // Support both 2-tier and 3-tier deep check for active path
   const isAnySubActive = (items: SubMenuItem[]): boolean => {
@@ -218,28 +232,45 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
     if (isAnySubActive(subItems)) setIsOpen(true);
   }, [activePath, subItems]);
 
+  const isActive = isAnySubActive(subItems);
+
   return (
     <div>
       <div
-        onClick={() => setIsOpen(!isOpen)}
-        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 cursor-pointer transition-all ${isOpen ? 'bg-indigo-50/30 dark:bg-slate-800/30' : ''}`}
+        onClick={() => {
+          if (isSidebarOpen) {
+            setIsOpen(!isOpen);
+          } else {
+            if (subItems[0] && subItems[0].path) {
+              navigate(subItems[0].path);
+              onClose();
+            }
+          }
+        }}
+        className={`group flex items-center transition-all cursor-pointer ${
+          isSidebarOpen
+            ? `justify-between px-3 py-2.5 rounded-xl hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 ${isOpen ? 'bg-indigo-50/30 dark:bg-slate-800/30' : ''} ${isActive ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400'}`
+            : `justify-center w-12 h-12 rounded-xl mx-auto hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 ${isActive ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400'}`
+        }`}
       >
         <div className="flex items-center gap-3">
-          <Icon className={`w-5 h-5`} />
-          <span className="font-medium text-sm">{label}</span>
+          <Icon className="w-5 h-5 shrink-0" />
+          {isSidebarOpen && <span className="font-medium text-sm">{label}</span>}
         </div>
-        <div className="flex items-center gap-2">
-          {badge && (
-            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeColor}`}>
-              {badge}
-            </span>
-          )}
-          <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-        </div>
+        {isSidebarOpen && (
+          <div className="flex items-center gap-2">
+            {badge && (
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeColor}`}>
+                {badge}
+              </span>
+            )}
+            <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+          </div>
+        )}
       </div>
 
       {/* Submenu Dropdown */}
-      {subItems.length > 0 && (
+      {isSidebarOpen && subItems.length > 0 && (
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
