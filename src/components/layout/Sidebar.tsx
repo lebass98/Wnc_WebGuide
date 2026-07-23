@@ -95,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
       </div>
 
       {/* Navigation */}
-      <div className={`flex-1 overflow-y-auto py-6 ${isOpen ? 'px-4' : 'px-2'} space-y-2 custom-scrollbar dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C]`}>
+      <div className={`flex-1 py-6 space-y-2 custom-scrollbar dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C] ${isOpen ? 'overflow-y-auto px-4' : 'overflow-visible px-2'}`}>
         {menuItems.map((item) => {
           const Icon = iconMap[item.icon];
           if (!item.subItems) {
@@ -170,14 +170,21 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
   const { t } = useI18n();
   const isAnyChildActive = subItems.some((sub) => sub.path === activePath);
   const [isOpen, setIsOpen] = React.useState(isAnyChildActive);
+  const [isHovered, setIsHovered] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
     if (isAnyChildActive) setIsOpen(true);
   }, [activePath, isAnyChildActive]);
 
+  const showSub = isOpen || isHovered;
+
   return (
-    <div className="flex flex-col relative">
+    <div
+      className="flex flex-col relative group/subitem"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* 2nd Tier Vertical Line: Continuous line for non-last items extending through child items */}
       {!isLast && (
         <div className="absolute left-[-22px] top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
@@ -186,7 +193,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={`group/sub flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer text-sm font-medium transition-all relative ${
-          isOpen || isAnyChildActive
+          showSub || isAnyChildActive
             ? 'bg-slate-100/70 dark:bg-slate-800/50 text-slate-900 dark:text-white'
             : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/40 dark:hover:bg-slate-800/30'
         }`}
@@ -200,12 +207,12 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
           <span>{label}</span>
           {renderBadge(badge, badgeColor)}
         </div>
-        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 group-hover/sub:text-slate-600 dark:group-hover/sub:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 group-hover/sub:text-slate-600 dark:group-hover/sub:text-white transition-transform duration-300 ${showSub ? 'rotate-180' : ''}`} />
       </div>
 
       {subItems.length > 0 && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[600px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${showSub ? 'max-h-[600px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-6 pr-0 relative py-0.5">
             {subItems.map((item, idx) => {
@@ -273,6 +280,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
   }, [activePath, subItems]);
 
   const isActive = isAnySubActive(subItems);
+  const showSub = isOpen || isHovered;
 
   return (
     <div
@@ -294,7 +302,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
         className={`group flex items-center transition-all cursor-pointer relative ${
           isSidebarOpen
             ? `justify-between px-3 py-2.5 rounded-xl ${
-                isOpen || isActive
+                showSub || isActive
                   ? 'bg-slate-100/80 dark:bg-slate-800/60 text-slate-900 dark:text-white'
                   : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
               }`
@@ -318,7 +326,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
         {isSidebarOpen && (
           <div className="flex items-center gap-2">
             {renderBadge(badge, badgeColor)}
-            <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-transform duration-300 ${showSub ? 'rotate-180' : ''}`} />
           </div>
         )}
       </div>
@@ -405,7 +413,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
       {/* Submenu Dropdown (for Expanded Mode) */}
       {isSidebarOpen && subItems.length > 0 && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${showSub ? 'max-h-[1000px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-11 pr-0 py-1 relative">
             {/* Connecting line from 1st tier icon to 2nd tier items */}
