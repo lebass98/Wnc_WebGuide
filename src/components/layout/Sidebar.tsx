@@ -85,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
             return (
               <div
                 key={item.key}
-                onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
+                onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
                 className={`group flex items-center transition-all cursor-pointer ${
                   isOpen
                     ? `justify-between px-3 py-2.5 rounded-xl ${isActive ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`
@@ -183,7 +183,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
               return (
                 <div
                   key={idx}
-                  onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
+                  onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
                   className={`flex items-center justify-between text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
                 >
                   <span>{t(item.labelKey)}</span>
@@ -243,7 +243,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
           } else {
             if (subItems[0] && subItems[0].path) {
               navigate(subItems[0].path);
-              onClose();
+              if (window.innerWidth < 1024) onClose();
             }
           }
         }}
@@ -293,7 +293,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
               return (
                 <div
                   key={idx}
-                  onClick={() => { if (item.path) { navigate(item.path); onClose(); } }}
+                  onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
                   className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
                 >
                   {t(item.labelKey)}
