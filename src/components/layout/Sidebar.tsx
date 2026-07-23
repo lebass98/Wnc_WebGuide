@@ -179,7 +179,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
         <div className="flex items-center gap-2">
           <span>{label}</span>
           {badge && (
-            <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${badgeColor || 'bg-slate-100 text-slate-600'} scale-90`}>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${badgeColor || 'bg-slate-100 text-slate-600'}`}>
               {badge}
             </span>
           )}
@@ -218,7 +218,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
 
                   <span>{t(item.labelKey)}</span>
                   {item.badge && (
-                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${item.badgeColor || 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'} scale-90`}>
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${item.badgeColor || 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}>
                       {item.badge}
                     </span>
                   )}
@@ -298,7 +298,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
         {isSidebarOpen && (
           <div className="flex items-center gap-2">
             {badge && (
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeColor}`}>
+              <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${badgeColor}`}>
                 {badge}
               </span>
             )}
