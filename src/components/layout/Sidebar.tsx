@@ -139,7 +139,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
       <button
         onClick={onToggle}
         aria-label={isOpen ? "사이드바 접기" : "사이드바 펼치기"}
-        className="hidden lg:flex absolute z-40 top-1/2 -translate-y-1/2 -right-3.5 w-7 h-7 rounded-full bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-700/80 items-center justify-center cursor-pointer shadow-md text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-400 dark:hover:border-indigo-500 transition-all duration-200"
+        className="hidden lg:flex absolute z-40 top-7 -right-3.5 w-7 h-7 rounded-full bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-700/80 items-center justify-center cursor-pointer shadow-md text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-400 dark:hover:border-indigo-500 transition-all duration-200"
       >
         {isOpen ? (
           <ChevronLeft className="w-4 h-4" />
