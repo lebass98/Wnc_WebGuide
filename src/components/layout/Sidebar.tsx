@@ -162,7 +162,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
     <div className="flex flex-col relative">
       {/* 2nd Tier Vertical Line: Continuous line for non-last items extending through child items */}
       {!isLast && (
-        <div className="absolute left-[-22px] top-0 bottom-0 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
+        <div className="absolute left-[-22px] top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
       )}
 
       <div
