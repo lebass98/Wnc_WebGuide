@@ -148,7 +148,7 @@ interface SubNavItemProps {
   isLast?: boolean;
 }
 
-const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor, isLast: _isLast }) => {
+const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor, isLast }) => {
   const { t } = useI18n();
   const isAnyChildActive = subItems.some((sub) => sub.path === activePath);
   const [isOpen, setIsOpen] = React.useState(isAnyChildActive);
@@ -160,6 +160,11 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
 
   return (
     <div className="flex flex-col relative">
+      {/* 2nd Tier Vertical Line: Continuous line for non-last items extending through child items */}
+      {!isLast && (
+        <div className="absolute left-[-22px] top-0 bottom-0 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
+      )}
+
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={`group/sub flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer text-sm font-medium transition-all relative ${
@@ -306,8 +311,8 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-11 pr-0 py-1 relative">
-            {/* 2nd Tier Master Guide Line: Unbroken vertical line connecting 1st tier icon to 2nd tier items */}
-            <div className="absolute left-[22px] top-0 bottom-5 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
+            {/* Connecting line from 1st tier icon to 2nd tier items */}
+            <div className="absolute left-[22px] top-[-6px] h-3 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
 
             {subItems.map((item, idx) => {
               const isLast = idx === subItems.length - 1;
@@ -339,6 +344,9 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                   {/* 2nd Tier Tree Hook */}
                   <div className="absolute left-[-22px] top-0 bottom-0 w-3 pointer-events-none">
                     <div className="w-[12px] h-[16px] border-l border-b border-slate-200 dark:border-slate-700/80 rounded-bl-[6px] absolute left-0 top-0" />
+                    {!isLast && (
+                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
+                    )}
                   </div>
                   {t(item.labelKey)}
                 </div>
