@@ -145,10 +145,10 @@ interface SubNavItemProps {
   onClose: () => void;
   badge?: string;
   badgeColor?: string;
-  isLast: boolean;
+  isLast?: boolean;
 }
 
-const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor, isLast }) => {
+const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor, isLast: _isLast }) => {
   const { t } = useI18n();
   const isAnyChildActive = subItems.some((sub) => sub.path === activePath);
   const [isOpen, setIsOpen] = React.useState(isAnyChildActive);
@@ -168,12 +168,9 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
             : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/40 dark:hover:bg-slate-800/30'
         }`}
       >
-        {/* 2nd Tier Tree Line */}
+        {/* 2nd Tier Tree Hook */}
         <div className="absolute left-[-22px] top-0 bottom-0 w-3 pointer-events-none">
           <div className="w-[12px] h-[16px] border-l border-b border-slate-200 dark:border-slate-700/80 rounded-bl-[6px] absolute left-0 top-0" />
-          {!isLast && (
-            <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
-          )}
         </div>
 
         <div className="flex items-center gap-2">
@@ -189,31 +186,27 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
 
       {subItems.length > 0 && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[600px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
-          <div className="flex flex-col gap-1 pl-6 relative py-0.5">
-            {!isLast && (
-              <div className="absolute left-[-22px] top-[-8px] bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
-            )}
+          <div className="flex flex-col gap-1 pl-6 pr-0 relative py-0.5">
+            {/* 3rd Tier Master Guide Line */}
+            <div className="absolute left-[-16px] top-2 bottom-5 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
+
             {subItems.map((item, idx) => {
-              const isSubLast = idx === subItems.length - 1;
               const isActive = activePath === item.path;
               return (
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
-                  className={`flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
+                  className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
                     isActive
                       ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold shadow-xs'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
                   }`}
                 >
-                  {/* 3rd Tier Tree Line */}
+                  {/* 3rd Tier Tree Hook */}
                   <div className="absolute left-[-16px] top-0 bottom-0 w-3 pointer-events-none">
                     <div className="w-[10px] h-[16px] border-l border-b border-slate-200 dark:border-slate-700/80 rounded-bl-[5px] absolute left-0 top-0" />
-                    {!isSubLast && (
-                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
-                    )}
                   </div>
 
                   <span>{t(item.labelKey)}</span>
@@ -310,11 +303,11 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
       {/* Submenu Dropdown */}
       {isSidebarOpen && subItems.length > 0 && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
-          <div className="flex flex-col gap-1 pl-11 pr-3 py-1 relative">
-            {/* Connecting line from 1st tier icon to 2nd tier items */}
-            <div className="absolute left-[22px] top-[-6px] h-3 w-[1px] bg-slate-200 dark:bg-slate-700/80" />
+          <div className="flex flex-col gap-1 pl-11 pr-0 py-1 relative">
+            {/* 2nd Tier Master Guide Line: Unbroken vertical line connecting 1st tier icon to 2nd tier items */}
+            <div className="absolute left-[22px] top-0 bottom-5 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
 
             {subItems.map((item, idx) => {
               const isLast = idx === subItems.length - 1;
@@ -343,12 +336,9 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
                   }`}
                 >
-                  {/* 2nd Tier Tree Line */}
+                  {/* 2nd Tier Tree Hook */}
                   <div className="absolute left-[-22px] top-0 bottom-0 w-3 pointer-events-none">
                     <div className="w-[12px] h-[16px] border-l border-b border-slate-200 dark:border-slate-700/80 rounded-bl-[6px] absolute left-0 top-0" />
-                    {!isLast && (
-                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
-                    )}
                   </div>
                   {t(item.labelKey)}
                 </div>
