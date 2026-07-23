@@ -187,6 +187,9 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-6 relative">
+            {!isLast && (
+              <div className="absolute left-[-22px] top-[-4px] bottom-0 w-[1px] bg-slate-200 dark:bg-slate-800" />
+            )}
             {subItems.map((item, idx) => {
               const isSubLast = idx === subItems.length - 1;
               const isActive = activePath === item.path;
