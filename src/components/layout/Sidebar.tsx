@@ -194,10 +194,8 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[600px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-6 pr-0 relative py-0.5">
-            {/* 3rd Tier Master Guide Line */}
-            <div className="absolute left-[-16px] top-2 bottom-5 w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
-
             {subItems.map((item, idx) => {
+              const isSubLast = idx === subItems.length - 1;
               const isActive = activePath === item.path;
               return (
                 <div
@@ -209,9 +207,12 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
                   }`}
                 >
-                  {/* 3rd Tier Tree Hook */}
+                  {/* 3rd Tier Tree Hook & Vertical Line */}
                   <div className="absolute left-[-16px] top-0 bottom-0 w-3 pointer-events-none">
                     <div className="w-[10px] h-[16px] border-l border-b border-slate-200 dark:border-slate-700/80 rounded-bl-[5px] absolute left-0 top-0" />
+                    {!isSubLast && (
+                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
+                    )}
                   </div>
 
                   <span>{t(item.labelKey)}</span>
