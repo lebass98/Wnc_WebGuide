@@ -108,12 +108,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
       <button
         onClick={onToggle}
         aria-label={isOpen ? "사이드바 접기" : "사이드바 펼치기"}
-        className={`hidden lg:flex absolute top-[26px] z-40 w-7 h-7 rounded-full bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 items-center justify-center cursor-pointer shadow-md text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all duration-300 ${isOpen ? '-right-3.5' : '-right-7'}`}
+        className={`hidden lg:flex absolute z-40 rounded-full bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 items-center justify-center cursor-pointer shadow-md text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all duration-300 ${
+          isOpen 
+            ? 'w-7 h-7 top-[26px] -right-3.5' 
+            : 'w-5 h-5 top-[30px] -right-5'
+        }`}
       >
         {isOpen ? (
           <ChevronLeft className="w-4 h-4" />
         ) : (
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-3 h-3" />
         )}
       </button>
     </aside>
