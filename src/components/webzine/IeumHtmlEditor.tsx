@@ -313,7 +313,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
 
       {/* 2. Content Pane Area */}
       <div
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-[max-width,background-color] duration-200 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] h-auto min-h-0 ${activeTab === 'preview' && device === 'mobile'
+        className={`overflow-hidden rounded-2xl bg-white dark:bg-[#1A222C] dark:border-slate-800 transition-[max-width,background-color] duration-200 shadow-[0_20px_27px_0_rgba(0,0,0,0.02)] h-auto min-h-0 p-6 ${activeTab === 'preview' && device === 'mobile'
             ? 'max-w-[375px] mx-auto w-full'
             : activeTab === 'preview' && device === 'tablet'
               ? 'max-w-[768px] mx-auto w-full'
@@ -322,7 +322,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
         style={{ height: `calc(${iframeHeight} + 16px)` }}
       >
         {activeTab === 'preview' ? (
-          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950 p-8">
+          <div className="w-full h-auto bg-slate-50 dark:bg-slate-950">
             <iframe
               ref={iframeRef}
               onLoad={updateIframeHeight}
