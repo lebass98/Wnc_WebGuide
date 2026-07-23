@@ -307,7 +307,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
               ? 'max-w-[768px] mx-auto w-full'
               : 'w-full'
           }`}
-        style={{ height: `calc(${iframeHeight} + 16px)` }}
+        style={{ height: `calc(${iframeHeight} + 60px)` }}
       >
         {activeTab === 'preview' ? (
           /* iframe Sandbox Preview Mode (Auto-resized based on content) */

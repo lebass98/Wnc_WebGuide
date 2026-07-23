@@ -319,7 +319,7 @@ const IeumHtmlEditor: React.FC<IeumHtmlEditorProps> = ({
               ? 'max-w-[768px] mx-auto w-full'
               : 'w-full'
           }`}
-        style={{ height: `calc(${iframeHeight} + 16px)` }}
+        style={{ height: `calc(${iframeHeight} + 60px)` }}
       >
         {activeTab === 'preview' ? (
           <div className="w-full h-auto bg-slate-50 dark:bg-slate-950">
