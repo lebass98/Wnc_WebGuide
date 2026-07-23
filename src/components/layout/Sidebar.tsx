@@ -88,15 +88,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onToggle }) => {
                 onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
                 className={`group flex items-center transition-all cursor-pointer ${
                   isOpen
-                    ? `justify-between px-3 py-2.5 rounded-xl ${isActive ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`
-                    : `justify-center w-12 h-12 rounded-xl mx-auto ${isActive ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`
+                    ? `justify-between px-3 py-2.5 rounded-xl ${isActive ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white' : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-slate-800/50'}`
+                    : `justify-center w-12 h-12 rounded-xl mx-auto ${isActive ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`
                 }`}
               >
                 <div className="flex items-center gap-3">
                   {Icon && <Icon className="w-5 h-5 shrink-0" />}
-                  {isOpen && <span className="font-semibold text-sm">{t(item.labelKey)}</span>}
+                  {isOpen && <span className="font-medium text-sm">{t(item.labelKey)}</span>}
                 </div>
-                {isOpen && isActive && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">{t('common.new')}</span>}
+                {isOpen && isActive && <span className="text-[10px] font-bold bg-indigo-500 text-white px-2 py-0.5 rounded tracking-wide">{t('common.new')}</span>}
               </div>
             );
           }
@@ -169,8 +169,8 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
         onClick={() => setIsOpen(!isOpen)}
         className={`group/sub flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer text-sm font-medium transition-all relative ${
           isOpen || isAnyChildActive
-            ? 'bg-slate-100/70 dark:bg-slate-800/50 text-slate-900 dark:text-white font-semibold'
-            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/40 dark:hover:bg-slate-800/30'
+            ? 'bg-slate-100/70 dark:bg-slate-800/50 text-slate-900 dark:text-white'
+            : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/40 dark:hover:bg-slate-800/30'
         }`}
       >
         {/* 2nd Tier Tree Hook */}
@@ -201,10 +201,10 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
-                  className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
+                  className={`flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
                     isActive
-                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
+                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs'
+                      : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
                   }`}
                 >
                   {/* 3rd Tier Tree Hook & Vertical Line */}
@@ -280,13 +280,13 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
           isSidebarOpen
             ? `justify-between px-3 py-2.5 rounded-xl ${
                 isOpen || isActive
-                  ? 'bg-slate-100/80 dark:bg-slate-800/60 text-slate-900 dark:text-white font-semibold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
+                  ? 'bg-slate-100/80 dark:bg-slate-800/60 text-slate-900 dark:text-white'
+                  : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
               }`
             : `justify-center w-12 h-12 rounded-xl mx-auto ${
                 isActive
                   ? 'bg-indigo-500 text-white shadow-md shadow-indigo-200 dark:shadow-none'
-                  : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'
+                  : 'text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'
               }`
         }`}
       >
@@ -338,8 +338,8 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                   onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
                   className={`text-sm font-medium px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
                     isActive
-                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold shadow-xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
+                      ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs'
+                      : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
                   }`}
                 >
                   {/* 2nd Tier Tree Hook */}
