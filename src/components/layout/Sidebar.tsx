@@ -13,9 +13,27 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
+  Bell,
 } from 'lucide-react';
 import { useI18n } from '../../i18n/config';
 import { menuItems, type SubMenuItem } from '../../config/navigation';
+
+const renderBadge = (badge?: string, badgeColor?: string) => {
+  if (!badge) return null;
+  if (badge === 'NEW') {
+    return (
+      <span className="inline-flex items-center gap-1 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-[#D1F9F6] text-[#004D40] dark:bg-cyan-950 dark:text-cyan-200 border border-cyan-200 dark:border-cyan-800/80 shadow-2xs">
+        <Bell className="w-3 h-3 text-[#004D40] dark:text-cyan-300 fill-[#004D40]/20" />
+        <span>NEW</span>
+      </span>
+    );
+  }
+  return (
+    <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${badgeColor || 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}>
+      {badge}
+    </span>
+  );
+};
 
 const iconMap: Record<string, React.ElementType> = {
   LayoutDashboard,
@@ -180,11 +198,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
 
         <div className="flex items-center gap-2">
           <span>{label}</span>
-          {badge && (
-            <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${badgeColor || 'bg-slate-100 text-slate-600'}`}>
-              {badge}
-            </span>
-          )}
+          {renderBadge(badge, badgeColor)}
         </div>
         <ChevronDown className={`w-3.5 h-3.5 text-slate-400 group-hover/sub:text-slate-600 dark:group-hover/sub:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </div>
@@ -211,16 +225,12 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
                   <div className="absolute left-[-16px] top-0 bottom-0 w-3 pointer-events-none">
                     <div className="w-[10px] h-[16px] border-l border-b border-slate-200 dark:border-slate-700/80 rounded-bl-[5px] absolute left-0 top-0" />
                     {!isSubLast && (
-                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
+                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:border-slate-700/80" />
                     )}
                   </div>
 
                   <span>{t(item.labelKey)}</span>
-                  {item.badge && (
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${item.badgeColor || 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}>
-                      {item.badge}
-                    </span>
-                  )}
+                  {renderBadge(item.badge, item.badgeColor)}
                 </div>
               );
             })}
@@ -296,11 +306,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
         </div>
         {isSidebarOpen && (
           <div className="flex items-center gap-2">
-            {badge && (
-              <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${badgeColor}`}>
-                {badge}
-              </span>
-            )}
+            {renderBadge(badge, badgeColor)}
             <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
           </div>
         )}

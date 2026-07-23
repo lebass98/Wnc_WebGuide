@@ -5,6 +5,7 @@ export interface SubMenuItem {
   subItems?: SubMenuItem[];
   badge?: string;
   badgeColor?: string;
+  isNew?: boolean;
 }
 
 export interface MenuItem {
@@ -15,6 +16,7 @@ export interface MenuItem {
   badge?: string;
   badgeColor?: string;
   subItems?: SubMenuItem[];
+  isNew?: boolean;
 }
 
 export const menuItems: MenuItem[] = [
@@ -90,6 +92,8 @@ export const menuItems: MenuItem[] = [
     key: 'webzine',
     icon: 'BookOpen',
     labelKey: 'sidebar.webzine',
+    badge: 'NEW',
+    isNew: true,
     subItems: [
       {
         key: 'eeum',
@@ -118,7 +122,7 @@ export const menuItems: MenuItem[] = [
           { key: 'text', labelKey: 'sidebar.arteText', path: '/webzine/arte/text', badge: '16', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
           { key: 'profile', labelKey: 'sidebar.arteProfile', path: '/webzine/arte/profile', badge: '9', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
           { key: 'box', labelKey: 'sidebar.arteBox', path: '/webzine/arte/box', badge: '14', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
-          { key: 'new', labelKey: 'sidebar.arteNew', path: '/webzine/arte/new', badge: '12', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
+          { key: 'new', labelKey: 'sidebar.arteNew', path: '/webzine/arte/new', badge: 'NEW', isNew: true, badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
           { key: 'table', labelKey: 'sidebar.arteTable', path: '/webzine/arte/table', badge: '4', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
           { key: 'notice', labelKey: 'sidebar.arteNotice', path: '/webzine/arte/notice', badge: '6', badgeColor: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400' },
         ],
