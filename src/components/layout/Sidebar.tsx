@@ -265,6 +265,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
   };
 
   const [isOpen, setIsOpen] = React.useState(isAnySubActive(subItems));
+  const [isHovered, setIsHovered] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -274,7 +275,11 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
   const isActive = isAnySubActive(subItems);
 
   return (
-    <div className="relative">
+    <div
+      className="relative group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         onClick={() => {
           if (isSidebarOpen) {
@@ -286,7 +291,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
             }
           }
         }}
-        className={`group flex items-center transition-all cursor-pointer ${
+        className={`group flex items-center transition-all cursor-pointer relative ${
           isSidebarOpen
             ? `justify-between px-3 py-2.5 rounded-xl ${
                 isOpen || isActive
@@ -304,6 +309,12 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
           <Icon className="w-5 h-5 shrink-0" />
           {isSidebarOpen && <span className="font-medium text-sm">{label}</span>}
         </div>
+
+        {/* Arrow for collapsed mini-sidebar */}
+        {!isSidebarOpen && subItems.length > 0 && (
+          <ChevronRight className="w-3 h-3 absolute right-1 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-white transition-colors" />
+        )}
+
         {isSidebarOpen && (
           <div className="flex items-center gap-2">
             {renderBadge(badge, badgeColor)}
@@ -312,7 +323,86 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
         )}
       </div>
 
-      {/* Submenu Dropdown */}
+      {/* Flyout Popup Menu for Collapsed Mini-Sidebar Mode */}
+      {!isSidebarOpen && isHovered && subItems.length > 0 && (
+        <div className="absolute left-[70px] top-0 z-50 min-w-[210px] bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl p-3 animate-in fade-in slide-in-from-left-2 duration-150">
+          {/* Bridge for smooth hover transition */}
+          <div className="absolute -left-4 top-0 bottom-0 w-4" />
+
+          {/* Header */}
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-slate-800">
+            <span className="font-bold text-sm text-slate-900 dark:text-white">{label}</span>
+            {renderBadge(badge, badgeColor)}
+          </div>
+
+          {/* SubItems List */}
+          <div className="flex flex-col gap-1.5 max-h-[360px] overflow-y-auto custom-scrollbar">
+            {subItems.map((item, idx) => {
+              if (item.subItems) {
+                return (
+                  <div key={idx} className="flex flex-col gap-1 py-1">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-400 dark:text-slate-500 px-2">
+                      <span>{t(item.labelKey)}</span>
+                      {renderBadge(item.badge, item.badgeColor)}
+                    </div>
+                    <div className="flex flex-col gap-1 pl-2">
+                      {item.subItems.map((sub, sIdx) => {
+                        const isSubActive = activePath === sub.path;
+                        return (
+                          <div
+                            key={sIdx}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (sub.path) {
+                                navigate(sub.path);
+                                setIsHovered(false);
+                                if (window.innerWidth < 1024) onClose();
+                              }
+                            }}
+                            className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                              isSubActive
+                                ? 'bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-white font-bold'
+                                : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100/60 dark:hover:bg-slate-800/40 hover:text-slate-900 dark:hover:text-white'
+                            }`}
+                          >
+                            <span>{t(sub.labelKey)}</span>
+                            {renderBadge(sub.badge, sub.badgeColor)}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+
+              const isSubActive = activePath === item.path;
+              return (
+                <div
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (item.path) {
+                      navigate(item.path);
+                      setIsHovered(false);
+                      if (window.innerWidth < 1024) onClose();
+                    }
+                  }}
+                  className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-colors ${
+                    isSubActive
+                      ? 'bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-white font-bold'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100/60 dark:hover:bg-slate-800/40 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  <span>{t(item.labelKey)}</span>
+                  {renderBadge(item.badge, item.badgeColor)}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Submenu Dropdown (for Expanded Mode) */}
       {isSidebarOpen && subItems.length > 0 && (
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
