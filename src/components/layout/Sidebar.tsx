@@ -145,9 +145,10 @@ interface SubNavItemProps {
   onClose: () => void;
   badge?: string;
   badgeColor?: string;
+  isLast: boolean;
 }
 
-const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor }) => {
+const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, onClose, badge, badgeColor, isLast }) => {
   const { t } = useI18n();
   const [isOpen, setIsOpen] = React.useState(subItems.some((sub) => sub.path === activePath));
   const navigate = useNavigate();
@@ -160,8 +161,16 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
     <div className="flex flex-col">
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`group/sub flex items-center justify-between py-1.5 cursor-pointer text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all`}
+        className={`group/sub flex items-center justify-between py-1.5 cursor-pointer text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-all relative pl-6`}
       >
+        {/* 2nd Tier Tree Line */}
+        <div className="absolute left-[-22px] top-0 bottom-0 w-3">
+          <div className="w-[12px] h-[16px] border-l-[1.5px] border-b-[1.5px] border-slate-200 dark:border-slate-800 rounded-bl-[6px] absolute left-0 top-0" />
+          {!isLast && (
+            <div className="absolute left-0 top-[16px] bottom-0 w-[1.5px] bg-slate-200 dark:bg-slate-800" />
+          )}
+        </div>
+
         <div className="flex items-center gap-2">
           <span>{label}</span>
           {badge && (
@@ -177,15 +186,24 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
-          <div className="flex flex-col gap-1 pl-4">
+          <div className="flex flex-col gap-1 pl-6 relative">
             {subItems.map((item, idx) => {
+              const isSubLast = idx === subItems.length - 1;
               const isActive = activePath === item.path;
               return (
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
-                  className={`flex items-center justify-between text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
+                  className={`flex items-center justify-between text-sm font-medium py-1.5 cursor-pointer transition-colors relative pl-6 ${isActive ? 'text-indigo-600 dark:text-white font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
                 >
+                  {/* 3rd Tier Tree Line */}
+                  <div className="absolute left-[-16px] top-0 bottom-0 w-3">
+                    <div className="w-[10px] h-[16px] border-l-[1.5px] border-b-[1.5px] border-slate-200 dark:border-slate-800 rounded-bl-[5px] absolute left-0 top-0" />
+                    {!isSubLast && (
+                      <div className="absolute left-0 top-[16px] bottom-0 w-[1.5px] bg-slate-200 dark:bg-slate-800" />
+                    )}
+                  </div>
+
                   <span>{t(item.labelKey)}</span>
                   {item.badge && (
                     <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${item.badgeColor || 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'} scale-90`}>
@@ -276,6 +294,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
         >
           <div className="flex flex-col gap-1 pl-11 pr-3 py-1">
             {subItems.map((item, idx) => {
+              const isLast = idx === subItems.length - 1;
               if (item.subItems) {
                 return (
                   <SubNavItem
@@ -286,6 +305,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                     onClose={onClose}
                     badge={item.badge}
                     badgeColor={item.badgeColor}
+                    isLast={isLast}
                   />
                 );
               }
@@ -294,8 +314,15 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
-                  className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${isActive ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
+                  className={`text-sm font-medium py-1.5 cursor-pointer transition-colors relative pl-6 ${isActive ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
                 >
+                  {/* 2nd Tier Tree Line */}
+                  <div className="absolute left-[-22px] top-0 bottom-0 w-3">
+                    <div className="w-[12px] h-[16px] border-l-[1.5px] border-b-[1.5px] border-slate-200 dark:border-slate-800 rounded-bl-[6px] absolute left-0 top-0" />
+                    {!isLast && (
+                      <div className="absolute left-0 top-[16px] bottom-0 w-[1.5px] bg-slate-200 dark:bg-slate-800" />
+                    )}
+                  </div>
                   {t(item.labelKey)}
                 </div>
               );
