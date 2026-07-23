@@ -167,7 +167,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
         <div className="absolute left-[-22px] top-0 bottom-0 w-3">
           <div className="w-[12px] h-[16px] border-l border-b border-slate-200 dark:border-slate-800 rounded-bl-[6px] absolute left-0 top-0" />
           {!isLast && (
-            <div className="absolute left-0 top-[16px] bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-800" />
+            <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-800" />
           )}
         </div>
 
@@ -200,7 +200,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
                   <div className="absolute left-[-16px] top-0 bottom-0 w-3">
                     <div className="w-[10px] h-[16px] border-l border-b border-slate-200 dark:border-slate-800 rounded-bl-[5px] absolute left-0 top-0" />
                     {!isSubLast && (
-                      <div className="absolute left-0 top-[16px] bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-800" />
+                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-800" />
                     )}
                   </div>
 
@@ -320,7 +320,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                   <div className="absolute left-[-22px] top-0 bottom-0 w-3">
                     <div className="w-[12px] h-[16px] border-l border-b border-slate-200 dark:border-slate-800 rounded-bl-[6px] absolute left-0 top-0" />
                     {!isLast && (
-                      <div className="absolute left-0 top-[16px] bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-800" />
+                      <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-800" />
                     )}
                   </div>
                   {t(item.labelKey)}
