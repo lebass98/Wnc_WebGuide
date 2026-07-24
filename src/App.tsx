@@ -99,7 +99,7 @@ const App: React.FC = () => {
           !isAuthenticated ? (
             <Navigate to="/signin" replace />
           ) : (
-            <div className="flex min-h-screen bg-slate-50 dark:bg-slate-900 font-sans transition-colors duration-300">
+            <div className="flex min-h-screen bg-[linear-gradient(185deg,#EBF3FE_0%,#EFF5FE_45%,#F8FAFE_85%,#FFFFFF_100%)] dark:bg-slate-900 font-sans transition-colors duration-300">
               <Sidebar
                 isOpen={isSidebarOpen}
                 onClose={closeSidebar}
