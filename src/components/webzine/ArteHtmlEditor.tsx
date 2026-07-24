@@ -192,7 +192,7 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
   return (
     <div className="flex flex-col space-y-4 w-full">
       {/* 1. Header Toolbar */}
-      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 bg-slate-50/50 dark:bg-slate-800/40 rounded-2xl dark:border-slate-850">
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-4 dark:bg-slate-800/40 rounded-2xl dark:border-slate-850">
         {/* Title and Description */}
         <div>
           <h3 className="text-base text-[20px] font-bold text-slate-800 dark:text-white leading-tight">{title}</h3>
