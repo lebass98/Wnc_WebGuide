@@ -126,7 +126,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
-                className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl dark:border-slate-900"
+                className="dark:bg-slate-900/10 rounded-2xl dark:border-slate-900"
               >
                 {renderEditor(template)}
               </motion.div>
@@ -149,7 +149,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
-                  className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl"
+                  className="dark:bg-slate-900/10 rounded-2xl"
                 >
                   {renderEditor(template)}
                 </motion.div>
@@ -164,7 +164,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: Math.min(idx * 0.04 + 0.02, 0.44) }}
-                  className="bg-slate-50/30 dark:bg-slate-900/10 rounded-2xl"
+                  className="dark:bg-slate-900/10 rounded-2xl"
                 >
                   {renderEditor(template)}
                 </motion.div>
