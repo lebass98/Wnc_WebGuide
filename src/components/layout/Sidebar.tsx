@@ -179,21 +179,14 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
   const { t } = useI18n();
   const isAnyChildActive = subItems.some((sub) => sub.path === activePath);
   const [isOpen, setIsOpen] = React.useState(isAnyChildActive);
-  const [isHovered, setIsHovered] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
     if (isAnyChildActive) setIsOpen(true);
   }, [activePath, isAnyChildActive]);
 
-  const showSub = isOpen || isHovered;
-
   return (
-    <div
-      className="flex flex-col relative group/subitem"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="flex flex-col relative group/subitem">
       {/* 2nd Tier Vertical Line: Continuous line for non-last items extending through child items */}
       {!isLast && (
         <div className="absolute left-[-22px] top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80 pointer-events-none" />
@@ -202,7 +195,7 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={`group/sub flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer text-sm font-medium transition-all relative ${
-          showSub || isAnyChildActive
+          isOpen || isAnyChildActive
             ? 'bg-slate-100/70 dark:bg-slate-800/50 text-slate-900 dark:text-white'
             : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/40 dark:hover:bg-slate-800/30'
         }`}
@@ -216,12 +209,12 @@ const SubNavItem: React.FC<SubNavItemProps> = ({ label, subItems, activePath, on
           <span>{label}</span>
           {renderBadge(badge, badgeColor)}
         </div>
-        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 group-hover/sub:text-slate-600 dark:group-hover/sub:text-white transition-transform duration-300 ${showSub ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 group-hover/sub:text-slate-600 dark:group-hover/sub:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </div>
 
       {subItems.length > 0 && (
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${showSub ? 'max-h-[600px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[600px] opacity-100 mt-1' : 'max-h-0 opacity-0'}`}
         >
           <div className="flex flex-col gap-1 pl-6 pr-0 relative py-0.5">
             {subItems.map((item, idx) => {
@@ -289,7 +282,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
   }, [activePath, subItems]);
 
   const isActive = isAnySubActive(subItems);
-  const showSub = isOpen || isHovered;
+  const showSub = isSidebarOpen ? isOpen : (isOpen || isHovered);
 
   return (
     <div
