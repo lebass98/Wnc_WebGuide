@@ -460,7 +460,7 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                 <div
                   key={idx}
                   onClick={() => { if (item.path) { navigate(item.path); if (window.innerWidth < 1024) onClose(); } }}
-                  className={`text-sm font-medium px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
+                  className={`flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg cursor-pointer transition-all relative ${
                     isActive
                       ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs'
                       : 'text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40'
@@ -473,7 +473,8 @@ const NavItem: React.FC<NavItemProps> = ({ Icon, label, badge, badgeColor = "bg-
                       <div className="absolute left-0 top-0 bottom-[-8px] w-[1px] bg-slate-200 dark:bg-slate-700/80" />
                     )}
                   </div>
-                  {t(item.labelKey)}
+                  <span>{t(item.labelKey)}</span>
+                  {renderBadge(item.badge, item.badgeColor)}
                 </div>
               );
             })}
