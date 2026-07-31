@@ -99,6 +99,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
   const filteredResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return [];
+    const qNoSpace = q.replace(/\s+/g, '');
 
     return searchableIndex.filter((item) => {
       // Filter by category if selected
@@ -106,12 +107,20 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
         return false;
       }
 
-      const titleMatch = item.title.toLowerCase().includes(q);
-      const subTitleMatch = item.subTitle ? item.subTitle.toLowerCase().includes(q) : false;
+      const titleLower = item.title.toLowerCase();
+      const titleNoSpace = titleLower.replace(/\s+/g, '');
+      const subTitleLower = item.subTitle ? item.subTitle.toLowerCase() : '';
+      const subTitleNoSpace = subTitleLower.replace(/\s+/g, '');
+
+      const titleMatch = titleLower.includes(q) || titleNoSpace.includes(qNoSpace);
+      const subTitleMatch = subTitleLower.includes(q) || subTitleNoSpace.includes(qNoSpace);
       const categoryMatch = item.categoryName.toLowerCase().includes(q);
       const parentMatch = item.parentMenuName ? item.parentMenuName.toLowerCase().includes(q) : false;
       const pathMatch = item.path.toLowerCase().includes(q);
-      const keywordMatch = item.keywords.some((kw) => kw.toLowerCase().includes(q));
+      const keywordMatch = item.keywords.some((kw) => {
+        const kwLower = kw.toLowerCase();
+        return kwLower.includes(q) || kwLower.replace(/\s+/g, '').includes(qNoSpace);
+      });
 
       return titleMatch || subTitleMatch || categoryMatch || parentMatch || pathMatch || keywordMatch;
     });

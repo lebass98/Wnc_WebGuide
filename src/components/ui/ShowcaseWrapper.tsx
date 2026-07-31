@@ -111,8 +111,10 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ id, title, descriptio
     return snippet.fullHtml;
   };
 
+  const elementId = id || `showcase-${title.replace(/[\s,()/\-_:]+/g, '-')}`;
+
   return (
-    <div id={id} className="space-y-4 font-sans mb-[40px] w-full @container scroll-mt-[100px]">
+    <div id={elementId} className="space-y-4 font-sans mb-[40px] w-full @container scroll-mt-[100px]">
       {/* Wrapper Header: Controls Toolbar */}
       <div className="flex flex-col @[960px]:flex-row @[960px]:items-center justify-between gap-4 p-4 dark:bg-slate-800/40 rounded-2xl dark:border-slate-800">
         <div>
