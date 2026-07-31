@@ -1,5 +1,5 @@
-import React, { useState, lazy, Suspense } from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import React, { useState, lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Sidebar from './components/layout/Sidebar';
@@ -53,6 +53,35 @@ import DashboardSkeleton from './components/common/DashboardSkeleton';
 const App: React.FC = () => {
   const { isAuthenticated } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 1024);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace('#', '');
+      let attempts = 0;
+      const maxAttempts = 15;
+
+      const performScroll = () => {
+        const el = document.getElementById(elementId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          el.classList.remove('component-focus-highlight');
+          void el.offsetWidth;
+          el.classList.add('component-focus-highlight');
+
+          setTimeout(() => {
+            el.classList.remove('component-focus-highlight');
+          }, 2600);
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(performScroll, 100);
+        }
+      };
+
+      setTimeout(performScroll, 100);
+    }
+  }, [location.pathname, location.hash]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);

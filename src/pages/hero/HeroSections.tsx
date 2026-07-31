@@ -281,6 +281,7 @@ const HeroSections: React.FC = () => {
 
       {/* 0. YiArchive custom fade slider hero */}
       <ShowcaseWrapper
+        id="hero_yongin"
         title="용인디지털기록관 히어로 (바닐라 JS & Tailwind)"
         description="외부 jQuery 및 Swiper 종속성 없이 바닐라 자바스크립트 타이머와 네이티브 CSS 3D/Z-Index 레이어 트랜지션을 사용하여 완성한 최첨단 크로스페이드 슬라이더 및 스크롤 연동 줌아웃 히어로 섹션입니다."
         snippet={codeSnippets.hero_yiarchive}
@@ -292,6 +293,7 @@ const HeroSections: React.FC = () => {
 
       {/* 1. Simple centered hero */}
       <ShowcaseWrapper
+        id="hero_centered"
         title="간단한 중앙 정렬 히어로"
         description="깔끔한 타이포그래피와 중앙 집중형 레이아웃의 기본형 히어로 섹션입니다."
         snippet={codeSnippets.hero1}

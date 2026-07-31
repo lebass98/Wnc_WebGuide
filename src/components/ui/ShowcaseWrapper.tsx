@@ -18,13 +18,14 @@ export interface CodeSnippet {
 }
 
 export interface ShowcaseWrapperProps {
+  id?: string;
   title: string;
   description: string;
   snippet: CodeSnippet;
   children: React.ReactNode;
 }
 
-const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ title, description, snippet, children }) => {
+const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ id, title, description, snippet, children }) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
   const [previewMode, setPreviewMode] = useState<'react' | 'html'>('react');
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
@@ -111,7 +112,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ title, description, s
   };
 
   return (
-    <div className="space-y-4 font-sans mb-[40px] w-full @container">
+    <div id={id} className="space-y-4 font-sans mb-[40px] w-full @container scroll-mt-[100px]">
       {/* Wrapper Header: Controls Toolbar */}
       <div className="flex flex-col @[960px]:flex-row @[960px]:items-center justify-between gap-4 p-4 dark:bg-slate-800/40 rounded-2xl dark:border-slate-800">
         <div>

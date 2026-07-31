@@ -122,11 +122,12 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
           >
             {templates.map((template, idx) => (
               <motion.div
+                id={template.id}
                 key={template.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
-                className="dark:bg-slate-900/10 rounded-2xl dark:border-slate-900"
+                className="dark:bg-slate-900/10 rounded-2xl dark:border-slate-900 scroll-mt-[100px]"
               >
                 {renderEditor(template)}
               </motion.div>
@@ -145,11 +146,12 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             <div className="space-y-8">
               {col1Templates.map((template, idx) => (
                 <motion.div
+                  id={template.id}
                   key={template.id}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.4) }}
-                  className="dark:bg-slate-900/10 rounded-2xl"
+                  className="dark:bg-slate-900/10 rounded-2xl scroll-mt-[100px]"
                 >
                   {renderEditor(template)}
                 </motion.div>
@@ -160,11 +162,12 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             <div className="space-y-8">
               {col2Templates.map((template, idx) => (
                 <motion.div
+                  id={template.id}
                   key={template.id}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: Math.min(idx * 0.04 + 0.02, 0.44) }}
-                  className="dark:bg-slate-900/10 rounded-2xl"
+                  className="dark:bg-slate-900/10 rounded-2xl scroll-mt-[100px]"
                 >
                   {renderEditor(template)}
                 </motion.div>

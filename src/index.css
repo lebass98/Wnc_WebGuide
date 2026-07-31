@@ -39,3 +39,25 @@
   animation: flowGradientMotion 24s ease-in-out infinite;
 }
 
+@keyframes componentFocusPulse {
+  0% {
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.95), 0 20px 35px rgba(99, 102, 241, 0.45);
+    transform: scale(1.012);
+  }
+  35% {
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.7), 0 25px 40px rgba(99, 102, 241, 0.5);
+    transform: scale(1.018);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(99, 102, 241, 0), 0 0 0 rgba(0, 0, 0, 0);
+    transform: scale(1);
+  }
+}
+
+.component-focus-highlight {
+  animation: componentFocusPulse 2.5s ease-in-out forwards;
+  position: relative;
+  z-index: 20;
+}
+
+

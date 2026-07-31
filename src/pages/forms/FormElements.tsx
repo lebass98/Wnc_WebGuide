@@ -109,6 +109,7 @@ const FormElements: React.FC = () => {
           
           {/* Default Inputs */}
           <ShowcaseWrapper
+            id="form_basic_inputs"
             title="기본 입력란"
             description="가장 널리 활용되는 텍스트 및 비밀번호 입력 필드 형태입니다."
             snippet={codeSnippets.defaultInputs}
@@ -159,6 +160,7 @@ const FormElements: React.FC = () => {
 
           {/* Select Inputs */}
           <ShowcaseWrapper
+            id="form_select_options"
             title="선택 입력란 (Select)"
             description="다양한 선택 옵션을 보여주거나 여러 옵션을 멀티 셀렉트 형태로 선택할 수 있습니다."
             snippet={codeSnippets.selectInputs}

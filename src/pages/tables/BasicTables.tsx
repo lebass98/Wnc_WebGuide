@@ -126,6 +126,7 @@ const BasicTables: React.FC = () => {
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 2</h3>
         <ShowcaseWrapper
+          id="table_recent_orders"
           title="최근 주문"
           description="검색 및 필터 기능이 포함되어 있고 다중 선택용 체크박스를 갖춘 주문 내역 리스트입니다."
           snippet={codeSnippets.table2}
@@ -213,8 +214,9 @@ const BasicTables: React.FC = () => {
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-800 dark:text-white mb-4">기본 테이블 3</h3>
         <ShowcaseWrapper
+          id="table_recent_transactions"
           title="최근 거래"
-          description="금융, IT 등 주식 매매 및 거래 현황을 관리하고 하단 페이지네이션을 탑재한 테이블입니다."
+          description="카테고리별로 심플한 형태의 트랜잭션 기록을 볼 수 있는 테이블 구조입니다."
           snippet={codeSnippets.table3}
         >
           <div className="p-6 bg-white dark:bg-[#1A222C]">

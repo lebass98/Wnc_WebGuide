@@ -156,6 +156,34 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
     }
   };
 
+  // Helper for scrolling and pulsing focus animation
+  const scrollToAndFocusComponent = (id: string) => {
+    if (!id) return;
+    let attempts = 0;
+    const maxAttempts = 15;
+
+    const performScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Trigger focus pulse animation
+        el.classList.remove('component-focus-highlight');
+        void el.offsetWidth; // Force reflow
+        el.classList.add('component-focus-highlight');
+
+        setTimeout(() => {
+          el.classList.remove('component-focus-highlight');
+        }, 2600);
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        setTimeout(performScroll, 100);
+      }
+    };
+
+    setTimeout(performScroll, 60);
+  };
+
   // Handle Selection & Navigation
   const handleSelectResult = (item: SearchIndexItem) => {
     addRecentSearch(item.title);
@@ -163,7 +191,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
     setIsMobileSearchOpen(false);
     setSearchQuery('');
     setSelectedIndex(-1);
-    navigate(item.path);
+
+    const targetUrl = item.id ? `${item.path}#${item.id}` : item.path;
+    navigate(targetUrl);
+
+    if (item.id) {
+      scrollToAndFocusComponent(item.id);
+    }
   };
 
   const handleSelectQueryTag = (tag: string) => {
