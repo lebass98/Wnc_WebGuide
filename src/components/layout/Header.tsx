@@ -23,26 +23,16 @@ import {
   Grid,
   BookOpen,
   Check,
+  FileText,
 } from 'lucide-react';
 
 import { useTheme } from '../../context/ThemeContext';
 import { useI18n } from '../../i18n/config';
-import { menuItems } from '../../config/navigation';
+import { searchableIndex, type SearchIndexItem } from '../../config/searchIndex';
 
 interface HeaderProps {
   onMenuClick: () => void;
   isSidebarOpen: boolean;
-}
-
-interface SearchableItem {
-  id: string;
-  labelKey: string;
-  path: string;
-  parentLabelKey?: string;
-  categoryKey: string;
-  categoryLabelKey: string;
-  iconName: string;
-  badge?: string;
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -54,9 +44,10 @@ const iconMap: Record<string, React.ElementType> = {
   Component,
   Grid,
   BookOpen,
+  FileText,
 };
 
-const POPULAR_SEARCH_TAGS = ['대시보드', '테이블', '이음', '아르떼', '알림', '차트', '폼'];
+const POPULAR_SEARCH_TAGS = ['대시보드', '테이블', '이음', '아르떼', '알림', '차트', '폼', '자주 묻는 질문', '히어로'];
 
 const LOCAL_STORAGE_RECENT_KEY = 'wnc_recent_searches';
 
@@ -75,9 +66,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
   const [recentSearches, setRecentSearches] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_RECENT_KEY);
-      return saved ? JSON.parse(saved) : ['대시보드', '기본 테이블', '이음 텍스트'];
+      return saved ? JSON.parse(saved) : ['대시보드 메인', '최근 주문 테이블', '이음 텍스트'];
     } catch {
-      return ['대시보드', '기본 테이블', '이음 텍스트'];
+      return ['대시보드 메인', '최근 주문 테이블', '이음 텍스트'];
     }
   });
 
@@ -89,104 +80,42 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
   // Detect OS for shortcut badge text
   const isMac = typeof window !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
-  // Flatten menu items for search
-  const searchableItems = useMemo(() => {
-    const items: SearchableItem[] = [];
-
-    menuItems.forEach((item) => {
-      const catKey = item.key;
-      const catLabelKey = item.labelKey;
-      const catIcon = item.icon;
-
-      if (item.path) {
-        items.push({
-          id: `${item.key}_${item.path}`,
-          labelKey: item.labelKey,
-          path: item.path,
-          categoryKey: catKey,
-          categoryLabelKey: catLabelKey,
-          iconName: catIcon,
-          badge: item.badge,
-        });
-      }
-
-      if (item.subItems) {
-        item.subItems.forEach((sub) => {
-          if (sub.path) {
-            items.push({
-              id: `${sub.key}_${sub.path}`,
-              labelKey: sub.labelKey,
-              path: sub.path,
-              parentLabelKey: item.labelKey,
-              categoryKey: catKey,
-              categoryLabelKey: catLabelKey,
-              iconName: catIcon,
-              badge: sub.badge,
-            });
-          }
-
-          if (sub.subItems) {
-            sub.subItems.forEach((nested) => {
-              if (nested.path) {
-                items.push({
-                  id: `${nested.key}_${nested.path}`,
-                  labelKey: nested.labelKey,
-                  path: nested.path,
-                  parentLabelKey: sub.labelKey,
-                  categoryKey: catKey,
-                  categoryLabelKey: catLabelKey,
-                  iconName: catIcon,
-                  badge: nested.badge,
-                });
-              }
-            });
-          }
-        });
-      }
-    });
-
-    return items;
-  }, []);
-
   // Filtered Categories List for filter popup
   const categoriesList = useMemo(() => {
-    const uniqueKeys = Array.from(new Set(searchableItems.map((i) => i.categoryKey)));
+    const uniqueKeys = Array.from(new Set(searchableIndex.map((i) => i.categoryKey)));
     return [
       { key: 'all', label: '전체 카테고리' },
       ...uniqueKeys.map((key) => {
-        const found = searchableItems.find((i) => i.categoryKey === key);
+        const found = searchableIndex.find((i) => i.categoryKey === key);
         return {
           key,
-          label: found ? t(found.categoryLabelKey) : key,
+          label: found ? found.categoryName : key,
         };
       }),
     ];
-  }, [searchableItems, t]);
+  }, []);
 
-  // Filtered Search Results
+  // Filtered Search Results (Title, SubTitle, Keywords, Category, Path Matching)
   const filteredResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return [];
 
-    return searchableItems.filter((item) => {
+    return searchableIndex.filter((item) => {
       // Filter by category if selected
       if (selectedCategory !== 'all' && item.categoryKey !== selectedCategory) {
         return false;
       }
 
-      const itemLabel = t(item.labelKey).toLowerCase();
-      const parentLabel = item.parentLabelKey ? t(item.parentLabelKey).toLowerCase() : '';
-      const categoryLabel = t(item.categoryLabelKey).toLowerCase();
-      const pathStr = item.path.toLowerCase();
+      const titleMatch = item.title.toLowerCase().includes(q);
+      const subTitleMatch = item.subTitle ? item.subTitle.toLowerCase().includes(q) : false;
+      const categoryMatch = item.categoryName.toLowerCase().includes(q);
+      const parentMatch = item.parentMenuName ? item.parentMenuName.toLowerCase().includes(q) : false;
+      const pathMatch = item.path.toLowerCase().includes(q);
+      const keywordMatch = item.keywords.some((kw) => kw.toLowerCase().includes(q));
 
-      return (
-        itemLabel.includes(q) ||
-        parentLabel.includes(q) ||
-        categoryLabel.includes(q) ||
-        pathStr.includes(q)
-      );
+      return titleMatch || subTitleMatch || categoryMatch || parentMatch || pathMatch || keywordMatch;
     });
-  }, [searchQuery, selectedCategory, searchableItems, t]);
+  }, [searchQuery, selectedCategory]);
 
   // Save Recent Search
   const addRecentSearch = (query: string) => {
@@ -228,8 +157,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
   };
 
   // Handle Selection & Navigation
-  const handleSelectResult = (item: SearchableItem) => {
-    addRecentSearch(t(item.labelKey));
+  const handleSelectResult = (item: SearchIndexItem) => {
+    addRecentSearch(item.title);
     setIsDropdownOpen(false);
     setIsMobileSearchOpen(false);
     setSearchQuery('');
@@ -342,7 +271,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
               }}
               onFocus={() => setIsDropdownOpen(true)}
               className="block w-full pl-11 pr-24 py-2 sm:py-2.5 bg-slate-100 dark:bg-slate-800/70 border border-transparent focus:border-indigo-500/30 rounded-full text-sm font-medium placeholder-slate-400 dark:placeholder-slate-500 text-slate-900 dark:text-white focus:ring-4 focus:ring-indigo-500/10 focus:bg-white dark:focus:bg-slate-800 transition-all outline-none"
-              placeholder="페이지, UI, 웹진 검색... (⌘K)"
+              placeholder="타이틀, 메뉴, 키워드 검색... (⌘K)"
             />
 
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center gap-1.5 z-10">
@@ -507,7 +436,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="페이지, UI, 웹진 검색..."
+                placeholder="타이틀, 메뉴, 키워드 검색..."
                 className="flex-1 bg-transparent border-none text-base font-medium text-slate-900 dark:text-white placeholder-slate-400 outline-none"
               />
               {searchQuery && (
@@ -554,12 +483,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
 // Reusable Search Results Dropdown Component
 interface SearchResultsContentProps {
   searchQuery: string;
-  filteredResults: SearchableItem[];
+  filteredResults: SearchIndexItem[];
   recentSearches: string[];
   selectedIndex: number;
   selectedCategory: string;
   categoriesList: { key: string; label: string }[];
-  onSelectResult: (item: SearchableItem) => void;
+  onSelectResult: (item: SearchIndexItem) => void;
   onSelectQueryTag: (tag: string) => void;
   onRemoveRecent: (e: React.MouseEvent, query: string) => void;
   onClearAllRecent: (e: React.MouseEvent) => void;
@@ -580,13 +509,12 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   onRemoveRecent,
   onClearAllRecent,
   onSelectCategory,
-  t,
   resultsContainerRef,
 }) => {
   const isMac = typeof window !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
   return (
-    <div className="flex flex-col text-left max-h-[460px]" ref={resultsContainerRef}>
+    <div className="flex flex-col text-left max-h-[480px]" ref={resultsContainerRef}>
       {/* Category Pills Header */}
       <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 overflow-x-auto custom-scrollbar">
         {categoriesList.map((cat) => (
@@ -666,7 +594,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         {searchQuery.trim() && filteredResults.length > 0 && (
           <div className="space-y-1">
             <div className="px-3 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-              검색 결과 ({filteredResults.length}건)
+              타이틀 & 항목 검색 결과 ({filteredResults.length}건)
             </div>
             {filteredResults.map((item, index) => {
               const IconComponent = iconMap[item.iconName] || BookOpen;
@@ -676,15 +604,15 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                 <div
                   key={item.id}
                   onClick={() => onSelectResult(item)}
-                  className={`flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-all ${
+                  className={`flex items-start justify-between p-3 rounded-xl cursor-pointer transition-all ${
                     isSelected
-                      ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-900 dark:text-white font-semibold shadow-2xs'
-                      : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200'
+                      ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-900 dark:text-white font-semibold shadow-2xs border border-indigo-200 dark:border-indigo-500/30'
+                      : 'hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200'
                   }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex items-start gap-3 min-w-0">
                     <div
-                      className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                      className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
                         isSelected
                           ? 'bg-indigo-500 text-white'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
@@ -692,31 +620,46 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                     >
                       <IconComponent className="w-4 h-4" />
                     </div>
+
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold truncate">{t(item.labelKey)}</span>
+                      {/* Title & Badge */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-sm font-bold leading-tight text-slate-900 dark:text-white">
+                          {item.title}
+                        </span>
                         {item.badge && (
                           <span className="text-[10px] font-extrabold px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
                             {item.badge}
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 truncate">
-                        <span>{t(item.categoryLabelKey)}</span>
-                        {item.parentLabelKey && (
+
+                      {/* SubTitle / Description */}
+                      {item.subTitle && (
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed truncate">
+                          {item.subTitle}
+                        </p>
+                      )}
+
+                      {/* Category & Breadcrumb */}
+                      <div className="flex items-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500 mt-1">
+                        <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 rounded">
+                          {item.categoryName}
+                        </span>
+                        {item.parentMenuName && (
                           <>
-                            <ChevronRight className="w-3 h-3" />
-                            <span>{t(item.parentLabelKey)}</span>
+                            <ChevronRight className="w-3 h-3 text-slate-400" />
+                            <span>{item.parentMenuName}</span>
                           </>
                         )}
-                        <span className="text-[11px] text-indigo-500/70 font-mono pl-1">
-                          {item.path}
+                        <span className="text-slate-400 font-mono text-[10px]">
+                          ({item.path})
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 text-slate-400 shrink-0">
+                  <div className="flex items-center gap-1 text-slate-400 shrink-0 mt-1 pl-2">
                     <CornerDownLeft className="w-4 h-4" />
                   </div>
                 </div>
@@ -732,10 +675,10 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
               <Search className="w-6 h-6" />
             </div>
             <h4 className="text-sm font-bold text-slate-700 dark:text-slate-200">
-              "{searchQuery}" 검색 결과를 찾을 수 없습니다
+              "{searchQuery}" 타이틀 및 항목을 찾을 수 없습니다
             </h4>
             <p className="text-xs text-slate-400 mt-1">
-              철자를 확인하시거나 다른 키워드로 검색해 보세요.
+              다른 키워드나 메뉴 명칭으로 검색해 보세요.
             </p>
           </div>
         )}
