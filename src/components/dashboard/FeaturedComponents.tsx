@@ -7,23 +7,23 @@ import { useComponentStorage } from '../../hooks/useComponentStorage';
 import ComponentCompareModal from './ComponentCompareModal';
 
 const categories = [
-  { id: 'all', label: '전체 (All 36)', icon: Layers, color: 'text-indigo-500' },
+  { id: 'all', label: '전체 (All 36)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'favorites', label: '❤️ 내 즐겨찾기', icon: Heart, color: 'text-rose-500' },
-  { id: 'buttons', label: '버튼 & 뱃지 (6)', icon: MousePointer, color: 'text-indigo-500' },
-  { id: 'forms', label: '폼 & 인풋 (6)', icon: Edit3, color: 'text-emerald-500' },
-  { id: 'modals', label: '모달 & 알림 (6)', icon: MessageSquare, color: 'text-rose-500' },
-  { id: 'tables', label: '테이블 (6)', icon: Table, color: 'text-amber-500' },
-  { id: 'webzine', label: '웹진 스니펫 (6)', icon: FileText, color: 'text-violet-500' },
-  { id: 'charts', label: '차트 & 지표 (6)', icon: PieChart, color: 'text-cyan-500' },
+  { id: 'buttons', label: '버튼 & 뱃지 (6)', icon: MousePointer, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'forms', label: '폼 & 인풋 (6)', icon: Edit3, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'modals', label: '모달 & 알림 (6)', icon: MessageSquare, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'tables', label: '테이블 (6)', icon: Table, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'webzine', label: '웹진 스니펫 (6)', icon: FileText, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'charts', label: '차트 & 지표 (6)', icon: PieChart, color: 'text-indigo-600 dark:text-indigo-400' },
 ];
 
 const categoryBadgeStyles: Record<string, string> = {
   buttons: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
-  forms: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-  modals: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
-  tables: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-  webzine: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20',
-  charts: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
+  forms: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+  modals: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
+  tables: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+  webzine: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
+  charts: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
 };
 
 const FeaturedComponents: React.FC = () => {
@@ -90,16 +90,16 @@ const FeaturedComponents: React.FC = () => {
 
   const compareItemsList = featuredComponents.filter(i => selectedForCompare.includes(i.id));
 
-  // Helper to render live component UI previews for ALL 36 items
+  // Helper to render live component UI previews with consistent site styling
   const renderLivePreview = (itemId: string) => {
     switch (itemId) {
       // --- 1. Buttons & Badges (6) ---
       case 'btn-gradient':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px]">
-            <button className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-medium rounded-xl group bg-gradient-to-br from-purple-600 to-indigo-500 text-white shadow-md transition-all cursor-pointer">
+            <button className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-medium rounded-xl group bg-gradient-to-br from-indigo-600 to-blue-500 text-white shadow-md transition-all cursor-pointer">
               <span className="relative px-4 py-2 transition-all ease-in duration-75 bg-slate-900 rounded-[10px] group-hover:bg-opacity-0 flex items-center gap-1.5 font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <Sparkles className="w-3.5 h-3.5 text-indigo-300" />
                 <span>샤인 버튼</span>
               </span>
             </button>
@@ -108,8 +108,8 @@ const FeaturedComponents: React.FC = () => {
       case 'btn-glow':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px]">
-            <button className="px-4 py-2 bg-indigo-600 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-500/50 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer">
-              <Zap className="w-3.5 h-3.5 text-amber-300" />
+            <button className="px-4 py-2 bg-indigo-600 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-500/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer">
+              <Zap className="w-3.5 h-3.5 text-indigo-200" />
               <span>네온 글로우 버튼</span>
             </button>
           </div>
@@ -145,7 +145,7 @@ const FeaturedComponents: React.FC = () => {
       case 'badge-gradient':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px]">
-            <span className="px-3 py-1 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 text-violet-600 dark:text-violet-300 border border-violet-500/30 rounded-xl text-xs font-extrabold shadow-2xs">
+            <span className="px-3 py-1 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-extrabold shadow-2xs">
               Premium Pro
             </span>
           </div>
@@ -228,8 +228,8 @@ const FeaturedComponents: React.FC = () => {
       case 'toast-success':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="flex items-center gap-2.5 p-3 bg-white dark:bg-slate-800 border border-emerald-500/30 rounded-xl shadow-xs text-xs max-w-xs w-full">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+            <div className="flex items-center gap-2.5 p-3 bg-white dark:bg-slate-800 border border-indigo-500/30 rounded-xl shadow-xs text-xs max-w-xs w-full">
+              <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0" />
               <div>
                 <h5 className="font-bold text-slate-900 dark:text-white">클립보드 복사 성공</h5>
                 <p className="text-[10px] text-slate-400">즉시 붙여넣기 가능합니다.</p>
@@ -240,7 +240,7 @@ const FeaturedComponents: React.FC = () => {
       case 'alert-banner':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-[11px] font-bold shadow-xs w-full max-w-xs flex justify-between items-center">
+            <div className="p-2.5 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl text-[11px] font-bold shadow-xs w-full max-w-xs flex justify-between items-center">
               <span>🚀 v2.4 14종 신규 릴리즈</span>
               <span className="px-2 py-0.5 bg-white/20 rounded">확인</span>
             </div>
@@ -293,7 +293,7 @@ const FeaturedComponents: React.FC = () => {
                   <tr><th className="px-2.5 py-1">사용자</th><th className="px-2.5 py-1">상태</th></tr>
                 </thead>
                 <tbody className="bg-white dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800 text-[11px]">
-                  <tr><td className="px-2.5 py-1 font-semibold text-slate-900 dark:text-white">김철수</td><td className="px-2.5 py-1"><span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[9px] rounded-full font-bold">활성</span></td></tr>
+                  <tr><td className="px-2.5 py-1 font-semibold text-slate-900 dark:text-white">김철수</td><td className="px-2.5 py-1"><span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[9px] rounded-full font-bold">활성</span></td></tr>
                 </tbody>
               </table>
             </div>
@@ -324,7 +324,7 @@ const FeaturedComponents: React.FC = () => {
                   <tr><th className="px-2 py-1">날짜</th><th className="px-2 py-1">방문자</th><th className="px-2 py-1">변동</th></tr>
                 </thead>
                 <tbody className="bg-white dark:bg-slate-900 font-mono text-[10px]">
-                  <tr><td className="px-2 py-1">2026-08-06</td><td className="px-2 py-1 font-bold">12,450</td><td className="px-2 py-1 text-emerald-500 font-bold">+4.2%</td></tr>
+                  <tr><td className="px-2 py-1">2026-08-06</td><td className="px-2 py-1 font-bold">12,450</td><td className="px-2 py-1 text-indigo-500 font-bold">+4.2%</td></tr>
                 </tbody>
               </table>
             </div>
@@ -379,7 +379,7 @@ const FeaturedComponents: React.FC = () => {
       case 'webzine-quote':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <blockquote className="p-3 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl italic text-xs text-slate-700 dark:text-slate-300 font-serif max-w-xs">
+            <blockquote className="p-3 bg-indigo-500/10 border-l-4 border-indigo-500 rounded-r-xl italic text-xs text-slate-700 dark:text-slate-300 font-serif max-w-xs">
               "기술과 디자인이 만나 일상의 가치를 바꿉니다."
             </blockquote>
           </div>
@@ -410,8 +410,8 @@ const FeaturedComponents: React.FC = () => {
         return (
           <div className="flex items-center justify-center h-full min-h-[130px] p-2">
             <div className="grid grid-cols-2 gap-1 rounded-xl overflow-hidden aspect-video w-full max-w-xs">
-              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold">Graphic 01</div>
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white text-[10px] font-bold">Graphic 02</div>
+              <div className="bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center text-white text-[10px] font-bold">Graphic 01</div>
+              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white text-[10px] font-bold">Graphic 02</div>
             </div>
           </div>
         );
@@ -432,9 +432,9 @@ const FeaturedComponents: React.FC = () => {
             <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-white w-full max-w-xs flex items-center justify-between">
               <div>
                 <p className="text-[10px] text-slate-400">주간 트래픽</p>
-                <p className="text-base font-bold text-emerald-400">+28.4%</p>
+                <p className="text-base font-bold text-indigo-400">+28.4%</p>
               </div>
-              <div className="px-2 py-0.5 bg-emerald-500/10 rounded text-[10px] text-emerald-400 font-mono font-bold">
+              <div className="px-2 py-0.5 bg-indigo-500/10 rounded text-[10px] text-indigo-400 font-mono font-bold">
                 ▲ TRENDING
               </div>
             </div>
@@ -467,7 +467,7 @@ const FeaturedComponents: React.FC = () => {
               <span className="text-slate-400 text-[10px]">월간 구독 수익</span>
               <div className="flex items-baseline justify-between font-bold">
                 <span className="text-sm text-slate-900 dark:text-white">₩ 8,450,000</span>
-                <span className="px-1.5 py-0.5 bg-emerald-500/10 text-emerald-500 text-[10px] rounded">+12.8%</span>
+                <span className="px-1.5 py-0.5 bg-indigo-500/10 text-indigo-500 text-[10px] rounded">+12.8%</span>
               </div>
             </div>
           </div>
@@ -477,7 +477,7 @@ const FeaturedComponents: React.FC = () => {
           <div className="flex items-center justify-center h-full min-h-[130px] p-2">
             <div className="p-3 bg-slate-900 text-white rounded-xl flex items-center justify-between text-xs w-full max-w-xs">
               <div><p className="text-[9px] text-slate-400">오늘의 방문자</p><p className="font-bold text-sm text-indigo-400">3,892명</p></div>
-              <span className="text-emerald-400 font-mono font-bold text-[10px]">▲ LIVE</span>
+              <span className="text-indigo-400 font-mono font-bold text-[10px]">▲ LIVE</span>
             </div>
           </div>
         );
@@ -514,7 +514,7 @@ const FeaturedComponents: React.FC = () => {
             인기 UI 컴포넌트 갤러리
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            카테고리 아이콘 뱃지, 3D 호버 리프트 모션, 반응형 뷰포트 조절 및 접근성 가이드를 지원합니다.
+            사이트 브랜드 테마에 특화된 36종 컴포넌트 라이브 미리보기와 조작 도구를 제공합니다.
           </p>
         </div>
 
@@ -554,7 +554,7 @@ const FeaturedComponents: React.FC = () => {
         </div>
       </div>
 
-      {/* Components Grid with 3D Depth Lift & Custom Color Coding */}
+      {/* Components Grid with Site Signature Indigo Brand Styling */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => {
           const currentMode = getMode(item.id);
@@ -562,12 +562,12 @@ const FeaturedComponents: React.FC = () => {
           const isCopied = copiedId === item.id;
           const isFav = favorites.includes(item.id);
           const isCompared = selectedForCompare.includes(item.id);
-          const badgeClass = categoryBadgeStyles[item.category] || 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20';
+          const badgeClass = categoryBadgeStyles[item.category] || 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20';
 
           return (
             <div
               key={item.id}
-              className="group bg-white dark:bg-[#1A222C] rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 dark:hover:border-indigo-500/60 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+              className="group bg-white dark:bg-[#1A222C] rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:-translate-y-1 dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
             >
               {/* Card Header & Controls */}
               <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
@@ -670,7 +670,7 @@ const FeaturedComponents: React.FC = () => {
               {/* A11y Accessibility Info Banner / Tooltip Toggle */}
               {activeA11yId === item.id && (
                 <div className="p-3 bg-indigo-950 text-indigo-200 text-[11px] border-t border-indigo-800 space-y-1 animate-in fade-in duration-150">
-                  <div className="flex items-center justify-between font-bold text-amber-300">
+                  <div className="flex items-center justify-between font-bold text-indigo-300">
                     <span>♿ A11y 접근성 가이드</span>
                     <button onClick={() => setActiveA11yId(null)} className="text-slate-400 hover:text-white">✕</button>
                   </div>
