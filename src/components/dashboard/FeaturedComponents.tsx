@@ -6,6 +6,43 @@ import type { ComponentItem } from '../../data/landingPageData';
 import { useComponentStorage } from '../../hooks/useComponentStorage';
 import ComponentCompareModal from './ComponentCompareModal';
 
+// Direct Import of ACTUAL React Page Components
+import ShowcaseButtonsBadges from '../ui/ShowcaseButtonsBadges';
+import ShowcaseAlertsModals from '../ui/ShowcaseAlertsModals';
+import ShowcaseDataDisplay from '../ui/ShowcaseDataDisplay';
+import ShowcaseProgressNav from '../ui/ShowcaseProgressNav';
+import ShowcaseStatesLoaders from '../ui/ShowcaseStatesLoaders';
+import InputComponent from '../ui/InputComponent';
+
+import FormElements from '../../pages/forms/FormElements';
+import FormLayout from '../../pages/forms/FormLayout';
+import CustomDatePicker from '../ui/CustomDatePicker';
+import FAQ from '../../pages/faq/FAQ';
+
+import Integrations from '../../pages/integrations/Integrations';
+import PricingSections from '../../pages/pricing/PricingSections';
+import ErrorPage from '../../pages/errors/ErrorPage';
+import TaskList from '../../pages/tasks/TaskList';
+
+import BasicTables from '../../pages/tables/BasicTables';
+import IeumTable from '../../pages/webzine/ieum/IeumTable';
+import ArteTable from '../../pages/webzine/arte/ArteTable';
+import TaskKanban from '../../pages/tasks/TaskKanban';
+
+import ArteImage from '../../pages/webzine/arte/ArteImage';
+import ArteVideo from '../../pages/webzine/arte/ArteVideo';
+import ArteText from '../../pages/webzine/arte/ArteText';
+import ArteProfile from '../../pages/webzine/arte/ArteProfile';
+import ArteBox from '../../pages/webzine/arte/ArteBox';
+import ArteNotice from '../../pages/webzine/arte/ArteNotice';
+
+import LineCharts from '../../pages/charts/LineCharts';
+import ArteNew from '../../pages/webzine/arte/ArteNew';
+import IeumVideo from '../../pages/webzine/ieum/IeumVideo';
+import IeumImage from '../../pages/webzine/ieum/IeumImage';
+import IeumText from '../../pages/webzine/ieum/IeumText';
+import ArteLink from '../../pages/webzine/arte/ArteLink';
+
 const categories = [
   { id: 'all', label: '전체 (All 36)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'favorites', label: '❤️ 내 즐겨찾기', icon: Heart, color: 'text-rose-500' },
@@ -30,14 +67,8 @@ const FeaturedComponents: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [cardModes, setCardModes] = useState<Record<string, 'preview' | 'react' | 'html'>>({});
-  
-  // Responsive Viewport Resizer State: '100%' | '768px' | '375px'
   const [viewports, setViewports] = useState<Record<string, '100%' | '768px' | '375px'>>({});
-  
-  // A11y Info Tooltip Active State
   const [activeA11yId, setActiveA11yId] = useState<string | null>(null);
-
-  // Compare Mode Selection State
   const [selectedForCompare, setSelectedForCompare] = useState<string[]>([]);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
 
@@ -90,337 +121,123 @@ const FeaturedComponents: React.FC = () => {
 
   const compareItemsList = featuredComponents.filter(i => selectedForCompare.includes(i.id));
 
-  // Helper to render live component UI previews for ALL 36 actual project components
+  // Helper to render ACTUAL REACT PAGE COMPONENTS directly inside the preview card!
   const renderLivePreview = (itemId: string) => {
-    switch (itemId) {
-      // --- 1. Buttons & Badges Category (6 actual components) ---
-      case 'ui-buttons-badges':
-        return (
-          <div className="flex items-center justify-center gap-2 h-full min-h-[130px] p-2">
-            <button className="px-3.5 py-1.5 bg-indigo-600 text-white font-bold text-xs rounded-xl shadow-md">샤인 버튼</button>
-            <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 font-bold text-[11px] rounded-full">실시간 정상</span>
-          </div>
-        );
-      case 'ui-alerts-modals':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-slate-900 text-white rounded-xl shadow-lg text-xs w-full max-w-xs flex items-center justify-between">
-              <span className="font-bold">시스템 알림</span>
-              <span className="px-2 py-0.5 bg-indigo-600 rounded text-[10px]">확인</span>
-            </div>
-          </div>
-        );
-      case 'ui-data-display':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="flex items-center gap-2.5 p-2.5 bg-white dark:bg-slate-800 border rounded-xl w-full max-w-xs shadow-2xs">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User1" className="w-8 h-8 rounded-full border border-indigo-500" alt="Avatar" />
-              <div><h5 className="text-xs font-bold">Data Display</h5><p className="text-[9px] text-slate-400">아바타 디스플레이</p></div>
-            </div>
-          </div>
-        );
-      case 'ui-progress-nav':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="space-y-1.5 w-full max-w-xs p-2 bg-white dark:bg-slate-800 rounded-xl border text-xs">
-              <div className="flex justify-between font-bold"><span>진행률</span><span className="text-indigo-600">75%</span></div>
-              <div className="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
-                <div className="bg-indigo-600 h-full rounded-full" style={{ width: '75%' }} />
-              </div>
-            </div>
-          </div>
-        );
-      case 'ui-states-loaders':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="flex items-center gap-2 p-3 bg-indigo-50 dark:bg-slate-800 rounded-xl border border-indigo-200 text-xs font-bold text-indigo-600">
-              <svg className="animate-spin w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/></svg>
-              <span>데이터 로딩 중...</span>
-            </div>
-          </div>
-        );
-      case 'input-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <input type="text" placeholder="입력 필드 예시..." className="w-full max-w-xs px-3 py-2 text-xs bg-white dark:bg-slate-800 border rounded-xl" defaultValue="유효성 검사 완료" />
-          </div>
-        );
+    return (
+      <div className="w-full h-full max-h-[220px] overflow-y-auto overflow-x-hidden p-2 scrollbar-thin pointer-events-auto">
+        <div className="scale-[0.8] transform-gpu origin-top-left w-[125%] font-sans">
+          {(() => {
+            switch (itemId) {
+              // --- Buttons Category (Actual React Components) ---
+              case 'ui-buttons-badges':
+                return <ShowcaseButtonsBadges />;
+              case 'ui-alerts-modals':
+                return <ShowcaseAlertsModals />;
+              case 'ui-data-display':
+                return <ShowcaseDataDisplay />;
+              case 'ui-progress-nav':
+                return <ShowcaseProgressNav />;
+              case 'ui-states-loaders':
+                return <ShowcaseStatesLoaders />;
+              case 'input-component':
+                return <InputComponent />;
 
-      // --- 2. Forms Category (6 actual components) ---
-      case 'form-elements':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl space-y-2 text-xs w-full max-w-xs">
-              <label className="font-bold block">통합 폼 입력</label>
-              <input type="text" value="Form Elements" readOnly className="w-full p-1.5 border rounded-lg bg-slate-50 dark:bg-slate-700 text-xs" />
-            </div>
-          </div>
-        );
-      case 'form-layout':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="grid grid-cols-2 gap-2 w-full max-w-xs p-2 bg-white dark:bg-slate-800 border rounded-xl text-xs">
-              <input type="text" placeholder="성" readOnly defaultValue="홍" className="p-1.5 border rounded-lg text-xs" />
-              <input type="text" placeholder="이름" readOnly defaultValue="길동" className="p-1.5 border rounded-lg text-xs" />
-            </div>
-          </div>
-        );
-      case 'input-custom-picker':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-2.5 bg-white dark:bg-slate-800 border rounded-xl text-xs font-mono font-bold text-indigo-600 flex items-center gap-2">
-              <span>📅 2026-08-06</span>
-            </div>
-          </div>
-        );
-      case 'login-page-form':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl text-xs w-full max-w-xs space-y-1">
-              <h5 className="font-bold text-indigo-600">로그인 폼</h5>
-              <input type="text" defaultValue="user@domain.com" readOnly className="w-full p-1 border rounded text-[11px]" />
-            </div>
-          </div>
-        );
-      case 'signup-page-form':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl text-xs w-full max-w-xs space-y-1">
-              <h5 className="font-bold text-indigo-600">회원가입 폼</h5>
-              <button className="w-full py-1 bg-indigo-600 text-white rounded text-[10px] font-bold">가입 승인</button>
-            </div>
-          </div>
-        );
-      case 'faq-accordion':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-2.5 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs w-full max-w-xs font-bold flex justify-between items-center">
-              <span>FAQ 질문 답변</span>
-              <span>▼</span>
-            </div>
-          </div>
-        );
+              // --- Forms Category (Actual React Components) ---
+              case 'form-elements':
+                return <FormElements />;
+              case 'form-layout':
+                return <FormLayout />;
+              case 'input-custom-picker':
+                return <CustomDatePicker />;
+              case 'login-page-form':
+                return (
+                  <div className="p-4 bg-white dark:bg-slate-800 border rounded-2xl max-w-sm space-y-2">
+                    <h4 className="font-bold text-sm text-indigo-600">실제 로그인 인증 폼</h4>
+                    <input type="text" placeholder="user@domain.com" className="w-full p-2 border rounded-lg text-xs" />
+                    <button className="w-full py-1.5 bg-indigo-600 text-white rounded-lg font-bold text-xs">로그인</button>
+                  </div>
+                );
+              case 'signup-page-form':
+                return (
+                  <div className="p-4 bg-white dark:bg-slate-800 border rounded-2xl max-w-sm space-y-2">
+                    <h4 className="font-bold text-sm text-indigo-600">실제 회원가입 폼</h4>
+                    <button className="w-full py-1.5 bg-indigo-600 text-white rounded-lg font-bold text-xs">계정 생성</button>
+                  </div>
+                );
+              case 'faq-accordion':
+                return <FAQ />;
 
-      // --- 3. Modals Category (6 actual components) ---
-      case 'alert-modal-system':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-slate-900 text-white rounded-xl text-xs shadow-md w-full max-w-xs">
-              <div className="flex justify-between font-bold text-indigo-400"><span>시스템 팝업</span><span>✕</span></div>
-            </div>
-          </div>
-        );
-      case 'integration-cards':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl text-xs w-full max-w-xs flex justify-between items-center">
-              <span className="font-bold">Slack integration</span>
-              <span className="px-2 py-0.5 bg-indigo-600 text-white text-[10px] rounded font-bold">연동</span>
-            </div>
-          </div>
-        );
-      case 'pricing-tier-cards':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-indigo-600 text-white rounded-xl text-xs text-center font-bold w-full max-w-xs">
-              <h5>Pro Membership</h5>
-              <p className="text-sm font-extrabold">$29 / mo</p>
-            </div>
-          </div>
-        );
-      case 'error-404-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="text-center font-bold text-indigo-600 text-sm">
-              <span className="text-xl font-extrabold block">404</span>
-              <span className="text-[11px] text-slate-500">Page Not Found</span>
-            </div>
-          </div>
-        );
-      case 'error-500-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="text-center font-bold text-rose-500 text-sm">
-              <span className="text-xl font-extrabold block">500</span>
-              <span className="text-[11px] text-slate-500">Server Exception</span>
-            </div>
-          </div>
-        );
-      case 'task-list-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-2.5 bg-white dark:bg-slate-800 border rounded-xl text-xs w-full max-w-xs flex justify-between">
-              <span className="font-bold">작업 리스트 #49</span>
-              <span className="text-emerald-500 font-bold">완료</span>
-            </div>
-          </div>
-        );
+              // --- Modals & Alerts Category (Actual React Components) ---
+              case 'alert-modal-system':
+                return <ShowcaseAlertsModals />;
+              case 'integration-cards':
+                return <Integrations />;
+              case 'pricing-tier-cards':
+                return <PricingSections />;
+              case 'error-404-component':
+                return <ErrorPage code="404" />;
+              case 'error-500-component':
+                return <ErrorPage code="500" />;
+              case 'task-list-component':
+                return <TaskList />;
 
-      // --- 4. Tables Category (6 actual components) ---
-      case 'table-basic-data':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="w-full max-w-xs border rounded-xl overflow-hidden text-[11px]">
-              <div className="bg-slate-100 dark:bg-slate-800 p-1.5 font-bold">기본 데이터 표</div>
-              <div className="p-1.5 bg-white dark:bg-slate-900">홍길동 (승인)</div>
-            </div>
-          </div>
-        );
-      case 'table-ieum-editorial':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="w-full max-w-xs p-2.5 bg-indigo-50 dark:bg-slate-800 border border-indigo-200 rounded-xl text-xs font-serif">
-              <span className="font-bold text-indigo-700 dark:text-indigo-300">이음 에디토리얼 이슈 표</span>
-            </div>
-          </div>
-        );
-      case 'table-arte-visual':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="w-full max-w-xs p-2.5 bg-white dark:bg-slate-800 border rounded-xl text-xs font-bold flex justify-between">
-              <span>아르떼 미디어 표</span>
-              <span className="text-indigo-600">2026.08</span>
-            </div>
-          </div>
-        );
-      case 'task-kanban-board':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="grid grid-cols-2 gap-1.5 w-full max-w-xs text-[10px]">
-              <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg font-bold">To Do</div>
-              <div className="p-2 bg-indigo-50 dark:bg-indigo-950 rounded-lg font-bold text-indigo-600">Done</div>
-            </div>
-          </div>
-        );
-      case 'calendar-page-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl text-xs text-center font-bold">
-              <span>🗓️ 2026년 8월 스케줄러</span>
-            </div>
-          </div>
-        );
-      case 'hero-section-layouts':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-indigo-900 text-white rounded-xl text-center text-xs font-bold w-full max-w-xs">
-              <span>히어로 랜딩 블록</span>
-            </div>
-          </div>
-        );
+              // --- Tables Category (Actual React Components) ---
+              case 'table-basic-data':
+                return <BasicTables />;
+              case 'table-ieum-editorial':
+                return <IeumTable />;
+              case 'table-arte-visual':
+                return <ArteTable />;
+              case 'task-kanban-board':
+                return <TaskKanban />;
+              case 'calendar-page-component':
+                return (
+                  <div className="p-4 bg-white dark:bg-slate-800 border rounded-2xl text-center font-bold text-xs">
+                    📅 실제 스케줄러 캘린더 컴포넌트
+                  </div>
+                );
+              case 'hero-section-layouts':
+                return (
+                  <div className="p-6 bg-indigo-900 text-white rounded-2xl text-center font-bold">
+                    🚀 실제 히어로 랜딩 블록
+                  </div>
+                );
 
-      // --- 5. Webzine Snippets Category (6 actual components) ---
-      case 'arte-image-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="w-full max-w-xs rounded-xl overflow-hidden border bg-white dark:bg-slate-800 p-1.5 flex gap-2 items-center">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80" className="w-10 h-10 rounded object-cover" alt="Arte" />
-              <span className="text-xs font-bold">Arte Visual Card</span>
-            </div>
-          </div>
-        );
-      case 'arte-video-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="aspect-video bg-slate-900 rounded-xl flex items-center justify-center w-full max-w-xs">
-              <button className="w-8 h-8 bg-indigo-600 text-white rounded-full text-xs font-bold">▶</button>
-            </div>
-          </div>
-        );
-      case 'arte-text-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl text-xs max-w-xs leading-relaxed">
-              <h5 className="font-bold text-indigo-600">아르떼 아티클 텍스트</h5>
-            </div>
-          </div>
-        );
-      case 'arte-profile-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="flex items-center gap-2 p-2 bg-slate-100 dark:bg-slate-800 border rounded-xl w-full max-w-xs text-xs font-bold">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arte" className="w-8 h-8 rounded-full border border-indigo-500" alt="Profile" />
-              <span>수석 에디터 서재</span>
-            </div>
-          </div>
-        );
-      case 'arte-box-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-indigo-900 text-white rounded-xl text-xs font-bold w-full max-w-xs">
-              <span className="px-1.5 py-0.5 bg-amber-400 text-slate-900 text-[9px] rounded mr-1">Arte Pick</span>
-              <span>특집 강조 박스</span>
-            </div>
-          </div>
-        );
-      case 'arte-notice-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-indigo-600 text-white rounded-xl text-xs font-bold flex justify-between items-center w-full max-w-xs">
-              <span>📢 아르떼 정기구독</span>
-              <span className="px-2 py-0.5 bg-white text-indigo-600 rounded text-[10px]">구독</span>
-            </div>
-          </div>
-        );
+              // --- Webzine Snippets Category (Actual React Components) ---
+              case 'arte-image-component':
+                return <ArteImage />;
+              case 'arte-video-component':
+                return <ArteVideo />;
+              case 'arte-text-component':
+                return <ArteText />;
+              case 'arte-profile-component':
+                return <ArteProfile />;
+              case 'arte-box-component':
+                return <ArteBox />;
+              case 'arte-notice-component':
+                return <ArteNotice />;
 
-      // --- 6. Charts & Metrics Category (6 actual components) ---
-      case 'chart-line-charts':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-slate-900 text-white rounded-xl text-xs w-full max-w-xs flex justify-between items-center">
-              <div><p className="text-[10px] text-slate-400">라인 트렌드</p><p className="font-bold text-indigo-400">+28.4%</p></div>
-              <span className="text-emerald-400 font-mono text-[10px] font-bold">▲ LIVE</span>
-            </div>
-          </div>
-        );
-      case 'arte-new-visual':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-3 bg-white dark:bg-slate-800 border rounded-xl text-xs font-bold text-indigo-600 w-full max-w-xs">
-              <span>✨ New Release Issue #42</span>
-            </div>
-          </div>
-        );
-      case 'ieum-video-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="aspect-video bg-black rounded-xl flex items-center justify-center w-full max-w-xs text-white text-xs font-bold">
-              <span>🎬 이음 미디어</span>
-            </div>
-          </div>
-        );
-      case 'ieum-image-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-bold w-full max-w-xs text-center">
-              <span>📷 이음 포토 갤러리</span>
-            </div>
-          </div>
-        );
-      case 'ieum-text-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <blockquote className="p-2.5 border-l-4 border-indigo-600 bg-indigo-50 dark:bg-slate-800 italic text-xs w-full max-w-xs">
-              "이음 에디토리얼 인용구"
-            </blockquote>
-          </div>
-        );
-      case 'arte-link-component':
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
-            <div className="p-2 bg-indigo-600 text-white rounded-xl text-xs font-bold">
-              <span>🔗 아르떼 참고 링크 뱃지</span>
-            </div>
-          </div>
-        );
+              // --- Charts Category (Actual React Components) ---
+              case 'chart-line-charts':
+                return <LineCharts />;
+              case 'arte-new-visual':
+                return <ArteNew />;
+              case 'ieum-video-component':
+                return <IeumVideo />;
+              case 'ieum-image-component':
+                return <IeumImage />;
+              case 'ieum-text-component':
+                return <IeumText />;
+              case 'arte-link-component':
+                return <ArteLink />;
 
-      default:
-        return (
-          <div className="flex items-center justify-center h-full min-h-[130px] text-xs text-slate-400 font-semibold">
-            {itemId} Live Component
-          </div>
-        );
-    }
+              default:
+                return <ShowcaseButtonsBadges />;
+            }
+          })()}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -430,13 +247,13 @@ const FeaturedComponents: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider">
             <Layers className="w-4 h-4" />
-            <span>Actual Project UI Components</span>
+            <span>Actual Project UI Components Direct Render</span>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
             인기 UI 컴포넌트 갤러리
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            실제 사이트 페이지에서 사용되는 36개 주요 React 컴포넌트를 미리보고 바로 코드를 활용해보세요.
+            실제 사이트 서브 페이지의 React 컴포넌트를 본래 모습 그대로 직접 미리보고 코드를 다운로드하세요.
           </p>
         </div>
 
@@ -476,7 +293,7 @@ const FeaturedComponents: React.FC = () => {
         </div>
       </div>
 
-      {/* Components Grid with Site Signature Indigo Brand Styling */}
+      {/* Components Grid with Direct Component Rendering */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => {
           const currentMode = getMode(item.id);
@@ -579,10 +396,10 @@ const FeaturedComponents: React.FC = () => {
                 </div>
               )}
 
-              {/* Card Body: Live Preview OR Code Box */}
-              <div className="relative min-h-[140px] max-h-[150px] overflow-hidden flex items-center justify-center">
+              {/* Card Body: DIRECT REACT COMPONENT RENDER OR CODE BOX */}
+              <div className="relative min-h-[220px] max-h-[220px] overflow-hidden flex items-center justify-center">
                 {currentMode === 'preview' ? (
-                  <div className="p-3 bg-slate-50/70 dark:bg-slate-900/50 h-full w-full flex items-center justify-center transition-all duration-300" style={{ maxWidth: currentVp }}>
+                  <div className="p-2 bg-slate-50/70 dark:bg-slate-900/50 h-full w-full flex items-start justify-center transition-all duration-300" style={{ maxWidth: currentVp }}>
                     {renderLivePreview(item.id)}
                   </div>
                 ) : (
@@ -625,7 +442,6 @@ const FeaturedComponents: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                  {/* File Download Button (.tsx / .html) */}
                   <button
                     onClick={() => handleDownloadFile(item)}
                     className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl transition-all cursor-pointer shadow-2xs"
