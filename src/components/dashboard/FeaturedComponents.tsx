@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Copy, Check, ExternalLink, Eye, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, MousePointer, Edit3, MessageSquare, Table, FileText, PieChart, Sparkles, AlertCircle, CheckCircle, Search, ChevronDown, Calendar as CalendarIcon, Lock, Bell, BarChart3, TrendingUp, Activity } from 'lucide-react';
+import { Layers, Copy, Check, ExternalLink, Eye, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, MousePointer, Edit3, MessageSquare, Table, PieChart, Sparkles, CheckCircle, Search, ChevronDown, Lock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { featuredComponents } from '../../data/landingPageData';
 import type { ComponentItem } from '../../data/landingPageData';
@@ -7,14 +7,13 @@ import { useComponentStorage } from '../../hooks/useComponentStorage';
 import ComponentCompareModal from './ComponentCompareModal';
 
 const categories = [
-  { id: 'all', label: '전체 (All 36)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'all', label: '전체 (All 21)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'favorites', label: '❤️ 내 즐겨찾기', icon: Heart, color: 'text-rose-500' },
   { id: 'buttons', label: '버튼 & 뱃지 (6)', icon: MousePointer, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'forms', label: '폼 & 인풋 (6)', icon: Edit3, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'modals', label: '모달 & 알림 (6)', icon: MessageSquare, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'tables', label: '테이블 (6)', icon: Table, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'webzine', label: '대시보드 블록 (6)', icon: FileText, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'charts', label: '차트 & 지표 (6)', icon: PieChart, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'forms', label: '폼 & 인풋 (5)', icon: Edit3, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'modals', label: '모달 & 페이지 (5)', icon: MessageSquare, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'tables', label: '테이블 & 업무 (3)', icon: Table, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'charts', label: '일정 & 차트 (2)', icon: PieChart, color: 'text-indigo-600 dark:text-indigo-400' },
 ];
 
 const categoryBadgeStyles: Record<string, string> = {
@@ -22,7 +21,6 @@ const categoryBadgeStyles: Record<string, string> = {
   forms: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
   modals: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
   tables: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-  webzine: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
   charts: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
 };
 
@@ -84,10 +82,10 @@ const FeaturedComponents: React.FC = () => {
 
   const compareItemsList = featuredComponents.filter(i => selectedForCompare.includes(i.id));
 
-  // Helper to render EXACT 1 REPRESENTATIVE ITEM per actual component page!
+  // Helper to render EXACT 1 REPRESENTATIVE ITEM per 100% actual page route!
   const renderLivePreview = (itemId: string) => {
     switch (itemId) {
-      // --- 1. Buttons & Badges (실제 UI Showcase 페이지 대표 요소) ---
+      // --- 1. Buttons & Badges (실제 라우트 페이지 6개) ---
       case 'ui-buttons-badges':
         return (
           <div className="flex items-center gap-2.5">
@@ -163,7 +161,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      // --- 2. Forms (실제 Form 페이지 대표 요소) ---
+      // --- 2. Forms (실제 라우트 페이지 5개) ---
       case 'form-elements':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs space-y-2">
@@ -188,14 +186,6 @@ const FeaturedComponents: React.FC = () => {
               <label className="text-[10px] font-bold text-slate-500 block mb-1">이름 (First)</label>
               <input type="text" defaultValue="길동" readOnly className="w-full p-1.5 text-xs border rounded-lg bg-slate-50 dark:bg-slate-900" />
             </div>
-          </div>
-        );
-
-      case 'input-custom-picker':
-        return (
-          <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 border rounded-2xl font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400">
-            <CalendarIcon className="w-4 h-4 text-indigo-500" />
-            <span>2026.08.06 ~ 2026.08.31</span>
           </div>
         );
 
@@ -233,18 +223,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      // --- 3. Modals & Alerts (실제 Modal/Notification 페이지 대표 요소) ---
-      case 'alert-modal-system':
-        return (
-          <div className="p-3.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 rounded-2xl w-full max-w-xs flex items-center justify-between">
-            <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 text-xs font-bold">
-              <AlertCircle className="w-4 h-4" />
-              <span>정말 삭제하시겠습니까?</span>
-            </div>
-            <button className="px-2.5 py-1 bg-rose-600 text-white text-[10px] font-bold rounded-lg">삭제</button>
-          </div>
-        );
-
+      // --- 3. Modals & Pages (실제 라우트 페이지 5개) ---
       case 'integration-cards':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between">
@@ -264,6 +243,13 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
+      case 'hero-section-layouts':
+        return (
+          <div className="p-4 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-2xl text-center w-full max-w-xs">
+            <h4 className="text-xs font-extrabold">모던 히어로 레이아웃</h4>
+          </div>
+        );
+
       case 'error-404-component':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs text-center space-y-1">
@@ -280,15 +266,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      case 'task-list-component':
-        return (
-          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-800 dark:text-slate-200">대시보드 UI 개편 완료</span>
-            <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 font-bold text-[10px] rounded">완료</span>
-          </div>
-        );
-
-      // --- 4. Tables & Productivity (실제 Table & App 페이지 대표 요소) ---
+      // --- 4. Tables & Tasks (실제 라우트 페이지 3개) ---
       case 'table-basic-data':
         return (
           <div className="w-full max-w-xs border rounded-2xl overflow-hidden text-xs">
@@ -303,17 +281,11 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      case 'table-striped-data':
+      case 'task-list-component':
         return (
-          <div className="p-3 bg-slate-50 dark:bg-slate-800 border rounded-2xl w-full max-w-xs text-xs font-bold text-slate-700 dark:text-slate-300">
-            <span>줄무늬 격자 데이터 스타일 표 행</span>
-          </div>
-        );
-
-      case 'table-hover-data':
-        return (
-          <div className="p-3 bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200 rounded-2xl w-full max-w-xs text-xs font-bold text-indigo-700 dark:text-indigo-300">
-            <span>마우스 호버 반응형 강조 표 행</span>
+          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between text-xs">
+            <span className="font-bold text-slate-800 dark:text-slate-200">대시보드 UI 개편 완료</span>
+            <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 font-bold text-[10px] rounded">완료</span>
           </div>
         );
 
@@ -329,6 +301,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
+      // --- 5. Calendar & Charts (실제 라우트 페이지 2개) ---
       case 'calendar-page-component':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl text-center w-full max-w-xs">
@@ -336,116 +309,14 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      case 'hero-section-layouts':
-        return (
-          <div className="p-4 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-2xl text-center w-full max-w-xs">
-            <h4 className="text-xs font-extrabold">모던 히어로 레이아웃</h4>
-          </div>
-        );
-
-      // --- 5. App & Dashboard Blocks (실제 메인 대시보드 및 레이아웃 대표 요소) ---
-      case 'stat-card-widget':
-        return (
-          <div className="p-4 bg-white dark:bg-slate-800 border rounded-2xl shadow-2xs w-full max-w-xs">
-            <span className="text-[10px] text-slate-500 font-bold uppercase">총 성과 지표</span>
-            <h3 className="text-lg font-extrabold text-indigo-600 dark:text-indigo-400 mt-0.5">$45,280</h3>
-          </div>
-        );
-
-      case 'analytics-summary':
-        return (
-          <div className="p-3.5 bg-slate-900 text-white rounded-2xl w-full max-w-xs flex items-center justify-between text-xs font-bold">
-            <span>주간 활성 사용자</span>
-            <span className="text-emerald-400 font-mono text-[10px]">+18.2% ▲</span>
-          </div>
-        );
-
-      case 'user-profile-header':
-        return (
-          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
-              <Bell className="w-4 h-4 text-indigo-500" />
-              <span className="font-bold">알림 (3건)</span>
-            </div>
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User1" className="w-7 h-7 rounded-full border border-indigo-500" alt="Avatar" />
-          </div>
-        );
-
-      case 'sidebar-navigation':
-        return (
-          <div className="p-3 bg-slate-900 text-white rounded-2xl w-full max-w-xs text-xs font-bold flex items-center gap-2">
-            <BarChart3 className="w-4 h-4 text-indigo-400" />
-            <span>대시보드 메뉴 스니펫</span>
-          </div>
-        );
-
-      case 'filter-search-bar':
-        return (
-          <div className="flex gap-2 p-2 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs">
-            <input type="text" readOnly defaultValue="검색..." className="p-1 text-xs border rounded-lg w-full" />
-            <span className="px-2 py-1 bg-indigo-600 text-white text-[10px] font-bold rounded-lg shrink-0">필터</span>
-          </div>
-        );
-
-      case 'activity-timeline':
-        return (
-          <div className="p-3 border-l-4 border-indigo-600 bg-indigo-50/60 dark:bg-slate-800 rounded-r-2xl w-full max-w-xs text-xs">
-            <span className="font-bold text-slate-800 dark:text-slate-200">시스템 업데이트 완료</span>
-          </div>
-        );
-
-      // --- 6. Charts & Metrics (실제 Chart & Metric 페이지 대표 요소) ---
       case 'chart-line-charts':
         return (
-          <div className="p-3.5 bg-slate-900 text-white rounded-2xl w-full max-w-xs flex items-center justify-between">
+          <div className="p-3.5 bg-slate-900 text-white rounded-2xl flex justify-between items-center text-xs">
             <div>
               <p className="text-[10px] text-slate-400 font-medium">주간 주가 지수</p>
               <p className="text-sm font-bold text-indigo-400 mt-0.5">+28.4% ▲</p>
             </div>
             <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold rounded-lg">LIVE</span>
-          </div>
-        );
-
-      case 'chart-area-charts':
-        return (
-          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl text-xs font-bold text-indigo-600 dark:text-indigo-400 w-full max-w-xs flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <TrendingUp className="w-4 h-4" />
-              <span>누적 매출 성과 차트</span>
-            </div>
-          </div>
-        );
-
-      case 'chart-bar-metrics':
-        return (
-          <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl text-xs font-bold text-center w-full max-w-xs">
-            <span>📊 월별 실적 비교 차트</span>
-          </div>
-        );
-
-      case 'chart-pie-metrics':
-        return (
-          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl text-xs font-bold flex justify-between w-full max-w-xs">
-            <span>🍩 카테고리 비중 차트</span>
-            <span className="text-indigo-600">64%</span>
-          </div>
-        );
-
-      case 'chart-kpi-summary':
-        return (
-          <div className="p-3 bg-indigo-600 text-white rounded-2xl text-xs font-bold text-center w-full max-w-xs">
-            <span>🎯 3분기 KPI 달성률 94%</span>
-          </div>
-        );
-
-      case 'chart-live-status':
-        return (
-          <div className="p-3 bg-slate-900 text-emerald-400 rounded-2xl font-mono text-xs font-bold flex justify-between w-full max-w-xs">
-            <div className="flex items-center gap-1.5">
-              <Activity className="w-4 h-4 animate-pulse" />
-              <span>SERVER HEALTH</span>
-            </div>
-            <span>99.9% ONLINE</span>
           </div>
         );
 
@@ -465,13 +336,13 @@ const FeaturedComponents: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider">
             <Layers className="w-4 h-4" />
-            <span>Project Actual Page Components Only</span>
+            <span>100% Real Dedicated Page Routes Only</span>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
             인기 UI 컴포넌트 갤러리
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            실제 프로젝트 페이지에 100% 실존하는 핵심 컴포넌트 36종을 미리보고 코드를 다운로드하세요.
+            사이드바 및 라우터에 100% 존재하여 이동 가능한 실존 전용 페이지 컴포넌트 21종 모음입니다.
           </p>
         </div>
 
@@ -511,7 +382,7 @@ const FeaturedComponents: React.FC = () => {
         </div>
       </div>
 
-      {/* Components Grid with 100% Actual Page Component Rendering */}
+      {/* Components Grid with 100% Real Page Route Component Rendering */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => {
           const currentMode = getMode(item.id);
@@ -614,7 +485,7 @@ const FeaturedComponents: React.FC = () => {
                 </div>
               )}
 
-              {/* Card Body: ACTUAL PAGE COMPONENT RENDER OR CODE BOX */}
+              {/* Card Body: ACTUAL REAL PAGE COMPONENT RENDER OR CODE BOX */}
               <div className="relative min-h-[140px] max-h-[140px] overflow-hidden flex items-center justify-center">
                 {currentMode === 'preview' ? (
                   <div className="p-3 bg-slate-50/70 dark:bg-slate-900/50 h-full w-full flex items-center justify-center transition-all duration-300" style={{ maxWidth: currentVp }}>
