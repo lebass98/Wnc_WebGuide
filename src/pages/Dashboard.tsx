@@ -1,21 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSection from '../components/dashboard/HeroSection';
 import ThemeSandbox from '../components/dashboard/ThemeSandbox';
 import FeaturedComponents from '../components/dashboard/FeaturedComponents';
 import TemplatesShowcase from '../components/dashboard/TemplatesShowcase';
 import WorkflowGuide from '../components/dashboard/WorkflowGuide';
 import LibraryMetrics from '../components/dashboard/LibraryMetrics';
+import RecentlyViewedBar from '../components/dashboard/RecentlyViewedBar';
+import WebzineBuilderModal from '../components/dashboard/WebzineBuilderModal';
+import { useComponentStorage } from '../hooks/useComponentStorage';
+import { Layers } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
+  const { recentlyViewed } = useComponentStorage();
+  const [isBuilderOpen, setIsBuilderOpen] = useState(false);
+
   return (
     <div className="space-y-12 pb-12">
-      {/* 1. Landmark Hero Section with Live Playground */}
+      {/* 1. Landmark Hero Section with Live Playground & Search */}
       <HeroSection />
 
-      {/* 2. Interactive Design System Theme Sandbox */}
+      {/* Recently Viewed History Bar */}
+      <RecentlyViewedBar recentIds={recentlyViewed} />
+
+      {/* 2. Interactive Design System Theme Sandbox with CSS Exporter */}
       <ThemeSandbox />
 
-      {/* 3. Featured UI Components Gallery */}
+      {/* Quick Launch Webzine Builder Banner */}
+      <div className="bg-gradient-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-indigo-800/50">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-400/20 text-amber-300 rounded-full text-xs font-bold">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Interactive Webzine Builder</span>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-extrabold">나만의 웹진 블록 조합해서 코드 내보내기</h3>
+          <p className="text-xs sm:text-sm text-slate-300">
+            인용구, 프로필, 영상 플레이어, 아티클 카드를 내 마음대로 순서 배치하고 1초 만에 전체 코드를 다운로드해보세요.
+          </p>
+        </div>
+
+        <button
+          onClick={() => setIsBuilderOpen(true)}
+          className="px-6 py-3 bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs rounded-2xl shadow-lg transition-transform hover:scale-105 shrink-0 cursor-pointer"
+        >
+          웹진 조립 빌더 열기
+        </button>
+      </div>
+
+      {/* 3. Featured UI Components Gallery (36 Items, Favorites, Viewport Resizer, Compare, A11y) */}
       <FeaturedComponents />
 
       {/* 4. Webzine & Page Templates Showcase */}
@@ -26,6 +57,12 @@ const Dashboard: React.FC = () => {
 
       {/* 6. Library Metrics & Recent Changelog */}
       <LibraryMetrics />
+
+      {/* Webzine Builder Modal */}
+      <WebzineBuilderModal
+        isOpen={isBuilderOpen}
+        onClose={() => setIsBuilderOpen(false)}
+      />
     </div>
   );
 };
