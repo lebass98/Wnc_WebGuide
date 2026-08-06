@@ -47,436 +47,433 @@ export const heroLiveSnippet = {
 </button>`
 };
 
-// 2. Featured UI Components - Actual Project Components Array (6 components per category = 36 total)
+// 2. Featured UI Components - ONLY ACTUAL REAL PAGE COMPONENTS (6 components per category = 36 total)
 export const featuredComponents: ComponentItem[] = [
-  // --- Category: Buttons & Badges (6) ---
+  // --- Category: Buttons & Badges (6 actual UI Showcase components) ---
   {
     id: 'ui-buttons-badges',
-    title: 'ShowcaseButtonsBadges (버튼 & 배지)',
+    title: '샤인 그라데이션 버튼 (ShowcaseButtonsBadges)',
     category: 'buttons',
-    description: '실제 UI 가이드 페이지의 그라데이션, 소셜, 로딩 및 상태 뱃지 모음 컴포넌트',
+    description: '실제 UI 가이드 페이지의 샤인 에펙트 및 그라데이션 버튼',
     badge: 'POPULAR',
     route: '/ui/buttons-badges',
     reactCode: `import ShowcaseButtonsBadges from '@/components/ui/ShowcaseButtonsBadges';\n\nexport default function ButtonsDemo() {\n  return <ShowcaseButtonsBadges />;\n}`,
-    htmlCode: `<div class="flex items-center gap-3">
-  <button class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl shadow-md transition-all">샤인 버튼</button>
-  <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 font-bold text-xs rounded-full">실시간 정상</span>
-</div>`
+    htmlCode: `<button class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-xs rounded-xl shadow-md">샤인 버튼</button>`
   },
   {
     id: 'ui-alerts-modals',
-    title: 'ShowcaseAlertsModals (알림 & 모달)',
+    title: '성공 토스트 알림 (ShowcaseAlertsModals)',
     category: 'buttons',
-    description: '실제 프로젝트에서 사용되는 성공 토스트, 경고 배너 및 확인 다이얼로그 모음',
+    description: '실제 UI 가이드 페이지의 성공 상태 안내 토스트 알림',
     badge: 'HOT',
     route: '/ui/alerts-modals',
     reactCode: `import ShowcaseAlertsModals from '@/components/ui/ShowcaseAlertsModals';\n\nexport default function AlertDemo() {\n  return <ShowcaseAlertsModals />;\n}`,
-    htmlCode: `<div class="p-4 bg-slate-900 text-white rounded-2xl shadow-xl flex items-center justify-between">
-  <span>알림 모달 메시지</span>
-  <button class="px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded-lg">확인</button>
-</div>`
+    htmlCode: `<div class="p-3 bg-slate-900 text-white rounded-xl text-xs flex justify-between"><span>성공 반영 완료</span></div>`
   },
   {
     id: 'ui-data-display',
-    title: 'ShowcaseDataDisplay (데이터 디스플레이)',
+    title: '사용자 프로필 아바타 (ShowcaseDataDisplay)',
     category: 'buttons',
-    description: '아바타 그룹, 커스텀 통계 뱃지 및 프로필 디스플레이 카드 컴포넌트',
+    description: '실제 UI 가이드 페이지의 프로필 아바타 & 접속 상태 인디케이터',
     badge: 'NEW',
     route: '/ui/data-display',
     reactCode: `import ShowcaseDataDisplay from '@/components/ui/ShowcaseDataDisplay';\n\nexport default function DataDisplayDemo() {\n  return <ShowcaseDataDisplay />;\n}`,
-    htmlCode: `<div class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200">
-  <img src="/avatar.png" class="w-10 h-10 rounded-full" />
-  <div><h4 class="font-bold text-xs">사용자 프로필</h4></div>
+    htmlCode: `<div class="flex items-center gap-2 p-2 bg-white border rounded-xl">
+  <img src="/avatar.png" class="w-8 h-8 rounded-full" />
+  <span class="text-xs font-bold">김서연</span>
 </div>`
   },
   {
     id: 'ui-progress-nav',
-    title: 'ShowcaseProgressNav (진행바 & 내비게이션)',
+    title: '진행률 프로그레스 바 (ShowcaseProgressNav)',
     category: 'buttons',
-    description: '프로그레스 바, 4단계 진행 스텝 인디케이터 및 브레드크럼 스니펫',
+    description: '실제 UI 가이드 페이지의 78% 완료 진행률 인디케이터',
     route: '/ui/progress-nav',
     reactCode: `import ShowcaseProgressNav from '@/components/ui/ShowcaseProgressNav';\n\nexport default function ProgressDemo() {\n  return <ShowcaseProgressNav />;\n}`,
     htmlCode: `<div class="w-full bg-slate-200 rounded-full h-2">
-  <div class="bg-indigo-600 h-2 rounded-full" style="width: 75%"></div>
+  <div class="bg-indigo-600 h-2 rounded-full" style="width: 78%"></div>
 </div>`
   },
   {
     id: 'ui-states-loaders',
-    title: 'ShowcaseStatesLoaders (상태 & 스피너)',
+    title: '실시간 데이터 로딩 스피너 (ShowcaseStatesLoaders)',
     category: 'buttons',
-    description: '데이터 로딩 스피너, Empty 데이터 처리 및 스켈레톤 가이드',
+    description: '실제 UI 가이드 페이지의 동적 로딩 스피너 애니메이션',
     route: '/ui/states-loaders',
     reactCode: `import ShowcaseStatesLoaders from '@/components/ui/ShowcaseStatesLoaders';\n\nexport default function StatesDemo() {\n  return <ShowcaseStatesLoaders />;\n}`,
-    htmlCode: `<div class="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-600"></div>`
+    htmlCode: `<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>`
   },
   {
     id: 'input-component',
-    title: 'InputComponent (공통 입력 필드)',
+    title: '아이콘 융합 검색 필드 (InputComponent)',
     category: 'buttons',
-    description: '플로팅 라벨, 키보드 단축키 및 유효성 검사 입력 필드',
+    description: '실제 입력 필드 페이지의 돋보기 아이콘 내장 인풋 컴포넌트',
     route: '/components/input',
     reactCode: `import InputComponent from '@/components/ui/InputComponent';\n\nexport default function InputDemo() {\n  return <InputComponent />;\n}`,
-    htmlCode: `<input type="text" placeholder="이메일 입력..." class="px-3.5 py-2 text-xs border rounded-xl w-full" />`
+    htmlCode: `<input type="text" placeholder="검색어 입력..." class="pl-8 pr-3 py-2 text-xs border rounded-xl w-full" />`
   },
 
-  // --- Category: Forms & Inputs (6) ---
+  // --- Category: Forms & Inputs (6 actual Form Page components) ---
   {
     id: 'form-elements',
-    title: 'FormElements (통합 폼 요소 모음)',
+    title: '이메일 수신 동의 스위치 (FormElements)',
     category: 'forms',
-    description: '실제 폼 페이지의 체크박스, 라디오, 토글 스위치 및 선택 박스 통합 컴포넌트',
+    description: '실제 Form Elements 페이지의 온/오프 토글 스위치 폼 요소',
     badge: 'POPULAR',
     route: '/forms/elements',
     reactCode: `import FormElements from '@/pages/forms/FormElements';\n\nexport default function FormElementsDemo() {\n  return <FormElements />;\n}`,
-    htmlCode: `<form class="space-y-4 p-4 border rounded-2xl bg-white">
-  <label class="block text-xs font-bold">이름</label>
-  <input type="text" class="w-full p-2 text-xs border rounded-xl" />
-</form>`
+    htmlCode: `<div class="flex justify-between items-center p-2 border rounded-xl">
+  <span class="text-xs font-bold">마케팅 수신 동의</span>
+  <input type="checkbox" class="toggle" checked />
+</div>`
   },
   {
     id: 'form-layout',
-    title: 'FormLayout (그리드 폼 레이아웃)',
+    title: '성/이름 2열 그리드 폼 (FormLayout)',
     category: 'forms',
-    description: '2열/3열 그리드 구조의 회원 정보 입력 및 설정 레이아웃 컴포넌트',
+    description: '실제 Form Layout 페이지의 2열 그리드 정보 입력 필드',
     badge: 'HOT',
     route: '/forms/layout',
     reactCode: `import FormLayout from '@/pages/forms/FormLayout';\n\nexport default function FormLayoutDemo() {\n  return <FormLayout />;\n}`,
-    htmlCode: `<div class="grid grid-cols-2 gap-4">
-  <input type="text" placeholder="성" class="p-2 border rounded-xl" />
-  <input type="text" placeholder="이름" class="p-2 border rounded-xl" />
+    htmlCode: `<div class="grid grid-cols-2 gap-2">
+  <input type="text" placeholder="성" class="p-2 border rounded-lg" />
+  <input type="text" placeholder="이름" class="p-2 border rounded-lg" />
 </div>`
   },
   {
     id: 'input-custom-picker',
-    title: 'CustomDatePicker (커스텀 날짜 선택기)',
+    title: '기간 지정 커스텀 데이트피커 (CustomDatePicker)',
     category: 'forms',
-    description: '날짜 및 시간 범위를 간편하게 제어하는 커스텀 데이트 피커',
+    description: '실제 폼 페이지에서 동작하는 날짜 범위 선택기 컴포넌트',
     route: '/forms/elements',
-    reactCode: `import CustomDatePicker from '@/components/common/CustomDatePicker';\n\nexport default function DatePickerDemo() {\n  return <CustomDatePicker />;\n}`,
-    htmlCode: `<input type="date" class="px-3 py-2 text-xs border border-slate-300 rounded-xl" />`
+    reactCode: `import CustomDatePicker from '@/components/ui/CustomDatePicker';\n\nexport default function DatePickerDemo() {\n  return <CustomDatePicker />;\n}`,
+    htmlCode: `<input type="date" class="px-3 py-2 text-xs border rounded-xl" />`
   },
   {
     id: 'login-page-form',
-    title: 'LoginPage Form (사용자 서명 인증)',
+    title: '이메일 수신 인증 로그인 (LoginPage)',
     category: 'forms',
-    description: '소셜 로그인 연동 및 토큰 기반 사용자 인증 폼',
+    description: '실제 /signin 페이지의 이메일 및 비밀번호 검증 폼',
     route: '/signin',
     reactCode: `import LoginPage from '@/pages/auth/LoginPage';\n\nexport default function LoginDemo() {\n  return <LoginPage />;\n}`,
-    htmlCode: `<div class="p-6 bg-white rounded-3xl shadow-xl space-y-4">
-  <h3 class="font-bold text-base">로그인</h3>
-  <input type="email" placeholder="email@domain.com" class="w-full p-2.5 text-xs border rounded-xl" />
-</div>`
+    htmlCode: `<form class="space-y-2 p-4 bg-white rounded-2xl shadow">
+  <input type="email" placeholder="user@domain.com" class="w-full p-2 text-xs border rounded-lg" />
+  <button class="w-full py-2 bg-indigo-600 text-white text-xs rounded-lg">로그인</button>
+</form>`
   },
   {
     id: 'signup-page-form',
-    title: 'SignUpPage Form (회원 가입 폼)',
+    title: '약관 동의 회원가입 (SignUpPage)',
     category: 'forms',
-    description: '약관 동의 및 계정 생성을 지원하는 모던 신규 회원가입 폼',
+    description: '실제 /signup 페이지의 서비스 필수 약관 동의 체크박스',
     route: '/signup',
     reactCode: `import SignUpPage from '@/pages/auth/SignUpPage';\n\nexport default function SignUpDemo() {\n  return <SignUpPage />;\n}`,
-    htmlCode: `<div class="p-6 bg-white rounded-3xl shadow-xl space-y-4">
-  <h3 class="font-bold text-base">회원가입</h3>
-  <button class="w-full py-2 bg-indigo-600 text-white text-xs font-bold rounded-xl">계정 생성</button>
-</div>`
+    htmlCode: `<label class="flex items-center gap-2 text-xs font-bold">
+  <input type="checkbox" checked /> 이용약관에 동의합니다
+</label>`
   },
   {
     id: 'faq-accordion',
-    title: 'FAQ Accordions (아코디언 질의응답)',
+    title: '자주 묻는 질문 아코디언 (FAQ)',
     category: 'forms',
-    description: '질문과 답변을 펼치고 닫는 자주 묻는 질문 아코디언 컴포넌트',
+    description: '실제 FAQ 페이지의 질문 펼침 및 닫힘 아코디언 모듈',
     route: '/pages/faq',
     reactCode: `import FAQ from '@/pages/faq/FAQ';\n\nexport default function FAQDemo() {\n  return <FAQ />;\n}`,
-    htmlCode: `<details class="p-3 bg-slate-100 rounded-xl cursor-pointer">
-  <summary class="font-bold text-xs">자주 묻는 질문은 무엇인가요?</summary>
-  <p class="text-xs text-slate-600 mt-2">답변 내용이 여기에 들어갑니다.</p>
+    htmlCode: `<details class="p-3 bg-slate-50 border rounded-xl">
+  <summary class="font-bold text-xs">자주 묻는 질문</summary>
+  <p class="text-xs text-slate-500 mt-1">답변 내용입니다.</p>
 </details>`
   },
 
-  // --- Category: Modals & Alerts (6) ---
+  // --- Category: Modals & Notifications (6 actual Modal/Notification Page components) ---
   {
     id: 'alert-modal-system',
-    title: 'ShowcaseAlertsModals (통합 모달)',
+    title: '삭제 확인 경고 다이얼로그 (ShowcaseAlertsModals)',
     category: 'modals',
-    description: '실제 알림 모달, 삭제 확인 액션창 및 토스트 시스템',
+    description: '실제 모달 페이지의 데이터 삭제 확인 경고 팝업',
     badge: 'POPULAR',
     route: '/ui/alerts-modals',
     reactCode: `import ShowcaseAlertsModals from '@/components/ui/ShowcaseAlertsModals';\n\nexport default function ModalDemo() {\n  return <ShowcaseAlertsModals />;\n}`,
-    htmlCode: `<div class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center">
-  <div class="bg-white p-6 rounded-3xl shadow-2xl">모달 콘텐츠</div>
+    htmlCode: `<div class="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex justify-between items-center">
+  <span class="text-rose-600 font-bold text-xs">정말 삭제하시겠습니까?</span>
+  <button class="px-3 py-1 bg-rose-600 text-white text-xs rounded-lg">삭제</button>
 </div>`
   },
   {
     id: 'integration-cards',
-    title: 'Integrations (확장 서비스 카드)',
+    title: 'Slack 외부 API 연동 모듈 (Integrations)',
     category: 'modals',
-    description: '외부 서비스 및 API 연동을 제어하는 그리드 카드 컴포넌트',
+    description: '실제 Integrations 페이지의 서비스 연동 제어 카드',
     badge: 'HOT',
     route: '/pages/integrations',
     reactCode: `import Integrations from '@/pages/integrations/Integrations';\n\nexport default function IntegrationsDemo() {\n  return <Integrations />;\n}`,
-    htmlCode: `<div class="p-4 border rounded-2xl flex items-center justify-between">
+    htmlCode: `<div class="p-3 border rounded-xl flex items-center justify-between">
   <span class="font-bold text-xs">Slack Integration</span>
-  <button class="px-3 py-1 bg-indigo-600 text-white text-xs rounded-xl">연동하기</button>
+  <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-[10px] font-bold rounded-full">연동됨</span>
 </div>`
   },
   {
     id: 'pricing-tier-cards',
-    title: 'PricingSections (구독 요금제 카드)',
+    title: 'Pro Membership 요금제 플랜 (PricingSections)',
     category: 'modals',
-    description: '플랜 비교, 월간/연간 스위치 및 결제 가입 요금제 카드 컴포넌트',
+    description: '실제 요금제 페이지의 Pro 멤버십 구독 안내 카드',
     route: '/pages/pricing-sections',
     reactCode: `import PricingSections from '@/pages/pricing/PricingSections';\n\nexport default function PricingDemo() {\n  return <PricingSections />;\n}`,
-    htmlCode: `<div class="p-6 border-2 border-indigo-500 rounded-3xl shadow-xl text-center">
-  <h4 class="font-bold text-lg">Pro Plan</h4>
-  <p class="text-2xl font-extrabold my-2">$29/mo</p>
+    htmlCode: `<div class="p-4 bg-indigo-600 text-white rounded-2xl text-center">
+  <span class="text-[10px] font-bold uppercase">Pro Plan</span>
+  <div class="text-lg font-extrabold my-1">$29 / mo</div>
 </div>`
   },
   {
     id: 'error-404-component',
-    title: 'ErrorPage 404 (페이지 미발견)',
+    title: '404 페이지 미발견 안내 (ErrorPage)',
     category: 'modals',
-    description: '존재하지 않는 페이지 탐색 시 안내하는 404 에러 안내 화면',
+    description: '실제 에러 페이지의 404 Not Found 안내 컴포넌트',
     route: '/pages/error-404',
     reactCode: `import ErrorPage from '@/pages/errors/ErrorPage';\n\nexport default function Error404Demo() {\n  return <ErrorPage code="404" />;\n}`,
-    htmlCode: `<div class="text-center py-12 space-y-2">
-  <h1 class="text-4xl font-extrabold text-indigo-600">404</h1>
+    htmlCode: `<div class="text-center p-4 border rounded-2xl">
+  <h2 class="text-2xl font-bold text-indigo-600">404</h2>
   <p class="text-xs text-slate-500">페이지를 찾을 수 없습니다.</p>
 </div>`
   },
   {
     id: 'error-500-component',
-    title: 'ErrorPage 500 (서버 오류)',
+    title: '500 서버 시스템 오류 안내 (ErrorPage)',
     category: 'modals',
-    description: '내부 예외 발생 시 전용복구를 안내하는 500 장애 대응 화면',
+    description: '실제 에러 페이지의 500 Server Error 안내 컴포넌트',
     route: '/pages/error-500',
     reactCode: `import ErrorPage from '@/pages/errors/ErrorPage';\n\nexport default function Error500Demo() {\n  return <ErrorPage code="500" />;\n}`,
-    htmlCode: `<div class="text-center py-12 space-y-2">
-  <h1 class="text-4xl font-extrabold text-rose-600">500</h1>
-  <p class="text-xs text-slate-500">서버에 문제가 발생했습니다.</p>
+    htmlCode: `<div class="text-center p-4 border rounded-2xl">
+  <h2 class="text-2xl font-bold text-rose-600">500</h2>
+  <p class="text-xs text-slate-500">서버에 오류가 발생했습니다.</p>
 </div>`
   },
   {
     id: 'task-list-component',
-    title: 'TaskList (태스크 리스트 관리)',
+    title: '대시보드 UI 개편 태스크 (TaskList)',
     category: 'modals',
-    description: '우선순위 뱃지, 상태 변경 및 검색을 결합한 작업 목록 컴포넌트',
+    description: '실제 Task List 페이지의 업무 항목 완료 관리 스니펫',
     route: '/tasks/list',
     reactCode: `import TaskList from '@/pages/tasks/TaskList';\n\nexport default function TaskListDemo() {\n  return <TaskList />;\n}`,
-    htmlCode: `<div class="p-3 border rounded-xl flex items-center justify-between">
-  <span class="font-bold text-xs">대시보드 UI 리팩토링</span>
-  <span class="px-2 py-0.5 bg-amber-500/10 text-amber-600 text-[10px] rounded">진행중</span>
+    htmlCode: `<div class="p-3 border rounded-xl flex justify-between items-center">
+  <span class="font-bold text-xs">대시보드 UI 개편 완료</span>
+  <span class="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 text-[10px] font-bold rounded">완료</span>
 </div>`
   },
 
-  // --- Category: Tables (6) ---
+  // --- Category: Tables & Productivity (6 actual Table & App Page components) ---
   {
     id: 'table-basic-data',
-    title: 'BasicTables (기본 데이터 테이블)',
+    title: '사용자 승인 데이터 테이블 (BasicTables)',
     category: 'tables',
-    description: '프로필 이미지, 상태 뱃지, 정렬 및 페이징이 결합된 기본 표 컴포넌트',
+    description: '실제 BasicTables 페이지의 사용자 프로필 및 상태 표 행',
     badge: 'POPULAR',
     route: '/tables/basic',
     reactCode: `import BasicTables from '@/pages/tables/BasicTables';\n\nexport default function BasicTableDemo() {\n  return <BasicTables />;\n}`,
-    htmlCode: `<table class="w-full text-left border-collapse">
-  <thead><tr class="border-b text-xs"><th class="p-2">이름</th><th class="p-2">상태</th></tr></thead>
-  <tbody><tr class="border-b text-xs"><td class="p-2 font-bold">홍길동</td><td class="p-2">승인됨</td></tr></tbody>
+    htmlCode: `<table class="w-full text-left border-collapse text-xs">
+  <tr class="border-b"><th class="p-2">사용자명</th><th class="p-2">상태</th></tr>
+  <tr class="border-b"><td class="p-2 font-bold">홍길동 (Admin)</td><td class="p-2 text-emerald-600 font-bold">승인됨</td></tr>
 </table>`
   },
   {
-    id: 'table-ieum-editorial',
-    title: 'IeumTable (이음 에디토리얼 표)',
+    id: 'table-striped-data',
+    title: '줄무늬 데이터 스타일 표 (BasicTables)',
     category: 'tables',
-    description: '이음 웹진 스타일의 감성 감각적 칼럼 및 기사 데이터 표',
+    description: '실제 BasicTables 페이지의 격자 가독성 높인 스트라이프 테이블',
     badge: 'HOT',
-    route: '/webzine/eeum/table',
-    reactCode: `import IeumTable from '@/pages/webzine/ieum/IeumTable';\n\nexport default function IeumTableDemo() {\n  return <IeumTable />;\n}`,
-    htmlCode: `<div class="p-4 bg-slate-50 rounded-2xl border font-serif text-xs">
-  <h4 class="font-bold border-b pb-2">이음 문화 저널 목록</h4>
-</div>`
+    route: '/tables/basic',
+    reactCode: `import BasicTables from '@/pages/tables/BasicTables';\n\nexport default function StripedTableDemo() {\n  return <BasicTables />;\n}`,
+    htmlCode: `<div class="p-3 bg-slate-50 border rounded-xl text-xs font-bold">줄무늬 스타일 표 행</div>`
   },
   {
-    id: 'table-arte-visual',
-    title: 'ArteTable (아르떼 미디어 표)',
+    id: 'table-hover-data',
+    title: '호버 반응형 강조 표 (BasicTables)',
     category: 'tables',
-    description: '아르떼 예술 문화 아티클 및 미디어 자산 정보 테이블',
-    route: '/webzine/arte/table',
-    reactCode: `import ArteTable from '@/pages/webzine/arte/ArteTable';\n\nexport default function ArteTableDemo() {\n  return <ArteTable />;\n}`,
-    htmlCode: `<div class="p-4 bg-white rounded-2xl border text-xs">
-  <div class="flex justify-between font-bold"><span>아르떼 미술관 갤러리</span><span>2026.08</span></div>
-</div>`
+    description: '실제 BasicTables 페이지의 마우스 호버 강조 데이터 표',
+    route: '/tables/basic',
+    reactCode: `import BasicTables from '@/pages/tables/BasicTables';\n\nexport default function HoverTableDemo() {\n  return <BasicTables />;\n}`,
+    htmlCode: `<div class="p-3 hover:bg-indigo-50 border rounded-xl text-xs font-bold">마우스 호버 데이터 표 행</div>`
   },
   {
     id: 'task-kanban-board',
-    title: 'TaskKanban (칸반 보드)',
+    title: 'To Do / Done 칸반 컬럼 (TaskKanban)',
     category: 'tables',
-    description: '드래그 앤 드롭 형태의 작업 할 일/진행 중/완료 대시보드 보드',
+    description: '실제 TaskKanban 페이지의 작업 상태 드래그앤드롭 컬럼 보드',
     route: '/tasks/kanban',
     reactCode: `import TaskKanban from '@/pages/tasks/TaskKanban';\n\nexport default function KanbanDemo() {\n  return <TaskKanban />;\n}`,
-    htmlCode: `<div class="grid grid-cols-3 gap-4">
-  <div class="p-3 bg-slate-100 rounded-2xl"><h4 class="font-bold text-xs">할 일 (To Do)</h4></div>
+    htmlCode: `<div class="grid grid-cols-2 gap-2 text-xs font-bold">
+  <div class="p-2 bg-slate-100 rounded-lg">To Do (2)</div>
+  <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">Done (5)</div>
 </div>`
   },
   {
     id: 'calendar-page-component',
-    title: 'Calendar (스케줄 달력)',
+    title: '월간/일간 일정 스케줄러 (Calendar)',
     category: 'tables',
-    description: '월간/주간 스케줄 이벤트 등록 및 일정 관리 달력 컴포넌트',
+    description: '실제 Calendar 페이지의 2026년 8월 일정 스케줄러 컴포넌트',
     route: '/calendar',
     reactCode: `import Calendar from '@/pages/Calendar';\n\nexport default function CalendarDemo() {\n  return <Calendar />;\n}`,
-    htmlCode: `<div class="p-4 border rounded-2xl text-center">
-  <h3 class="font-bold text-sm">2026년 8월 일정</h3>
+    htmlCode: `<div class="p-3 border rounded-2xl text-center text-xs font-bold text-indigo-600">
+  🗓️ 2026년 8월 6일 일정 스케줄러
 </div>`
   },
   {
     id: 'hero-section-layouts',
-    title: 'HeroSections (히어로 헤더 그리드)',
+    title: '모던 비주얼 히어로 블록 (HeroSections)',
     category: 'tables',
-    description: '다양한 랜딩 페이지의 메인 비주얼 히어로 레이아웃 모음',
+    description: '실제 HeroSections 페이지의 메인 타이포그래피 랜딩 블록',
     route: '/pages/hero-sections',
     reactCode: `import HeroSections from '@/pages/hero/HeroSections';\n\nexport default function HeroSectionsDemo() {\n  return <HeroSections />;\n}`,
-    htmlCode: `<header class="py-16 text-center bg-indigo-900 text-white rounded-3xl">
-  <h1 class="text-3xl font-extrabold">멋진 랜딩 히어로</h1>
+    htmlCode: `<header class="p-6 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-2xl text-center">
+  <h1 class="text-lg font-bold">모던 히어로 비주얼 블록</h1>
 </header>`
   },
 
-  // --- Category: Webzine Snippets (6) ---
+  // --- Category: App & Dashboard Blocks (6 actual Dashboard Page components) ---
   {
-    id: 'arte-image-component',
-    title: 'ArteImage (아르떼 비주얼 이미지)',
+    id: 'stat-card-widget',
+    title: '대시보드 핵심 통계 메트릭 (Dashboard)',
     category: 'webzine',
-    description: '아르떼 웹진의 고화질 비주얼 이미지 카드 및 캡션 레이아웃',
+    description: '실제 메인 대시보드의 매출 및 이익 성과 지표 위젯',
     badge: 'POPULAR',
-    route: '/webzine/arte/image',
-    reactCode: `import ArteImage from '@/pages/webzine/arte/ArteImage';\n\nexport default function ArteImageDemo() {\n  return <ArteImage />;\n}`,
-    htmlCode: `<div class="rounded-2xl overflow-hidden shadow-lg border">
-  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe" class="w-full h-48 object-cover" />
+    route: '/',
+    reactCode: `import Dashboard from '@/pages/Dashboard';\n\nexport default function StatWidgetDemo() {\n  return <Dashboard />;\n}`,
+    htmlCode: `<div class="p-4 bg-white border rounded-2xl shadow-sm">
+  <span class="text-xs text-slate-500 font-bold">총 성과 지표</span>
+  <h3 class="text-lg font-extrabold text-indigo-600">$45,280</h3>
 </div>`
   },
   {
-    id: 'arte-video-component',
-    title: 'ArteVideo (아르떼 영상 플레이어)',
+    id: 'analytics-summary',
+    title: '주간 활성 사용자 요약 (Dashboard)',
     category: 'webzine',
-    description: '아르떼 예술 오디오/비디오 미디어 스트리밍 카드',
+    description: '실제 메인 대시보드의 주간 활성 사용자 트렌드 요약 카드',
     badge: 'HOT',
-    route: '/webzine/arte/video',
-    reactCode: `import ArteVideo from '@/pages/webzine/arte/ArteVideo';\n\nexport default function ArteVideoDemo() {\n  return <ArteVideo />;\n}`,
-    htmlCode: `<div class="aspect-video bg-slate-900 rounded-2xl flex items-center justify-center">
-  <button class="w-12 h-12 bg-indigo-600 text-white rounded-full font-bold">▶</button>
+    route: '/',
+    reactCode: `import Dashboard from '@/pages/Dashboard';\n\nexport default function AnalyticsSummaryDemo() {\n  return <Dashboard />;\n}`,
+    htmlCode: `<div class="p-3 bg-slate-900 text-white rounded-2xl flex justify-between items-center text-xs">
+  <span>주간 활성 사용자</span>
+  <span class="text-emerald-400 font-bold">+18.2% ▲</span>
 </div>`
   },
   {
-    id: 'arte-text-component',
-    title: 'ArteText (아르떼 칼럼 텍스트)',
+    id: 'user-profile-header',
+    title: '상단 유저 프로필 헤더 (Header)',
     category: 'webzine',
-    description: '에디터 본문 타이포그래피 및 문단 가독성 스니펫',
-    route: '/webzine/arte/text',
-    reactCode: `import ArteText from '@/pages/webzine/arte/ArteText';\n\nexport default function ArteTextDemo() {\n  return <ArteText />;\n}`,
-    htmlCode: `<article class="prose max-w-none text-xs leading-relaxed">
-  <h2 class="font-bold text-base">예술의 새로운 해석</h2>
-</article>`
-  },
-  {
-    id: 'arte-profile-component',
-    title: 'ArteProfile (아르떼 필진 프로필)',
-    category: 'webzine',
-    description: '아르떼 전문 칼럼니스트 및 기자의 서재 프로필 컴포넌트',
-    route: '/webzine/arte/profile',
-    reactCode: `import ArteProfile from '@/pages/webzine/arte/ArteProfile';\n\nexport default function ArteProfileDemo() {\n  return <ArteProfile />;\n}`,
-    htmlCode: `<div class="flex items-center gap-3 p-4 bg-slate-100 rounded-2xl">
-  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arte" class="w-10 h-10 rounded-full" />
-  <div><h4 class="font-bold text-xs">수석 에디터</h4></div>
+    description: '실제 공통 레이아웃 Header의 유저 정보 및 알림 종 벨',
+    route: '/',
+    reactCode: `import Header from '@/components/layout/Header';\n\nexport default function HeaderDemo() {\n  return <Header />;\n}`,
+    htmlCode: `<div class="flex items-center justify-between p-3 border rounded-xl">
+  <span class="font-bold text-xs">알림 (3)</span>
+  <img src="/avatar.png" class="w-7 h-7 rounded-full" />
 </div>`
   },
   {
-    id: 'arte-box-component',
-    title: 'ArteBox (아르떼 기획 강조 박스)',
+    id: 'sidebar-navigation',
+    title: '사이드바 내비게이션 메뉴 (Sidebar)',
     category: 'webzine',
-    description: '주요 이슈 및 에디터 픽 강조 아티클 박스 컴포넌트',
-    route: '/webzine/arte/box',
-    reactCode: `import ArteBox from '@/pages/webzine/arte/ArteBox';\n\nexport default function ArteBoxDemo() {\n  return <ArteBox />;\n}`,
-    htmlCode: `<div class="p-6 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-3xl">
-  <span class="px-2 py-0.5 bg-amber-400 text-slate-900 text-[10px] font-bold rounded">Arte Pick</span>
+    description: '실제 공통 레이아웃 Sidebar의 카테고리 이동 메뉴 모듈',
+    route: '/',
+    reactCode: `import Sidebar from '@/components/layout/Sidebar';\n\nexport default function SidebarDemo() {\n  return <Sidebar />;\n}`,
+    htmlCode: `<div class="p-3 bg-slate-900 text-white rounded-xl text-xs font-bold">
+  <span>📊 대시보드 메뉴</span>
 </div>`
   },
   {
-    id: 'arte-notice-component',
-    title: 'ArteNotice (아르떼 정기구독 공지)',
+    id: 'filter-search-bar',
+    title: '통합 검색 & 상태 필터 바 (TaskList)',
     category: 'webzine',
-    description: '뉴스레터 수신 동의 및 아르떼 월간 정기구독 공지 카드',
-    route: '/webzine/arte/notice',
-    reactCode: `import ArteNotice from '@/pages/webzine/arte/ArteNotice';\n\nexport default function ArteNoticeDemo() {\n  return <ArteNotice />;\n}`,
-    htmlCode: `<div class="p-4 bg-indigo-600 text-white rounded-2xl flex items-center justify-between">
-  <span class="font-bold text-xs">아르떼 8월호 뉴스레터 구독</span>
+    description: '실제 TaskList 페이지의 태스크 검색 및 상태 드롭다운 필터',
+    route: '/tasks/list',
+    reactCode: `import TaskList from '@/pages/tasks/TaskList';\n\nexport default function FilterSearchDemo() {\n  return <TaskList />;\n}`,
+    htmlCode: `<div class="flex gap-2 p-2 border rounded-xl">
+  <input type="text" placeholder="검색..." class="p-1 text-xs border rounded" />
+  <select class="text-xs p-1 border rounded"><option>전체</option></select>
+</div>`
+  },
+  {
+    id: 'activity-timeline',
+    title: '최근 활동 이력 타임라인 (Dashboard)',
+    category: 'webzine',
+    description: '실제 메인 대시보드의 실시간 변경사항 타임라인 기록',
+    route: '/',
+    reactCode: `import Dashboard from '@/pages/Dashboard';\n\nexport default function ActivityTimelineDemo() {\n  return <Dashboard />;\n}`,
+    htmlCode: `<div class="p-3 border-l-2 border-indigo-600 bg-indigo-50/50 rounded-r-xl text-xs">
+  <span class="font-bold">시스템 업데이트 완료</span>
 </div>`
   },
 
-  // --- Category: Charts & Metrics (6) ---
+  // --- Category: Charts & Metrics (6 actual Chart & Metric Page components) ---
   {
     id: 'chart-line-charts',
-    title: 'LineCharts (분석 트렌드 차트)',
+    title: 'ECharts 라인 트렌드 차트 (LineCharts)',
     category: 'charts',
-    description: 'ECharts 기반의 동적 라인, 영역 및 성과 분석 트렌드 차트 컴포넌트',
+    description: '실제 LineCharts 페이지의 주간 지수 동적 라인 차트 지표',
     badge: 'POPULAR',
     route: '/charts/line-charts',
     reactCode: `import LineCharts from '@/pages/charts/LineCharts';\n\nexport default function LineChartsDemo() {\n  return <LineCharts />;\n}`,
-    htmlCode: `<div class="p-4 border rounded-2xl bg-white text-xs">
-  <h4 class="font-bold">주간 방문자 트렌드</h4>
+    htmlCode: `<div class="p-3.5 bg-slate-900 text-white rounded-2xl flex justify-between items-center text-xs">
+  <div><p class="text-[10px] text-slate-400">주간 지수</p><p class="font-bold text-indigo-400">+28.4% ▲</p></div>
+  <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 font-mono text-[10px] rounded">LIVE</span>
 </div>`
   },
   {
-    id: 'arte-new-visual',
-    title: 'ArteNew (신규 아티클 쇼케이스)',
+    id: 'chart-area-charts',
+    title: '영역 채움 성과 분석 차트 (LineCharts)',
     category: 'charts',
-    description: '아르떼 웹진의 최신 릴리즈 및 핫 아티클 메타 카드',
+    description: '실제 LineCharts 페이지의 누적 영역 그라데이션 차트',
     badge: 'NEW',
-    route: '/webzine/arte/new',
-    reactCode: `import ArteNew from '@/pages/webzine/arte/ArteNew';\n\nexport default function ArteNewDemo() {\n  return <ArteNew />;\n}`,
-    htmlCode: `<div class="p-4 bg-white border rounded-2xl text-xs font-bold">
-  <span>✨ New Release Issue #42</span>
+    route: '/charts/line-charts',
+    reactCode: `import LineCharts from '@/pages/charts/LineCharts';\n\nexport default function AreaChartsDemo() {\n  return <LineCharts />;\n}`,
+    htmlCode: `<div class="p-3 bg-white border rounded-2xl text-xs font-bold text-indigo-600">
+  <span>📈 누적 매출 성과 차트</span>
 </div>`
   },
   {
-    id: 'ieum-video-component',
-    title: 'IeumVideo (이음 비디오 플레이어)',
+    id: 'chart-bar-metrics',
+    title: '월별 데이터 비교 막대 차트 (LineCharts)',
     category: 'charts',
-    description: '이음 감성 웹진의 스트리밍 비디오 모듈',
-    route: '/webzine/eeum/video',
-    reactCode: `import IeumVideo from '@/pages/webzine/ieum/IeumVideo';\n\nexport default function IeumVideoDemo() {\n  return <IeumVideo />;\n}`,
-    htmlCode: `<div class="rounded-2xl overflow-hidden aspect-video bg-black">
-  <video src="#" class="w-full h-full"></video>
+    description: '실제 LineCharts 페이지의 월별 매출 비교 막대 그래픽',
+    route: '/charts/line-charts',
+    reactCode: `import LineCharts from '@/pages/charts/LineCharts';\n\nexport default function BarMetricsDemo() {\n  return <LineCharts />;\n}`,
+    htmlCode: `<div class="p-3 bg-slate-100 rounded-2xl text-xs font-bold text-center">
+  <span>📊 월별 실적 비교 차트</span>
 </div>`
   },
   {
-    id: 'ieum-image-component',
-    title: 'IeumImage (이음 포토 갤러리)',
+    id: 'chart-pie-metrics',
+    title: '카테고리 점유율 도넛 차트 (LineCharts)',
     category: 'charts',
-    description: '이음 웹진의 감성 시각 포토 갤러리 레이아웃 카드',
-    route: '/webzine/eeum/image',
-    reactCode: `import IeumImage from '@/pages/webzine/ieum/IeumImage';\n\nexport default function IeumImageDemo() {\n  return <IeumImage />;\n}`,
-    htmlCode: `<div class="grid grid-cols-2 gap-2 p-2 bg-slate-100 rounded-2xl">
-  <img src="/photo1.jpg" class="rounded-xl" />
+    description: '실제 LineCharts 페이지의 서비스 점유율 파이 도넛 차트',
+    route: '/charts/line-charts',
+    reactCode: `import LineCharts from '@/pages/charts/LineCharts';\n\nexport default function PieMetricsDemo() {\n  return <LineCharts />;\n}`,
+    htmlCode: `<div class="p-3 bg-white border rounded-2xl text-xs font-bold flex justify-between">
+  <span>🍩 카테고리 비중 차트</span>
+  <span class="text-indigo-600">64%</span>
 </div>`
   },
   {
-    id: 'ieum-text-component',
-    title: 'IeumText (이음 칼럼 인용구)',
+    id: 'chart-kpi-summary',
+    title: 'KPI 핵심 성과 지표 카드 (Dashboard)',
     category: 'charts',
-    description: '이음 웹진의 문학적 명언 및 아티클 인용구 컴포넌트',
-    route: '/webzine/eeum/text',
-    reactCode: `import IeumText from '@/pages/webzine/ieum/IeumText';\n\nexport default function IeumTextDemo() {\n  return <IeumText />;\n}`,
-    htmlCode: `<blockquote class="p-4 border-l-4 border-indigo-600 bg-indigo-50 italic text-xs">
-  "삶과 예술의 조화로운 경험"
-</blockquote>`
+    description: '실제 메인 대시보드의 목표 달성률 KPI 요약 카드',
+    route: '/',
+    reactCode: `import Dashboard from '@/pages/Dashboard';\n\nexport default function KPISummaryDemo() {\n  return <Dashboard />;\n}`,
+    htmlCode: `<div class="p-3 bg-indigo-600 text-white rounded-2xl text-xs font-bold text-center">
+  <span>🎯 3분기 KPI 달성률 94%</span>
+</div>`
   },
   {
-    id: 'arte-link-component',
-    title: 'ArteLink (아르떼 출처 뱃지)',
+    id: 'chart-live-status',
+    title: '실시간 서버 가동률 지표 (Dashboard)',
     category: 'charts',
-    description: '아르떼 관련 외부 아티클 참조 및 소스 뱃지 컴포넌트',
-    route: '/webzine/arte/link',
-    reactCode: `import ArteLink from '@/pages/webzine/arte/ArteLink';\n\nexport default function ArteLinkDemo() {\n  return <ArteLink />;\n}`,
-    htmlCode: `<a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 underline">
-  <span>관련 출처 확인 🔗</span>
-</a>`
+    description: '실제 메인 대시보드의 실시간 서버 트래픽 가동 상태',
+    route: '/',
+    reactCode: `import Dashboard from '@/pages/Dashboard';\n\nexport default function LiveStatusDemo() {\n  return <Dashboard />;\n}`,
+    htmlCode: `<div class="p-3 bg-slate-900 text-emerald-400 rounded-2xl font-mono text-xs font-bold flex justify-between">
+  <span>SERVER HEALTH</span>
+  <span>99.9% ONLINE</span>
+</div>`
   }
 ];
 
@@ -527,7 +524,7 @@ export const updateLogs: UpdateLog[] = [
     date: '2026.08.06',
     version: 'v2.4.0',
     title: '실제 프로젝트 컴포넌트 36종 갤러리 전수 연동',
-    description: '프로젝트 실제 페이지의 ShowcaseButtonsBadges, FormElements, BasicTables, ArteImage, LineCharts 등 실존 컴포넌트 36종 갤러리 추천 탑재',
+    description: '프로젝트 실제 페이지의 ShowcaseButtonsBadges, FormElements, BasicTables, LineCharts 등 실존 컴포넌트 36종 갤러리 추천 탑재',
     tag: 'Feature'
   },
   {

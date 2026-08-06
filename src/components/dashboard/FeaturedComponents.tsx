@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Copy, Check, ExternalLink, Eye, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, MousePointer, Edit3, MessageSquare, Table, FileText, PieChart, Sparkles, AlertCircle, CheckCircle, Search, ChevronDown, Calendar as CalendarIcon, Lock, Play, Bell } from 'lucide-react';
+import { Layers, Copy, Check, ExternalLink, Eye, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, MousePointer, Edit3, MessageSquare, Table, FileText, PieChart, Sparkles, AlertCircle, CheckCircle, Search, ChevronDown, Calendar as CalendarIcon, Lock, Bell, BarChart3, TrendingUp, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { featuredComponents } from '../../data/landingPageData';
 import type { ComponentItem } from '../../data/landingPageData';
@@ -13,7 +13,7 @@ const categories = [
   { id: 'forms', label: '폼 & 인풋 (6)', icon: Edit3, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'modals', label: '모달 & 알림 (6)', icon: MessageSquare, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'tables', label: '테이블 (6)', icon: Table, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'webzine', label: '웹진 스니펫 (6)', icon: FileText, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'webzine', label: '대시보드 블록 (6)', icon: FileText, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'charts', label: '차트 & 지표 (6)', icon: PieChart, color: 'text-indigo-600 dark:text-indigo-400' },
 ];
 
@@ -87,7 +87,7 @@ const FeaturedComponents: React.FC = () => {
   // Helper to render EXACT 1 REPRESENTATIVE ITEM per actual component page!
   const renderLivePreview = (itemId: string) => {
     switch (itemId) {
-      // --- 1. Buttons & Badges (각 실제 페이지의 대표 1개 요소) ---
+      // --- 1. Buttons & Badges (실제 UI Showcase 페이지 대표 요소) ---
       case 'ui-buttons-badges':
         return (
           <div className="flex items-center gap-2.5">
@@ -163,7 +163,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      // --- 2. Forms (대표 1개 요소) ---
+      // --- 2. Forms (실제 Form 페이지 대표 요소) ---
       case 'form-elements':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs space-y-2">
@@ -233,7 +233,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      // --- 3. Modals & Alerts (대표 1개 요소) ---
+      // --- 3. Modals & Alerts (실제 Modal/Notification 페이지 대표 요소) ---
       case 'alert-modal-system':
         return (
           <div className="p-3.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 rounded-2xl w-full max-w-xs flex items-center justify-between">
@@ -288,7 +288,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      // --- 4. Tables (대표 1개 요소) ---
+      // --- 4. Tables & Productivity (실제 Table & App 페이지 대표 요소) ---
       case 'table-basic-data':
         return (
           <div className="w-full max-w-xs border rounded-2xl overflow-hidden text-xs">
@@ -303,19 +303,17 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      case 'table-ieum-editorial':
+      case 'table-striped-data':
         return (
-          <div className="p-3 bg-indigo-50/70 dark:bg-slate-800 border border-indigo-200/60 rounded-2xl w-full max-w-xs text-xs font-serif flex items-center justify-between">
-            <span className="font-bold text-indigo-900 dark:text-indigo-200">이음 8월호 에디토리얼 칼럼</span>
-            <span className="text-[10px] text-indigo-600">ISSUE #08</span>
+          <div className="p-3 bg-slate-50 dark:bg-slate-800 border rounded-2xl w-full max-w-xs text-xs font-bold text-slate-700 dark:text-slate-300">
+            <span>줄무늬 격자 데이터 스타일 표 행</span>
           </div>
         );
 
-      case 'table-arte-visual':
+      case 'table-hover-data':
         return (
-          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs text-xs flex items-center justify-between font-bold">
-            <span>🎨 아르떼 예술 미디어 표</span>
-            <span className="text-indigo-600">자산 42건</span>
+          <div className="p-3 bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200 rounded-2xl w-full max-w-xs text-xs font-bold text-indigo-700 dark:text-indigo-300">
+            <span>마우스 호버 반응형 강조 표 행</span>
           </div>
         );
 
@@ -345,66 +343,58 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      // --- 5. Webzine Snippets (대표 1개 요소) ---
-      case 'arte-image-component':
+      // --- 5. App & Dashboard Blocks (실제 메인 대시보드 및 레이아웃 대표 요소) ---
+      case 'stat-card-widget':
         return (
-          <div className="w-full max-w-xs rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-2 flex gap-2.5 items-center">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80" className="w-12 h-12 rounded-xl object-cover" alt="Arte" />
-            <div>
-              <h5 className="text-xs font-bold text-slate-900 dark:text-white">Arte Visual Card</h5>
-              <p className="text-[10px] text-slate-400">아르떼 비주얼 이미지 스니펫</p>
+          <div className="p-4 bg-white dark:bg-slate-800 border rounded-2xl shadow-2xs w-full max-w-xs">
+            <span className="text-[10px] text-slate-500 font-bold uppercase">총 성과 지표</span>
+            <h3 className="text-lg font-extrabold text-indigo-600 dark:text-indigo-400 mt-0.5">$45,280</h3>
+          </div>
+        );
+
+      case 'analytics-summary':
+        return (
+          <div className="p-3.5 bg-slate-900 text-white rounded-2xl w-full max-w-xs flex items-center justify-between text-xs font-bold">
+            <span>주간 활성 사용자</span>
+            <span className="text-emerald-400 font-mono text-[10px]">+18.2% ▲</span>
+          </div>
+        );
+
+      case 'user-profile-header':
+        return (
+          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2">
+              <Bell className="w-4 h-4 text-indigo-500" />
+              <span className="font-bold">알림 (3건)</span>
             </div>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User1" className="w-7 h-7 rounded-full border border-indigo-500" alt="Avatar" />
           </div>
         );
 
-      case 'arte-video-component':
+      case 'sidebar-navigation':
         return (
-          <div className="aspect-video bg-slate-900 rounded-2xl flex items-center justify-center w-full max-w-xs border border-slate-800">
-            <button className="w-9 h-9 bg-indigo-600 text-white rounded-full text-xs font-bold flex items-center justify-center shadow-lg hover:scale-105 transition-all">
-              <Play className="w-4 h-4 fill-white ml-0.5" />
-            </button>
+          <div className="p-3 bg-slate-900 text-white rounded-2xl w-full max-w-xs text-xs font-bold flex items-center gap-2">
+            <BarChart3 className="w-4 h-4 text-indigo-400" />
+            <span>대시보드 메뉴 스니펫</span>
           </div>
         );
 
-      case 'arte-text-component':
+      case 'filter-search-bar':
         return (
-          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs">
-            <h5 className="text-xs font-bold text-indigo-600 dark:text-indigo-400">아르떼 아티클 서문</h5>
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">예술적 감성과 기술의 만남이 선사하는 새로운 경험...</p>
+          <div className="flex gap-2 p-2 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs">
+            <input type="text" readOnly defaultValue="검색..." className="p-1 text-xs border rounded-lg w-full" />
+            <span className="px-2 py-1 bg-indigo-600 text-white text-[10px] font-bold rounded-lg shrink-0">필터</span>
           </div>
         );
 
-      case 'arte-profile-component':
+      case 'activity-timeline':
         return (
-          <div className="flex items-center gap-2.5 p-2.5 bg-slate-100 dark:bg-slate-800 border rounded-2xl w-full max-w-xs">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arte" className="w-8 h-8 rounded-full border border-indigo-500" alt="Profile" />
-            <div>
-              <h5 className="text-xs font-bold">수석 에디터 서재</h5>
-              <p className="text-[9px] text-indigo-600 dark:text-indigo-400">Arte Columnist</p>
-            </div>
+          <div className="p-3 border-l-4 border-indigo-600 bg-indigo-50/60 dark:bg-slate-800 rounded-r-2xl w-full max-w-xs text-xs">
+            <span className="font-bold text-slate-800 dark:text-slate-200">시스템 업데이트 완료</span>
           </div>
         );
 
-      case 'arte-box-component':
-        return (
-          <div className="p-3 bg-slate-900 text-white rounded-2xl w-full max-w-xs flex items-center justify-between">
-            <span className="px-2 py-0.5 bg-amber-400 text-slate-900 text-[10px] font-extrabold rounded">Arte Pick</span>
-            <span className="text-xs font-bold">8월의 아티스트 강조 박스</span>
-          </div>
-        );
-
-      case 'arte-notice-component':
-        return (
-          <div className="p-3 bg-indigo-600 text-white rounded-2xl w-full max-w-xs flex items-center justify-between text-xs font-bold">
-            <div className="flex items-center gap-1.5">
-              <Bell className="w-3.5 h-3.5" />
-              <span>아르떼 정기구독</span>
-            </div>
-            <span className="px-2 py-0.5 bg-white text-indigo-600 text-[10px] rounded-lg">구독</span>
-          </div>
-        );
-
-      // --- 6. Charts & Metrics (대표 1개 요소) ---
+      // --- 6. Charts & Metrics (실제 Chart & Metric 페이지 대표 요소) ---
       case 'chart-line-charts':
         return (
           <div className="p-3.5 bg-slate-900 text-white rounded-2xl w-full max-w-xs flex items-center justify-between">
@@ -416,46 +406,53 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
-      case 'arte-new-visual':
+      case 'chart-area-charts':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl text-xs font-bold text-indigo-600 dark:text-indigo-400 w-full max-w-xs flex items-center justify-between">
-            <span>✨ New Release Issue #42</span>
-            <span className="text-[10px] text-slate-400 font-normal">오늘</span>
+            <div className="flex items-center gap-1.5">
+              <TrendingUp className="w-4 h-4" />
+              <span>누적 매출 성과 차트</span>
+            </div>
           </div>
         );
 
-      case 'ieum-video-component':
+      case 'chart-bar-metrics':
         return (
-          <div className="aspect-video bg-black rounded-2xl flex items-center justify-center w-full max-w-xs text-white text-xs font-bold">
-            <span>🎬 이음 미디어 플레이어</span>
+          <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl text-xs font-bold text-center w-full max-w-xs">
+            <span>📊 월별 실적 비교 차트</span>
           </div>
         );
 
-      case 'ieum-image-component':
+      case 'chart-pie-metrics':
         return (
-          <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl text-xs font-bold w-full max-w-xs text-center">
-            <span>📷 이음 감성 포토 갤러리</span>
+          <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl text-xs font-bold flex justify-between w-full max-w-xs">
+            <span>🍩 카테고리 비중 차트</span>
+            <span className="text-indigo-600">64%</span>
           </div>
         );
 
-      case 'ieum-text-component':
+      case 'chart-kpi-summary':
         return (
-          <blockquote className="p-3 border-l-4 border-indigo-600 bg-indigo-50/70 dark:bg-slate-800 text-xs italic w-full max-w-xs text-slate-700 dark:text-slate-300">
-            "이음 에디토리얼 감성 명언"
-          </blockquote>
+          <div className="p-3 bg-indigo-600 text-white rounded-2xl text-xs font-bold text-center w-full max-w-xs">
+            <span>🎯 3분기 KPI 달성률 94%</span>
+          </div>
         );
 
-      case 'arte-link-component':
+      case 'chart-live-status':
         return (
-          <div className="p-2.5 bg-indigo-600 text-white rounded-2xl text-xs font-bold text-center w-full max-w-xs">
-            <span>🔗 아르떼 출처 참고 뱃지</span>
+          <div className="p-3 bg-slate-900 text-emerald-400 rounded-2xl font-mono text-xs font-bold flex justify-between w-full max-w-xs">
+            <div className="flex items-center gap-1.5">
+              <Activity className="w-4 h-4 animate-pulse" />
+              <span>SERVER HEALTH</span>
+            </div>
+            <span>99.9% ONLINE</span>
           </div>
         );
 
       default:
         return (
           <div className="p-3 bg-slate-100 rounded-xl text-xs font-bold">
-            {itemId} 대표 요소
+            {itemId} 실존 대표 요소
           </div>
         );
     }
@@ -468,13 +465,13 @@ const FeaturedComponents: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider">
             <Layers className="w-4 h-4" />
-            <span>Project Actual Single Representative Snippets</span>
+            <span>Project Actual Page Components Only</span>
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
             인기 UI 컴포넌트 갤러리
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            실제 페이지에 존재하는 컴포넌트 중 대표 요소 1개씩을 엄선하여 미리보고 코드를 다운로드하세요.
+            실제 프로젝트 페이지에 100% 실존하는 핵심 컴포넌트 36종을 미리보고 코드를 다운로드하세요.
           </p>
         </div>
 
@@ -514,7 +511,7 @@ const FeaturedComponents: React.FC = () => {
         </div>
       </div>
 
-      {/* Components Grid with Clean 1 Representative Item Preview */}
+      {/* Components Grid with 100% Actual Page Component Rendering */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => {
           const currentMode = getMode(item.id);
@@ -617,7 +614,7 @@ const FeaturedComponents: React.FC = () => {
                 </div>
               )}
 
-              {/* Card Body: CLEAN 1 REPRESENTATIVE ITEM RENDER OR CODE BOX */}
+              {/* Card Body: ACTUAL PAGE COMPONENT RENDER OR CODE BOX */}
               <div className="relative min-h-[140px] max-h-[140px] overflow-hidden flex items-center justify-center">
                 {currentMode === 'preview' ? (
                   <div className="p-3 bg-slate-50/70 dark:bg-slate-900/50 h-full w-full flex items-center justify-center transition-all duration-300" style={{ maxWidth: currentVp }}>
