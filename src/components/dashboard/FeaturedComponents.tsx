@@ -41,7 +41,7 @@ const FeaturedComponents: React.FC = () => {
       {/* Section Title & Category Filter Tabs */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider">
             <Layers className="w-4 h-4" />
             <span>Featured UI Components</span>
           </div>
@@ -62,7 +62,7 @@ const FeaturedComponents: React.FC = () => {
               className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === cat.id
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'
-                  : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-[#1A222C] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               {cat.label}
@@ -80,22 +80,22 @@ const FeaturedComponents: React.FC = () => {
           return (
             <div
               key={item.id}
-              className="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              className="group bg-white dark:bg-[#1A222C] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
               {/* Card Header & Badge */}
-              <div className="p-5 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between">
+              <div className="p-5 pb-4 border-b border-slate-100 dark:border-slate-800/80 flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-indigo-500 transition-colors">
+                    <h3 className="font-bold text-slate-900 dark:text-white text-base group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {item.title}
                     </h3>
                     {item.badge && (
                       <span className={`px-2 py-0.5 text-[10px] font-extrabold rounded-md uppercase tracking-wider ${
                         item.badge === 'HOT'
-                          ? 'bg-rose-500/10 text-rose-500 border border-rose-500/20'
+                          ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
                           : item.badge === 'NEW'
-                          ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
-                          : 'bg-indigo-500/10 text-indigo-500 border border-indigo-500/20'
+                          ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                          : 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20'
                       }`}>
                         {item.badge}
                       </span>
@@ -108,8 +108,8 @@ const FeaturedComponents: React.FC = () => {
               </div>
 
               {/* Code Snippet Box */}
-              <div className="p-4 bg-slate-950 font-mono text-xs text-slate-300 relative min-h-[120px] max-h-[150px] overflow-y-auto">
-                <div className="absolute top-2 right-2 flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 z-10 text-[10px]">
+              <div className="p-4 bg-slate-900 font-mono text-xs text-slate-200 relative min-h-[120px] max-h-[150px] overflow-y-auto">
+                <div className="absolute top-2 right-2 flex items-center gap-1 bg-slate-800/90 p-1 rounded-lg border border-slate-700/80 z-10 text-[10px]">
                   <button
                     onClick={() => toggleCodeType(item.id, 'react')}
                     className={`px-2 py-0.5 rounded cursor-pointer ${
@@ -134,10 +134,10 @@ const FeaturedComponents: React.FC = () => {
               </div>
 
               {/* Card Footer Actions */}
-              <div className="p-3 bg-slate-50 dark:bg-slate-900/80 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                 <button
                   onClick={() => navigate(item.route)}
-                  className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-1 transition-colors cursor-pointer"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>상세 가이드 보기</span>
@@ -145,7 +145,7 @@ const FeaturedComponents: React.FC = () => {
 
                 <button
                   onClick={() => handleCopy(item)}
-                  className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-sm transition-all cursor-pointer active:scale-95"
+                  className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition-all cursor-pointer active:scale-95"
                 >
                   {isCopied ? (
                     <>

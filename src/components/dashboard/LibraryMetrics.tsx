@@ -9,7 +9,7 @@ const LibraryMetrics: React.FC = () => {
       <div className="xl:col-span-2 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <Layers className="w-5 h-5 text-indigo-500" />
+            <Layers className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
             <span>라이브러리 통계 & 지표</span>
           </h2>
           <span className="text-xs text-slate-500 font-mono">Wnc WebGuide Metrics</span>
@@ -19,13 +19,13 @@ const LibraryMetrics: React.FC = () => {
           {libraryMetrics.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2 hover:border-indigo-500/40 transition-colors"
+              className="bg-white dark:bg-[#1A222C] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2 hover:border-indigo-500/40 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
                   {item.label}
                 </span>
-                <span className="px-2 py-0.5 text-[10px] font-bold bg-emerald-500/10 text-emerald-500 rounded-md">
+                <span className="px-2 py-0.5 text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-md">
                   {item.change}
                 </span>
               </div>
@@ -41,13 +41,13 @@ const LibraryMetrics: React.FC = () => {
       </div>
 
       {/* Changelog & Timeline (Right 1 Column) */}
-      <div className="xl:col-span-1 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+      <div className="xl:col-span-1 bg-white dark:bg-[#1A222C] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
           <h3 className="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
-            <Activity className="w-4 h-4 text-indigo-500" />
+            <Activity className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             <span>최근 업데이트 이력</span>
           </h3>
-          <span className="text-[11px] px-2 py-0.5 bg-indigo-500/10 text-indigo-500 font-mono rounded">
+          <span className="text-[11px] px-2 py-0.5 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-mono rounded">
             Changelog
           </span>
         </div>
@@ -56,7 +56,7 @@ const LibraryMetrics: React.FC = () => {
           {recentUpdates.map((log, idx) => (
             <div key={idx} className="relative pl-4 border-l-2 border-indigo-500/30 space-y-1">
               <div className="flex items-center justify-between text-[11px]">
-                <span className="font-mono text-indigo-500 font-bold">{log.version}</span>
+                <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">{log.version}</span>
                 <span className="text-slate-400 font-mono">{log.date}</span>
               </div>
               <h4 className="text-xs font-bold text-slate-900 dark:text-white">
