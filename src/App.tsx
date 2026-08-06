@@ -4,6 +4,8 @@ import { useAuth } from './context/AuthContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
+import ScrollProgressBar from './components/common/ScrollProgressBar';
+import BackToTopButton from './components/common/BackToTopButton';
 
 // Lazy loaded page components
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -93,6 +95,12 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
+      {/* Top Scroll Indicator */}
+      <ScrollProgressBar />
+      
+      {/* Back To Top Floating Action Button */}
+      <BackToTopButton />
+
       <Suspense fallback={<DashboardSkeleton />}>
         <Routes>
       {/* 1. 풀 스크린 에러 페이지 라우트 그룹 */}

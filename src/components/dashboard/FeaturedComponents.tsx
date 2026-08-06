@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Copy, Check, ExternalLink, Eye, Sparkles, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, Zap, Bell, CheckCircle2, AlertTriangle, Play } from 'lucide-react';
+import { Layers, Copy, Check, ExternalLink, Eye, Sparkles, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, Zap, Bell, CheckCircle2, AlertTriangle, Play, MousePointer, Edit3, MessageSquare, Table, FileText, PieChart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { featuredComponents } from '../../data/landingPageData';
 import type { ComponentItem } from '../../data/landingPageData';
@@ -7,15 +7,24 @@ import { useComponentStorage } from '../../hooks/useComponentStorage';
 import ComponentCompareModal from './ComponentCompareModal';
 
 const categories = [
-  { id: 'all', label: '전체 (All 36)' },
-  { id: 'favorites', label: '❤️ 내 즐겨찾기' },
-  { id: 'buttons', label: '버튼 & 뱃지 (6)' },
-  { id: 'forms', label: '폼 & 인풋 (6)' },
-  { id: 'modals', label: '모달 & 알림 (6)' },
-  { id: 'tables', label: '테이블 (6)' },
-  { id: 'webzine', label: '웹진 스니펫 (6)' },
-  { id: 'charts', label: '차트 & 지표 (6)' },
+  { id: 'all', label: '전체 (All 36)', icon: Layers, color: 'text-indigo-500' },
+  { id: 'favorites', label: '❤️ 내 즐겨찾기', icon: Heart, color: 'text-rose-500' },
+  { id: 'buttons', label: '버튼 & 뱃지 (6)', icon: MousePointer, color: 'text-indigo-500' },
+  { id: 'forms', label: '폼 & 인풋 (6)', icon: Edit3, color: 'text-emerald-500' },
+  { id: 'modals', label: '모달 & 알림 (6)', icon: MessageSquare, color: 'text-rose-500' },
+  { id: 'tables', label: '테이블 (6)', icon: Table, color: 'text-amber-500' },
+  { id: 'webzine', label: '웹진 스니펫 (6)', icon: FileText, color: 'text-violet-500' },
+  { id: 'charts', label: '차트 & 지표 (6)', icon: PieChart, color: 'text-cyan-500' },
 ];
+
+const categoryBadgeStyles: Record<string, string> = {
+  buttons: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
+  forms: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+  modals: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
+  tables: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
+  webzine: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20',
+  charts: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
+};
 
 const FeaturedComponents: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -56,7 +65,6 @@ const FeaturedComponents: React.FC = () => {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  // Feature: Single Component File Download (.tsx or .html)
   const handleDownloadFile = (item: ComponentItem) => {
     addRecentlyViewed(item.id);
     const currentMode = getMode(item.id);
@@ -74,7 +82,6 @@ const FeaturedComponents: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
-  // Compare Toggle
   const toggleCompareItem = (id: string) => {
     setSelectedForCompare(prev =>
       prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id].slice(0, 3)
@@ -83,7 +90,7 @@ const FeaturedComponents: React.FC = () => {
 
   const compareItemsList = featuredComponents.filter(i => selectedForCompare.includes(i.id));
 
-  // Helper to render live component UI previews for ALL 36 items explicitly
+  // Helper to render live component UI previews for ALL 36 items
   const renderLivePreview = (itemId: string) => {
     switch (itemId) {
       // --- 1. Buttons & Badges (6) ---
@@ -507,7 +514,7 @@ const FeaturedComponents: React.FC = () => {
             인기 UI 컴포넌트 갤러리
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            북마크, 반응형 뷰포트 조절, 코드 다운로드, 접근성 가이드 및 나란히 비교 도구를 제공합니다.
+            카테고리 아이콘 뱃지, 3D 호버 리프트 모션, 반응형 뷰포트 조절 및 접근성 가이드를 지원합니다.
           </p>
         </div>
 
@@ -525,25 +532,29 @@ const FeaturedComponents: React.FC = () => {
           </div>
         )}
 
-        {/* Category Tabs */}
+        {/* Category Tabs with Icons */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
-                selectedCategory === cat.id
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'
-                  : 'bg-white dark:bg-[#1A222C] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const IconComp = cat.icon;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCategory === cat.id
+                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'
+                    : 'bg-white dark:bg-[#1A222C] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
+                }`}
+              >
+                <IconComp className={`w-3.5 h-3.5 ${selectedCategory === cat.id ? 'text-white' : cat.color}`} />
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Components Grid */}
+      {/* Components Grid with 3D Depth Lift & Custom Color Coding */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => {
           const currentMode = getMode(item.id);
@@ -551,16 +562,16 @@ const FeaturedComponents: React.FC = () => {
           const isCopied = copiedId === item.id;
           const isFav = favorites.includes(item.id);
           const isCompared = selectedForCompare.includes(item.id);
+          const badgeClass = categoryBadgeStyles[item.category] || 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20';
 
           return (
             <div
               key={item.id}
-              className="group bg-white dark:bg-[#1A222C] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+              className="group bg-white dark:bg-[#1A222C] rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 dark:hover:border-indigo-500/60 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
             >
               {/* Card Header & Controls */}
               <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
                 <div className="min-w-0 flex items-center gap-2">
-                  {/* Bookmark Heart Button */}
                   <button
                     onClick={() => toggleFavorite(item.id)}
                     className={`p-1 rounded-full transition-all cursor-pointer ${
@@ -571,16 +582,23 @@ const FeaturedComponents: React.FC = () => {
                     <Heart className={`w-4 h-4 ${isFav ? 'fill-rose-500' : ''}`} />
                   </button>
 
-                  <h3 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {item.title}
-                  </h3>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className={`px-2 py-0.2 text-[9px] font-bold uppercase rounded border ${badgeClass}`}>
+                        {item.category}
+                      </span>
+                    </div>
+                    <h3 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mt-0.5">
+                      {item.title}
+                    </h3>
+                  </div>
                 </div>
 
                 {/* Card View Mode Selector & Compare Checkbox */}
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button
                     onClick={() => toggleCompareItem(item.id)}
-                    className={`px-2 py-0.5 text-[10px] font-bold rounded border cursor-pointer ${
+                    className={`px-2 py-0.5 text-[10px] font-bold rounded border transition-all cursor-pointer ${
                       isCompared
                         ? 'bg-indigo-600 text-white border-indigo-600'
                         : 'text-slate-400 border-slate-200 dark:border-slate-700 hover:text-indigo-500'
@@ -593,7 +611,7 @@ const FeaturedComponents: React.FC = () => {
                   <div className="flex items-center bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[10px]">
                     <button
                       onClick={() => setMode(item.id, 'preview')}
-                      className={`px-2 py-0.5 rounded font-medium flex items-center gap-1 cursor-pointer ${
+                      className={`px-2 py-0.5 rounded font-medium flex items-center gap-1 cursor-pointer transition-all ${
                         currentMode === 'preview' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
@@ -602,7 +620,7 @@ const FeaturedComponents: React.FC = () => {
                     </button>
                     <button
                       onClick={() => setMode(item.id, 'react')}
-                      className={`px-2 py-0.5 rounded font-medium cursor-pointer ${
+                      className={`px-2 py-0.5 rounded font-medium cursor-pointer transition-all ${
                         currentMode === 'react' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
@@ -610,7 +628,7 @@ const FeaturedComponents: React.FC = () => {
                     </button>
                     <button
                       onClick={() => setMode(item.id, 'html')}
-                      className={`px-2 py-0.5 rounded font-medium cursor-pointer ${
+                      className={`px-2 py-0.5 rounded font-medium cursor-pointer transition-all ${
                         currentMode === 'html' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
