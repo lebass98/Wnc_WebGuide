@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Copy, Check, ExternalLink, Eye, Sparkles, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, Zap } from 'lucide-react';
+import { Layers, Copy, Check, ExternalLink, Eye, Sparkles, Heart, Download, Monitor, Tablet, Smartphone, ArrowRightLeft, Info, HelpCircle, Zap, Bell, CheckCircle2, AlertTriangle, Play } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { featuredComponents } from '../../data/landingPageData';
 import type { ComponentItem } from '../../data/landingPageData';
@@ -83,9 +83,10 @@ const FeaturedComponents: React.FC = () => {
 
   const compareItemsList = featuredComponents.filter(i => selectedForCompare.includes(i.id));
 
-  // Helper to render live component UI previews
+  // Helper to render live component UI previews for ALL 36 items explicitly
   const renderLivePreview = (itemId: string) => {
     switch (itemId) {
+      // --- 1. Buttons & Badges (6) ---
       case 'btn-gradient':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px]">
@@ -143,6 +144,7 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
+      // --- 2. Forms & Inputs (6) ---
       case 'input-floating':
         return (
           <div className="flex items-center justify-center h-full min-h-[130px] px-4">
@@ -158,6 +160,327 @@ const FeaturedComponents: React.FC = () => {
             <div className="relative flex items-center w-full max-w-xs">
               <input type="text" placeholder="빠른 검색..." className="w-full pl-3 pr-14 py-2 text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none" />
               <kbd className="absolute right-2 px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded">⌘K</kbd>
+            </div>
+          </div>
+        );
+      case 'input-toggle-switch':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px]">
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" className="sr-only peer" defaultChecked />
+              <div className="w-10 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+              <span className="ml-2.5 text-xs font-bold text-slate-700 dark:text-slate-300">알림 설정</span>
+            </label>
+          </div>
+        );
+      case 'input-checkbox-card':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-4">
+            <label className="flex items-center justify-between p-2.5 bg-white dark:bg-slate-800 border-2 border-indigo-500 rounded-xl cursor-pointer shadow-2xs w-full max-w-xs">
+              <div className="flex items-center gap-2">
+                <input type="checkbox" defaultChecked className="w-3.5 h-3.5 text-indigo-600 rounded" />
+                <span className="text-xs font-bold text-slate-900 dark:text-white">기본 플랜 ($9/mo)</span>
+              </div>
+              <span className="text-[10px] font-bold text-indigo-500">선택됨</span>
+            </label>
+          </div>
+        );
+      case 'input-otp-pin':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px]">
+            <div className="flex gap-1.5">
+              {['7', '2', '8', '4'].map((val, idx) => (
+                <input key={idx} type="text" readOnly value={val} className="w-8 h-8 text-center font-bold text-xs bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white" />
+              ))}
+            </div>
+          </div>
+        );
+      case 'input-select-custom':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-4">
+            <select className="w-full max-w-xs px-3 py-2 text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl outline-none">
+              <option>카테고리 선택 (전체)</option>
+              <option>React Component</option>
+            </select>
+          </div>
+        );
+
+      // --- 3. Modals & Alerts (6) ---
+      case 'modal-glass':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3.5 bg-slate-900/90 backdrop-blur-md border border-slate-700/60 rounded-xl shadow-lg text-white text-xs max-w-xs w-full">
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-indigo-400">알림 모달 (Preview)</h4>
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              </div>
+              <p className="mt-1 text-[11px] text-slate-300">변경사항이 저장되었습니다.</p>
+            </div>
+          </div>
+        );
+      case 'toast-success':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="flex items-center gap-2.5 p-3 bg-white dark:bg-slate-800 border border-emerald-500/30 rounded-xl shadow-xs text-xs max-w-xs w-full">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <div>
+                <h5 className="font-bold text-slate-900 dark:text-white">클립보드 복사 성공</h5>
+                <p className="text-[10px] text-slate-400">즉시 붙여넣기 가능합니다.</p>
+              </div>
+            </div>
+          </div>
+        );
+      case 'alert-banner':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-[11px] font-bold shadow-xs w-full max-w-xs flex justify-between items-center">
+              <span>🚀 v2.4 14종 신규 릴리즈</span>
+              <span className="px-2 py-0.5 bg-white/20 rounded">확인</span>
+            </div>
+          </div>
+        );
+      case 'modal-confirm':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-md max-w-xs w-full text-xs space-y-2">
+              <div className="flex items-center gap-1.5 text-rose-500 font-bold">
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span>정말 삭제하시겠습니까?</span>
+              </div>
+              <div className="flex gap-2">
+                <button className="flex-1 py-1 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold">취소</button>
+                <button className="flex-1 py-1 bg-rose-600 text-white rounded text-[10px] font-bold">삭제</button>
+              </div>
+            </div>
+          </div>
+        );
+      case 'alert-toast-interactive':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="flex items-center justify-between p-3 bg-slate-900 text-white rounded-xl text-xs w-full max-w-xs shadow-md">
+              <span>항목 이동 완료</span>
+              <span className="font-bold text-indigo-400 underline cursor-pointer">실행 취소</span>
+            </div>
+          </div>
+        );
+      case 'modal-slide-over':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3 bg-white dark:bg-slate-800 border-l-4 border-indigo-500 rounded-r-xl shadow-xs text-xs max-w-xs w-full">
+              <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-bold">
+                <Bell className="w-3.5 h-3.5" />
+                <span>시스템 안내</span>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">오늘 밤 점검 예정입니다.</p>
+            </div>
+          </div>
+        );
+
+      // --- 4. Tables (6) ---
+      case 'table-hover':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-2">
+            <div className="w-full max-w-xs overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+              <table className="w-full text-left">
+                <thead className="bg-slate-100 dark:bg-slate-800 text-[10px] uppercase text-slate-500">
+                  <tr><th className="px-2.5 py-1">사용자</th><th className="px-2.5 py-1">상태</th></tr>
+                </thead>
+                <tbody className="bg-white dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800 text-[11px]">
+                  <tr><td className="px-2.5 py-1 font-semibold text-slate-900 dark:text-white">김철수</td><td className="px-2.5 py-1"><span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[9px] rounded-full font-bold">활성</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        );
+      case 'table-striped':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-2">
+            <div className="w-full max-w-xs overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+              <table className="w-full text-left">
+                <thead className="bg-indigo-600 text-white text-[10px] font-bold">
+                  <tr><th className="px-2.5 py-1">프로젝트</th><th className="px-2.5 py-1">진행률</th></tr>
+                </thead>
+                <tbody className="text-[11px]">
+                  <tr className="bg-slate-50 dark:bg-slate-800/60"><td className="px-2.5 py-1 font-semibold">WebGuide v2.4</td><td className="px-2.5 py-1 font-bold text-indigo-500">95%</td></tr>
+                  <tr className="bg-white dark:bg-slate-900"><td className="px-2.5 py-1 font-semibold">Dashboard UI</td><td className="px-2.5 py-1 font-bold text-indigo-500">80%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        );
+      case 'table-compact':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-2">
+            <div className="w-full max-w-xs overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 text-[11px]">
+              <table className="w-full text-left">
+                <thead className="bg-slate-100 dark:bg-slate-800 text-[10px] font-mono text-slate-500">
+                  <tr><th className="px-2 py-1">날짜</th><th className="px-2 py-1">방문자</th><th className="px-2 py-1">변동</th></tr>
+                </thead>
+                <tbody className="bg-white dark:bg-slate-900 font-mono text-[10px]">
+                  <tr><td className="px-2 py-1">2026-08-06</td><td className="px-2 py-1 font-bold">12,450</td><td className="px-2 py-1 text-emerald-500 font-bold">+4.2%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        );
+      case 'table-action':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-2">
+            <div className="w-full max-w-xs p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs flex items-center justify-between">
+              <span className="font-bold text-slate-900 dark:text-white">결제 내역 #8492</span>
+              <button className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded text-[10px] font-bold">액션 ⋯</button>
+            </div>
+          </div>
+        );
+      case 'table-timeline':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-2">
+            <div className="w-full max-w-xs p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-indigo-500" />
+                <span className="font-bold text-slate-900 dark:text-white">새 커밋 푸시</span>
+                <span className="text-[10px] text-slate-400 font-mono ml-auto">10분 전</span>
+              </div>
+            </div>
+          </div>
+        );
+      case 'table-expandable':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] px-2">
+            <div className="w-full max-w-xs p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs">
+              <div className="flex justify-between font-bold text-slate-900 dark:text-white">
+                <span>주문번호 #2026</span>
+                <span className="text-indigo-500 font-bold">▼ 상세</span>
+              </div>
+            </div>
+          </div>
+        );
+
+      // --- 5. Webzine Snippets (6) ---
+      case 'webzine-card':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="w-full max-w-xs overflow-hidden rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center gap-3 p-2">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80" alt="Webzine" className="w-12 h-12 rounded-lg object-cover" />
+              <div>
+                <span className="text-[9px] font-bold text-indigo-500 uppercase">Arte Webzine</span>
+                <h5 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">디지털 아트의 새로운 패러다임</h5>
+              </div>
+            </div>
+          </div>
+        );
+      case 'webzine-quote':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <blockquote className="p-3 bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl italic text-xs text-slate-700 dark:text-slate-300 font-serif max-w-xs">
+              "기술과 디자인이 만나 일상의 가치를 바꿉니다."
+            </blockquote>
+          </div>
+        );
+      case 'webzine-profile':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="flex items-center gap-2.5 p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl max-w-xs w-full">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ArteEditor" className="w-8 h-8 rounded-full border border-indigo-500" alt="Editor" />
+              <div>
+                <h5 className="text-xs font-bold text-slate-900 dark:text-white">이아름 에디터</h5>
+                <p className="text-[9px] text-slate-500">디지털 문화 기획자</p>
+              </div>
+            </div>
+          </div>
+        );
+      case 'webzine-video':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="relative rounded-xl overflow-hidden aspect-video bg-slate-900 flex items-center justify-center w-full max-w-xs">
+              <button className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
+                <Play className="w-3.5 h-3.5 fill-white ml-0.5" />
+              </button>
+            </div>
+          </div>
+        );
+      case 'webzine-image-grid':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="grid grid-cols-2 gap-1 rounded-xl overflow-hidden aspect-video w-full max-w-xs">
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold">Graphic 01</div>
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white text-[10px] font-bold">Graphic 02</div>
+            </div>
+          </div>
+        );
+      case 'webzine-notice':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3 bg-indigo-600 text-white rounded-xl text-xs font-bold w-full max-w-xs flex justify-between items-center">
+              <span>📢 아르떼 8월호 정기 구독</span>
+              <span className="px-2 py-0.5 bg-white text-indigo-600 rounded text-[10px]">구독</span>
+            </div>
+          </div>
+        );
+
+      // --- 6. Charts & KPIs (6) ---
+      case 'chart-sparkline':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-white w-full max-w-xs flex items-center justify-between">
+              <div>
+                <p className="text-[10px] text-slate-400">주간 트래픽</p>
+                <p className="text-base font-bold text-emerald-400">+28.4%</p>
+              </div>
+              <div className="px-2 py-0.5 bg-emerald-500/10 rounded text-[10px] text-emerald-400 font-mono font-bold">
+                ▲ TRENDING
+              </div>
+            </div>
+          </div>
+        );
+      case 'chart-bar-progress':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="space-y-1.5 p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs w-full max-w-xs">
+              <div className="flex justify-between font-bold"><span>목표 달성율</span><span className="text-indigo-600">82%</span></div>
+              <div className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-full bg-indigo-600 rounded-full" style={{ width: '82%' }} />
+              </div>
+            </div>
+          </div>
+        );
+      case 'chart-kpi-donut':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="flex items-center gap-3 p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs w-full max-w-xs">
+              <div className="w-8 h-8 rounded-full border-4 border-indigo-500 border-t-slate-300 flex items-center justify-center font-bold text-[10px]">75%</div>
+              <div><h5 className="font-bold text-slate-900 dark:text-white">용량 점유율</h5><p className="text-[9px] text-slate-400">750GB / 1TB</p></div>
+            </div>
+          </div>
+        );
+      case 'chart-stat-card':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs space-y-1 w-full max-w-xs">
+              <span className="text-slate-400 text-[10px]">월간 구독 수익</span>
+              <div className="flex items-baseline justify-between font-bold">
+                <span className="text-sm text-slate-900 dark:text-white">₩ 8,450,000</span>
+                <span className="px-1.5 py-0.5 bg-emerald-500/10 text-emerald-500 text-[10px] rounded">+12.8%</span>
+              </div>
+            </div>
+          </div>
+        );
+      case 'chart-mini-line':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="p-3 bg-slate-900 text-white rounded-xl flex items-center justify-between text-xs w-full max-w-xs">
+              <div><p className="text-[9px] text-slate-400">오늘의 방문자</p><p className="font-bold text-sm text-indigo-400">3,892명</p></div>
+              <span className="text-emerald-400 font-mono font-bold text-[10px]">▲ LIVE</span>
+            </div>
+          </div>
+        );
+      case 'chart-step-indicator':
+        return (
+          <div className="flex items-center justify-center h-full min-h-[130px] p-2">
+            <div className="flex items-center justify-between p-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-[11px] font-bold w-full max-w-xs">
+              <span className="text-indigo-600">Step 1 ✓</span>
+              <span className="text-indigo-600">Step 2 ✓</span>
+              <span className="text-slate-400">Step 3</span>
             </div>
           </div>
         );
