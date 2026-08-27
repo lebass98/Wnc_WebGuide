@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, ArrowRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import ShowcaseWrapper from './ShowcaseWrapper';
 import codeSnippets from '../../data/BoardsSnippets.json';
 
@@ -103,14 +103,14 @@ const ShowcaseBoards: React.FC = () => {
         >
           <div className="flex flex-col gap-10 items-start justify-start w-full font-sans antialiased">
             
-            {/* Category Capsule Tabs */}
+            {/* Category Capsule Tabs (자료 원본: rounded-[40px]) */}
             <div className="flex flex-wrap gap-2 items-center justify-start w-full">
               {tabs.map(tab => (
                 <button
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`rounded-full px-5 h-[43px] flex items-center justify-center text-[17px] font-semibold tracking-tight transition-all cursor-pointer ${
+                  className={`rounded-[40px] px-5 h-[43px] flex items-center justify-center text-[17px] font-semibold tracking-tight transition-all cursor-pointer ${
                     activeTab === tab
                       ? 'bg-[#f7ecb5] dark:bg-amber-400/20 text-[#333d4b] dark:text-amber-300 shadow-none'
                       : 'bg-white dark:bg-slate-800 text-[#333d4b] dark:text-slate-300 opacity-60 hover:opacity-100 shadow-none'
@@ -161,14 +161,14 @@ const ShowcaseBoards: React.FC = () => {
               </div>
             </div>
 
-            {/* Pagination */}
+            {/* Pagination (자료 원본: rounded-[50px]) */}
             <div className="flex flex-row items-center justify-start gap-1 w-full pt-2">
               {[1, 2, 3, 4, 5].map(pageNum => (
                 <button
                   key={pageNum}
                   type="button"
                   onClick={() => setCurrentPage(pageNum)}
-                  className={`w-[34px] h-[34px] rounded-full flex items-center justify-center text-lg leading-none transition-all cursor-pointer ${
+                  className={`w-[34px] h-[34px] rounded-[50px] flex items-center justify-center text-lg leading-none transition-all cursor-pointer ${
                     currentPage === pageNum
                       ? 'bg-[#f8f3e7] dark:bg-amber-400/20 text-[#333d4b] dark:text-amber-300 font-bold'
                       : 'text-[#6d7683] dark:text-slate-400 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800'
@@ -182,7 +182,7 @@ const ShowcaseBoards: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#6d7683] dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer ml-1"
+                className="w-[34px] h-[34px] rounded-[50px] flex items-center justify-center text-[#6d7683] dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer ml-1"
                 aria-label="이전 페이지"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -190,7 +190,7 @@ const ShowcaseBoards: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, 5))}
-                className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#6d7683] dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
+                className="w-[34px] h-[34px] rounded-[50px] flex items-center justify-center text-[#6d7683] dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                 aria-label="다음 페이지"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -207,25 +207,25 @@ const ShowcaseBoards: React.FC = () => {
           snippet={codeSnippets.registrationGuideBoard}
           defaultFullWidth={true}
         >
-          <div className="flex flex-col gap-6 w-full font-sans antialiased text-slate-900 dark:text-white">
+          <div className="flex flex-col gap-5 w-full font-sans antialiased text-[#000000] dark:text-white">
             
-            {/* Top Benefit Card */}
-            <div className="bg-[#f6f6f6] dark:bg-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-700/80 flex flex-col gap-5">
-              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            {/* Top Benefit Card (자료 원본: bg-[#f6f6f6] rounded-sm p-[30px]) */}
+            <div className="bg-[#f6f6f6] dark:bg-slate-800/80 rounded-sm p-6 sm:p-[30px] flex flex-col gap-0 border-0">
+              <h3 className="text-lg sm:text-[20px] font-semibold tracking-[-0.8px] text-[#000000] dark:text-white leading-7">
                 2026 서울아트마켓 개인등록 혜택
               </h3>
-              <div className="border-t border-slate-200 dark:border-slate-700 pt-5 flex flex-col gap-4">
+              <div className="border-t border-[#e5e5e5] dark:border-slate-700 mt-5 pt-5 flex flex-col gap-3">
                 {benefits.map(item => (
-                  <div key={item.id} className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  <div key={item.id} className="flex items-start gap-2">
+                    <span className="w-6 h-6 rounded-3xl bg-[#000000] dark:bg-white text-white dark:text-[#000000] text-[14px] font-normal flex items-center justify-center shrink-0 mt-0.5 leading-6">
                       {item.id}
                     </span>
                     <div className="flex flex-col">
-                      <p className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-snug">
+                      <p className="text-[16px] font-normal text-[#000000] dark:text-slate-200 leading-[22.4px] tracking-[-0.8px]">
                         {item.title}
                       </p>
                       {item.sub && (
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                        <p className="text-[15px] font-normal text-[#000000] dark:text-slate-400 mt-0.5 leading-[21px] tracking-[-0.8px]">
                           {item.sub}
                         </p>
                       )}
@@ -235,133 +235,137 @@ const ShowcaseBoards: React.FC = () => {
               </div>
             </div>
 
-            {/* Action CTA Button */}
-            <div className="flex justify-end">
+            {/* Action CTA Button (자료 원본: border-[#000000] rounded-none) */}
+            <div className="flex justify-end pt-3">
               <a
                 href="#"
                 onClick={e => e.preventDefault()}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-slate-900 dark:border-white rounded-xl text-sm font-semibold hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer shadow-xs"
+                className="inline-flex items-center justify-center gap-2.5 px-5 h-[50px] min-w-[160px] border border-[#000000] dark:border-white rounded-none text-[18px] font-medium tracking-[-0.8px] text-[#000000] dark:text-white hover:bg-[#000000] hover:text-white dark:hover:bg-white dark:hover:text-[#000000] transition-colors cursor-pointer"
               >
                 <span>개인등록 바로가기</span>
-                <ArrowRight className="w-4 h-4" />
+                <span className="text-[18px] leading-none">&rarr;</span>
               </a>
             </div>
 
             {/* Main Registration Guide Table Section */}
-            <div className="flex flex-col gap-3 mt-2">
-              <span className="text-xs sm:text-sm font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase font-mono">
+            <div className="flex flex-col gap-0 mt-2">
+              <div className="text-[#cccccc] dark:text-slate-600 text-[36px] sm:text-[55px] font-normal leading-[55px] tracking-[-0.3px] font-mono">
                 REGISTRATION GUIDE
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              </div>
+              <h2 className="text-[#000000] dark:text-white text-[24px] sm:text-[30px] font-semibold leading-[42px] tracking-[-0.8px] mt-1 mb-4">
                 2026 서울아트마켓 등록안내
               </h2>
 
-              {/* Responsive Table */}
-              <div className="w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 mt-2">
-                <table className="w-full min-w-[760px] text-center text-xs sm:text-sm border-collapse">
-                  <thead className="bg-[#f6f6f6] dark:bg-slate-800/90 text-slate-900 dark:text-white font-bold border-b border-slate-200 dark:border-slate-700">
-                    <tr>
-                      <th colSpan={3} className="py-3.5 px-4 border-r border-slate-200 dark:border-slate-700">
+              {/* Responsive Table (자료 원본: border-t-2 border-[#444444] rounded-none) */}
+              <div className="w-full overflow-x-auto rounded-none border-t-2 border-[#444444] dark:border-slate-200">
+                <table className="w-full min-w-[760px] text-center text-[16px] border-collapse rounded-none border-b border-[#dddddd] dark:border-slate-700">
+                  <thead className="bg-[#f6f6f6] dark:bg-slate-800 text-[#000000] dark:text-white font-semibold border-b border-[#dddddd] dark:border-slate-700">
+                    <tr className="h-[48px]">
+                      <th colSpan={3} className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700 tracking-[-0.8px]">
                         구분
                       </th>
-                      <th className="py-3.5 px-4 border-r border-slate-200 dark:border-slate-700">
+                      <th className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700 tracking-[-0.8px]">
                         등록기간
                       </th>
-                      <th className="py-3.5 px-3 border-r border-slate-200 dark:border-slate-700 w-20">
+                      <th className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700 w-24 tracking-[-0.8px]">
                         할인율
                       </th>
-                      <th className="py-3.5 px-4 border-r border-slate-200 dark:border-slate-700 w-28">
+                      <th className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700 w-32 tracking-[-0.8px]">
                         가격
                       </th>
-                      <th className="py-3.5 px-4 w-36">
+                      <th className="py-3 px-4 w-44 tracking-[-0.8px]">
                         등록방법
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-medium">
+                  <tbody className="divide-y divide-[#dddddd] dark:divide-slate-700 bg-white dark:bg-slate-900 text-[#000000] dark:text-slate-300 font-normal tracking-[-0.8px]">
                     {/* Row 1: 사전등록 1차 */}
-                    <tr>
-                      <td rowSpan={8} className="py-3 px-3 font-bold border-r border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30 text-slate-900 dark:text-white w-24">
+                    <tr className="h-[48px]">
+                      <td rowSpan={8} className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700 bg-white dark:bg-slate-900 font-normal text-center w-28">
                         개인등록
                       </td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 w-28">사전등록(1차)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 w-24">전일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">8월 12일(수)~9월 15일(화)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-indigo-600 dark:text-indigo-400 font-bold">50%</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">50,000원</td>
-                      <td rowSpan={2} className="py-3 px-4 text-xs font-semibold leading-relaxed">
-                        온라인<br /><span className="text-slate-400">(공식홈페이지)</span>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700 w-32">사전등록(1차)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700 w-28">전일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">8월 12일(수)~9월 15일(화)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">50%</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">50,000원</td>
+                      <td rowSpan={2} className="py-3 px-4 text-[16px] leading-[22.4px]">
+                        온라인<br />(공식홈페이지)
                       </td>
                     </tr>
                     {/* Row 2: 사전등록 2차 */}
-                    <tr>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">사전등록(2차)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">전일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">9월 16일(수)~10월 7일(수)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-indigo-600 dark:text-indigo-400 font-bold">30%</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">70,000원</td>
+                    <tr className="h-[48px]">
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">사전등록(2차)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">전일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">9월 16일(수)~10월 7일(수)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">30%</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">70,000원</td>
                     </tr>
                     {/* Row 3: 현장등록 전일권 */}
-                    <tr>
-                      <td rowSpan={3} className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">현장등록</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">전일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">행사 기간 내 (10.13~10.16)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-slate-400">정가</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">100,000원</td>
-                      <td rowSpan={3} className="py-3 px-4 text-xs font-semibold leading-relaxed">
-                        오프라인<br /><span className="text-slate-400">(행사장)</span>
+                    <tr className="h-[70px]">
+                      <td rowSpan={3} className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">현장등록</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">전일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700 leading-tight">
+                        행사 기간 내<br />(10월 13일(화)~10월 16일(금))
+                      </td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">정가</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">100,000원</td>
+                      <td rowSpan={3} className="py-3 px-4 text-[16px] leading-[22.4px]">
+                        오프라인<br />(행사장)
                       </td>
                     </tr>
                     {/* Row 4: 현장등록 1일권 */}
-                    <tr>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">1일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 text-xs">
-                        행사 기간 내 (10.13~10.16)<br />
-                        <span className="text-[11px] text-slate-400">* 당일 행사만 참여 가능 / 센터 내 행사 할인 불가</span>
+                    <tr className="h-[115px]">
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">1일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700 leading-snug">
+                        행사 기간 내<br />(10월 13일(화)~10월 16일(금))<br />
+                        <span className="text-[14px] text-slate-500 dark:text-slate-400">* 당일 행사만 참여 가능<br />*센터 내 행사 티켓 할인 불가</span>
                       </td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-slate-400">정가</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">30,000원</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">정가</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">30,000원</td>
                     </tr>
                     {/* Row 5: 쇼케이스 관람권 */}
-                    <tr>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-xs">쇼케이스 관람권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">행사 기간 내 (10.13~10.16)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-slate-400">정가</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">10,000원</td>
+                    <tr className="h-[70px]">
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">쇼케이스 관람권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700 leading-tight">
+                        행사 기간 내<br />(10월 13일(화)~10월 16일(금))
+                      </td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">정가</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">10,000원</td>
                     </tr>
                     {/* Row 6: 예술인패스 */}
-                    <tr>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">예술인패스 할인</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">전일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">8월 12일(수)~10월 7일(수)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-indigo-600 dark:text-indigo-400 font-bold">50%</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">50,000원</td>
-                      <td rowSpan={3} className="py-3 px-4 text-xs font-semibold leading-relaxed">
-                        온/오프라인<br /><span className="text-slate-400">(공식홈페이지 및 행사장)</span>
+                    <tr className="h-[48px]">
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">예술인패스 할인</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">전일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">8월 12일(수)~10월 7일(수)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">50%</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">50,000원</td>
+                      <td rowSpan={3} className="py-3 px-4 text-[16px] leading-[22.4px]">
+                        온/오프라인<br />(공식 홈페이지 및 행사장)
                       </td>
                     </tr>
                     {/* Row 7: 전년도참가자 */}
-                    <tr>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-xs">전년도참가자 할인</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">전일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">8월 12일(수)~10월 7일(수)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-indigo-600 dark:text-indigo-400 font-bold">50%</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">50,000원</td>
+                    <tr className="h-[48px]">
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">전년도참가자 할인</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">전일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">8월 12일(수)~10월 7일(수)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">50%</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">50,000원</td>
                     </tr>
                     {/* Row 8: 학생 할인 */}
-                    <tr>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">학생 할인</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700">전일권</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700">8월 12일(수)~10월 7일(수)</td>
-                      <td className="py-3 px-3 border-r border-slate-200 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 font-bold">70%</td>
-                      <td className="py-3 px-4 border-r border-slate-200 dark:border-slate-700 font-bold text-slate-900 dark:text-white">30,000원</td>
+                    <tr className="h-[48px]">
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">학생 할인</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">전일권</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">8월 12일(수)~10월 7일(수)</td>
+                      <td className="py-3 px-3 border-r border-[#dddddd] dark:border-slate-700">70%</td>
+                      <td className="py-3 px-4 border-r border-[#dddddd] dark:border-slate-700">30,000원</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
               {/* Footnotes */}
-              <div className="space-y-1 text-xs text-slate-500 dark:text-slate-400 pt-2">
+              <div className="space-y-1 text-[16px] text-[#757575] dark:text-slate-400 pt-3 tracking-[-0.8px] leading-[22.4px]">
                 <p>* 중복할인 불가하며 학생은 중‧고‧대학생‧대학원생 포함</p>
                 <p>* 등록기간 및 권종, 가격 등은 사업 추진 현황에 따라 변동될 수 있음</p>
               </div>
