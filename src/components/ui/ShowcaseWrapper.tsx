@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Monitor, 
-  Smartphone, 
-  Tablet, 
   Sun, 
   Moon, 
   Copy, 
@@ -36,7 +33,6 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
   const [previewMode, setPreviewMode] = useState<'react' | 'html'>('react');
-  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
   const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
@@ -97,7 +93,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
         mutationObserver.disconnect();
       }
     };
-  }, [activeTab, previewMode, device, theme, snippet.fullHtml]);
+  }, [activeTab, previewMode, theme, snippet.fullHtml]);
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(snippet.fullHtml).then(() => {
@@ -179,45 +175,6 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >
                   일반 HTML
-                </button>
-              </div>
-              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
-            </>
-          )}
-
-          {/* Device simulation switcher (preview only) */}
-          {activeTab === 'preview' && (
-            <>
-              <div className="flex items-center gap-1">
-                <button 
-                  onClick={() => setDevice('desktop')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Monitor className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    데스크톱 뷰
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-                <button 
-                  onClick={() => setDevice('tablet')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Tablet className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    태블릿 뷰
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
-                </button>
-                <button 
-                  onClick={() => setDevice('mobile')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Smartphone className="w-4 h-4" />
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
-                    모바일 뷰
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
-                  </div>
                 </button>
               </div>
               <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
@@ -308,7 +265,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
 
       {/* Frame Container */}
       <div 
-        className={`overflow-hidden rounded-2xl bg-white dark:bg-slate-900 transition-all duration-300 ${activeTab === 'preview' && device === 'mobile' ? 'max-w-[375px] mx-auto w-full' : activeTab === 'preview' && device === 'tablet' ? 'max-w-[768px] mx-auto w-full' : 'w-full'}`}
+        className="overflow-hidden rounded-2xl bg-white dark:bg-slate-900 transition-all duration-300 w-full"
         style={{ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 20px 27px 0' }}
       >
         {activeTab === 'preview' ? (
