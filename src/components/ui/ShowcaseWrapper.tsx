@@ -132,51 +132,90 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
 
         {/* Action Controls Toolbar */}
         <div className="flex flex-wrap items-center gap-2 @[960px]:ml-0 ml-auto">
-          {/* 1. Preview Mode Group: React | HTML */}
-          {activeTab === 'preview' && (
-            <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
-              <button
-                onClick={() => setPreviewMode('react')}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'react' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                React
-              </button>
-              <button
-                onClick={() => setPreviewMode('html')}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${previewMode === 'html' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
-              >
-                HTML
-              </button>
-            </div>
-          )}
-
-          {/* 코드보기 button */}
-          <button
-            onClick={() => setActiveTab(activeTab === 'code' ? 'preview' : 'code')}
-            className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer border ${activeTab === 'code' ? 'bg-[#4B62FA] text-white border-[#4B62FA] shadow-sm' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-800 dark:hover:text-white hover:border-slate-300'}`}
-          >
-            코드보기
-          </button>
+          {/* Main View Toggle: [ 미리보기 | 코드보기 ] */}
+          <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
+            <button
+              type="button"
+              onClick={() => setActiveTab('preview')}
+              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${
+                activeTab === 'preview'
+                  ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+              }`}
+            >
+              미리보기
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('code')}
+              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${
+                activeTab === 'code'
+                  ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+              }`}
+            >
+              코드보기
+            </button>
+          </div>
 
           <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
 
-          {/* Code type toggler (only in code tab) */}
+          {/* Sub-toggle for Preview Tab: [ React | HTML ] */}
+          {activeTab === 'preview' && (
+            <>
+              <div className="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800 rounded-xl">
+                <button
+                  onClick={() => setPreviewMode('react')}
+                  className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${
+                    previewMode === 'react'
+                      ? 'bg-indigo-600 text-white shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  React
+                </button>
+                <button
+                  onClick={() => setPreviewMode('html')}
+                  className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${
+                    previewMode === 'html'
+                      ? 'bg-indigo-600 text-white shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  HTML
+                </button>
+              </div>
+
+              <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+            </>
+          )}
+
+          {/* Sub-toggle for Code Tab: [ React | 일반 HTML ] */}
           {activeTab === 'code' && (
             <>
               <div className="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1">
                 <button
                   onClick={() => setCodeMode('react')}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'react' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${
+                    codeMode === 'react'
+                      ? 'bg-[#4B62FA] text-white shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
                 >
                   React
                 </button>
                 <button
                   onClick={() => setCodeMode('html')}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${codeMode === 'html' ? 'bg-[#4B62FA] text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${
+                    codeMode === 'html'
+                      ? 'bg-[#4B62FA] text-white shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
                 >
                   일반 HTML
                 </button>
               </div>
+
               <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
             </>
           )}
