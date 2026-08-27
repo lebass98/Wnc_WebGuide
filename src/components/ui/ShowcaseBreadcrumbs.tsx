@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, Home, Folder, FileText } from 'lucide-react';
+import { Home, ChevronRight, ChevronDown, Printer, Share2 } from 'lucide-react';
 import ShowcaseWrapper from './ShowcaseWrapper';
 import codeSnippets from '../../data/BreadcrumbsSnippets.json';
 
@@ -23,125 +23,82 @@ const ShowcaseBreadcrumbs: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid container */}
+      {/* Grid container (1열 풀와이드) */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         
-        {/* 1. Default Chevron Breadcrumb */}
+        {/* Seoul Art Book Breadcrumb */}
         <ShowcaseWrapper
-          title="기본 쉐브론 브래드크럼"
-          description="홈 아이콘과 화살표 구분자가 결합되어 페이지 계층 구조를 직관적으로 탐색할 수 있는 표준 브래드크럼입니다."
-          snippet={codeSnippets.defaultChevronBreadcrumb}
+          title="서울아트책보고 브래드크럼 네비게이션"
+          description="홈 이동, 드롭다운 형태의 1·2차 뎁스 네비게이션 및 인쇄·공유 기능 버튼이 포함된 브래드크럼 바 컴포넌트입니다."
+          snippet={codeSnippets.seoulArtBookBreadcrumb}
+          defaultFullWidth={true}
         >
-          <div className="w-full py-4">
-            <nav className="flex items-center space-x-2 text-sm font-medium text-slate-600 dark:text-slate-400" aria-label="Breadcrumb">
-              <a href="#" onClick={e => e.preventDefault()} className="flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                <Home className="w-4 h-4" />
-                <span>홈</span>
-              </a>
-              <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-600 shrink-0" />
-              <a href="#" onClick={e => e.preventDefault()} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                UI 요소
-              </a>
-              <ChevronRight className="w-4 h-4 text-slate-400 dark:text-slate-600 shrink-0" />
-              <span className="text-slate-900 dark:text-white font-bold">
-                브래드크럼
-              </span>
-            </nav>
-          </div>
-        </ShowcaseWrapper>
-
-        {/* 2. Slash Separator Breadcrumb */}
-        <ShowcaseWrapper
-          title="슬래시 구분선 브래드크럼"
-          description="심플한 슬래시(/) 기호로 항목을 깔끔하게 분리하여 미니멀한 UI에 잘 어울리는 텍스트형 브래드크럼입니다."
-          snippet={codeSnippets.slashSeparatorBreadcrumb}
-        >
-          <div className="w-full py-4">
-            <nav className="flex items-center space-x-2 text-sm font-medium text-slate-500 dark:text-slate-400" aria-label="Breadcrumb">
-              <a href="#" onClick={e => e.preventDefault()} className="hover:text-slate-900 dark:hover:text-white transition-colors">
-                대시보드
-              </a>
-              <span className="text-slate-300 dark:text-slate-600">/</span>
-              <a href="#" onClick={e => e.preventDefault()} className="hover:text-slate-900 dark:hover:text-white transition-colors">
-                프로젝트 관리
-              </a>
-              <span className="text-slate-300 dark:text-slate-600">/</span>
-              <a href="#" onClick={e => e.preventDefault()} className="hover:text-slate-900 dark:hover:text-white transition-colors">
-                디자인 시스템
-              </a>
-              <span className="text-slate-300 dark:text-slate-600">/</span>
-              <span className="text-indigo-600 dark:text-indigo-400 font-semibold">
-                컴포넌트 가이드
-              </span>
-            </nav>
-          </div>
-        </ShowcaseWrapper>
-
-        {/* 3. Capsule Pill Breadcrumb */}
-        <ShowcaseWrapper
-          title="캡슐 배지 브래드크럼"
-          description="각 단계가 캡슐형 배지로 감싸져 있어 시각적 구분이 뚜렷하고 클릭 영역이 넓은 배지형 브래드크럼입니다."
-          snippet={codeSnippets.capsulePillBreadcrumb}
-        >
-          <div className="w-full py-4">
-            <nav className="flex flex-wrap items-center gap-2" aria-label="Breadcrumb">
-              <a
-                href="#"
-                onClick={e => e.preventDefault()}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-              >
-                <Folder className="w-3.5 h-3.5 text-slate-500" />
-                <span>문서함</span>
-              </a>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600" />
-              <a
-                href="#"
-                onClick={e => e.preventDefault()}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-              >
-                <span>UI 컴포넌트</span>
-              </a>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600" />
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-xs font-bold text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
-                <FileText className="w-3.5 h-3.5" />
-                <span>네비게이션 상세</span>
+          <div className="flex flex-col gap-0 items-start justify-start min-h-[76px] w-full max-w-[1400px] relative font-sans antialiased">
+            <div className="bg-[rgba(255,255,255,0.70)] dark:bg-slate-800/80 border-solid border-[#e1e1e1] dark:border-slate-700 border-2 p-0.5 self-stretch shrink-0 h-[76px] relative w-full overflow-x-auto">
+              
+              {/* 처음으로 (Home) */}
+              <div className="w-[121.25px] h-[72px] absolute left-4 sm:left-9 top-0.5 flex items-center">
+                <a
+                  href="#"
+                  onClick={e => e.preventDefault()}
+                  className="text-[#111111] dark:text-white text-left text-lg leading-[72px] font-normal absolute left-0 sm:left-[26px] top-[-2px] tracking-[-0.25px] flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >
+                  <Home className="w-4 h-4 shrink-0" />
+                  <span>처음으로</span>
+                </a>
               </div>
-            </nav>
-          </div>
-        </ShowcaseWrapper>
 
-        {/* 4. Bar Step Breadcrumb */}
-        <ShowcaseWrapper
-          title="스텝 바 브래드크럼"
-          description="주문/결제/신청 등 단계별 프로세스의 현재 진행 상황을 안내할 수 있는 바 형태의 스텝 브래드크럼입니다."
-          snippet={codeSnippets.barStepBreadcrumb}
-        >
-          <div className="w-full py-4">
-            <nav className="flex items-center w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-1.5 text-xs font-semibold">
-              <a
-                href="#"
-                onClick={e => e.preventDefault()}
-                className="flex items-center px-4 py-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-white dark:hover:bg-slate-700/60 transition-all shrink-0"
-              >
-                1. 장바구니
-              </a>
-              <span className="text-slate-300 dark:text-slate-600 px-1 shrink-0">&rsaquo;</span>
-              <a
-                href="#"
-                onClick={e => e.preventDefault()}
-                className="flex items-center px-4 py-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-white dark:hover:bg-slate-700/60 transition-all shrink-0"
-              >
-                2. 주문 및 배송정보
-              </a>
-              <span className="text-slate-300 dark:text-slate-600 px-1 shrink-0">&rsaquo;</span>
-              <div className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-sm font-bold shrink-0">
-                3. 결제하기
+              {/* 공간소개 Dropdown Menu */}
+              <div className="pr-6 sm:pr-10 pl-3 sm:pl-5 flex flex-col gap-0 items-start justify-start w-56 sm:w-80 sm:min-w-[320px] absolute left-[125px] sm:left-[157.25px] top-0.5 h-[72px] justify-center cursor-pointer group">
+                <div className="text-[#111111] dark:text-white text-left text-lg leading-[70px] font-normal relative tracking-[-0.25px] flex items-center justify-between w-full group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span>공간소개</span>
+                  <ChevronDown className="w-4 h-4 text-[#111111] dark:text-slate-400 group-hover:text-indigo-600 transition-transform group-hover:translate-y-0.5" />
+                </div>
+                <div className="bg-[#cccccc] dark:bg-slate-600 shrink-0 w-0.5 h-5 absolute left-0 top-[25px]" />
               </div>
-              <span className="text-slate-300 dark:text-slate-600 px-1 shrink-0">&rsaquo;</span>
-              <span className="flex items-center px-4 py-2 text-slate-400 dark:text-slate-500 shrink-0">
-                4. 주문 완료
-              </span>
-            </nav>
+
+              {/* 서울아트책보고란 Dropdown Menu */}
+              <div className="pr-6 sm:pr-10 pl-3 sm:pl-5 flex flex-col gap-0 items-start justify-start w-56 sm:w-80 absolute left-[350px] sm:left-[477.25px] top-0.5 h-[72px] justify-center cursor-pointer group">
+                <div className="text-[#111111] dark:text-white text-left text-lg leading-[70px] font-normal relative tracking-[-0.25px] flex items-center justify-between w-full group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <span>서울아트책보고란</span>
+                  <ChevronDown className="w-4 h-4 text-[#111111] dark:text-slate-400 group-hover:text-indigo-600 transition-transform group-hover:translate-y-0.5" />
+                </div>
+                <div className="bg-[#cccccc] dark:bg-slate-600 shrink-0 w-0.5 h-5 absolute left-0 top-[25px]" />
+              </div>
+
+              {/* 구분선 */}
+              <div className="bg-[#cccccc] dark:bg-slate-600 w-0.5 h-5 absolute left-[575px] sm:left-[795.25px] top-[27px]" />
+            </div>
+
+            {/* 우측 인쇄 & 공유 버튼 그룹 */}
+            <div className="flex flex-row gap-0 items-start justify-start shrink-0 w-[130px] h-[50px] absolute right-3 sm:right-6 top-[13px]">
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="bg-[#f1f1f1] dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-[50px] flex items-center justify-center shrink-0 w-[50px] h-[50px] relative overflow-hidden transition-colors cursor-pointer text-slate-700 dark:text-slate-200"
+                aria-label="인쇄하기"
+              >
+                <Printer className="w-5 h-5" />
+              </button>
+              <div className="pl-[30px] flex flex-col gap-0 items-start justify-start shrink-0 w-20 h-[50px] relative">
+                <div className="bg-[#cccccc] dark:bg-slate-600 shrink-0 w-0.5 h-5 absolute left-[15px] top-[15px]" />
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({ title: document.title, url: window.location.href });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href);
+                      alert('링크가 복사되었습니다.');
+                    }
+                  }}
+                  className="bg-[#ffffff] dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-[50px] flex items-center justify-center shrink-0 w-[50px] h-[50px] relative overflow-hidden transition-colors cursor-pointer text-slate-700 dark:text-slate-200 shadow-xs"
+                  aria-label="공유하기"
+                >
+                  <Share2 className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
           </div>
         </ShowcaseWrapper>
 
