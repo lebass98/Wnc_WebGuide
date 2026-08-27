@@ -61,6 +61,16 @@ export const featuredComponents: ComponentItem[] = [
     htmlCode: `<button class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-xs rounded-xl shadow-md">샤인 버튼</button>`
   },
   {
+    id: 'ui-boxes',
+    title: '성장 배너 박스 (ShowcaseBoxes)',
+    category: 'buttons',
+    description: '실제 /ui/boxes 페이지의 토스 스타일 성장 배너 박스 & 카드 리스트',
+    badge: 'NEW',
+    route: '/ui/boxes',
+    reactCode: `import ShowcaseBoxes from '@/components/ui/ShowcaseBoxes';\n\nexport default function BoxesDemo() {\n  return <ShowcaseBoxes />;\n}`,
+    htmlCode: `<div class="p-6 rounded-[32px] bg-amber-100 flex justify-between items-center"><h2 class="text-xl font-bold">impact for growth</h2><span class="text-xs font-bold">성장의 토대 →</span></div>`
+  },
+  {
     id: 'ui-alerts-modals',
     title: '알림 & 토스트 쇼케이스 (ShowcaseAlertsModals)',
     category: 'buttons',

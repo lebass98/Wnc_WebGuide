@@ -7,9 +7,9 @@ import { useComponentStorage } from '../../hooks/useComponentStorage';
 import ComponentCompareModal from './ComponentCompareModal';
 
 const categories = [
-  { id: 'all', label: '전체 (All 21)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'all', label: '전체 (All 22)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'favorites', label: '❤️ 내 즐겨찾기', icon: Heart, color: 'text-rose-500' },
-  { id: 'buttons', label: '버튼 & 뱃지 (6)', icon: MousePointer, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'buttons', label: '버튼 & 뱃지 (7)', icon: MousePointer, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'forms', label: '폼 & 인풋 (5)', icon: Edit3, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'modals', label: '모달 & 페이지 (5)', icon: MessageSquare, color: 'text-indigo-600 dark:text-indigo-400' },
   { id: 'tables', label: '테이블 & 업무 (3)', icon: Table, color: 'text-indigo-600 dark:text-indigo-400' },
@@ -96,6 +96,19 @@ const FeaturedComponents: React.FC = () => {
             <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold text-[11px] rounded-full">
               LIVE 정상
             </span>
+          </div>
+        );
+
+      case 'ui-boxes':
+        return (
+          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-100 to-amber-50 dark:from-amber-950/40 dark:to-slate-800 border border-amber-200/60 dark:border-amber-900/40 flex items-center justify-between w-full max-w-xs shadow-2xs">
+            <div className="space-y-0.5">
+              <h5 className="text-[11px] font-bold text-slate-800 dark:text-slate-200 tracking-tight leading-tight">impact for growth</h5>
+              <p className="text-[10px] text-amber-800 dark:text-amber-300 font-semibold">성장의 토대</p>
+            </div>
+            <div className="px-2 py-1 rounded-full bg-white dark:bg-slate-700 text-[10px] font-bold text-slate-700 dark:text-slate-200 shadow-2xs">
+              배너 박스
+            </div>
           </div>
         );
 
