@@ -104,16 +104,45 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
 
   const getSrcDoc = () => {
     if (!snippet.fullHtml) return '';
+    let html = snippet.fullHtml;
+
+    // React 미리보기(p-6 = 24px, w-full)와 100% 동일한 가로폭 및 패딩을 보장하는 스타일 주입
+    const previewResetStyle = `
+      <style>
+        html, body {
+          margin: 0 !important;
+          padding: 24px !important;
+          box-sizing: border-box !important;
+          width: 100% !important;
+          min-height: auto !important;
+          background-color: ${theme === 'dark' ? '#0F172A' : '#ffffff'} !important;
+        }
+        body > div {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+      </style>
+    `;
+
+    if (html.includes('</head>')) {
+      html = html.replace('</head>', `${previewResetStyle}</head>`);
+    } else {
+      html = previewResetStyle + html;
+    }
+
     if (theme === 'dark') {
-      if (snippet.fullHtml.includes('<body class="')) {
-        return snippet.fullHtml.replace('<body class="', '<body class="dark ');
-      } else if (snippet.fullHtml.includes('<body ')) {
-        return snippet.fullHtml.replace('<body ', '<body class="dark" ');
+      if (html.includes('<html')) {
+        html = html.replace('<html', '<html class="dark"');
+      }
+      if (html.includes('<body class="')) {
+        html = html.replace('<body class="', '<body class="dark ');
+      } else if (html.includes('<body ')) {
+        html = html.replace('<body ', '<body class="dark" ');
       } else {
-        return snippet.fullHtml.replace('<body>', '<body class="dark">');
+        html = html.replace('<body>', '<body class="dark">');
       }
     }
-    return snippet.fullHtml;
+    return html;
   };
 
   const elementId = id || `showcase-${title.replace(/[\s,()/\-_:]+/g, '-')}`;
