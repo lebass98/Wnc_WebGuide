@@ -168,59 +168,58 @@ const ShowcaseAlertsModals: React.FC = () => {
         </ShowcaseWrapper>
 
         {/* Section 3: Alerts Inline Banner */}
-        <div className="xl:col-span-2">
-          <ShowcaseWrapper
-            title="인라인 알림 배너 (Alerts)"
-            description="상황별로 사용자 정보 영역이나 피드백 섹션에 고정하여 메시지를 강조하는 컴포넌트입니다."
-            snippet={codeSnippets.alerts}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 dark:bg-slate-900 rounded-xl">
-              {/* Success Alert */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-emerald-100 dark:border-emerald-950 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-400">
-                <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-bold">결제 처리 완료</p>
-                  <p className="text-xs text-slate-500 dark:text-emerald-500/80 mt-1 leading-normal">
-                    구독 플랜 변경 결제가 정상적으로 처리되었습니다. 이번 결제 영수증은 가입하신 이메일로 전송되었습니다.
-                  </p>
-                </div>
-              </div>
-
-              {/* Error Alert */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-rose-100 dark:border-rose-950 bg-rose-50/50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-400">
-                <XCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-bold">서버 동기화 에러</p>
-                  <p className="text-xs text-slate-500 dark:text-rose-500/80 mt-1 leading-normal">
-                    데이터베이스 동기화 중 타임아웃 오류가 발생했습니다. 재로드 버튼을 클릭하시거나 네트워크 상태를 점검해 보세요.
-                  </p>
-                </div>
-              </div>
-
-              {/* Warning Alert */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-amber-100 dark:border-amber-950 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-400">
-                <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-bold">라이선스 만료 주의</p>
-                  <p className="text-xs text-slate-500 dark:text-amber-500/80 mt-1 leading-normal">
-                    현재 사용 중인 템플릿의 기간이 만료되기까지 3일 남았습니다. 지속적인 혜택 유지를 위해 갱신을 부탁드립니다.
-                  </p>
-                </div>
-              </div>
-
-              {/* Info Alert */}
-              <div className="flex items-start gap-3 p-4 rounded-xl border border-sky-100 dark:border-sky-950 bg-sky-50/50 dark:bg-sky-950/20 text-sky-800 dark:text-sky-400">
-                <Info className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-bold">정기 서비스 점검 안내</p>
-                  <p className="text-xs text-slate-500 dark:text-sky-500/80 mt-1 leading-normal">
-                    내일 오전 02:00 ~ 04:00 사이에 서버 업그레이드 및 정기 점검이 실시될 예정입니다. 작업 시간 중 접속이 제한될 수 있습니다.
-                  </p>
-                </div>
+        <ShowcaseWrapper
+          title="인라인 알림 배너 (Alerts)"
+          description="상황별로 사용자 정보 영역이나 피드백 섹션에 고정하여 메시지를 강조하는 컴포넌트입니다."
+          snippet={codeSnippets.alerts}
+          defaultFullWidth={true}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 dark:bg-slate-900 rounded-xl">
+            {/* Success Alert */}
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-emerald-100 dark:border-emerald-950 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-400">
+              <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-bold">결제 처리 완료</p>
+                <p className="text-xs text-slate-500 dark:text-emerald-500/80 mt-1 leading-normal">
+                  구독 플랜 변경 결제가 정상적으로 처리되었습니다. 이번 결제 영수증은 가입하신 이메일로 전송되었습니다.
+                </p>
               </div>
             </div>
-          </ShowcaseWrapper>
-        </div>
+
+            {/* Error Alert */}
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-rose-100 dark:border-rose-950 bg-rose-50/50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-400">
+              <XCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-bold">서버 동기화 에러</p>
+                <p className="text-xs text-slate-500 dark:text-rose-500/80 mt-1 leading-normal">
+                  데이터베이스 동기화 중 타임아웃 오류가 발생했습니다. 재로드 버튼을 클릭하시거나 네트워크 상태를 점검해 보세요.
+                </p>
+              </div>
+            </div>
+
+            {/* Warning Alert */}
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-amber-100 dark:border-amber-950 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-400">
+              <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-bold">라이선스 만료 주의</p>
+                <p className="text-xs text-slate-500 dark:text-amber-500/80 mt-1 leading-normal">
+                  현재 사용 중인 템플릿의 기간이 만료되기까지 3일 남았습니다. 지속적인 혜택 유지를 위해 갱신을 부탁드립니다.
+                </p>
+              </div>
+            </div>
+
+            {/* Info Alert */}
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-sky-100 dark:border-sky-950 bg-sky-50/50 dark:bg-sky-950/20 text-sky-800 dark:text-sky-400">
+              <Info className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-bold">정기 서비스 점검 안내</p>
+                <p className="text-xs text-slate-500 dark:text-sky-500/80 mt-1 leading-normal">
+                  내일 오전 02:00 ~ 04:00 사이에 서버 업그레이드 및 정기 점검이 실시될 예정입니다. 작업 시간 중 접속이 제한될 수 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </ShowcaseWrapper>
 
       </div>
 

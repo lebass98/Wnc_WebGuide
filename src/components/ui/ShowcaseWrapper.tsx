@@ -23,15 +23,24 @@ export interface ShowcaseWrapperProps {
   description: string;
   snippet: CodeSnippet;
   children: React.ReactNode;
+  defaultFullWidth?: boolean;
 }
 
-const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ id, title, description, snippet, children }) => {
+const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ 
+  id, 
+  title, 
+  description, 
+  snippet, 
+  children,
+  defaultFullWidth = false 
+}) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
   const [previewMode, setPreviewMode] = useState<'react' | 'html'>('react');
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [codeMode, setCodeMode] = useState<'react' | 'html'>('react');
   const [htmlSubTab, setHtmlSubTab] = useState<'html' | 'css' | 'js'>('html');
+  const [isFullWidth, setIsFullWidth] = useState<boolean>(defaultFullWidth);
   
   const [copied, setCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -114,7 +123,10 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ id, title, descriptio
   const elementId = id || `showcase-${title.replace(/[\s,()/\-_:]+/g, '-')}`;
 
   return (
-    <div id={elementId} className="space-y-4 font-sans mb-[40px] w-full @container scroll-mt-[100px]">
+    <div 
+      id={elementId} 
+      className={`space-y-4 font-sans mb-[40px] w-full @container scroll-mt-[100px] transition-all duration-300 ${isFullWidth ? 'col-span-full xl:col-span-2' : 'col-span-1'}`}
+    >
       {/* Wrapper Header: Controls Toolbar */}
       <div className="flex flex-col @[960px]:flex-row @[960px]:items-center justify-between gap-4 p-4 dark:bg-slate-800/40 rounded-2xl dark:border-slate-800">
         <div>
@@ -250,6 +262,43 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({ id, title, descriptio
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
                 {copied ? "복사 완료!" : "HTML/CSS/JS 전체 소스 복사"}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+              </div>
+            </button>
+          </div>
+
+          <div className="w-[1px] h-4 bg-slate-200 dark:bg-slate-700" />
+
+          {/* Layout Width Mode Toggle: 1열 (풀 와이드) vs 2열 (분할) */}
+          <div className="flex items-center p-0.5 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+            {/* 1열 풀와이드 버튼 */}
+            <button
+              type="button"
+              onClick={() => setIsFullWidth(true)}
+              className={`relative group p-1.5 rounded-lg transition-all cursor-pointer ${isFullWidth ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
+              aria-label="1열 꽉 채우기 (풀 와이드)"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <polygon points="21,11 21,3 13,3 16.29,6.29 6.29,16.29 3,13 3,21 11,21 7.71,17.71 17.71,7.71" />
+              </svg>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                1열 꽉 채우기 (풀 와이드)
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
+              </div>
+            </button>
+
+            {/* 2열 분할 버튼 */}
+            <button
+              type="button"
+              onClick={() => setIsFullWidth(false)}
+              className={`relative group p-1.5 rounded-lg transition-all cursor-pointer ${!isFullWidth ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
+              aria-label="2열 분할 보기"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M22,3.41l-5.29,5.29L20,12h-8V4l3.29,3.29L20.59,2L22,3.41z M3.41,22l5.29-5.29L12,20v-8H4l3.29,3.29L2,20.59L3.41,22z" />
+              </svg>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
+                2열 분할 보기
                 <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900/90 dark:border-t-slate-800/95" />
               </div>
             </button>
