@@ -95,13 +95,13 @@ export const featuredComponents: ComponentItem[] = [
   },
   {
     id: 'ui-boards',
-    title: '게시판 & 업무보고 (ShowcaseBoards)',
+    title: '토스 아티클 & 보도자료 게시판 (ShowcaseBoards)',
     category: 'buttons',
-    description: '실제 /ui/boards 페이지의 주간 업무보고, 공지 피드, 테이블 게시판',
+    description: '실제 /ui/boards 페이지의 카테고리 탭 & 토스 스타일 아티클 게시판',
     badge: 'NEW',
     route: '/ui/boards',
     reactCode: `import ShowcaseBoards from '@/components/ui/ShowcaseBoards';\n\nexport default function BoardsDemo() {\n  return <ShowcaseBoards />;\n}`,
-    htmlCode: `<div class="p-4 rounded-xl border bg-white dark:bg-slate-800 space-y-2">\n  <span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-600 text-[10px] font-bold">주간 업무보고</span>\n  <h4 class="text-xs font-bold">2026 시스템 구축 현황</h4>\n</div>`
+    htmlCode: `<div class="p-4 rounded-xl border bg-white dark:bg-slate-800 space-y-2">\n  <span class="px-2 py-0.5 rounded bg-[#f7ecb5] text-[#333d4b] text-[10px] font-bold">성장의 토대</span>\n  <h4 class="text-xs font-bold">좋은 서비스가 더 많은 사람에게 닿을 수 있도록</h4>\n</div>`
   },
   {
     id: 'ui-progress-nav',
