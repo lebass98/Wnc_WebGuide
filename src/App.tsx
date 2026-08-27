@@ -47,6 +47,7 @@ const ArteNotice = lazy(() => import('./pages/webzine/arte/ArteNotice'));
 const ShowcaseAlertsModals = lazy(() => import('./components/ui/ShowcaseAlertsModals'));
 const ShowcaseButtonsBadges = lazy(() => import('./components/ui/ShowcaseButtonsBadges'));
 const ShowcaseBoxes = lazy(() => import('./components/ui/ShowcaseBoxes'));
+const ShowcaseBoards = lazy(() => import('./components/ui/ShowcaseBoards'));
 const ShowcaseDataDisplay = lazy(() => import('./components/ui/ShowcaseDataDisplay'));
 const ShowcaseProgressNav = lazy(() => import('./components/ui/ShowcaseProgressNav'));
 const ShowcaseStatesLoaders = lazy(() => import('./components/ui/ShowcaseStatesLoaders'));
@@ -206,6 +207,7 @@ const App: React.FC = () => {
         <Route path="/ui/alerts-modals" element={<ShowcaseAlertsModals />} />
         <Route path="/ui/buttons-badges" element={<ShowcaseButtonsBadges />} />
         <Route path="/ui/boxes" element={<ShowcaseBoxes />} />
+        <Route path="/ui/boards" element={<ShowcaseBoards />} />
         <Route path="/ui/data-display" element={<ShowcaseDataDisplay />} />
         <Route path="/ui/progress-nav" element={<ShowcaseProgressNav />} />
         <Route path="/ui/states-loaders" element={<ShowcaseStatesLoaders />} />

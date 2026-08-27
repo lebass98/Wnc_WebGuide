@@ -112,6 +112,21 @@ const FeaturedComponents: React.FC = () => {
           </div>
         );
 
+      case 'ui-boards':
+        return (
+          <div className="p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs w-full max-w-xs space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-md">
+                주간 업무보고
+              </span>
+              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">진행중 (78%)</span>
+            </div>
+            <p className="text-xs font-bold text-slate-900 dark:text-white truncate">
+              2026 문화기업 지원사업 시스템 구축
+            </p>
+          </div>
+        );
+
       case 'ui-alerts-modals':
         return (
           <div className="p-3.5 bg-slate-900 text-white rounded-2xl shadow-lg border border-slate-800 flex items-center justify-between gap-4 w-full max-w-xs">

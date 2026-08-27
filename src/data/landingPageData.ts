@@ -94,6 +94,16 @@ export const featuredComponents: ComponentItem[] = [
 </div>`
   },
   {
+    id: 'ui-boards',
+    title: '게시판 & 업무보고 (ShowcaseBoards)',
+    category: 'buttons',
+    description: '실제 /ui/boards 페이지의 주간 업무보고, 공지 피드, 테이블 게시판',
+    badge: 'NEW',
+    route: '/ui/boards',
+    reactCode: `import ShowcaseBoards from '@/components/ui/ShowcaseBoards';\n\nexport default function BoardsDemo() {\n  return <ShowcaseBoards />;\n}`,
+    htmlCode: `<div class="p-4 rounded-xl border bg-white dark:bg-slate-800 space-y-2">\n  <span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-600 text-[10px] font-bold">주간 업무보고</span>\n  <h4 class="text-xs font-bold">2026 시스템 구축 현황</h4>\n</div>`
+  },
+  {
     id: 'ui-progress-nav',
     title: '프로그레스 & 내비게이션 (ShowcaseProgressNav)',
     category: 'buttons',
