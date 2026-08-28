@@ -66,7 +66,7 @@ const ShowcaseBoxes: React.FC = () => {
 
               <div className="flex items-center gap-2 pt-2 2xl:pt-8 text-[#333d4b]/70 dark:text-slate-300 font-bold text-lg sm:text-xl lg:text-2xl tracking-tight group cursor-pointer hover:text-[#333d4b] dark:hover:text-white transition-colors">
                 <span>성장의 토대</span>
-                <div className="w-7 h-7 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-none">
+                <div className="w-7 h-7 rounded-full bg-transparent group-hover:bg-black/5 dark:group-hover:bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-all shadow-none">
                   <ChevronRight className="w-4 h-4 text-[#333d4b] dark:text-white" />
                 </div>
               </div>
@@ -77,12 +77,12 @@ const ShowcaseBoxes: React.FC = () => {
               {growthServices.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-slate-800/90 rounded-full py-3.5 sm:py-4 px-5 sm:px-6 flex items-center justify-between transition-all duration-200 cursor-pointer border border-white/50 dark:border-slate-700/50 shadow-none hover:shadow-none group-hover/list:opacity-40 group-hover/list:bg-white/50 dark:group-hover/list:bg-slate-800/40 hover:!opacity-100 hover:!bg-white dark:hover:!bg-slate-800"
+                  className="group/item bg-white dark:bg-slate-800/90 rounded-full py-3.5 sm:py-4 px-5 sm:px-6 flex items-center justify-between transition-all duration-200 cursor-pointer border border-white/50 dark:border-slate-700/50 shadow-none hover:shadow-none group-hover/list:opacity-40 group-hover/list:bg-white/50 dark:group-hover/list:bg-slate-800/40 hover:!opacity-100 hover:!bg-white dark:hover:!bg-slate-800"
                 >
                   <span className="text-[#333d4b] dark:text-slate-100 text-sm sm:text-base font-semibold tracking-tight transition-colors">
                     {item}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-slate-100/80 dark:bg-slate-700/80 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/list:text-slate-400 hover:!text-slate-800 dark:hover:!text-white hover:!bg-slate-100 dark:hover:!bg-slate-700 transition-all shrink-0 ml-3 shadow-none">
+                  <div className="w-8 h-8 rounded-full bg-transparent group-hover/item:bg-slate-100/80 dark:group-hover/item:bg-slate-700/80 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/list:text-slate-400 group-hover/item:text-[#333d4b] dark:group-hover/item:text-white transition-all shrink-0 ml-3 shadow-none">
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const ShowcaseBoxes: React.FC = () => {
 
               <div className="flex items-center gap-2 pt-2 2xl:pt-8 text-[#333d4b]/70 dark:text-slate-300 font-bold text-lg sm:text-xl lg:text-2xl tracking-tight group cursor-pointer hover:text-[#333d4b] dark:hover:text-white transition-colors">
                 <span>모두의 경험</span>
-                <div className="w-7 h-7 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-none">
+                <div className="w-7 h-7 rounded-full bg-transparent group-hover:bg-black/5 dark:group-hover:bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-all shadow-none">
                   <ChevronRight className="w-4 h-4 text-[#333d4b] dark:text-white" />
                 </div>
               </div>
@@ -128,12 +128,12 @@ const ShowcaseBoxes: React.FC = () => {
               {allExperienceServices.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-slate-800/90 rounded-full py-3.5 sm:py-4 px-5 sm:px-6 flex items-center justify-between transition-all duration-200 cursor-pointer border border-white/60 dark:border-slate-700/50 shadow-none hover:shadow-none group-hover/list:opacity-40 group-hover/list:bg-white/50 dark:group-hover/list:bg-slate-800/40 hover:!opacity-100 hover:!bg-white dark:hover:!bg-slate-800"
+                  className="group/item bg-white dark:bg-slate-800/90 rounded-full py-3.5 sm:py-4 px-5 sm:px-6 flex items-center justify-between transition-all duration-200 cursor-pointer border border-white/60 dark:border-slate-700/50 shadow-none hover:shadow-none group-hover/list:opacity-40 group-hover/list:bg-white/50 dark:group-hover/list:bg-slate-800/40 hover:!opacity-100 hover:!bg-white dark:hover:!bg-slate-800"
                 >
                   <span className="text-[#333d4b] dark:text-slate-100 text-sm sm:text-base font-semibold tracking-tight transition-colors">
                     {item}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-slate-100/80 dark:bg-slate-700/80 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/list:text-slate-400 hover:!text-slate-800 dark:hover:!text-white hover:!bg-slate-100 dark:hover:!bg-slate-700 transition-all shrink-0 ml-3 shadow-none">
+                  <div className="w-8 h-8 rounded-full bg-transparent group-hover/item:bg-slate-100/80 dark:group-hover/item:bg-slate-700/80 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/list:text-slate-400 group-hover/item:text-[#333d4b] dark:group-hover/item:text-white transition-all shrink-0 ml-3 shadow-none">
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
