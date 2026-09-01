@@ -10,10 +10,10 @@ import {
   Plus,
   Maximize2,
   Settings,
-  Trash2 } from 'lucide-react';
+  Trash2,
+  UserPlus
+} from 'lucide-react';
 import codeSnippets from '../../data/AlertsModalsSnippets.json';
-
-
 
 interface Toast {
   id: number;
@@ -30,6 +30,13 @@ const ShowcaseAlertsModals: React.FC = () => {
   // Modals State
   const [activeModal, setActiveModal] = useState<'none' | 'confirm' | 'form' | 'drawer'>('none');
   const [formData, setFormData] = useState({ name: '', email: '' });
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    showToast('success', '팀원 초대 완료', `${formData.name || '신규 멤버'}님에게 초대 메일을 발송했습니다.`);
+    setActiveModal('none');
+    setFormData({ name: '', email: '' });
+  };
 
   // Toast Trigger
   const showToast = (type: 'success' | 'error' | 'info' | 'warning', title: string, message: string) => {
@@ -90,7 +97,7 @@ const ShowcaseAlertsModals: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">알림 & 모달</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">알림 & 모달</span>
           </div>
         </div>
       </div>
@@ -128,7 +135,7 @@ const ShowcaseAlertsModals: React.FC = () => {
             </button>
             <button
               onClick={() => showToast('info', '안내 사항', '신규 템플릿 안내 페이지가 업데이트되었습니다.')}
-              className="flex items-center justify-center gap-2 p-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold transition-all cursor-pointer"
+              className="flex items-center justify-center gap-2 p-3 bg-[#075056] hover:bg-[#09666e] text-white rounded-xl text-xs font-bold transition-all cursor-pointer"
             >
               <Info className="w-4 h-4" />
               정보 토스트
@@ -152,14 +159,14 @@ const ShowcaseAlertsModals: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveModal('form')}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-indigo-100 dark:shadow-none cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               정보 입력 모달
             </button>
             <button
               onClick={() => setActiveModal('drawer')}
-              className="flex items-center gap-2 px-5 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#075056] hover:bg-[#09666e] text-white rounded-xl text-xs font-bold transition-all cursor-pointer"
             >
               <Maximize2 className="w-4 h-4" />
               우측 슬라이드 오버
@@ -201,20 +208,20 @@ const ShowcaseAlertsModals: React.FC = () => {
             <div className="flex items-start gap-3 p-4 rounded-xl border border-amber-100 dark:border-amber-950 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-400">
               <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm font-bold">라이선스 만료 주의</p>
+                <p className="text-sm font-bold">보안 업데이트 권고</p>
                 <p className="text-xs text-slate-500 dark:text-amber-500/80 mt-1 leading-normal">
-                  현재 사용 중인 템플릿의 기간이 만료되기까지 3일 남았습니다. 지속적인 혜택 유지를 위해 갱신을 부탁드립니다.
+                  2단계 인증(2FA)을 활성화하여 귀하의 계정 보안 레벨을 최상위 상태로 안전하게 유지하십시오.
                 </p>
               </div>
             </div>
 
             {/* Info Alert */}
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-sky-100 dark:border-sky-950 bg-sky-50/50 dark:bg-sky-950/20 text-sky-800 dark:text-sky-400">
-              <Info className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#075056]/30 bg-[#E4EEF0]/60 dark:bg-[#075056]/20 text-[#16232A] dark:text-[#E4EEF0]">
+              <Info className="w-5 h-5 text-[#FF5B04] shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm font-bold">정기 서비스 점검 안내</p>
-                <p className="text-xs text-slate-500 dark:text-sky-500/80 mt-1 leading-normal">
-                  내일 오전 02:00 ~ 04:00 사이에 서버 업그레이드 및 정기 점검이 실시될 예정입니다. 작업 시간 중 접속이 제한될 수 있습니다.
+                <p className="text-sm font-bold">시스템 유지보수 공지</p>
+                <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 leading-normal">
+                  오는 일요일 자정부터 새벽 3시까지 글로벌 클라우드 백업 서버 정기 점검이 예정되어 있습니다.
                 </p>
               </div>
             </div>
@@ -225,66 +232,61 @@ const ShowcaseAlertsModals: React.FC = () => {
 
       {/* --- Actual Modal Overlays --- */}
 
-      {/* 1. Confirm / Warning Modal */}
+      {/* 1. Confirm / Alert Modal */}
       {activeModal === 'confirm' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setActiveModal('none')} />
-          {/* Content */}
-          <div className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-6 space-y-6 animate-zoom-in">
-            <div className="flex items-center gap-4 text-rose-500">
-              <div className="p-3 bg-rose-50 dark:bg-rose-500/10 rounded-full">
-                <Trash2 className="w-8 h-8" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-slate-900 dark:text-white">프로젝트 영구 삭제</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">삭제 작업은 절대 되돌릴 수 없습니다.</p>
-              </div>
+          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-fade-in" onClick={() => setActiveModal('none')} />
+          <div className="relative bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 animate-scale-up text-center space-y-4">
+            <div className="w-14 h-14 bg-rose-50 dark:bg-rose-950/40 text-rose-500 rounded-2xl flex items-center justify-center mx-auto">
+              <Trash2 className="w-7 h-7" />
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              정말로 현재 프로젝트 'DashBoard_01'의 전체 리소스를 서버에서 영구히 삭제하시겠습니까? 데이터 베이스와 연결된 모든 테이블과 미디어가 제거됩니다.
-            </p>
-            <div className="flex gap-3 justify-end">
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">정말 항목을 삭제하시겠습니까?</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                삭제된 프로젝트 정보와 리소스 스니펫은 복구할 수 없으며, 모든 연결된 API 키가 즉시 만료 처리됩니다.
+              </p>
+            </div>
+            <div className="flex gap-3 pt-2">
               <button
                 onClick={() => setActiveModal('none')}
-                className="px-4 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all cursor-pointer"
+                className="flex-1 py-3 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all cursor-pointer"
               >
                 취소
               </button>
               <button
                 onClick={() => {
-                  showToast('error', '삭제 처리', '프로젝트가 휴지통으로 이동되었습니다.');
+                  showToast('error', '삭제 완료', '해당 항목이 데이터베이스에서 영구 삭제되었습니다.');
                   setActiveModal('none');
                 }}
-                className="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-sm font-bold transition-all cursor-pointer"
+                className="flex-1 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-sm font-bold transition-all shadow-md shadow-rose-100 dark:shadow-none cursor-pointer"
               >
-                삭제하기
+                삭제 확인
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* 2. Input Form Modal */}
+      {/* 2. Interactive Form Modal */}
       {activeModal === 'form' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={() => setActiveModal('none')} />
-          <div className="relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden animate-zoom-in">
-            <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
-              <h4 className="text-lg font-bold text-slate-900 dark:text-white">새 구성원 추가</h4>
+          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-fade-in" onClick={() => setActiveModal('none')} />
+          <div className="relative bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 dark:border-slate-700 animate-scale-up space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#FF5B04] rounded-xl">
+                  <UserPlus className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">신규 팀원 초대</h3>
+                  <p className="text-xs text-slate-400">워크스페이스에 접근 가능한 신규 멤버를 등록합니다.</p>
+                </div>
+              </div>
               <button onClick={() => setActiveModal('none')} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                showToast('success', '등록 성공', `${formData.name}님이 팀원으로 성공적으로 추가되었습니다.`);
-                setActiveModal('none');
-                setFormData({ name: '', email: '' });
-              }}
-              className="p-6 space-y-4"
-            >
+            <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-700 dark:text-slate-300">이름</label>
                 <input
@@ -292,7 +294,7 @@ const ShowcaseAlertsModals: React.FC = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 transition-all text-sm font-semibold"
+                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 transition-all text-sm font-semibold"
                   placeholder="예: 홍길동"
                 />
               </div>
@@ -303,7 +305,7 @@ const ShowcaseAlertsModals: React.FC = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 transition-all text-sm font-semibold"
+                  className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 transition-all text-sm font-semibold"
                   placeholder="name@example.com"
                 />
               </div>
@@ -317,7 +319,7 @@ const ShowcaseAlertsModals: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 text-white rounded-xl text-sm font-bold transition-all cursor-pointer"
+                  className="px-5 py-2.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl text-sm font-bold transition-all cursor-pointer"
                 >
                   구성원 등록
                 </button>
@@ -336,7 +338,7 @@ const ShowcaseAlertsModals: React.FC = () => {
 
               <div className="px-6 py-6 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
                 <div className="flex items-center gap-2">
-                  <Settings className="w-5 h-5 text-indigo-500" />
+                  <Settings className="w-5 h-5 text-[#FF5B04]" />
                   <h4 className="text-lg font-bold text-slate-900 dark:text-white">환경 설정 세부판넬</h4>
                 </div>
                 <button onClick={() => setActiveModal('none')} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
@@ -354,7 +356,7 @@ const ShowcaseAlertsModals: React.FC = () => {
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" defaultChecked className="sr-only peer" />
-                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-600"></div>
+                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-[#16232A] dark:peer-checked:bg-[#FF5B04]"></div>
                     </label>
                   </div>
                 </div>
@@ -368,7 +370,7 @@ const ShowcaseAlertsModals: React.FC = () => {
                           type="checkbox"
                           id={`email-opt-${idx}`}
                           defaultChecked={idx !== 2}
-                          className="w-4.5 h-4.5 accent-indigo-500 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                          className="w-4.5 h-4.5 accent-[#16232A] dark:accent-[#FF5B04] rounded border-slate-300 text-[#16232A] dark:text-[#FF5B04] focus:ring-[#FF5B04]"
                         />
                         <label htmlFor={`email-opt-${idx}`} className="text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">{label}</label>
                       </div>
@@ -389,7 +391,7 @@ const ShowcaseAlertsModals: React.FC = () => {
                     showToast('info', '설정 완료', '설정 파일이 시스템에 영구 보관되었습니다.');
                     setActiveModal('none');
                   }}
-                  className="flex-1 py-3 bg-[#4B62FA] hover:bg-indigo-600 text-white rounded-xl text-sm font-bold transition-all cursor-pointer"
+                  className="flex-1 py-3 bg-[#FF5B04] hover:bg-[#e04f00] text-white rounded-xl text-sm font-bold transition-all cursor-pointer"
                 >
                   저장하기
                 </button>

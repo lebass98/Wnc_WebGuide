@@ -225,21 +225,21 @@ const ArteHtmlEditor: React.FC<ArteHtmlEditorProps> = ({ initialHtml, title, des
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => setDevice('desktop')}
-                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'desktop' ? 'bg-slate-200 dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04]' : 'text-slate-400 hover:text-slate-600'}`}
                     title="데스크톱 뷰"
                   >
                     <Monitor className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setDevice('tablet')}
-                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'tablet' ? 'bg-slate-200 dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04]' : 'text-slate-400 hover:text-slate-600'}`}
                     title="태블릿 뷰"
                   >
                     <Tablet className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setDevice('mobile')}
-                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                    className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${device === 'mobile' ? 'bg-slate-200 dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04]' : 'text-slate-400 hover:text-slate-600'}`}
                     title="모바일 뷰"
                   >
                     <Smartphone className="w-4 h-4" />

@@ -57,7 +57,7 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
           <div className="relative">
             <button 
               onClick={handleCopy}
-              className="flex items-center gap-1.5 text-[13px] font-medium text-slate-500 hover:text-indigo-600 transition-colors"
+              className="flex items-center gap-1.5 text-[13px] font-medium text-slate-500 hover:text-[#FF5B04] transition-colors"
             >
               <Copy className="w-3.5 h-3.5" />
               코드 복사
@@ -71,7 +71,7 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
           </div>
           <button 
             onClick={() => setShowCode(!showCode)}
-            className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-[13px] font-medium text-indigo-600 hover:bg-indigo-50 transition-colors border border-slate-100 dark:border-slate-700"
+            className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-[13px] font-medium text-[#16232A] dark:text-[#FF5B04] hover:bg-[#E4EEF0] dark:hover:bg-[#075056]/20 transition-colors border border-slate-100 dark:border-slate-700"
           >
             {showCode ? (
               <>
@@ -144,7 +144,7 @@ const LineCharts: React.FC = () => {
         type: 'line',
         smooth: true,
         symbol: 'none',
-        lineStyle: { width: 3, color: '#3C50E0' }
+        lineStyle: { width: 3, color: '#16232A' }
       }
     ]
   };
@@ -160,14 +160,14 @@ const LineCharts: React.FC = () => {
         type: 'line',
         smooth: true,
         symbol: 'none',
-        lineStyle: { width: 3, color: '#3C50E0' },
+        lineStyle: { width: 3, color: '#16232A' },
         areaStyle: {
           color: {
             type: 'linear',
             x: 0, y: 0, x2: 0, y2: 1,
             colorStops: [
-              { offset: 0, color: 'rgba(60, 80, 224, 0.2)' },
-              { offset: 1, color: 'rgba(60, 80, 224, 0)' }
+              { offset: 0, color: 'rgba(22, 35, 42, 0.25)' },
+              { offset: 1, color: 'rgba(22, 35, 42, 0)' }
             ]
           }
         }
@@ -194,8 +194,8 @@ const LineCharts: React.FC = () => {
         type: 'line',
         data: [1600, 1800, 1700, 1800, 2300, 2600, 2600],
         smooth: true,
-        lineStyle: { width: 3, color: '#3C50E0' },
-        itemStyle: { color: '#3C50E0', borderWidth: 2, borderColor: '#fff' },
+        lineStyle: { width: 3, color: '#16232A' },
+        itemStyle: { color: '#16232A', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
@@ -203,17 +203,17 @@ const LineCharts: React.FC = () => {
         type: 'line',
         data: [800, 900, 800, 850, 1000, 1250, 1300],
         smooth: true,
-        lineStyle: { width: 3, color: '#FF7043' },
-        itemStyle: { color: '#FF7043', borderWidth: 2, borderColor: '#fff' },
+        lineStyle: { width: 3, color: '#FF5B04' },
+        itemStyle: { color: '#FF5B04', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
-        name: '빨강',
+        name: '청록',
         type: 'line',
         data: [500, 550, 500, 550, 600, 900, 950],
         smooth: true,
-        lineStyle: { width: 3, color: '#F44336' },
-        itemStyle: { color: '#F44336', borderWidth: 2, borderColor: '#fff' },
+        lineStyle: { width: 3, color: '#075056' },
+        itemStyle: { color: '#075056', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
@@ -221,17 +221,17 @@ const LineCharts: React.FC = () => {
         type: 'line',
         data: [350, 350, 300, 400, 400, 600, 550],
         smooth: true,
-        lineStyle: { width: 3, color: '#4CAF50' },
-        itemStyle: { color: '#4CAF50', borderWidth: 2, borderColor: '#fff' },
+        lineStyle: { width: 3, color: '#10B981' },
+        itemStyle: { color: '#10B981', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
-        name: '연파랑',
+        name: '앰버',
         type: 'line',
         data: [150, 150, 100, 150, 100, 250, 250],
         smooth: true,
-        lineStyle: { width: 3, color: '#29B6F6' },
-        itemStyle: { color: '#29B6F6', borderWidth: 2, borderColor: '#fff' },
+        lineStyle: { width: 3, color: '#F59E0B' },
+        itemStyle: { color: '#F59E0B', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       }
     ]
@@ -249,9 +249,9 @@ const LineCharts: React.FC = () => {
         stack: '합계',
         data: [1600, 1800, 1700, 1800, 2300, 2600, 2600],
         smooth: true,
-        areaStyle: { opacity: 0.15, color: '#3C50E0' },
-        lineStyle: { width: 3, color: '#3C50E0' },
-        itemStyle: { color: '#3C50E0', borderWidth: 2, borderColor: '#fff' },
+        areaStyle: { opacity: 0.15, color: '#16232A' },
+        lineStyle: { width: 3, color: '#16232A' },
+        itemStyle: { color: '#16232A', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
@@ -260,20 +260,20 @@ const LineCharts: React.FC = () => {
         stack: '합계',
         data: [800, 900, 800, 850, 1000, 1250, 1300],
         smooth: true,
-        areaStyle: { opacity: 0.15, color: '#FF7043' },
-        lineStyle: { width: 3, color: '#FF7043' },
-        itemStyle: { color: '#FF7043', borderWidth: 2, borderColor: '#fff' },
+        areaStyle: { opacity: 0.15, color: '#FF5B04' },
+        lineStyle: { width: 3, color: '#FF5B04' },
+        itemStyle: { color: '#FF5B04', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
-        name: '빨강',
+        name: '청록',
         type: 'line',
         stack: '합계',
         data: [500, 550, 500, 550, 600, 900, 950],
         smooth: true,
-        areaStyle: { opacity: 0.15, color: '#F44336' },
-        lineStyle: { width: 3, color: '#F44336' },
-        itemStyle: { color: '#F44336', borderWidth: 2, borderColor: '#fff' },
+        areaStyle: { opacity: 0.15, color: '#075056' },
+        lineStyle: { width: 3, color: '#075056' },
+        itemStyle: { color: '#075056', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
@@ -282,20 +282,20 @@ const LineCharts: React.FC = () => {
         stack: '합계',
         data: [350, 350, 300, 400, 400, 600, 550],
         smooth: true,
-        areaStyle: { opacity: 0.15, color: '#4CAF50' },
-        lineStyle: { width: 3, color: '#4CAF50' },
-        itemStyle: { color: '#4CAF50', borderWidth: 2, borderColor: '#fff' },
+        areaStyle: { opacity: 0.15, color: '#10B981' },
+        lineStyle: { width: 3, color: '#10B981' },
+        itemStyle: { color: '#10B981', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       },
       {
-        name: '연파랑',
+        name: '앰버',
         type: 'line',
         stack: '합계',
         data: [150, 150, 100, 150, 100, 250, 250],
         smooth: true,
-        areaStyle: { opacity: 0.15, color: '#29B6F6' },
-        lineStyle: { width: 3, color: '#29B6F6' },
-        itemStyle: { color: '#29B6F6', borderWidth: 2, borderColor: '#fff' },
+        areaStyle: { opacity: 0.15, color: '#F59E0B' },
+        lineStyle: { width: 3, color: '#F59E0B' },
+        itemStyle: { color: '#F59E0B', borderWidth: 2, borderColor: '#fff' },
         symbolSize: 8
       }
     ]
@@ -337,8 +337,8 @@ const LineCharts: React.FC = () => {
         markLine: {
           data: [{ type: 'average', name: '평균' }]
         },
-        lineStyle: { width: 3, color: '#3C50E0' },
-        itemStyle: { color: '#3C50E0' }
+        lineStyle: { width: 3, color: '#16232A' },
+        itemStyle: { color: '#16232A' }
       },
       {
         name: '최소값',
@@ -353,8 +353,8 @@ const LineCharts: React.FC = () => {
             [{ symbol: 'none', x: '90%', yAxis: 'max' }, { symbol: 'circle', label: { position: 'start', formatter: '최대값' }, type: 'max', name: '최대값' }]
           ]
         },
-        lineStyle: { width: 3, color: '#F44336' },
-        itemStyle: { color: '#F44336' }
+        lineStyle: { width: 3, color: '#FF5B04' },
+        itemStyle: { color: '#FF5B04' }
       }
     ]
   };
@@ -374,8 +374,8 @@ const LineCharts: React.FC = () => {
       show: false,
       dimension: 0,
       pieces: [
-        { gt: 0, lte: 2, color: 'rgba(60, 80, 224, 0.4)' },
-        { gt: 4, lte: 7, color: 'rgba(60, 80, 224, 0.4)' }
+        { gt: 0, lte: 2, color: 'rgba(22, 35, 42, 0.4)' },
+        { gt: 4, lte: 7, color: 'rgba(255, 91, 4, 0.4)' }
       ]
     },
     series: [
@@ -383,7 +383,7 @@ const LineCharts: React.FC = () => {
         type: 'line',
         smooth: 0.6,
         symbol: 'none',
-        lineStyle: { color: '#3C50E0', width: 4 },
+        lineStyle: { color: '#16232A', width: 4 },
         areaStyle: {},
         data: [100, 300, 450, 300, 250, 750, 650, 550, 200]
       }
@@ -406,24 +406,24 @@ const LineCharts: React.FC = () => {
         type: 'line',
         step: 'start',
         data: [120, 130, 100, 130, 90, 230, 210],
-        lineStyle: { color: '#3C50E0', width: 3 },
-        itemStyle: { color: '#3C50E0' }
+        lineStyle: { color: '#16232A', width: 3 },
+        itemStyle: { color: '#16232A' }
       },
       {
         name: '중간 부분 계단',
         type: 'line',
         step: 'middle',
         data: [220, 280, 200, 230, 290, 430, 410],
-        lineStyle: { color: '#FF7043', width: 3 },
-        itemStyle: { color: '#FF7043' }
+        lineStyle: { color: '#FF5B04', width: 3 },
+        itemStyle: { color: '#FF5B04' }
       },
       {
         name: '끝 부분 계단',
         type: 'line',
         step: 'end',
         data: [450, 430, 400, 450, 590, 530, 510],
-        lineStyle: { color: '#F44336', width: 3 },
-        itemStyle: { color: '#F44336' }
+        lineStyle: { color: '#075056', width: 3 },
+        itemStyle: { color: '#075056' }
       }
     ]
   };
@@ -441,7 +441,7 @@ const LineCharts: React.FC = () => {
       show: false,
       type: 'continuous',
       dimension: 1,
-      color: ['#F44336', '#3C50E0']
+      color: ['#FF5B04', '#16232A']
     },
     series: {
       type: 'line',
@@ -465,7 +465,7 @@ const LineCharts: React.FC = () => {
       {
         type: 'line',
         showSymbol: false,
-        lineStyle: { color: '#3C50E0', width: 2 },
+        lineStyle: { color: '#16232A', width: 2 },
         data: Array.from({ length: 100 }, (_, i) => 1500 + i * 10 + Math.random() * 100)
       }
     ]
@@ -490,24 +490,24 @@ const LineCharts: React.FC = () => {
             name: '라인 1',
             type: 'line',
             data: [1, 3, 9, 27, 81, 243, 729, 2187, 6561],
-            lineStyle: { color: '#F44336', width: 2 },
-            itemStyle: { color: '#F44336' },
+            lineStyle: { color: '#FF5B04', width: 2 },
+            itemStyle: { color: '#FF5B04' },
             symbolSize: 8
         },
         {
             name: '라인 2',
             type: 'line',
             data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
-            lineStyle: { color: '#4CAF50', width: 2 },
-            itemStyle: { color: '#4CAF50' },
+            lineStyle: { color: '#075056', width: 2 },
+            itemStyle: { color: '#075056' },
             symbolSize: 8
         },
         {
             name: '라인 3',
             type: 'line',
             data: [0.5, 0.25, 0.12, 0.06, 0.03, 0.015, 0.007, 0.003, 0.001],
-            lineStyle: { color: '#29B6F6', width: 2 },
-            itemStyle: { color: '#29B6F6' },
+            lineStyle: { color: '#16232A', width: 2 },
+            itemStyle: { color: '#16232A' },
             symbolSize: 8
         }
     ]
@@ -545,7 +545,7 @@ const LineCharts: React.FC = () => {
         lineStyle: { width: 3 },
         itemStyle: { borderWidth: 2, borderColor: '#fff' },
         symbolSize: 10,
-        color: '#F44336'
+        color: '#16232A'
       },
       {
         type: 'line',
@@ -555,7 +555,7 @@ const LineCharts: React.FC = () => {
         lineStyle: { width: 3 },
         itemStyle: { borderWidth: 2, borderColor: '#fff' },
         symbolSize: 10,
-        color: '#2196F3'
+        color: '#FF5B04'
       },
       {
         type: 'line',
@@ -565,7 +565,7 @@ const LineCharts: React.FC = () => {
         lineStyle: { width: 3 },
         itemStyle: { borderWidth: 2, borderColor: '#fff' },
         symbolSize: 10,
-        color: '#FF9800'
+        color: '#075056'
       },
       {
         type: 'line',
@@ -575,7 +575,7 @@ const LineCharts: React.FC = () => {
         lineStyle: { width: 3 },
         itemStyle: { borderWidth: 2, borderColor: '#fff' },
         symbolSize: 10,
-        color: '#448AFF'
+        color: '#E4EEF0'
       },
       {
         type: 'pie',
@@ -610,7 +610,7 @@ const LineCharts: React.FC = () => {
           <ChevronRight className="w-3.5 h-3.5" />
           <span>ECharts</span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">선형 차트</span>
+          <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">선형 차트</span>
         </div>
       </div>
 

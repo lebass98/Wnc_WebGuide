@@ -8,7 +8,7 @@ const RecentOrders: React.FC = () => {
   const releases = dashboardData.releases;
 
   const statusStyles: { [key: string]: { text: string; css: string } } = {
-    'new': { text: t('dashboard.newRelease'), css: 'text-indigo-600 bg-indigo-50 dark:text-indigo-400 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-800' },
+    'new': { text: t('dashboard.newRelease'), css: 'text-[#16232A] bg-[#E4EEF0] dark:text-[#FF5B04] dark:bg-[#075056]/20 border border-slate-200 dark:border-[#075056]/40 font-bold' },
     'stable': { text: t('dashboard.stable'), css: 'text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/20' },
   };
 
@@ -44,8 +44,8 @@ const RecentOrders: React.FC = () => {
               <tr key={idx} className="group transition-colors">
                 <td className="py-5 whitespace-nowrap">
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-indigo-50 dark:bg-[#2E3A47] flex items-center justify-center shadow-sm">
-                      <FileCode2 className="w-5 h-5 text-indigo-500" />
+                    <div className="w-11 h-11 rounded-xl bg-[#E4EEF0] dark:bg-[#2E3A47] flex items-center justify-center shadow-sm">
+                      <FileCode2 className="w-5 h-5 text-[#16232A] dark:text-[#FF5B04]" />
                     </div>
                     <div>
                       <p className="text-sm font-bold text-slate-800 dark:text-white leading-tight">{item.name}</p>

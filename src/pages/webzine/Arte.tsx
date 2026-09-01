@@ -15,7 +15,7 @@ const Arte: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>웹진</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">아르떼</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">아르떼</span>
           </div>
         </div>
       </div>

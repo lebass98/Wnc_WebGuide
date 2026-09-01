@@ -97,7 +97,7 @@ const FormElements: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>폼</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">폼 요소</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">폼 요소</span>
           </div>
         </div>
       </div>
@@ -117,20 +117,20 @@ const FormElements: React.FC = () => {
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-355">입력란</span>
-                <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
+                <input type="text" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all" />
               </label>
 
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">플레이스홀더가 있는 입력란</span>
-                <input type="text" placeholder="info@gmail.com" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
+                <input type="text" placeholder="info@gmail.com" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
               </label>
 
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">비밀번호 입력란</span>
                 <div className="relative">
-                  <input type={showPassword ? "text" : "password"} placeholder="비밀번호를 입력하세요" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all" />
+                  <input type={showPassword ? "text" : "password"} placeholder="비밀번호를 입력하세요" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all" />
                   <Eye 
-                    className={`absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 cursor-pointer hover:text-indigo-500 transition-colors ${showPassword ? 'text-indigo-500' : 'text-slate-400'}`} 
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 cursor-pointer hover:text-[#FF5B04] transition-colors ${showPassword ? 'text-[#FF5B04]' : 'text-slate-400'}`} 
                     onClick={() => setShowPassword(!showPassword)}
                   />
                 </div>
@@ -144,15 +144,15 @@ const FormElements: React.FC = () => {
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">시간 선택 입력란</span>
                 <div className="relative">
-                  <input type="time" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all" />
+                  <input type="time" className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all" />
                 </div>
               </label>
 
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">결제 입력란</span>
                 <div className="relative">
-                  <input type="text" placeholder="카드 번호" className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
-                  <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-indigo-500" />
+                  <input type="text" placeholder="카드 번호" className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500" />
+                  <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FF5B04]" />
                 </div>
               </label>
             </div>
@@ -169,7 +169,7 @@ const FormElements: React.FC = () => {
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">선택 입력란</span>
                 <div className="relative">
-                  <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
+                  <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
                     <option>옵션 선택</option>
                     <option>옵션 1</option>
                     <option>옵션 2</option>
@@ -205,9 +205,9 @@ const FormElements: React.FC = () => {
                         <div 
                           key={option}
                           onClick={() => toggleOption(option)}
-                          className={`px-4 py-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors ${selectedOptions.includes(option) ? 'bg-indigo-50/50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-medium' : 'text-slate-600 dark:text-slate-400 dark:text-slate-300'}`}
+                          className={`px-4 py-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors ${selectedOptions.includes(option) ? 'bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#E4EEF0] font-medium' : 'text-slate-600 dark:text-slate-400 dark:text-slate-300'}`}
                         >
-                          <div className={`w-4 h-4 rounded-[0.25rem] border mr-3 flex items-center justify-center transition-colors ${selectedOptions.includes(option) ? 'border-blue-500 bg-blue-500' : 'border-slate-300'}`}>
+                          <div className={`w-4 h-4 rounded-[0.25rem] border mr-3 flex items-center justify-center transition-colors ${selectedOptions.includes(option) ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300'}`}>
                             {selectedOptions.includes(option) && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                           </div>
                           {option}
@@ -229,7 +229,7 @@ const FormElements: React.FC = () => {
             <div className="space-y-4 p-4 dark:bg-slate-900 rounded-xl">
               <label className="block space-y-2">
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">설명</span>
-                <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
+                <textarea placeholder="설명을 입력하세요..." rows={4} className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500"></textarea>
               </label>
 
               <label className="block space-y-2">
@@ -257,7 +257,7 @@ const FormElements: React.FC = () => {
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Mail className="w-5 h-5 text-slate-400" />
                   </div>
-                  <input type="text" placeholder="info@gmail.com" className="w-full pl-11 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all" />
+                  <input type="text" placeholder="info@gmail.com" className="w-full pl-11 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all" />
                 </div>
               </label>
 
@@ -267,7 +267,7 @@ const FormElements: React.FC = () => {
                   <input type="text" value="www.tailadmin.com" readOnly className="flex-1 px-4 py-3 rounded-l-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none text-slate-650 dark:text-slate-400 dark:text-slate-300" />
                   <button 
                     onClick={handleCopy}
-                    className="px-4 py-3 rounded-r-lg border border-l-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-indigo-500 dark:text-indigo-400 font-semibold flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
+                    className="px-4 py-3 rounded-r-lg border border-l-0 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-[#16232A] dark:text-[#FF5B04] font-semibold flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
                   >
                     {copied ? <span className="text-emerald-500 text-sm">복사됨!</span> : <><Copy className="w-4 h-4" /> 복사</>}
                   </button>
@@ -287,7 +287,7 @@ const FormElements: React.FC = () => {
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">파일 업로드</span>
                 <div className="relative">
                   <input type="file" className="hidden" id="file-upload" onChange={handleFileChange} />
-                  <label htmlFor="file-upload" className="flex items-center w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-500 transition-all overflow-hidden whitespace-nowrap">
+                  <label htmlFor="file-upload" className="flex items-center w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-[#FF5B04] dark:hover:border-[#FF5B04] transition-all overflow-hidden whitespace-nowrap">
                     <span className="bg-slate-100 dark:bg-slate-700 text-slate-655 px-3 py-1 rounded-md text-sm font-semibold mr-4 shrink-0">파일 선택</span>
                     <span className="text-slate-400 text-sm truncate">
                       {selectedFiles.length > 0 ? selectedFiles[0].name : "선택된 파일 없음"}
@@ -307,14 +307,14 @@ const FormElements: React.FC = () => {
             <div className="p-4 dark:bg-slate-900 rounded-xl flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="sr-only peer" checked={checkbox1} onChange={(e) => setCheckbox1(e.target.checked)} />
-                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-blue-500/25 ${checkbox1 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600'}`}>
+                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-[#FF5B04]/25 ${checkbox1 ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600'}`}>
                   {checkbox1 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
                 <span className={`text-sm font-medium ${checkbox1 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="sr-only peer" checked={checkbox2} onChange={(e) => setCheckbox2(e.target.checked)} />
-                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-blue-500/25 ${checkbox2 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600'}`}>
+                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-[#FF5B04]/25 ${checkbox2 ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600'}`}>
                   {checkbox2 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
                 <span className={`text-sm font-medium ${checkbox2 ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
@@ -331,14 +331,14 @@ const FormElements: React.FC = () => {
             <div className="p-4 dark:bg-slate-900 rounded-xl flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="radio-test" value="default" checked={radioValue === 'default'} onChange={(e) => setRadioValue(e.target.value)} className="sr-only peer" />
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${radioValue === 'default' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600'}`}>
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-[#FF5B04]/25 ${radioValue === 'default' ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600'}`}>
                    {radioValue === 'default' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
                 <span className={`text-sm font-medium ${radioValue === 'default' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="radio-test" value="secondary" checked={radioValue === 'secondary'} onChange={(e) => setRadioValue(e.target.value)} className="sr-only peer" />
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${radioValue === 'secondary' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500 dark:border-slate-600'}`}>
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-[#FF5B04]/25 ${radioValue === 'secondary' ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600'}`}>
                   {radioValue === 'secondary' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
                 <span className={`text-sm font-medium ${radioValue === 'secondary' ? 'text-slate-800 dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>보조</span>
@@ -356,17 +356,17 @@ const FormElements: React.FC = () => {
               <div className="flex gap-8 items-center">
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input type="checkbox" className="sr-only peer" checked={toggle1} onChange={() => setToggle1(!toggle1)} />
-                  <div className={`relative w-11 h-6 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${toggle1 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
+                  <div className={`relative w-11 h-6 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-[#FF5B04]/25 ${toggle1 ? 'bg-[#FF5B04]' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${toggle1 ? 'left-[calc(100%-1.25rem)]' : 'left-1'}`}></div>
                   </div>
-                  <span className={`text-sm font-medium ${toggle1 ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
+                  <span className={`text-sm font-medium ${toggle1 ? 'text-[#16232A] dark:text-[#FF5B04]' : 'text-slate-600 dark:text-slate-400'}`}>기본</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input type="checkbox" className="sr-only peer" checked={toggle2} onChange={() => setToggle2(!toggle2)} />
-                  <div className={`relative w-11 h-6 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-indigo-500/25 ${toggle2 ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
+                  <div className={`relative w-11 h-6 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-[#FF5B04]/25 ${toggle2 ? 'bg-[#FF5B04]' : 'bg-slate-200 dark:bg-slate-600 group-hover:bg-slate-300'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${toggle2 ? 'translate-x-6' : 'translate-x-1'}`}></div>
                   </div>
-                  <span className={`text-sm font-medium ${toggle2 ? 'text-indigo-650 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
+                  <span className={`text-sm font-medium ${toggle2 ? 'text-[#16232A] dark:text-[#FF5B04]' : 'text-slate-600 dark:text-slate-400'}`}>선택됨</span>
                 </label>
               </div>
 
@@ -397,7 +397,7 @@ const FormElements: React.FC = () => {
           >
             <div className="p-4 dark:bg-slate-900 rounded-xl">
               <div 
-                className={`border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all ${dragActive ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-500/10 scale-[1.02]' : 'border-indigo-100 dark:border-slate-700 bg-indigo-50/5 dark:bg-slate-800 hover:border-indigo-300'}`}
+                className={`border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center space-y-4 cursor-pointer transition-all ${dragActive ? 'border-[#FF5B04] bg-[#FF5B04]/10 scale-[1.02]' : 'border-slate-200 dark:border-slate-700 bg-slate-50/5 dark:bg-slate-800 hover:border-[#FF5B04]'}`}
                 onDragEnter={handleDrag}
                 onDragLeave={handleDrag}
                 onDragOver={handleDrag}
@@ -412,12 +412,12 @@ const FormElements: React.FC = () => {
                   multiple
                 />
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors bg-slate-100 dark:bg-slate-800`}>
-                  <Upload className={`w-6 h-6 ${dragActive ? 'text-indigo-600 animate-bounce' : 'text-indigo-500'}`} />
+                  <Upload className={`w-6 h-6 ${dragActive ? 'text-[#FF5B04] animate-bounce' : 'text-[#FF5B04]'}`} />
                 </div>
                 
                 {selectedFiles.length > 0 ? (
                   <div className="space-y-2 w-full max-w-sm">
-                    <p className="text-lg font-bold text-indigo-600">{selectedFiles.length}개 파일 선택됨</p>
+                    <p className="text-lg font-bold text-[#FF5B04]">{selectedFiles.length}개 파일 선택됨</p>
                     <ul className="text-sm text-slate-500 max-h-24 overflow-y-auto custom-scrollbar text-left bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
                       {selectedFiles.map((file, i) => (
                         <li key={i} className="truncate">• {file.name}</li>

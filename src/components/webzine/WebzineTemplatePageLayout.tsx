@@ -74,7 +74,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             <ChevronRight className="w-3.5 h-3.5" />
             <span>{brandName}</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">{subcategoryName}</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">{subcategoryName}</span>
           </div>
         </div>
 
@@ -86,7 +86,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             onClick={() => setLayoutColumns(1)}
             className={`p-1.5 rounded-lg transition-all cursor-pointer ${
               layoutColumns === 1
-                ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                ? 'bg-white dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04] shadow-sm'
                 : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
             title="1행 보기"
@@ -99,7 +99,7 @@ const WebzineTemplatePageLayout: React.FC<WebzineTemplatePageLayoutProps> = ({
             onClick={() => setLayoutColumns(2)}
             className={`p-1.5 rounded-lg transition-all cursor-pointer ${
               layoutColumns === 2
-                ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                ? 'bg-white dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04] shadow-sm'
                 : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
             title="2행 보기"

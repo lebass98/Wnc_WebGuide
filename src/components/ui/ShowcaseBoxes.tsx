@@ -32,7 +32,7 @@ const ShowcaseBoxes: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">박스</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">박스</span>
           </div>
         </div>
       </div>

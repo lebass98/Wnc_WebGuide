@@ -14,44 +14,44 @@ interface ThemeColorOption {
 
 const themeColors: ThemeColorOption[] = [
   {
-    name: 'Indigo',
-    id: 'indigo',
-    bgClass: 'bg-indigo-600',
-    borderClass: 'border-indigo-500',
-    textClass: 'text-indigo-600 dark:text-indigo-400',
-    gradientClass: 'from-indigo-600 to-violet-600',
-    ringClass: 'ring-indigo-500/40',
-    hex: '#6366f1'
+    name: 'Mirage',
+    id: 'mirage',
+    bgClass: 'bg-[#16232A]',
+    borderClass: 'border-[#16232A]',
+    textClass: 'text-[#16232A] dark:text-[#E4EEF0]',
+    gradientClass: 'from-[#16232A] to-[#075056]',
+    ringClass: 'ring-[#16232A]/40 dark:ring-[#E4EEF0]/40',
+    hex: '#16232A'
   },
   {
-    name: 'Emerald',
-    id: 'emerald',
-    bgClass: 'bg-emerald-600',
-    borderClass: 'border-emerald-500',
-    textClass: 'text-emerald-600 dark:text-emerald-400',
-    gradientClass: 'from-emerald-600 to-teal-600',
-    ringClass: 'ring-emerald-500/40',
-    hex: '#10b981'
+    name: 'Blaze Orange',
+    id: 'blaze-orange',
+    bgClass: 'bg-[#FF5B04]',
+    borderClass: 'border-[#FF5B04]',
+    textClass: 'text-[#FF5B04]',
+    gradientClass: 'from-[#FF5B04] to-amber-500',
+    ringClass: 'ring-[#FF5B04]/40',
+    hex: '#FF5B04'
   },
   {
-    name: 'Violet',
-    id: 'violet',
-    bgClass: 'bg-violet-600',
-    borderClass: 'border-violet-500',
-    textClass: 'text-violet-600 dark:text-violet-400',
-    gradientClass: 'from-violet-600 to-fuchsia-600',
-    ringClass: 'ring-violet-500/40',
-    hex: '#8b5cf6'
+    name: 'Deep Sea Green',
+    id: 'deep-sea-green',
+    bgClass: 'bg-[#075056]',
+    borderClass: 'border-[#075056]',
+    textClass: 'text-[#075056] dark:text-emerald-400',
+    gradientClass: 'from-[#075056] to-teal-700',
+    ringClass: 'ring-[#075056]/40',
+    hex: '#075056'
   },
   {
-    name: 'Rose',
-    id: 'rose',
-    bgClass: 'bg-rose-600',
-    borderClass: 'border-rose-500',
-    textClass: 'text-rose-600 dark:text-rose-400',
-    gradientClass: 'from-rose-600 to-pink-600',
-    ringClass: 'ring-rose-500/40',
-    hex: '#f43f5e'
+    name: 'Wild Sand',
+    id: 'wild-sand',
+    bgClass: 'bg-[#E4EEF0]',
+    borderClass: 'border-slate-300',
+    textClass: 'text-[#16232A] dark:text-[#E4EEF0]',
+    gradientClass: 'from-[#E4EEF0] to-slate-200',
+    ringClass: 'ring-slate-300/60',
+    hex: '#E4EEF0'
   },
   {
     name: 'Amber',
@@ -82,7 +82,7 @@ const ThemeSandbox: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-[#16232A] dark:text-[#FF5B04] text-xs font-semibold uppercase tracking-wider">
             <Palette className="w-4 h-4" />
             <span>Interactive Customizer & Export</span>
           </div>
@@ -105,7 +105,7 @@ const ThemeSandbox: React.FC = () => {
                   key={color.id}
                   onClick={() => setSelectedColor(color)}
                   className={`w-6 h-6 rounded-full ${color.bgClass} flex items-center justify-center transition-transform cursor-pointer ${
-                    selectedColor.id === color.id ? 'scale-125 ring-2 ring-indigo-500 dark:ring-white ring-offset-2 ring-offset-white dark:ring-offset-slate-900' : 'hover:scale-110 opacity-75 hover:opacity-100'
+                    selectedColor.id === color.id ? 'scale-125 ring-2 ring-[#16232A] dark:ring-[#FF5B04] ring-offset-2 ring-offset-white dark:ring-offset-slate-900' : 'hover:scale-110 opacity-75 hover:opacity-100'
                   }`}
                   title={color.name}
                 >
@@ -149,7 +149,7 @@ const ThemeSandbox: React.FC = () => {
           {/* Export CSS Button */}
           <button
             onClick={handleCopyThemeCss}
-            className="px-4 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl text-xs font-bold transition-all flex items-center gap-2 shadow-xs cursor-pointer"
+            className="px-4 py-3 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-2xl text-xs font-bold transition-all flex items-center gap-2 shadow-xs cursor-pointer"
           >
             {copiedCss ? <Check className="w-4 h-4 text-emerald-300" /> : <Code className="w-4 h-4" />}
             <span>{copiedCss ? 'CSS 변수 복사됨!' : 'CSS 변수 Export'}</span>

@@ -13,8 +13,8 @@ const availableBlocks: Block[] = [
     id: 'b-hero',
     name: '웹진 메인 타이틀 블록',
     category: 'Header',
-    code: `<header className="py-12 text-center space-y-3 bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-900 text-white rounded-3xl p-8">
-  <span className="px-3 py-1 bg-amber-400/20 text-amber-300 rounded-full text-xs font-bold">Arte Issue #42</span>
+    code: `<header className="py-12 text-center space-y-3 bg-gradient-to-r from-[#16232A] via-[#075056] to-[#16232A] text-white rounded-3xl p-8">
+  <span className="px-3 py-1 bg-[#FF5B04]/20 text-[#FF5B04] rounded-full text-xs font-bold">Arte Issue #42</span>
   <h1 className="text-3xl font-extrabold">디지털 아키텍처의 미래</h1>
   <p className="text-sm text-slate-300 max-w-xl mx-auto">기술과 디자인의 경계를 넘나드는 모던 에디토리얼 모음집</p>
 </header>`
@@ -32,7 +32,7 @@ const availableBlocks: Block[] = [
     name: '에디터 필진 프로필 블록',
     category: 'Profile',
     code: `<div className="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 my-4">
-  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ArteEditor" className="w-12 h-12 rounded-full border-2 border-indigo-500" alt="Editor" />
+  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ArteEditor" className="w-12 h-12 rounded-full border-2 border-[#FF5B04]" alt="Editor" />
   <div>
     <h4 className="font-bold text-slate-900 dark:text-white text-sm">이아름 수석 에디터</h4>
     <p className="text-xs text-slate-500">디지털 문화 칼럼니스트 & UX 디자이너</p>
@@ -44,7 +44,7 @@ const availableBlocks: Block[] = [
     name: '인터랙티브 영상 플레이어 블록',
     category: 'Media',
     code: `<div className="relative rounded-2xl overflow-hidden aspect-video bg-slate-900 flex items-center justify-center my-6">
-  <button className="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xl shadow-xl hover:scale-110 transition-transform">▶</button>
+  <button className="w-16 h-16 rounded-full bg-[#FF5B04] text-white flex items-center justify-center font-bold text-xl shadow-xl hover:scale-110 transition-transform">▶</button>
 </div>`
   }
 ];
@@ -84,13 +84,13 @@ const WebzineBuilderModal: React.FC<WebzineBuilderModalProps> = ({ isOpen, onClo
         {/* Header */}
         <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-indigo-500/10 text-indigo-500 rounded-xl">
+            <div className="p-2 bg-[#075056]/15 dark:bg-[#075056]/30 text-[#075056] dark:text-[#FF5B04] rounded-xl">
               <Layers className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <span>웹진 요소 조립 빌더 (Webzine Block Builder)</span>
-                <span className="px-2 py-0.5 text-[10px] bg-indigo-500/10 text-indigo-500 rounded-full font-mono">Interactive</span>
+                <span className="px-2 py-0.5 text-[10px] bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#FF5B04] rounded-full font-mono">Interactive</span>
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 원하는 블록을 추가하여 나만의 웹진 레이아웃 코드를 완성해 내보내세요.
@@ -115,13 +115,13 @@ const WebzineBuilderModal: React.FC<WebzineBuilderModalProps> = ({ isOpen, onClo
               <div
                 key={b.id}
                 onClick={() => addBlock(b)}
-                className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 cursor-pointer flex items-center justify-between transition-colors group"
+                className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FF5B04] cursor-pointer flex items-center justify-between transition-colors group"
               >
                 <div>
-                  <span className="text-[10px] font-bold text-indigo-500">{b.category}</span>
-                  <h5 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-500">{b.name}</h5>
+                  <span className="text-[10px] font-bold text-[#075056] dark:text-[#FF5B04]">{b.category}</span>
+                  <h5 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#FF5B04]">{b.name}</h5>
                 </div>
-                <Plus className="w-4 h-4 text-indigo-500" />
+                <Plus className="w-4 h-4 text-[#075056] dark:text-[#FF5B04]" />
               </div>
             ))}
           </div>
@@ -134,7 +134,7 @@ const WebzineBuilderModal: React.FC<WebzineBuilderModalProps> = ({ isOpen, onClo
               </h4>
               <button
                 onClick={handleCopyCombined}
-                className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-xs cursor-pointer"
+                className="px-3 py-1.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-xs cursor-pointer"
               >
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>조합 코드 한꺼번에 복사</span>
@@ -144,7 +144,7 @@ const WebzineBuilderModal: React.FC<WebzineBuilderModalProps> = ({ isOpen, onClo
             {/* Canvas List */}
             <div className="space-y-2 max-h-44 overflow-y-auto pr-1">
               {selectedBlocks.map((b, idx) => (
-                <div key={b.id} className="flex items-center justify-between p-2.5 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800/60 rounded-xl text-xs">
+                <div key={b.id} className="flex items-center justify-between p-2.5 bg-[#E4EEF0]/60 dark:bg-[#075056]/20 border border-slate-200 dark:border-[#075056]/40 rounded-xl text-xs">
                   <span className="font-bold text-slate-900 dark:text-white">{idx + 1}. {b.name}</span>
                   <button onClick={() => removeBlock(idx)} className="text-rose-500 hover:text-rose-700 p-1">
                     <Trash2 className="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ const WebzineBuilderModal: React.FC<WebzineBuilderModalProps> = ({ isOpen, onClo
             </div>
 
             {/* Generated Combined Code Box */}
-            <div className="p-4 bg-slate-900 rounded-2xl font-mono text-xs text-indigo-200 max-h-48 overflow-y-auto">
+            <div className="p-4 bg-slate-900 rounded-2xl font-mono text-xs text-slate-200 max-h-48 overflow-y-auto">
               <pre className="whitespace-pre-wrap">{combinedCode}</pre>
             </div>
           </div>
@@ -164,7 +164,7 @@ const WebzineBuilderModal: React.FC<WebzineBuilderModalProps> = ({ isOpen, onClo
         <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-500"
+            className="px-5 py-2 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl text-xs font-bold"
           >
             완료
           </button>

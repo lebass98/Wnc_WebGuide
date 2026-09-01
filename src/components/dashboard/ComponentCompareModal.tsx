@@ -31,7 +31,7 @@ const ComponentCompareModal: React.FC<CompareModalProps> = ({
         {/* Modal Header */}
         <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-indigo-500/10 text-indigo-500 rounded-xl">
+            <div className="p-2 bg-[#075056]/15 dark:bg-[#075056]/30 text-[#075056] dark:text-[#FF5B04] rounded-xl">
               <ArrowRightLeft className="w-5 h-5" />
             </div>
             <div>
@@ -61,9 +61,9 @@ const ComponentCompareModal: React.FC<CompareModalProps> = ({
             >
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-indigo-500 uppercase">{item.category}</span>
+                  <span className="text-xs font-semibold text-[#075056] dark:text-[#FF5B04] uppercase">{item.category}</span>
                   {item.badge && (
-                    <span className="px-2 py-0.5 text-[10px] font-bold bg-indigo-500/10 text-indigo-500 rounded">
+                    <span className="px-2 py-0.5 text-[10px] font-bold bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#E4EEF0] rounded">
                       {item.badge}
                     </span>
                   )}
@@ -78,11 +78,11 @@ const ComponentCompareModal: React.FC<CompareModalProps> = ({
               </div>
 
               {/* Code Snippet Box */}
-              <div className="p-3 bg-slate-900 rounded-xl font-mono text-[11px] text-indigo-200 relative max-h-36 overflow-y-auto">
+              <div className="p-3 bg-slate-900 rounded-xl font-mono text-[11px] text-slate-200 relative max-h-36 overflow-y-auto">
                 <pre className="whitespace-pre-wrap">{item.reactCode}</pre>
                 <button
                   onClick={() => handleCopyCode(item.id, item.reactCode)}
-                  className="absolute top-2 right-2 px-2.5 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded text-[10px] flex items-center gap-1 font-sans cursor-pointer"
+                  className="absolute top-2 right-2 px-2.5 py-1 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded text-[10px] flex items-center gap-1 font-sans cursor-pointer"
                 >
                   {copiedId === item.id ? <Check className="w-3 h-3 text-emerald-300" /> : <Copy className="w-3 h-3" />}
                   <span>{copiedId === item.id ? '복사됨' : '복사'}</span>
@@ -96,7 +96,7 @@ const ComponentCompareModal: React.FC<CompareModalProps> = ({
         <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-500"
+            className="px-5 py-2 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl text-xs font-bold"
           >
             닫기
           </button>

@@ -7,21 +7,21 @@ import { useComponentStorage } from '../../hooks/useComponentStorage';
 import ComponentCompareModal from './ComponentCompareModal';
 
 const categories = [
-  { id: 'all', label: '전체 (All 22)', icon: Layers, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'all', label: '전체 (All 22)', icon: Layers, color: 'text-[#16232A] dark:text-[#FF5B04]' },
   { id: 'favorites', label: '❤️ 내 즐겨찾기', icon: Heart, color: 'text-rose-500' },
-  { id: 'buttons', label: '버튼 & 뱃지 (7)', icon: MousePointer, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'forms', label: '폼 & 인풋 (5)', icon: Edit3, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'modals', label: '모달 & 페이지 (5)', icon: MessageSquare, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'tables', label: '테이블 & 업무 (3)', icon: Table, color: 'text-indigo-600 dark:text-indigo-400' },
-  { id: 'charts', label: '일정 & 차트 (2)', icon: PieChart, color: 'text-indigo-600 dark:text-indigo-400' },
+  { id: 'buttons', label: '버튼 & 뱃지 (7)', icon: MousePointer, color: 'text-[#16232A] dark:text-[#FF5B04]' },
+  { id: 'forms', label: '폼 & 인풋 (5)', icon: Edit3, color: 'text-[#075056] dark:text-[#E4EEF0]' },
+  { id: 'modals', label: '모달 & 페이지 (5)', icon: MessageSquare, color: 'text-[#FF5B04]' },
+  { id: 'tables', label: '테이블 & 업무 (3)', icon: Table, color: 'text-[#16232A] dark:text-[#FF5B04]' },
+  { id: 'charts', label: '일정 & 차트 (2)', icon: PieChart, color: 'text-[#075056] dark:text-[#E4EEF0]' },
 ];
 
 const categoryBadgeStyles: Record<string, string> = {
-  buttons: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
-  forms: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-  modals: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
-  tables: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-  charts: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+  buttons: 'bg-[#E4EEF0] text-[#16232A] dark:bg-[#075056]/30 dark:text-[#E4EEF0] border-slate-200 dark:border-[#075056]/40',
+  forms: 'bg-[#075056]/15 text-[#075056] dark:text-emerald-400 border-[#075056]/30',
+  modals: 'bg-[#FF5B04]/10 text-[#FF5B04] border-[#FF5B04]/20',
+  tables: 'bg-[#E4EEF0] text-[#16232A] dark:bg-[#075056]/20 dark:text-[#FF5B04] border-slate-200 dark:border-[#075056]/30',
+  charts: 'bg-[#075056]/15 text-[#075056] dark:text-[#E4EEF0] border-[#075056]/30',
 };
 
 const FeaturedComponents: React.FC = () => {
@@ -89,8 +89,8 @@ const FeaturedComponents: React.FC = () => {
       case 'ui-buttons-badges':
         return (
           <div className="flex items-center gap-2.5">
-            <button className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-xs rounded-xl shadow-md hover:shadow-indigo-500/25 transition-all flex items-center gap-1.5 cursor-pointer">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+            <button className="px-4 py-2 bg-gradient-to-r from-[#16232A] via-[#075056] to-[#FF5B04] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 cursor-pointer">
+              <Sparkles className="w-3.5 h-3.5 text-[#FF5B04] animate-pulse" />
               <span>샤인 시그니처 버튼</span>
             </button>
             <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold text-[11px] rounded-full">
@@ -134,7 +134,7 @@ const FeaturedComponents: React.FC = () => {
               <CheckCircle className="w-4 h-4 text-emerald-400" />
               <span className="text-xs font-bold">성공적으로 반영되었습니다</span>
             </div>
-            <button className="px-2.5 py-1 bg-indigo-600 text-white text-[10px] font-bold rounded-lg hover:bg-indigo-500">확인</button>
+            <button className="px-2.5 py-1 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white text-[10px] font-bold rounded-lg">확인</button>
           </div>
         );
 
@@ -142,12 +142,12 @@ const FeaturedComponents: React.FC = () => {
         return (
           <div className="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs w-full max-w-xs">
             <div className="relative">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User1" className="w-9 h-9 rounded-full border-2 border-indigo-500" alt="Avatar" />
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=User1" className="w-9 h-9 rounded-full border-2 border-[#FF5B04]" alt="Avatar" />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
             </div>
             <div>
               <h5 className="text-xs font-bold text-slate-900 dark:text-white">김서연 에디터</h5>
-              <p className="text-[10px] text-indigo-600 dark:text-indigo-400 font-medium">Senior UI Specialist</p>
+              <p className="text-[10px] text-[#075056] dark:text-[#FF5B04] font-medium">Senior UI Specialist</p>
             </div>
           </div>
         );
@@ -157,18 +157,18 @@ const FeaturedComponents: React.FC = () => {
           <div className="space-y-1.5 w-full max-w-xs p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
             <div className="flex justify-between text-xs font-bold">
               <span className="text-slate-700 dark:text-slate-300">프로젝트 진행률</span>
-              <span className="text-indigo-600 dark:text-indigo-400">78%</span>
+              <span className="text-[#16232A] dark:text-[#FF5B04]">78%</span>
             </div>
             <div className="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
-              <div className="bg-gradient-to-r from-indigo-600 to-violet-500 h-full rounded-full transition-all duration-500" style={{ width: '78%' }} />
+              <div className="bg-gradient-to-r from-[#16232A] via-[#075056] to-[#FF5B04] h-full rounded-full transition-all duration-500" style={{ width: '78%' }} />
             </div>
           </div>
         );
 
       case 'ui-states-loaders':
         return (
-          <div className="flex items-center gap-2.5 px-4 py-2.5 bg-indigo-50/80 dark:bg-indigo-950/50 rounded-2xl border border-indigo-200 dark:border-indigo-800/60 text-xs font-bold text-indigo-600 dark:text-indigo-300">
-            <svg className="animate-spin w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2.5 px-4 py-2.5 bg-[#E4EEF0] dark:bg-[#075056]/20 rounded-2xl border border-slate-200 dark:border-[#075056]/40 text-xs font-bold text-[#16232A] dark:text-[#FF5B04]">
+            <svg className="animate-spin w-4 h-4 text-[#16232A] dark:text-[#FF5B04]" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
             </svg>
@@ -196,7 +196,7 @@ const FeaturedComponents: React.FC = () => {
             <label className="text-xs font-bold text-slate-800 dark:text-slate-200 block">이메일 수신 동의</label>
             <div className="flex items-center justify-between p-2 bg-slate-50 dark:bg-slate-900 rounded-xl">
               <span className="text-[11px] text-slate-600 dark:text-slate-400">마케팅 알림 받기</span>
-              <div className="w-8 h-4 bg-indigo-600 rounded-full p-0.5 flex justify-end">
+              <div className="w-8 h-4 bg-[#16232A] dark:bg-[#FF5B04] rounded-full p-0.5 flex justify-end">
                 <div className="w-3 h-3 bg-white rounded-full"></div>
               </div>
             </div>
@@ -221,20 +221,20 @@ const FeaturedComponents: React.FC = () => {
         return (
           <div className="p-3.5 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">로그인</span>
+              <span className="text-xs font-bold text-[#16232A] dark:text-[#FF5B04]">로그인</span>
               <Lock className="w-3.5 h-3.5 text-slate-400" />
             </div>
             <input type="email" defaultValue="user@domain.com" readOnly className="w-full p-1.5 text-[11px] border rounded-lg bg-slate-50 dark:bg-slate-900" />
-            <button className="w-full py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-bold">인증하기</button>
+            <button className="w-full py-1.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-lg text-xs font-bold">인증하기</button>
           </div>
         );
 
       case 'signup-page-form':
         return (
           <div className="p-3.5 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs space-y-2">
-            <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">회원가입 약관</span>
+            <span className="text-xs font-bold text-[#16232A] dark:text-[#FF5B04]">회원가입 약관</span>
             <div className="flex items-center gap-2 text-[11px]">
-              <input type="checkbox" checked readOnly className="accent-indigo-600" />
+              <input type="checkbox" checked readOnly className="accent-[#16232A] dark:accent-[#FF5B04]" />
               <span>서비스 이용약관 동의 (필수)</span>
             </div>
           </div>
@@ -245,7 +245,7 @@ const FeaturedComponents: React.FC = () => {
           <div className="p-3 bg-slate-50 dark:bg-slate-800 border rounded-2xl w-full max-w-xs space-y-1">
             <div className="flex justify-between items-center text-xs font-bold text-slate-800 dark:text-slate-200">
               <span>Q. 컴포넌트는 자유롭게 사용 가능한가요?</span>
-              <ChevronDown className="w-3.5 h-3.5 text-indigo-500" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#FF5B04]" />
             </div>
             <p className="text-[10px] text-slate-500 dark:text-slate-400">네, 1초 복사 버튼으로 어디서든 즉시 가져가 사용 가능합니다.</p>
           </div>
@@ -256,7 +256,7 @@ const FeaturedComponents: React.FC = () => {
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 bg-indigo-500/10 text-indigo-600 font-extrabold rounded-lg flex items-center justify-center text-xs">S</div>
+              <div className="w-7 h-7 bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#FF5B04] font-extrabold rounded-lg flex items-center justify-center text-xs">S</div>
               <span className="text-xs font-bold">Slack 연동 모듈</span>
             </div>
             <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 font-bold text-[10px] rounded-full">연동됨</span>
@@ -265,15 +265,15 @@ const FeaturedComponents: React.FC = () => {
 
       case 'pricing-tier-cards':
         return (
-          <div className="p-3.5 bg-gradient-to-br from-indigo-600 to-violet-700 text-white rounded-2xl w-full max-w-xs text-center">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-200">Pro Membership</span>
-            <div className="text-lg font-extrabold my-0.5">$29 <span className="text-[10px] font-normal text-indigo-200">/ 월</span></div>
+          <div className="p-3.5 bg-gradient-to-br from-[#16232A] via-[#075056] to-[#FF5B04] text-white rounded-2xl w-full max-w-xs text-center">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200">Pro Membership</span>
+            <div className="text-lg font-extrabold my-0.5">$29 <span className="text-[10px] font-normal text-slate-200">/ 월</span></div>
           </div>
         );
 
       case 'hero-section-layouts':
         return (
-          <div className="p-4 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-2xl text-center w-full max-w-xs">
+          <div className="p-4 bg-gradient-to-r from-[#16232A] to-[#075056] text-white rounded-2xl text-center w-full max-w-xs">
             <h4 className="text-xs font-extrabold">모던 히어로 레이아웃</h4>
           </div>
         );
@@ -281,7 +281,7 @@ const FeaturedComponents: React.FC = () => {
       case 'error-404-component':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs text-center space-y-1">
-            <span className="text-xl font-extrabold text-indigo-600">404</span>
+            <span className="text-xl font-extrabold text-[#FF5B04]">404</span>
             <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">요청하신 페이지를 찾을 수 없습니다</p>
           </div>
         );
@@ -313,7 +313,7 @@ const FeaturedComponents: React.FC = () => {
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl w-full max-w-xs flex items-center justify-between text-xs">
             <span className="font-bold text-slate-800 dark:text-slate-200">대시보드 UI 개편 완료</span>
-            <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 font-bold text-[10px] rounded">완료</span>
+            <span className="px-2 py-0.5 bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#FF5B04] font-bold text-[10px] rounded">완료</span>
           </div>
         );
 
@@ -323,7 +323,7 @@ const FeaturedComponents: React.FC = () => {
             <div className="p-2.5 bg-slate-100 dark:bg-slate-800 rounded-xl font-bold text-slate-700 dark:text-slate-300">
               <span>To Do (2)</span>
             </div>
-            <div className="p-2.5 bg-indigo-50 dark:bg-indigo-950/60 rounded-xl font-bold text-indigo-600 dark:text-indigo-300">
+            <div className="p-2.5 bg-[#E4EEF0] dark:bg-[#075056]/30 rounded-xl font-bold text-[#16232A] dark:text-[#FF5B04]">
               <span>Done (5) ✓</span>
             </div>
           </div>
@@ -333,7 +333,7 @@ const FeaturedComponents: React.FC = () => {
       case 'calendar-page-component':
         return (
           <div className="p-3 bg-white dark:bg-slate-800 border rounded-2xl text-center w-full max-w-xs">
-            <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">📅 2026년 8월 6일 (목) 일정</span>
+            <span className="text-xs font-bold text-[#16232A] dark:text-[#FF5B04]">📅 2026년 8월 6일 (목) 일정</span>
           </div>
         );
 
@@ -342,7 +342,7 @@ const FeaturedComponents: React.FC = () => {
           <div className="p-3.5 bg-slate-900 text-white rounded-2xl flex justify-between items-center text-xs">
             <div>
               <p className="text-[10px] text-slate-400 font-medium">주간 주가 지수</p>
-              <p className="text-sm font-bold text-indigo-400 mt-0.5">+28.4% ▲</p>
+              <p className="text-sm font-bold text-[#FF5B04] mt-0.5">+28.4% ▲</p>
             </div>
             <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold rounded-lg">LIVE</span>
           </div>
@@ -362,7 +362,7 @@ const FeaturedComponents: React.FC = () => {
       {/* Section Title & Compare Action Floating Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-[#16232A] dark:text-[#FF5B04] text-xs font-semibold uppercase tracking-wider">
             <Layers className="w-4 h-4" />
             <span>100% Real Dedicated Page Routes Only</span>
           </div>
@@ -376,11 +376,11 @@ const FeaturedComponents: React.FC = () => {
 
         {/* Compare Floating Button */}
         {selectedForCompare.length > 0 && (
-          <div className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-2xl shadow-lg animate-bounce">
+          <div className="flex items-center gap-2 bg-[#16232A] dark:bg-[#FF5B04] text-white px-4 py-2 rounded-2xl shadow-lg animate-bounce">
             <span className="text-xs font-bold">{selectedForCompare.length}개 선택됨</span>
             <button
               onClick={() => setIsCompareModalOpen(true)}
-              className="px-3 py-1 bg-white text-indigo-600 rounded-xl text-xs font-bold hover:bg-slate-100 flex items-center gap-1 cursor-pointer"
+              className="px-3 py-1 bg-white text-[#16232A] dark:text-[#16232A] rounded-xl text-xs font-bold hover:bg-slate-100 flex items-center gap-1 cursor-pointer"
             >
               <ArrowRightLeft className="w-3.5 h-3.5" />
               <span>나란히 비교하기</span>
@@ -398,7 +398,7 @@ const FeaturedComponents: React.FC = () => {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedCategory === cat.id
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'
+                    ? 'bg-[#16232A] dark:bg-[#075056] text-white shadow-md'
                     : 'bg-white dark:bg-[#1A222C] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
                 }`}
               >
@@ -418,12 +418,12 @@ const FeaturedComponents: React.FC = () => {
           const isCopied = copiedId === item.id;
           const isFav = favorites.includes(item.id);
           const isCompared = selectedForCompare.includes(item.id);
-          const badgeClass = categoryBadgeStyles[item.category] || 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20';
+          const badgeClass = categoryBadgeStyles[item.category] || 'bg-[#E4EEF0] text-[#16232A] dark:bg-[#075056]/30 dark:text-[#E4EEF0] border-slate-200 dark:border-[#075056]/40';
 
           return (
             <div
               key={item.id}
-              className="group bg-white dark:bg-[#1A222C] rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:-translate-y-1 dark:hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+              className="group bg-white dark:bg-[#1A222C] rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-sm hover:shadow-xl hover:-translate-y-1 dark:hover:border-[#FF5B04]/50 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
             >
               {/* Card Header & Controls */}
               <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
@@ -449,7 +449,7 @@ const FeaturedComponents: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <h3 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mt-0.5">
+                    <h3 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-[#16232A] dark:group-hover:text-[#FF5B04] transition-colors mt-0.5">
                       {item.title}
                     </h3>
                   </div>
@@ -461,8 +461,8 @@ const FeaturedComponents: React.FC = () => {
                     onClick={() => toggleCompareItem(item.id)}
                     className={`px-2 py-0.5 text-[10px] font-bold rounded border transition-all cursor-pointer ${
                       isCompared
-                        ? 'bg-indigo-600 text-white border-indigo-600'
-                        : 'text-slate-400 border-slate-200 dark:border-slate-700 hover:text-indigo-500'
+                        ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white border-[#16232A] dark:border-[#FF5B04]'
+                        : 'text-slate-400 border-slate-200 dark:border-slate-700 hover:text-[#16232A] dark:hover:text-[#FF5B04]'
                     }`}
                     title="컴포넌트 비교 선택"
                   >
@@ -473,7 +473,7 @@ const FeaturedComponents: React.FC = () => {
                     <button
                       onClick={() => setMode(item.id, 'preview')}
                       className={`px-2 py-0.5 rounded font-medium flex items-center gap-1 cursor-pointer transition-all ${
-                        currentMode === 'preview' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-500 dark:text-slate-400'
+                        currentMode === 'preview' ? 'bg-[#16232A] dark:bg-[#075056] text-white font-bold' : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
                       <Eye className="w-3 h-3" />
@@ -482,7 +482,7 @@ const FeaturedComponents: React.FC = () => {
                     <button
                       onClick={() => setMode(item.id, 'react')}
                       className={`px-2 py-0.5 rounded font-medium cursor-pointer transition-all ${
-                        currentMode === 'react' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-500 dark:text-slate-400'
+                        currentMode === 'react' ? 'bg-[#16232A] dark:bg-[#075056] text-white font-bold' : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
                       React
@@ -490,7 +490,7 @@ const FeaturedComponents: React.FC = () => {
                     <button
                       onClick={() => setMode(item.id, 'html')}
                       className={`px-2 py-0.5 rounded font-medium cursor-pointer transition-all ${
-                        currentMode === 'html' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-500 dark:text-slate-400'
+                        currentMode === 'html' ? 'bg-[#16232A] dark:bg-[#075056] text-white font-bold' : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
                       HTML
@@ -503,12 +503,12 @@ const FeaturedComponents: React.FC = () => {
               {currentMode === 'preview' && (
                 <div className="px-4 py-1.5 bg-slate-50/80 dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
                   <span className="font-mono flex items-center gap-1">
-                    <Info className="w-3 h-3 text-indigo-500" /> Viewport: {currentVp}
+                    <Info className="w-3 h-3 text-[#FF5B04]" /> Viewport: {currentVp}
                   </span>
                   <div className="flex items-center gap-1">
-                    <button onClick={() => setViewport(item.id, '100%')} className={`p-1 rounded ${currentVp === '100%' ? 'text-indigo-600 font-bold bg-white dark:bg-slate-700' : ''}`} title="Desktop View"><Monitor className="w-3 h-3" /></button>
-                    <button onClick={() => setViewport(item.id, '768px')} className={`p-1 rounded ${currentVp === '768px' ? 'text-indigo-600 font-bold bg-white dark:bg-slate-700' : ''}`} title="Tablet View"><Tablet className="w-3 h-3" /></button>
-                    <button onClick={() => setViewport(item.id, '375px')} className={`p-1 rounded ${currentVp === '375px' ? 'text-indigo-600 font-bold bg-white dark:bg-slate-700' : ''}`} title="Mobile View"><Smartphone className="w-3 h-3" /></button>
+                    <button onClick={() => setViewport(item.id, '100%')} className={`p-1 rounded ${currentVp === '100%' ? 'text-[#16232A] dark:text-[#FF5B04] font-bold bg-white dark:bg-slate-700' : ''}`} title="Desktop View"><Monitor className="w-3 h-3" /></button>
+                    <button onClick={() => setViewport(item.id, '768px')} className={`p-1 rounded ${currentVp === '768px' ? 'text-[#16232A] dark:text-[#FF5B04] font-bold bg-white dark:bg-slate-700' : ''}`} title="Tablet View"><Tablet className="w-3 h-3" /></button>
+                    <button onClick={() => setViewport(item.id, '375px')} className={`p-1 rounded ${currentVp === '375px' ? 'text-[#16232A] dark:text-[#FF5B04] font-bold bg-white dark:bg-slate-700' : ''}`} title="Mobile View"><Smartphone className="w-3 h-3" /></button>
                   </div>
                 </div>
               )}
@@ -521,7 +521,7 @@ const FeaturedComponents: React.FC = () => {
                   </div>
                 ) : (
                   <div className="p-4 bg-slate-900 font-mono text-xs text-slate-200 h-full w-full overflow-y-auto scrollbar-thin">
-                    <pre className="whitespace-pre-wrap leading-relaxed text-indigo-200/90">
+                    <pre className="whitespace-pre-wrap leading-relaxed text-slate-200">
                       {currentMode === 'react' ? item.reactCode : item.htmlCode}
                     </pre>
                   </div>
@@ -530,8 +530,8 @@ const FeaturedComponents: React.FC = () => {
 
               {/* A11y Accessibility Info Banner / Tooltip Toggle */}
               {activeA11yId === item.id && (
-                <div className="p-3 bg-indigo-950 text-indigo-200 text-[11px] border-t border-indigo-800 space-y-1 animate-in fade-in duration-150">
-                  <div className="flex items-center justify-between font-bold text-indigo-300">
+                <div className="p-3 bg-[#16232A] text-slate-200 text-[11px] border-t border-[#075056]/40 space-y-1 animate-in fade-in duration-150">
+                  <div className="flex items-center justify-between font-bold text-[#E4EEF0]">
                     <span>♿ A11y 접근성 가이드</span>
                     <button onClick={() => setActiveA11yId(null)} className="text-slate-400 hover:text-white">✕</button>
                   </div>
@@ -544,14 +544,14 @@ const FeaturedComponents: React.FC = () => {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => setActiveA11yId(activeA11yId === item.id ? null : item.id)}
-                    className="p-1.5 text-slate-400 hover:text-indigo-500 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"
+                    className="p-1.5 text-slate-400 hover:text-[#16232A] dark:hover:text-[#FF5B04] rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800 transition-colors"
                     title="접근성(A11y) 가이드 안내"
                   >
                     <HelpCircle className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => navigate(item.route)}
-                    className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-1 transition-colors cursor-pointer"
+                    className="text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-[#16232A] dark:hover:text-[#FF5B04] flex items-center gap-1 transition-colors cursor-pointer"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     <span>실제 페이지 이동</span>
@@ -561,7 +561,7 @@ const FeaturedComponents: React.FC = () => {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => handleDownloadFile(item)}
-                    className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl transition-all cursor-pointer shadow-2xs"
+                    className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-[#16232A] dark:hover:text-[#FF5B04] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl transition-all cursor-pointer shadow-2xs"
                     title="파일 다운로드 (.tsx / .html)"
                   >
                     <Download className="w-3.5 h-3.5" />
@@ -569,7 +569,7 @@ const FeaturedComponents: React.FC = () => {
 
                   <button
                     onClick={() => handleCopy(item)}
-                    className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition-all cursor-pointer active:scale-95"
+                    className="px-3 py-1.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white text-xs font-medium rounded-xl flex items-center gap-1.5 shadow-xs transition-all cursor-pointer active:scale-95"
                   >
                     {isCopied ? (
                       <>

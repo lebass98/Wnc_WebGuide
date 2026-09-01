@@ -25,7 +25,7 @@ const ShowcaseDataDisplay: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">데이터 표시</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">데이터 표시</span>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ const ShowcaseDataDisplay: React.FC = () => {
         >
           <div className="bg-white dark:bg-[#1A222C] rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col w-full">
             {/* Header Banner */}
-            <div className="h-32 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative">
+            <div className="h-32 bg-gradient-to-r from-[#16232A] via-[#075056] to-[#FF5B04] relative">
               <span className="absolute top-4 right-4 px-2 py-1 rounded bg-white/20 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">PRO MEMBER</span>
             </div>
             
@@ -52,7 +52,7 @@ const ShowcaseDataDisplay: React.FC = () => {
               </div>
               
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-4">지안나 마르티네즈</h3>
-              <p className="text-xs font-semibold text-indigo-500 mt-1">리드 UI/UX 디자이너</p>
+              <p className="text-xs font-semibold text-[#FF5B04] mt-1">리드 UI/UX 디자이너</p>
               
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-4 text-center leading-relaxed">
                 사용자 친화적이고 미려한 디자인 시스템을 구축하며 프론트엔드 퍼블리싱 가이드를 최적화하는 업무를 전문적으로 수행하고 있습니다.
@@ -94,8 +94,8 @@ const ShowcaseDataDisplay: React.FC = () => {
             </div>
             <div className="p-6 md:w-3/5 flex flex-col justify-between">
               <div className="space-y-3">
-                <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 uppercase tracking-wide">디자인 시스템</span>
-                <h3 className="text-xl font-bold text-slate-800 dark:text-white leading-snug hover:text-indigo-500 transition-colors cursor-pointer">
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-[#E4EEF0] text-[#16232A] dark:bg-[#075056]/30 dark:text-[#E4EEF0] uppercase tracking-wide">디자인 시스템</span>
+                <h3 className="text-xl font-bold text-slate-800 dark:text-white leading-snug hover:text-[#FF5B04] transition-colors cursor-pointer">
                   프론트엔드 개발 속도를 2배 높이는 Tailwind CSS 디자인 가이드
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3">
@@ -138,7 +138,7 @@ const ShowcaseDataDisplay: React.FC = () => {
                     <img src="https://i.pravatar.cc/150?u=3" alt="avatar" className="w-full h-full object-cover" />
                   </div>
                   {/* Initial Avatar */}
-                  <div className="w-12 h-12 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-sm shadow-sm shadow-indigo-200 dark:shadow-none">
+                  <div className="w-12 h-12 rounded-full bg-[#16232A] dark:bg-[#FF5B04] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                     JW
                   </div>
                 </div>
@@ -152,7 +152,7 @@ const ShowcaseDataDisplay: React.FC = () => {
                     <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?w=100&h=100&fit=crop" alt="member" />
                     <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?w=100&h=100&fit=crop" alt="member" />
                     <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="member" />
-                    <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover bg-indigo-50 dark:bg-slate-800" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="member" />
+                    <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white dark:ring-slate-800 object-cover bg-[#E4EEF0] dark:bg-slate-800" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="member" />
                   </div>
                   <span className="text-xs font-bold text-slate-500 dark:text-slate-400 ml-3">+ 12명 참여 중</span>
                 </div>
@@ -172,7 +172,7 @@ const ShowcaseDataDisplay: React.FC = () => {
               {/* List item 1 */}
               <div className="flex items-center justify-between py-3.5 first:pt-0 last:pb-0 group cursor-pointer">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl group-hover:bg-indigo-50 group-hover:text-indigo-600 dark:group-hover:bg-indigo-500/10 dark:group-hover:text-indigo-400 transition-colors">
+                  <div className="p-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl group-hover:bg-[#E4EEF0] group-hover:text-[#16232A] dark:group-hover:bg-[#075056]/30 dark:group-hover:text-[#FF5B04] transition-colors">
                     <Settings className="w-5 h-5" />
                   </div>
                   <div>
@@ -181,15 +181,15 @@ const ShowcaseDataDisplay: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 rounded">활성화됨</span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all" />
+                  <span className="text-xs font-bold text-[#FF5B04] bg-[#E4EEF0] dark:bg-[#075056]/30 px-2 py-0.5 rounded">활성화됨</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#FF5B04] group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
 
               {/* List item 2 */}
               <div className="flex items-center justify-between py-3.5 group cursor-pointer">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl group-hover:bg-indigo-50 group-hover:text-indigo-600 dark:group-hover:bg-indigo-500/10 dark:group-hover:text-indigo-400 transition-colors">
+                  <div className="p-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl group-hover:bg-[#E4EEF0] group-hover:text-[#16232A] dark:group-hover:bg-[#075056]/30 dark:group-hover:text-[#FF5B04] transition-colors">
                     <Shield className="w-5 h-5" />
                   </div>
                   <div>
@@ -199,14 +199,14 @@ const ShowcaseDataDisplay: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold text-rose-500 bg-rose-50 dark:bg-rose-500/10 px-2 py-0.5 rounded">조치 필요</span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#FF5B04] group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
 
               {/* List item 3 */}
               <div className="flex items-center justify-between py-3.5 last:pb-0 group cursor-pointer">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl group-hover:bg-indigo-50 group-hover:text-indigo-600 dark:group-hover:bg-indigo-500/10 dark:group-hover:text-indigo-400 transition-colors">
+                  <div className="p-2.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl group-hover:bg-[#E4EEF0] group-hover:text-[#16232A] dark:group-hover:bg-[#075056]/30 dark:group-hover:text-[#FF5B04] transition-colors">
                     <Bell className="w-5 h-5" />
                   </div>
                   <div>
@@ -216,7 +216,7 @@ const ShowcaseDataDisplay: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">기본값</span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#FF5B04] group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
             </div>

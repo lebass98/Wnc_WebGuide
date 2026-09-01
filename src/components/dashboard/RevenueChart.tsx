@@ -49,7 +49,7 @@ const RevenueChart: React.FC = () => {
             <button 
               key={period}
               onClick={() => setActivePeriod(period)}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${period === activePeriod ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${period === activePeriod ? 'bg-[#E4EEF0] dark:bg-[#075056]/20 text-[#16232A] dark:text-[#FF5B04] font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
             >
               {period}
             </button>
@@ -77,12 +77,12 @@ const RevenueChart: React.FC = () => {
               <div className="flex items-end justify-center w-full gap-1 h-[220px]">
                 {/* Revenue Bar */}
                 <div 
-                  className="w-full max-w-[12px] bg-gradient-to-t from-indigo-500 to-purple-400 rounded-t-sm group-hover:opacity-80 transition-opacity"
+                  className="w-full max-w-[12px] bg-gradient-to-t from-[#16232A] to-[#FF5B04] rounded-t-sm group-hover:opacity-80 transition-opacity"
                   style={{ height: `${item.revenue}%` }}
                 ></div>
                 {/* Expenses Bar */}
                 <div 
-                  className="w-full max-w-[12px] bg-slate-400 rounded-t-sm group-hover:opacity-80 transition-opacity"
+                  className="w-full max-w-[12px] bg-[#075056]/50 rounded-t-sm group-hover:opacity-80 transition-opacity"
                   style={{ height: `${item.expenses}%` }}
                 ></div>
               </div>

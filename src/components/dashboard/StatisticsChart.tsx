@@ -96,12 +96,12 @@ const StatisticsChart: React.FC = () => {
                         {/* Area Gradients */}
                         <defs>
                             <linearGradient id="gradient1" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#3C50E0" stopOpacity="0.15" />
-                                <stop offset="100%" stopColor="#3C50E0" stopOpacity="0" />
+                                <stop offset="0%" stopColor="#FF5B04" stopOpacity="0.15" />
+                                <stop offset="100%" stopColor="#FF5B04" stopOpacity="0" />
                             </linearGradient>
                             <linearGradient id="gradient2" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#80CAEE" stopOpacity="0.15" />
-                                <stop offset="100%" stopColor="#80CAEE" stopOpacity="0" />
+                                <stop offset="0%" stopColor="#075056" stopOpacity="0.15" />
+                                <stop offset="100%" stopColor="#075056" stopOpacity="0" />
                             </linearGradient>
                         </defs>
 
@@ -122,7 +122,7 @@ const StatisticsChart: React.FC = () => {
                         <path
                             d={chartData[activeTab].line1}
                             fill="transparent"
-                            stroke="#3C50E0"
+                            stroke="#FF5B04"
                             strokeWidth="2.5"
                             className="opacity-100 transition-all duration-500 ease-in-out"
                             strokeLinejoin="round"
@@ -133,7 +133,7 @@ const StatisticsChart: React.FC = () => {
                         <path
                             d={chartData[activeTab].line2}
                             fill="transparent"
-                            stroke="#80CAEE"
+                            stroke="#075056"
                             strokeWidth="2.5"
                             className="opacity-100 transition-all duration-500 ease-in-out"
                             strokeLinejoin="round"

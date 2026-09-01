@@ -183,7 +183,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
               readOnly
               value={isRange ? (range.start && range.end ? `${formatDate(range.start)} - ${formatDate(range.end)}` : "") : (selectedDate ? formatDate(selectedDate) : "")}
               placeholder={placeholder} 
-              className="w-full text-sm pl-4 pr-10 py-3 rounded-xl border border-slate-200 dark:border-slate-700 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900/50 outline-none transition-all cursor-pointer bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500" 
+              className="w-full text-sm pl-4 pr-10 py-3 rounded-xl border border-slate-200 dark:border-slate-700 focus:border-[#FF5B04] dark:focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all cursor-pointer bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500" 
             />
             <CalendarIcon className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
           </div>
@@ -252,9 +252,9 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                       className={`
                         w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-semibold transition-all
                         ${selected 
-                          ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 dark:shadow-none' 
+                          ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white shadow-md' 
                           : inRange
-                            ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-300'
+                            ? 'bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#FF5B04]'
                             : dayObj.isCurrentMonth
                               ? 'text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                               : 'text-slate-400 dark:text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-600 dark:hover:text-slate-300'

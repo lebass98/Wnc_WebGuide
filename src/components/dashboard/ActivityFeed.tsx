@@ -8,7 +8,7 @@ const ActivityFeed: React.FC = () => {
       title: '새 사용자 등록됨',
       desc: 'Alex Johnson님이 플랫폼에 가입했습니다.',
       time: '2분 전',
-      color: 'bg-indigo-500'
+      color: 'bg-[#16232A] dark:bg-[#FF5B04]'
     },
     {
       type: 'system',

@@ -64,19 +64,19 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code, standalone = false, isEmbed
       title: 'Service Unavailable',
       subtitle: '서비스 점검 중입니다.',
       description: '더 나은 서비스를 제공하기 위해 현재 시스템 점검 및 서버 업그레이드 작업이 진행 중입니다. 곧 안전하고 빠른 서비스로 찾아뵙겠습니다.',
-      icon: <Cpu className="w-16 h-16 text-indigo-500 animate-spin-slow" style={{ animationDuration: '6s' }} />,
-      colorClass: 'text-indigo-500 border-indigo-100 dark:border-indigo-900/30 bg-indigo-50 dark:bg-indigo-500/10',
+      icon: <Cpu className="w-16 h-16 text-[#075056] dark:text-[#FF5B04] animate-spin-slow" style={{ animationDuration: '6s' }} />,
+      colorClass: 'text-[#075056] dark:text-[#FF5B04] border-slate-200 dark:border-[#075056]/30 bg-[#E4EEF0] dark:bg-[#075056]/10',
       actionText: '대시보드로 돌아가기',
       illustration: (
         <svg className="w-full max-w-[320px] h-auto mx-auto mb-6 opacity-90 dark:opacity-80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="40" y="40" width="120" height="120" rx="16" fill="url(#paint0_linear_503)" />
-          <path d="M100 20 L 100 40 M100 160 L 100 180 M20 100 L 40 100 M160 100 L 180 100" stroke="#6366F1" strokeWidth="6" strokeLinecap="round" className="animate-pulse" />
+          <path d="M100 20 L 100 40 M100 160 L 100 180 M20 100 L 40 100 M160 100 L 180 100" stroke="#075056" strokeWidth="6" strokeLinecap="round" className="animate-pulse" />
           <circle cx="100" cy="100" r="30" fill="white" fillOpacity="0.2" />
           <circle cx="100" cy="100" r="15" fill="white" className="animate-ping" />
           <defs>
             <linearGradient id="paint0_linear_503" x1="40" y1="40" x2="160" y2="160" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#6366F1" />
-              <stop offset="1" stopColor="#4F46E5" />
+              <stop stopColor="#16232A" />
+              <stop offset="1" stopColor="#075056" />
             </linearGradient>
           </defs>
         </svg>
@@ -135,7 +135,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code, standalone = false, isEmbed
 
             <button
               onClick={handleAction}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#4B62FA] hover:bg-indigo-600 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none cursor-pointer"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] rounded-xl text-sm font-bold text-white transition-all shadow-lg cursor-pointer"
             >
               {code === '500' ? <RotateCcw className="w-4 h-4" /> : <Home className="w-4 h-4" />}
               {currentError.actionText}
@@ -160,7 +160,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ code, standalone = false, isEmbed
             <ChevronRight className="w-3.5 h-3.5" />
             <span>페이지</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">에러 {code}</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">에러 {code}</span>
           </div>
         </div>
 

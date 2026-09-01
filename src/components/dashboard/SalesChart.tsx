@@ -2,24 +2,24 @@ import React from 'react';
 
 const SalesChart: React.FC = () => {
   const categories = [
-    { name: '전자제품', color: 'bg-blue-500', dot: 'bg-blue-500', hex: '#3b82f6', percent: 45 },
-    { name: '의류', color: 'bg-purple-500', dot: 'bg-purple-500', hex: '#a855f7', percent: 30 },
-    { name: '도서', color: 'bg-emerald-500', dot: 'bg-emerald-500', hex: '#10b981', percent: 15 },
+    { name: '전자제품', color: 'bg-[#FF5B04]', dot: 'bg-[#FF5B04]', hex: '#FF5B04', percent: 45 },
+    { name: '의류', color: 'bg-[#075056]', dot: 'bg-[#075056]', hex: '#075056', percent: 30 },
+    { name: '도서', color: 'bg-[#16232A]', dot: 'bg-[#16232A]', hex: '#16232A', percent: 15 },
     { name: '기타', color: 'bg-amber-500', dot: 'bg-amber-500', hex: '#f59e0b', percent: 10 },
   ];
 
   // Calculate conic gradient
-  // 0 - 45% Blue
-  // 45 - 75% Purple
-  // 75 - 90% Green
+  // 0 - 45% Orange
+  // 45 - 75% Deep Sea Green
+  // 75 - 90% Mirage
   // 90 - 100% Yellow
   const gradientString = `
     conic-gradient(
-      #3b82f6 0% 45%,
+      #FF5B04 0% 45%,
       transparent 45% 46%, 
-      #a855f7 46% 75%,
+      #075056 46% 75%,
       transparent 75% 76%, 
-      #10b981 76% 90%,
+      #16232A 76% 90%,
       transparent 90% 91%, 
       #f59e0b 91% 100%,
       transparent 100% 100%
@@ -44,7 +44,7 @@ const SalesChart: React.FC = () => {
             }}
           ></div>
           {/* Inner hole for donut shape */}
-          <div className="absolute w-28 h-28 bg-white rounded-full"></div>
+          <div className="absolute w-28 h-28 bg-white dark:bg-[#1A222C] rounded-full"></div>
         </div>
 
         {/* Legend */}
@@ -53,9 +53,9 @@ const SalesChart: React.FC = () => {
             <div key={idx} className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className={`w-3 h-3 rounded-full ${cat.dot}`}></span>
-                <span className="text-sm font-medium text-slate-600">{cat.name}</span>
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-300">{cat.name}</span>
               </div>
-              <span className="text-sm font-bold text-slate-800">{cat.percent}%</span>
+              <span className="text-sm font-bold text-slate-800 dark:text-white">{cat.percent}%</span>
             </div>
           ))}
         </div>

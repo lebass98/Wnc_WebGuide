@@ -81,7 +81,7 @@ const initialTasks: Task[] = [
     date: '2027년 1월 8일',
     comments: 0,
     tag: '데브',
-    tagColor: 'bg-blue-50 text-blue-500 border-blue-100',
+    tagColor: 'bg-[#E4EEF0] text-[#075056] border-[#075056]/20',
     userImage: 'https://i.pravatar.cc/150?u=2'
   },
   {
@@ -134,7 +134,7 @@ const initialTasks: Task[] = [
     date: '2027년 3월 8일',
     comments: 1,
     tag: '데브',
-    tagColor: 'bg-blue-50 text-blue-500 border-blue-100',
+    tagColor: 'bg-[#E4EEF0] text-[#075056] border-[#075056]/20',
     userImage: 'https://i.pravatar.cc/150?u=7'
   },
   {
@@ -144,7 +144,7 @@ const initialTasks: Task[] = [
     date: '내일',
     comments: 1,
     tag: '데브',
-    tagColor: 'bg-blue-50 text-blue-500 border-blue-100',
+    tagColor: 'bg-[#E4EEF0] text-[#075056] border-[#075056]/20',
     userImage: 'https://i.pravatar.cc/150?u=8'
   },
   {
@@ -198,7 +198,7 @@ const TaskCard = ({ task, isOverlay = false }: { task: Task; isOverlay?: boolean
       <div
         ref={setNodeRef}
         style={style}
-        className="opacity-30 bg-white dark:bg-slate-800 rounded-2xl border-2 border-dashed border-indigo-200 dark:border-indigo-900 h-[100px] w-full mb-4"
+        className="opacity-30 bg-white dark:bg-slate-800 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 h-[100px] w-full mb-4"
       />
     );
   }
@@ -209,10 +209,10 @@ const TaskCard = ({ task, isOverlay = false }: { task: Task; isOverlay?: boolean
       style={style}
       {...attributes}
       {...listeners}
-      className={`bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all active:scale-[0.98] group cursor-grab active:cursor-grabbing mb-4 ${isOverlay ? 'shadow-xl ring-2 ring-indigo-500/20 rotate-1' : ''}`}
+      className={`bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all active:scale-[0.98] group cursor-grab active:cursor-grabbing mb-4 ${isOverlay ? 'shadow-xl ring-2 ring-[#16232A]/20 dark:ring-[#FF5B04]/20 rotate-1' : ''}`}
     >
       <div className="flex justify-between items-start mb-3">
-        <h3 className="text-[15px] font-semibold text-slate-900 dark:text-white leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+        <h3 className="text-[15px] font-semibold text-slate-900 dark:text-white leading-snug group-hover:text-[#16232A] dark:group-hover:text-[#FF5B04] transition-colors">
           {task.title}
         </h3>
         <div className="w-8 h-8 rounded-full overflow-hidden shrink-0 border-2 border-white dark:border-slate-700 shadow-sm">
@@ -318,7 +318,7 @@ const TaskKanban: React.FC = () => {
 
   const tagsList = [
       { name: '개발', color: 'bg-orange-50 text-orange-500 border-orange-100' },
-      { name: '데브', color: 'bg-blue-50 text-blue-500 border-blue-100' },
+      { name: '데브', color: 'bg-[#E4EEF0] text-[#075056] border-[#075056]/20' },
       { name: '템플릿', color: 'bg-emerald-50 text-emerald-500 border-emerald-100' },
       { name: '마케팅', color: 'bg-purple-50 text-purple-500 border-purple-100' }
   ];
@@ -461,7 +461,7 @@ const TaskKanban: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>작업</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">칸반</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">칸반</span>
           </div>
         </div>
 
@@ -472,7 +472,7 @@ const TaskKanban: React.FC = () => {
             </button>
             <button 
                 onClick={() => setIsModalOpen(true)}
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] rounded-xl text-sm font-bold text-white transition-all shadow-lg"
             >
                 <Plus className="w-4 h-4" />
                 새 작업 추가
@@ -488,13 +488,13 @@ const TaskKanban: React.FC = () => {
             onClick={() => setActiveTab(tab)}
             className={`flex items-center gap-2 px-5 py-2 rounded-xl text-[14px] font-bold transition-all ${
               activeTab === tab
-                ? 'bg-[#F3F5FF] dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'
+                ? 'bg-[#E4EEF0] dark:bg-[#075056]/20 text-[#16232A] dark:text-[#FF5B04]'
                 : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
             }`}
           >
             {tab}
             {tab === '전체 작업' && (
-               <span className="text-[11px] bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 px-1.5 py-0.5 rounded-md">14</span>
+               <span className="text-[11px] bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#FF5B04] px-1.5 py-0.5 rounded-md font-extrabold">14</span>
             )}
             {tab === '할 일' && (
                <span className="text-[11px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 px-1.5 py-0.5 rounded-md">3</span>
@@ -577,7 +577,7 @@ const TaskKanban: React.FC = () => {
                                 value={formData.title}
                                 onChange={(e) => setFormData({...formData, title: e.target.value})}
                                 placeholder="작업 제목을 입력하세요"
-                                className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 transition-all focus:border-indigo-500"
+                                className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-[#16232A] dark:focus:ring-[#FF5B04] bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 transition-all focus:border-[#16232A] dark:focus:border-[#FF5B04]"
                             />
                         </div>
 
@@ -604,7 +604,7 @@ const TaskKanban: React.FC = () => {
                                 <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">상태</label>
                                 <div className="relative">
                                     <select 
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-indigo-500"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-[#16232A] dark:focus:ring-[#FF5B04] bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-[#16232A] dark:focus:border-[#FF5B04]"
                                         value={formData.columnId}
                                         onChange={(e) => setFormData({...formData, columnId: e.target.value})}
                                     >
@@ -623,7 +623,7 @@ const TaskKanban: React.FC = () => {
                                 <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">태그</label>
                                 <div className="relative">
                                     <select 
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-indigo-500"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-[#16232A] dark:focus:ring-[#FF5B04] bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-[#16232A] dark:focus:border-[#FF5B04]"
                                         value={formData.tag}
                                         onChange={(e) => setFormData({...formData, tag: e.target.value})}
                                     >
@@ -637,7 +637,7 @@ const TaskKanban: React.FC = () => {
                                 <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">담당자</label>
                                 <div className="relative">
                                     <select 
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-indigo-500"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-[#16232A] dark:focus:ring-[#FF5B04] bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 appearance-none transition-all focus:border-[#16232A] dark:focus:border-[#FF5B04]"
                                         value={formData.assignee}
                                         onChange={(e) => setFormData({...formData, assignee: e.target.value})}
                                     >
@@ -656,7 +656,7 @@ const TaskKanban: React.FC = () => {
                                 rows={4}
                                 value={formData.description}
                                 onChange={(e) => setFormData({...formData, description: e.target.value})}
-                                className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 resize-none transition-all focus:border-indigo-500"
+                                className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-[#16232A] dark:focus:ring-[#FF5B04] bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 resize-none transition-all focus:border-[#16232A] dark:focus:border-[#FF5B04]"
                             />
                         </div>
                     </div>
@@ -681,7 +681,7 @@ const TaskKanban: React.FC = () => {
                             </button>
                             <button 
                                 type="submit"
-                                className="px-6 py-2.5 rounded-xl bg-[#4B62FA] hover:bg-indigo-600 text-sm font-bold text-white shadow-lg shadow-indigo-100 dark:shadow-none transition-all active:scale-95"
+                                className="px-6 py-2.5 rounded-xl bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-sm font-bold text-white shadow-lg transition-all active:scale-95"
                             >
                                 작업 생성하기
                             </button>

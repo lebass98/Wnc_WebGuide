@@ -35,7 +35,7 @@ const ShowcaseBreadcrumbs: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">브래드크럼</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">브래드크럼</span>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ const ShowcaseBreadcrumbs: React.FC = () => {
                 <a
                   href="#"
                   onClick={e => e.preventDefault()}
-                  className="h-full px-6 sm:px-8 flex items-center gap-2 text-[#111111] dark:text-white text-lg tracking-[-0.25px] font-normal hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="h-full px-6 sm:px-8 flex items-center gap-2 text-[#111111] dark:text-white text-lg tracking-[-0.25px] font-normal hover:text-[#FF5B04] transition-colors"
                 >
                   <Home className="w-5 h-5 shrink-0" />
                   <span>처음으로</span>
@@ -77,7 +77,7 @@ const ShowcaseBreadcrumbs: React.FC = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Default Bar Item */}
-                  <div className="h-full w-56 sm:w-80 px-6 sm:px-8 flex items-center justify-between cursor-pointer text-[#111111] dark:text-white text-lg tracking-[-0.25px] font-normal hover:text-indigo-600 transition-colors">
+                  <div className="h-full w-56 sm:w-80 px-6 sm:px-8 flex items-center justify-between cursor-pointer text-[#111111] dark:text-white text-lg tracking-[-0.25px] font-normal hover:text-[#FF5B04] transition-colors">
                     <span>공간소개</span>
                     <ChevronDown className="w-5 h-5 text-[#111111] dark:text-white" />
                   </div>
@@ -121,7 +121,7 @@ const ShowcaseBreadcrumbs: React.FC = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {/* Default Bar Item */}
-                  <div className="h-full w-56 sm:w-80 px-6 sm:px-8 flex items-center justify-between cursor-pointer text-[#111111] dark:text-white text-lg tracking-[-0.25px] font-normal hover:text-indigo-600 transition-colors">
+                  <div className="h-full w-56 sm:w-80 px-6 sm:px-8 flex items-center justify-between cursor-pointer text-[#111111] dark:text-white text-lg tracking-[-0.25px] font-normal hover:text-[#FF5B04] transition-colors">
                     <span>서울아트책보고란</span>
                     <ChevronDown className="w-5 h-5 text-[#111111] dark:text-white" />
                   </div>

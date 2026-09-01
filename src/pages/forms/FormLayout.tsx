@@ -22,27 +22,27 @@ const BasicFormPreview: React.FC = () => {
           <input 
             type="text" 
             placeholder="이름" 
-            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
           <input 
             type="email" 
             placeholder="이메일 주소" 
-            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <input 
           type="password" 
           placeholder="비밀번호" 
-          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
         />
         <input 
           type="password" 
           placeholder="비밀번호 확인" 
-          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+          className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
         />
         <button 
           type="button" 
-          className="w-full py-2.5 sm:py-3 px-4 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors flex justify-center items-center text-xs sm:text-sm"
+          className="w-full py-2.5 sm:py-3 px-4 bg-[#16232A] hover:bg-[#075056] text-white font-semibold rounded-lg transition-colors flex justify-center items-center text-xs sm:text-sm"
         >
           제출
         </button>
@@ -62,7 +62,7 @@ const MessageFormPreview: React.FC = () => {
             <input 
               type="text" 
               placeholder="이름 입력" 
-              className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+              className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
             />
           </div>
           <div className="space-y-1.5 sm:space-y-2">
@@ -70,7 +70,7 @@ const MessageFormPreview: React.FC = () => {
             <input 
               type="text" 
               placeholder="성 입력" 
-              className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+              className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
             />
           </div>
         </div>
@@ -79,13 +79,13 @@ const MessageFormPreview: React.FC = () => {
           <input 
             type="email" 
             placeholder="이메일 주소 입력" 
-            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="space-y-1.5 sm:space-y-2">
           <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">주제 선택</label>
           <div className="relative">
-            <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+            <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
               <option>옵션 1</option>
               <option>옵션 2</option>
               <option>옵션 3</option>
@@ -98,12 +98,12 @@ const MessageFormPreview: React.FC = () => {
           <textarea 
             rows={4} 
             placeholder="메시지 입력" 
-            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm"
+            className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all resize-none placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm"
           />
         </div>
         <button 
           type="button" 
-          className="w-full py-2.5 sm:py-3 px-4 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors flex justify-center items-center gap-2 text-xs sm:text-sm"
+          className="w-full py-2.5 sm:py-3 px-4 bg-[#16232A] hover:bg-[#075056] text-white font-semibold rounded-lg transition-colors flex justify-center items-center gap-2 text-xs sm:text-sm"
         >
           메시지 전송 <Send className="w-3.5 h-3.5" />
         </button>
@@ -121,42 +121,42 @@ const IconFormPreview: React.FC = () => {
       <div className="space-y-4 sm:space-y-6 text-left">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <User className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+            <User className="w-4 h-4 text-slate-400 group-focus-within:text-[#FF5B04] transition-colors" />
           </div>
           <input 
             type="text" 
             placeholder="사용자 이름" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+            <Mail className="w-4 h-4 text-slate-400 group-focus-within:text-[#FF5B04] transition-colors" />
           </div>
           <input 
             type="email" 
             placeholder="이메일 주소" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-[#FF5B04] transition-colors" />
           </div>
           <input 
             type="password" 
             placeholder="비밀번호" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-slate-200 dark:border-slate-700 pr-3 my-1">
-            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+            <Lock className="w-4 h-4 text-slate-400 group-focus-within:text-[#FF5B04] transition-colors" />
           </div>
           <input 
             type="password" 
             placeholder="비밀번호 확인" 
-            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
+            className="w-full pl-14 pr-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] focus:ring-2 focus:ring-[#FF5B04]/20 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" 
           />
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
@@ -167,14 +167,14 @@ const IconFormPreview: React.FC = () => {
               checked={rememberMe} 
               onChange={(e) => setRememberMe(e.target.checked)} 
             />
-            <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${rememberMe ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
+            <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${rememberMe ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600 dark:group-hover:border-[#FF5B04]'}`}>
               {rememberMe && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
             </div>
             <span className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-white">로그인 유지</span>
           </label>
           <button 
             type="button" 
-            className="w-full sm:w-auto py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm"
+            className="w-full sm:w-auto py-2.5 px-6 bg-[#16232A] hover:bg-[#075056] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm"
           >
             계정 생성
           </button>
@@ -198,17 +198,17 @@ const PersonalInfoFormPreview: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">이름</label>
-              <input type="text" placeholder="이름 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
+              <input type="text" placeholder="이름 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
             </div>
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성</label>
-              <input type="text" placeholder="성 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
+              <input type="text" placeholder="성 입력" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm" />
             </div>
           </div>
           <div className="space-y-1.5 sm:space-y-2">
             <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">성별</label>
             <div className="relative">
-              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
                 <option>남성</option>
                 <option>여성</option>
                 <option>기타</option>
@@ -223,7 +223,7 @@ const PersonalInfoFormPreview: React.FC = () => {
           <div className="space-y-1.5 sm:space-y-2">
             <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">카테고리</label>
             <div className="relative">
-              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+              <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
                 <option>카테고리 1</option>
                 <option>카테고리 2</option>
                 <option>카테고리 3</option>
@@ -238,27 +238,27 @@ const PersonalInfoFormPreview: React.FC = () => {
           <h4 className="font-bold text-slate-800 dark:text-white text-sm sm:text-[15px]">주소</h4>
           <div className="space-y-1.5 sm:space-y-2">
             <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">도로명</label>
-            <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+            <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all text-xs sm:text-sm" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/구/군</label>
-              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all text-xs sm:text-sm" />
             </div>
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">시/도</label>
-              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-500 outline-none transition-all text-xs sm:text-sm" />
+              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all text-xs sm:text-sm" />
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">우편번호</label>
-              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all text-xs sm:text-sm" />
+              <input type="text" className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all text-xs sm:text-sm" />
             </div>
             <div className="space-y-1.5 sm:space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">국가</label>
               <div className="relative">
-                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-indigo-555 outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
+                <select className="w-full pl-4 pr-10 py-2.5 sm:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:border-[#FF5B04] outline-none transition-all appearance-none cursor-pointer bg-white dark:bg-slate-800 text-xs sm:text-sm">
                   <option>--국가 선택--</option>
                   <option>미국</option>
                   <option>영국</option>
@@ -274,14 +274,14 @@ const PersonalInfoFormPreview: React.FC = () => {
             <div className="flex items-center gap-4">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="membership" value="free" checked={membership === 'free'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${membership === 'free' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${membership === 'free' ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600 dark:group-hover:border-[#FF5B04]'}`}>
                    {membership === 'free' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
                 <span className={`text-xs sm:text-sm font-bold ${membership === 'free' ? 'text-slate-800 dark:text-white' : 'text-slate-500'}`}>무료</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" name="membership" value="paid" checked={membership === 'paid'} onChange={(e) => setMembership(e.target.value)} className="hidden" />
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${membership === 'paid' ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500 dark:border-slate-600 dark:group-hover:border-blue-500'}`}>
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${membership === 'paid' ? 'border-[#FF5B04] bg-[#FF5B04]' : 'border-slate-300 group-hover:border-[#FF5B04] dark:border-slate-600 dark:group-hover:border-[#FF5B04]'}`}>
                   {membership === 'paid' && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                 </div>
                 <span className={`text-xs sm:text-sm font-bold ${membership === 'paid' ? 'text-slate-800 dark:text-white' : 'text-slate-500'}`}>유료</span>
@@ -290,7 +290,7 @@ const PersonalInfoFormPreview: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4 pt-4">
-            <button type="button" className="py-2.5 px-6 bg-[#4A6BFF] hover:bg-[#3d59d6] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm">
+            <button type="button" className="py-2.5 px-6 bg-[#16232A] hover:bg-[#075056] text-white font-semibold rounded-lg transition-colors text-xs sm:text-sm">
               변경사항 저장
             </button>
             <button type="button" className="py-2.5 px-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold rounded-lg transition-colors text-xs sm:text-sm">
@@ -318,7 +318,7 @@ const FormLayout: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>폼</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">폼 레이아웃</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">폼 레이아웃</span>
           </div>
         </div>
       </div>

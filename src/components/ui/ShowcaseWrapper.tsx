@@ -197,7 +197,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
                   onClick={() => setPreviewMode('react')}
                   className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${
                     previewMode === 'react'
-                      ? 'bg-indigo-600 text-white shadow-sm'
+                      ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white shadow-sm'
                       : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                   }`}
                 >
@@ -207,7 +207,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
                   onClick={() => setPreviewMode('html')}
                   className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all cursor-pointer ${
                     previewMode === 'html'
-                      ? 'bg-indigo-600 text-white shadow-sm'
+                      ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white shadow-sm'
                       : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                   }`}
                 >
@@ -227,7 +227,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
                   onClick={() => setCodeMode('react')}
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${
                     codeMode === 'react'
-                      ? 'bg-[#4B62FA] text-white shadow-sm'
+                      ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white shadow-sm'
                       : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                   }`}
                 >
@@ -237,7 +237,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
                   onClick={() => setCodeMode('html')}
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer ${
                     codeMode === 'html'
-                      ? 'bg-[#4B62FA] text-white shadow-sm'
+                      ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white shadow-sm'
                       : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                   }`}
                 >
@@ -265,7 +265,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
                 </button>
                 <button 
                   onClick={() => setTheme('dark')} 
-                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-indigo-500/10 text-indigo-500 dark:text-indigo-400' : 'text-slate-400 hover:text-slate-600'}`}
+                  className={`relative group p-1.5 rounded-lg transition-colors cursor-pointer ${theme === 'dark' ? 'bg-[#FF5B04]/10 text-[#FF5B04]' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <Moon className="w-4 h-4" />
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
@@ -282,7 +282,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
           <div className="flex items-center gap-1.5">
             <button
               onClick={handleCopyCode}
-              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 dark:bg-slate-800 dark:hover:bg-slate-700'}`}
+              className={`relative group p-2 rounded-xl transition-all cursor-pointer ${copied ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-slate-100 hover:bg-[#E4EEF0] text-slate-500 hover:text-[#FF5B04] dark:bg-slate-800 dark:hover:bg-slate-700'}`}
             >
               {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-2 py-1 text-[10px] font-bold text-white bg-slate-900/90 dark:bg-slate-800/95 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-200 scale-95 group-hover:scale-100 pointer-events-none whitespace-nowrap z-50">
@@ -300,7 +300,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
             <button
               type="button"
               onClick={() => setIsFullWidth(true)}
-              className={`relative group p-1.5 rounded-lg transition-all cursor-pointer ${isFullWidth ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
+              className={`relative group p-1.5 rounded-lg transition-all cursor-pointer ${isFullWidth ? 'bg-white dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04] shadow-xs' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
               aria-label="1열 꽉 채우기 (풀 와이드)"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -316,7 +316,7 @@ const ShowcaseWrapper: React.FC<ShowcaseWrapperProps> = ({
             <button
               type="button"
               onClick={() => setIsFullWidth(false)}
-              className={`relative group p-1.5 rounded-lg transition-all cursor-pointer ${!isFullWidth ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-xs' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
+              className={`relative group p-1.5 rounded-lg transition-all cursor-pointer ${!isFullWidth ? 'bg-white dark:bg-slate-700 text-[#16232A] dark:text-[#FF5B04] shadow-xs' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}
               aria-label="2열 분할 보기"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

@@ -80,9 +80,9 @@ const InputStatePreview: React.FC = () => {
             <input 
               type="text" 
               placeholder="내용을 입력하세요" 
-              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#256ef4] transition-all"
+              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#FF5B04] transition-all"
             />
-            <span className="pt-[8px] pr-[0px] pb-[0px] pl-[0px] flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative text-[#256ef4] dark:text-indigo-400 text-left text-[15px] leading-[1.6] tracking-[-0.025em] font-normal">
+            <span className="pt-[8px] pr-[0px] pb-[0px] pl-[0px] flex flex-row gap-1 items-center justify-start self-stretch shrink-0 relative text-[#FF5B04] text-left text-[15px] leading-[1.6] tracking-[-0.025em] font-normal">
               * 필수 입력 항목입니다.
             </span>
           </div>
@@ -100,7 +100,7 @@ const InputStatePreview: React.FC = () => {
             <input 
               type="text" 
               placeholder="내용을 입력하세요" 
-              className="rounded-md border border-solid border-[#256ef4] py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none ring-2 ring-blue-100 dark:ring-blue-900/30 transition-all"
+              className="rounded-md border border-solid border-[#FF5B04] py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white placeholder-[#767676] dark:placeholder-slate-400 text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none ring-2 ring-[#FF5B04]/20 transition-all"
             />
           </div>
         </label>
@@ -117,7 +117,7 @@ const InputStatePreview: React.FC = () => {
             <input 
               type="text" 
               defaultValue="내용을 입력하세요" 
-              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#256ef4] transition-all"
+              className="rounded-md border border-solid border-[#dadada] dark:border-slate-700 py-[6px] px-[24px] shrink-0 w-[240px] h-[56px] bg-white dark:bg-slate-800 text-[#111111] dark:text-white text-[17px] leading-[1.6] tracking-[-0.025em] font-normal outline-none focus:border-[#FF5B04] transition-all"
             />
           </div>
         </label>
@@ -202,7 +202,7 @@ const InputComponent: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>컴포넌트</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">인풋</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">인풋</span>
           </div>
         </div>
       </div>

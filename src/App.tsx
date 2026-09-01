@@ -139,7 +139,7 @@ const App: React.FC = () => {
           !isAuthenticated ? (
             <Navigate to="/signin" replace />
           ) : (
-            <div className="flex min-h-screen bg-[radial-gradient(circle_at_15%_15%,rgba(197,213,255,0.75)_0%,transparent_45%),radial-gradient(circle_at_85%_20%,rgba(244,181,253,0.7)_0%,transparent_45%),radial-gradient(circle_at_90%_85%,rgba(255,214,179,0.75)_0%,transparent_50%),radial-gradient(circle_at_20%_80%,rgba(233,181,255,0.65)_0%,transparent_50%),linear-gradient(135deg,#f0f4ff_0%,#fdf0f9_50%,#fff6ee_100%)] animated-flow-bg dark:bg-[radial-gradient(circle_at_15%_15%,rgba(30,58,138,0.35)_0%,transparent_50%),radial-gradient(circle_at_85%_20%,rgba(88,28,135,0.35)_0%,transparent_50%),radial-gradient(circle_at_90%_85%,rgba(124,45,18,0.3)_0%,transparent_50%),linear-gradient(135deg,#0f172a_0%,#1e1b4b_50%,#0f172a_100%)] font-sans transition-colors duration-300">
+            <div className="flex min-h-screen bg-[radial-gradient(circle_at_15%_15%,rgba(228,238,240,0.95)_0%,transparent_45%),radial-gradient(circle_at_85%_20%,rgba(255,91,4,0.06)_0%,transparent_45%),radial-gradient(circle_at_90%_85%,rgba(7,80,86,0.06)_0%,transparent_50%),radial-gradient(circle_at_20%_80%,rgba(228,238,240,0.8)_0%,transparent_50%),linear-gradient(135deg,#f8fafc_0%,#E4EEF0_50%,#f1f5f9_100%)] animated-flow-bg dark:bg-[radial-gradient(circle_at_15%_15%,rgba(7,80,86,0.25)_0%,transparent_50%),radial-gradient(circle_at_85%_20%,rgba(255,91,4,0.12)_0%,transparent_50%),radial-gradient(circle_at_90%_85%,rgba(7,80,86,0.18)_0%,transparent_50%),linear-gradient(135deg,#16232A_0%,#0e171c_50%,#16232A_100%)] font-sans transition-colors duration-300">
               <Sidebar
                 isOpen={isSidebarOpen}
                 onClose={closeSidebar}

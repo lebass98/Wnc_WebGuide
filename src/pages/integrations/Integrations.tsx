@@ -51,15 +51,15 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
       name: 'Zoom', 
       description: '원격 회의 및 팀 협업을 위해 Zoom을 통합하세요.', 
       isEnabled: false, 
-      icon: <Video className="w-6 h-6 text-blue-500" />, 
-      iconBg: 'bg-blue-500' 
+      icon: <Video className="w-6 h-6 text-[#16232A] dark:text-[#FF5B04]" />, 
+      iconBg: 'bg-[#E4EEF0] dark:bg-[#075056]/30' 
     },
     { 
       id: '4', 
       name: 'Loom', 
       description: '영상 메시지를 쉽게 녹화하고 공유, 관리할 수 있도록 Loom을 연동하세요.', 
       isEnabled: false, 
-      icon: <Box className="w-6 h-6 text-indigo-500" />, 
+      icon: <Box className="w-6 h-6 text-[#FF5B04]" />, 
       iconBg: 'bg-white' 
     },
     { 
@@ -67,8 +67,8 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
       name: 'Linear', 
       description: '팀의 이슈를 관리하고 진행 상황을 추적하기 위해 Linear를 연결하세요.', 
       isEnabled: false, 
-      icon: <CheckSquare className="w-6 h-6 text-indigo-600" />, 
-      iconBg: 'bg-indigo-600' 
+      icon: <CheckSquare className="w-6 h-6 text-[#16232A] dark:text-[#FF5B04]" />, 
+      iconBg: 'bg-[#E4EEF0] dark:bg-[#075056]/30' 
     },
     { 
       id: '6', 
@@ -83,8 +83,8 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
       name: 'Trello', 
       description: '어디서든 일정을 기록하고 칸반 보드로 시각적으로 관리하세요.', 
       isEnabled: false, 
-      icon: <Clipboard className="w-6 h-6 text-blue-600" />, 
-      iconBg: 'bg-blue-600' 
+      icon: <Clipboard className="w-6 h-6 text-[#075056] dark:text-[#FF5B04]" />, 
+      iconBg: 'bg-[#E4EEF0] dark:bg-[#075056]/30' 
     },
     { 
       id: '8', 
@@ -99,7 +99,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
       name: 'Jira', 
       description: '팀 전체가 이슈를 추적하고 프로젝트 진행 상황을 쉽게 확인할 수 있습니다.', 
       isEnabled: false, 
-      icon: <Box className="w-6 h-6 text-blue-500" />, 
+      icon: <Box className="w-6 h-6 text-[#FF5B04]" />, 
       iconBg: 'bg-white' 
     },
   ]);
@@ -174,7 +174,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
         <div className="flex justify-end">
           <button 
             onClick={() => setActiveModal('new')}
-            className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold text-sm transition-all shadow-md shadow-indigo-200 dark:shadow-none cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-lg font-bold text-sm transition-all shadow-md cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             새 연동 추가
@@ -226,7 +226,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                 <div className="flex items-center gap-2">
                   <button 
                     onClick={() => { setSelectedApp(item); setActiveModal('settings'); }}
-                    className="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-indigo-600 transition-all cursor-pointer"
+                    className="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-[#FF5B04] transition-all cursor-pointer"
                   >
                     <Settings className="w-4 h-4" />
                   </button>
@@ -241,7 +241,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                 {/* Toggle Switch */}
                 <button 
                   onClick={() => toggleIntegration(item.id)}
-                  className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${item.isEnabled ? 'bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'}`}
+                  className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${item.isEnabled ? 'bg-[#16232A] dark:bg-[#FF5B04]' : 'bg-slate-200 dark:bg-slate-700'}`}
                 >
                   <span
                     className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${item.isEnabled ? 'translate-x-5' : 'translate-x-0'}`}
@@ -274,7 +274,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                   <div className="space-y-2">
                     <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">앱 선택</label>
                     <div className="relative">
-                      <select className="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all">
+                      <select className="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all">
                         <option>{selectedApp.name}</option>
                       </select>
                       <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
@@ -286,7 +286,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                     <input 
                       type="text" 
                       defaultValue="872364219810-abc123xyz456.apps.googleusercontent.com"
-                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all"
                     />
                   </div>
 
@@ -295,7 +295,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                     <input 
                       type="text" 
                       defaultValue="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e"
-                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all"
                     />
                   </div>
 
@@ -304,7 +304,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                     <input 
                       type="text" 
                       defaultValue="https://accounts.application.com/o/oauth2/auth"
-                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all"
                     />
                   </div>
                 </div>
@@ -320,7 +320,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                     </button>
                     <button 
                       onClick={() => setActiveModal('none')}
-                      className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-[13px] font-bold transition-colors cursor-pointer"
+                      className="flex-1 py-3 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-lg text-[13px] font-bold transition-colors cursor-pointer"
                     >
                       변경사항 저장
                     </button>
@@ -372,7 +372,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                 <div className="h-4 flex items-center justify-end px-8 pb-4">
                   <button 
                     onClick={() => setActiveModal('none')}
-                    className="px-6 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-all cursor-pointer"
+                    className="px-6 py-2 rounded-lg bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white text-xs font-bold transition-all cursor-pointer"
                   >
                     확인
                   </button>
@@ -401,7 +401,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                       <select 
                         value={newAppName}
                         onChange={(e) => setNewAppName(e.target.value)}
-                        className="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+                        className="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all"
                       >
                         <option value="">옵션 선택</option>
                         {integrations.map(app => (
@@ -419,7 +419,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                       value={newClientId}
                       onChange={(e) => setNewClientId(e.target.value)}
                       placeholder="여기에 클라이언트 ID 입력"
-                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-400"
+                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all placeholder:text-slate-400"
                     />
                   </div>
 
@@ -430,7 +430,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                       value={newClientSecret}
                       onChange={(e) => setNewClientSecret(e.target.value)}
                       placeholder="여기에 클라이언트 비밀키 입력"
-                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-400"
+                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all placeholder:text-slate-400"
                     />
                   </div>
 
@@ -441,7 +441,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                       value={newAuthUri}
                       onChange={(e) => setNewAuthUri(e.target.value)}
                       placeholder="여기에 URL 붙여넣기"
-                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-400"
+                      className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-[13px] text-slate-600 dark:text-slate-300 outline-none focus:border-[#FF5B04] focus:ring-1 focus:ring-[#FF5B04] transition-all placeholder:text-slate-400"
                     />
                   </div>
                 </div>
@@ -460,7 +460,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
                     <button 
                       onClick={handleAddIntegration}
                       disabled={!newAppName}
-                      className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-[13px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                      className="flex-1 py-3 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-lg text-[13px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                     >
                       저장하기
                     </button>
@@ -530,7 +530,7 @@ const Integrations: React.FC<IntegrationsProps> = ({ standalone = false }) => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>페이지</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">연동</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">연동</span>
           </div>
         </div>
       </div>

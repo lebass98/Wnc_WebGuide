@@ -6,8 +6,12 @@
 
 @theme {
   --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-  --color-primary: #6366f1; /* Indigo-500 equivalent */
-  --color-primary-gradient: linear-gradient(to right, #6366f1, #a855f7);
+  --color-primary: #16232A; /* Mirage Primary Base */
+  --color-primary-gradient: linear-gradient(135deg, #16232A 0%, #075056 60%, #FF5B04 100%);
+  --color-mirage: #16232A;
+  --color-blaze-orange: #FF5B04;
+  --color-deep-sea-green: #075056;
+  --color-wild-sand: #E4EEF0;
 }
 
 @layer base {
@@ -41,15 +45,15 @@
 
 @keyframes componentFocusPulse {
   0% {
-    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.95), 0 20px 35px rgba(99, 102, 241, 0.45);
+    box-shadow: 0 0 0 5px rgba(22, 35, 42, 0.95), 0 20px 35px rgba(255, 91, 4, 0.45);
     transform: scale(1.012);
   }
   35% {
-    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.7), 0 25px 40px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 8px rgba(7, 80, 86, 0.7), 0 25px 40px rgba(22, 35, 42, 0.5);
     transform: scale(1.018);
   }
   100% {
-    box-shadow: 0 0 0 0px rgba(99, 102, 241, 0), 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0px rgba(22, 35, 42, 0), 0 0 0 rgba(0, 0, 0, 0);
     transform: scale(1);
   }
 }

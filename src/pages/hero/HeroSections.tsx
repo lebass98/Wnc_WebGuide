@@ -274,7 +274,7 @@ const HeroSections: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>페이지</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">히어로 섹션</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">히어로 섹션</span>
           </div>
         </div>
       </div>
@@ -303,7 +303,7 @@ const HeroSections: React.FC = () => {
           <nav className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:px-8 z-50">
             <div className="flex lg:flex-1">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-[#16232A] dark:bg-[#FF5B04] rounded-lg flex items-center justify-center">
                   <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                   </svg>
@@ -312,13 +312,13 @@ const HeroSections: React.FC = () => {
             </div>
             <div className="hidden md:flex md:gap-x-8 lg:gap-x-12">
               {['제품', '기능', '회사'].map((item) => (
-                <a key={item} href="#" className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white hover:text-indigo-600 transition-colors">
+                <a key={item} href="#" className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white hover:text-[#FF5B04] transition-colors">
                   {item}
                 </a>
               ))}
             </div>
             <div className="flex lg:flex-1 lg:justify-end">
-              <a href="#" className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1 hover:text-indigo-600">
+              <a href="#" className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1 hover:text-[#FF5B04]">
                 로그인 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -326,7 +326,7 @@ const HeroSections: React.FC = () => {
 
           {/* Background Blurred Elements */}
           <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-            <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
+            <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#FF5B04]/30 to-[#075056]/30 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
           </div>
 
           {/* Hero Content */}
@@ -334,7 +334,7 @@ const HeroSections: React.FC = () => {
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-4 py-1.5 text-xs sm:text-sm leading-6 text-slate-600 dark:text-slate-400 ring-1 ring-slate-900/10 dark:ring-white/10 hover:ring-slate-900/20 dark:hover:ring-white/20 transition-all flex items-center gap-2">
                 투자 유치 라운드 발표
-                <a href="#" className="font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-0.5">
+                <a href="#" className="font-bold text-[#FF5B04] flex items-center gap-0.5">
                   자세히 보기 <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
@@ -346,7 +346,7 @@ const HeroSections: React.FC = () => {
               데이터 기반 의사결정으로 비즈니스의 성공 가능성을 높이세요. 모든 분석 정보와 실시간 트렌드를 한 곳에서 확인할 수 있습니다.
             </p>
             <div className="flex items-center justify-center gap-4 sm:gap-6">
-              <button className="rounded-lg bg-indigo-600 px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-indigo-500 transition-all">
+              <button className="rounded-lg bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition-all">
                 시작하기
               </button>
               <a href="#" className="text-xs sm:text-sm font-bold leading-6 text-slate-900 dark:text-white flex items-center gap-1 group">
@@ -368,18 +368,18 @@ const HeroSections: React.FC = () => {
         <section className="relative overflow-hidden bg-white dark:bg-slate-900 w-full max-h-full mx-auto px-3 sm:px-8 py-6 lg:py-24 rounded-xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 sm:space-y-8 animate-in slide-in-from-left duration-700 text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-550 dark:bg-indigo-505/10 text-indigo-600 dark:text-indigo-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-indigo-100 dark:border-indigo-500/20">
-                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E4EEF0] dark:bg-[#075056]/30 text-[#16232A] dark:text-[#E4EEF0] text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-slate-200 dark:border-[#075056]/30">
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FF5B04]" />
                 새로운 버전 2.0 출시
               </div>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-[1.25]">
-                몇 분 만에 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">워크플로우</span>를 현행화하세요
+                몇 분 만에 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16232A] via-[#075056] to-[#FF5B04]">워크플로우</span>를 현행화하세요
               </h2>
               <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
                 최첨단 관리자 패널로 비즈니스 운영을 간소화하세요. 속도, 성능, 그리고 탁월한 사용자 경험을 위해 설계되었습니다.
               </p>
               <div className="flex flex-wrap gap-3 sm:gap-4 pt-2">
-                <button className="px-5 py-3 sm:px-8 sm:py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all shadow-md hover:-translate-y-1">
+                <button className="px-5 py-3 sm:px-8 sm:py-4 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all shadow-md hover:-translate-y-1">
                   지금 시작하기 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
                 <button className="px-5 py-3 sm:px-8 sm:py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
@@ -391,7 +391,7 @@ const HeroSections: React.FC = () => {
                   {[1, 2, 3, 4].map((i) => (
                     <img key={i} src={`https://i.pravatar.cc/150?u=${i}`} alt="사용자" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white dark:border-slate-850" />
                   ))}
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-indigo-600 border-2 border-white dark:border-slate-850 flex items-center justify-center text-[10px] sm:text-xs font-bold text-white">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#16232A] dark:bg-[#FF5B04] border-2 border-white dark:border-slate-850 flex items-center justify-center text-[10px] sm:text-xs font-bold text-white">
                     +2k
                   </div>
                 </div>
@@ -406,8 +406,8 @@ const HeroSections: React.FC = () => {
               </div>
             </div>
             <div className="relative animate-in zoom-in duration-1000 max-h-full mx-auto lg:max-w-none w-full">
-              <div className="absolute -top-6 -left-6 sm:-top-12 sm:-left-12 w-48 sm:w-64 h-48 sm:h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="relative bg-gradient-to-br from-indigo-500 to-purple-600 p-0.5 rounded-[24px] sm:rounded-[40px] shadow-xl overflow-hidden group">
+              <div className="absolute -top-6 -left-6 sm:-top-12 sm:-left-12 w-48 sm:w-64 h-48 sm:h-64 bg-[#075056]/10 rounded-full blur-3xl animate-pulse"></div>
+              <div className="relative bg-gradient-to-br from-[#16232A] to-[#FF5B04] p-0.5 rounded-[24px] sm:rounded-[40px] shadow-xl overflow-hidden group">
                 <div className="bg-slate-900 rounded-[22px] sm:rounded-[38px] overflow-hidden aspect-[4/3] relative">
                   <img
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3"
@@ -440,8 +440,8 @@ const HeroSections: React.FC = () => {
       >
         <section className="relative w-full max-h-full mx-auto overflow-hidden bg-slate-950 px-4 sm:px-8 py-8 sm:py-24 text-center rounded-xl">
           <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-indigo-500 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
-            <div className="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-500 rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
+            <div className="absolute top-0 left-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-[#075056] rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2"></div>
+            <div className="absolute bottom-0 right-1/4 w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-[#FF5B04] rounded-full blur-[80px] sm:blur-[120px] translate-y-1/2"></div>
           </div>
           <div className="relative z-10 max-h-full mx-auto space-y-4 sm:space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             <div className="mx-auto w-fit px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center gap-2 text-white/80 text-xs">
@@ -455,7 +455,7 @@ const HeroSections: React.FC = () => {
               아름답게 디자인되고 세심하게 제작된 개발자용 UI 컴포넌트입니다. 놀라운 인터페이스를 구축하는 데 필요한 모든 것을 제공합니다.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto w-full">
-              <button className="w-full sm:w-auto px-6 py-3 sm:px-10 sm:py-4 bg-white text-slate-950 rounded-2xl text-xs sm:text-sm font-bold hover:bg-slate-200 transition-all">
+              <button className="w-full sm:w-auto px-6 py-3 sm:px-10 sm:py-4 bg-[#FF5B04] hover:bg-[#e04f00] text-white rounded-2xl text-xs sm:text-sm font-bold transition-all">
                 무료로 체험하기
               </button>
               <button className="w-full sm:w-auto px-6 py-3 sm:px-10 sm:py-4 bg-white/5 border border-white/10 text-white rounded-2xl text-xs sm:text-sm font-bold hover:bg-white/10 transition-all backdrop-blur-md">
@@ -489,7 +489,7 @@ const HeroSections: React.FC = () => {
       >
         <section className="relative w-full max-h-full mx-auto overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-3 sm:p-10 lg:p-20 shadow-sm rounded-xl">
           <div className="absolute top-0 right-0 p-8 opacity-10">
-            <Sparkles className="w-64 h-64 text-indigo-500" />
+            <Sparkles className="w-64 h-64 text-[#FF5B04]" />
           </div>
           <div className="max-w-3xl space-y-6 sm:space-y-8 relative z-10 text-left">
             <h2 className="text-xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
@@ -497,15 +497,15 @@ const HeroSections: React.FC = () => {
             </h2>
             <div className="relative group flex items-center">
               <div className="absolute inset-y-0 left-0 pl-4 sm:pl-6 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 sm:h-6 sm:w-6 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+                <Search className="h-5 w-5 sm:h-6 sm:w-6 text-slate-400 group-focus-within:text-[#FF5B04] transition-colors" />
               </div>
               <input
                 type="text"
-                className="block w-full pl-10 sm:pl-16 pr-16 sm:pr-32 py-3 sm:py-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-3xl text-xs sm:text-lg focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all dark:text-white dark:placeholder:text-slate-500 outline-none"
+                className="block w-full pl-10 sm:pl-16 pr-16 sm:pr-32 py-3 sm:py-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-3xl text-xs sm:text-lg focus:ring-4 focus:ring-[#FF5B04]/10 focus:border-[#FF5B04] transition-all dark:text-white dark:placeholder:text-slate-500 outline-none"
                 placeholder="컴포넌트 검색..."
               />
               <div className="absolute inset-y-0 right-0 py-1.5 pr-1.5 sm:py-3 sm:pr-3 flex items-center">
-                <button className="h-full px-3 sm:px-6 bg-indigo-600 text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all">
+                <button className="h-full px-3 sm:px-6 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold transition-all">
                   검색
                 </button>
               </div>
@@ -520,7 +520,7 @@ const HeroSections: React.FC = () => {
             </div>
           </div>
           <div className="mt-5 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 text-left">
-            <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group flex sm:flex-col items-start gap-3">
+            <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-[#075056]/30 transition-all group flex sm:flex-col items-start gap-3">
               <div className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                 <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-emerald-500" />
               </div>
@@ -529,18 +529,18 @@ const HeroSections: React.FC = () => {
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">프로젝트를 단시간에 시작하고 실행할 수 있는 필수 가이드입니다.</p>
               </div>
             </div>
-            <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group flex sm:flex-col items-start gap-3">
+            <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-[#FF5B04]/30 transition-all group flex sm:flex-col items-start gap-3">
               <div className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                <Users className="w-4 h-4 sm:w-6 sm:h-6 text-indigo-500" />
+                <Users className="w-4 h-4 sm:w-6 sm:h-6 text-[#FF5B04]" />
               </div>
               <div>
                 <h4 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white mb-1">팀 협업</h4>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">팀과 역할을 효과적으로 관리하는 방법을 알아보세요.</p>
               </div>
             </div>
-            <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-indigo-500/30 transition-all group flex sm:flex-col items-start gap-3">
+            <div className="p-4 sm:p-8 bg-slate-50 dark:bg-slate-900/30 rounded-2xl sm:rounded-3xl border border-transparent hover:border-[#075056]/30 transition-all group flex sm:flex-col items-start gap-3">
               <div className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                <Box className="w-4 h-4 sm:w-6 sm:h-6 text-purple-500" />
+                <Box className="w-4 h-4 sm:w-6 sm:h-6 text-[#075056]" />
               </div>
               <div>
                 <h4 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white mb-1">컴포넌트 라이브러리</h4>
@@ -574,7 +574,7 @@ const HeroSections: React.FC = () => {
               우리는 단순함과 집중의 힘을 믿습니다. 보이지 않는 곳에서 강력한 도구를 제공합니다.
             </p>
             <div className="flex flex-row items-center gap-3 sm:gap-4 pt-1">
-              <button className="px-4 py-2 sm:px-10 sm:py-4 bg-indigo-600 text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg">
+              <button className="px-4 py-2 sm:px-10 sm:py-4 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold transition-all shadow-lg">
                 무료 체험 시작
               </button>
               <div className="flex items-center gap-1 group/link cursor-pointer text-xs">

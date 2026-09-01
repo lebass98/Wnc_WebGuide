@@ -20,7 +20,7 @@ const MonthlyTargetCard: React.FC = () => {
                     <div className="relative w-64 mx-auto">
                         <svg className="w-full h-auto" viewBox="0 0 100 55">
                             <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#E2E8F0" strokeWidth="6" strokeLinecap="round" className="dark:stroke-[#2E3A47]" />
-                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#3C50E0" strokeWidth="6" strokeLinecap="round" strokeDasharray="103.5 125.66" />
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#FF5B04" strokeWidth="6" strokeLinecap="round" strokeDasharray="103.5 125.66" />
                         </svg>
                         <div className="absolute inset-x-0 bottom-2 flex flex-col items-center justify-end">
                             <h4 className="text-[34px] font-bold text-[#1C2434] dark:text-white leading-none mb-2">82.40%</h4>

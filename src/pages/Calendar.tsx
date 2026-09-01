@@ -165,7 +165,7 @@ const Calendar: React.FC = () => {
     switch (type) {
       case 'danger': return 'bg-red-50 dark:bg-red-500/10 text-slate-700 dark:text-slate-300 border-l-4 border-red-500';
       case 'success': return 'bg-emerald-50 dark:bg-emerald-500/10 text-slate-700 dark:text-slate-300 border-l-4 border-emerald-500';
-      case 'primary': return 'bg-indigo-50 dark:bg-indigo-500/10 text-slate-700 dark:text-slate-300 border-l-4 border-indigo-500';
+      case 'primary': return 'bg-[#E4EEF0] dark:bg-[#075056]/20 text-slate-800 dark:text-slate-200 border-l-4 border-[#16232A] dark:border-[#FF5B04]';
       case 'warning': return 'bg-orange-50 dark:bg-orange-500/10 text-slate-700 dark:text-slate-300 border-l-4 border-orange-500';
       default: return 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-l-4 border-slate-500';
     }
@@ -175,7 +175,7 @@ const Calendar: React.FC = () => {
     const colors = {
       danger: 'bg-red-500 border-red-500',
       success: 'bg-emerald-500 border-emerald-500',
-      primary: 'bg-[#4B62FA] border-[#4B62FA]',
+      primary: 'bg-[#16232A] border-[#16232A] dark:bg-[#FF5B04] dark:border-[#FF5B04]',
       warning: 'bg-orange-500 border-orange-500'
     };
     return formData.type === type ? `${colors[type]} ring-offset-2 ring-2` : 'bg-transparent border-slate-300 dark:border-slate-600';
@@ -330,7 +330,7 @@ const Calendar: React.FC = () => {
           <ChevronRight className="w-3.5 h-3.5" />
           <span>캘린더</span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">일정 관리</span>
+          <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">일정 관리</span>
         </div>
       </div>
 
@@ -349,7 +349,7 @@ const Calendar: React.FC = () => {
               </div>
               <button 
                 onClick={() => handleAddEvent()}
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 rounded-lg text-[13px] font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] rounded-lg text-[13px] font-bold text-white transition-all shadow-lg"
               >
                 <Plus className="w-4 h-4" /> 이벤트 추가 +
               </button>
@@ -398,7 +398,7 @@ const Calendar: React.FC = () => {
                             type="text" required value={formData.title}
                             onChange={(e) => setFormData({...formData, title: e.target.value})}
                             placeholder="작업 제목을 입력하세요"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300"
+                            className="w-full px-4 py-3 rounded-xl border border-slate-100 dark:border-slate-800 focus:outline-none focus:ring-1 focus:ring-[#16232A] dark:focus:ring-[#FF5B04] bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300"
                         />
                     </div>
 
@@ -438,7 +438,7 @@ const Calendar: React.FC = () => {
 
                 <div className="flex justify-end gap-3 pt-4">
                     <button type="button" onClick={() => setIsModalOpen(false)} className="px-8 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors">닫기</button>
-                    <button type="submit" className="px-8 py-2.5 rounded-xl bg-[#4B62FA] hover:bg-indigo-600 text-sm font-bold text-white shadow-lg transition-all active:scale-95">
+                    <button type="submit" className="px-8 py-2.5 rounded-xl bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-sm font-bold text-white shadow-lg transition-all active:scale-95">
                         {isEditing ? '변경사항 저장' : '이벤트 추가'}
                     </button>
                 </div>

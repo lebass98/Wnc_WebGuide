@@ -49,7 +49,7 @@ class ErrorBoundary extends Component<Props, State> {
 
             <button
               onClick={this.handleReset}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-semibold shadow-sm transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-lg text-sm font-semibold shadow-sm transition-all cursor-pointer"
             >
               <RefreshCw className="w-4 h-4" />
               <span>새로고침 및 다시 시도</span>

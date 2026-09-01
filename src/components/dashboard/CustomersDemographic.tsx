@@ -8,16 +8,16 @@ const CustomersDemographic: React.FC = () => {
   const activities = dashboardData.activities;
 
   const iconComponents: { [key: string]: React.ReactNode } = {
-    'copy': <Copy className="w-4 h-4 text-indigo-500" />,
+    'copy': <Copy className="w-4 h-4 text-[#16232A] dark:text-[#FF5B04]" />,
     'commit': <GitCommit className="w-4 h-4 text-emerald-500" />,
-    'fix': <CheckCircle2 className="w-4 h-4 text-blue-500" />,
+    'fix': <CheckCircle2 className="w-4 h-4 text-[#075056] dark:text-emerald-400" />,
     'issue': <AlertCircle className="w-4 h-4 text-rose-500" />,
   };
 
   const bgStyles: { [key: string]: string } = {
-    'copy': 'bg-indigo-50 dark:bg-indigo-950/20',
+    'copy': 'bg-[#E4EEF0] dark:bg-[#075056]/20',
     'commit': 'bg-emerald-50 dark:bg-emerald-950/20',
-    'fix': 'bg-blue-50 dark:bg-blue-950/20',
+    'fix': 'bg-[#E4EEF0] dark:bg-[#075056]/30',
     'issue': 'bg-rose-50 dark:bg-rose-950/20',
   };
 
@@ -46,7 +46,7 @@ const CustomersDemographic: React.FC = () => {
                   {log.message}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5">
-                  <span className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30 px-1.5 py-0.5 rounded">
+                  <span className="text-[11px] font-bold text-[#16232A] dark:text-[#FF5B04] bg-[#E4EEF0] dark:bg-[#075056]/30 px-1.5 py-0.5 rounded">
                     {log.author}
                   </span>
                   <span className="text-[11px] text-slate-400 font-semibold">{log.time}</span>

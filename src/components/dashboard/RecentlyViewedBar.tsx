@@ -21,7 +21,7 @@ const RecentlyViewedBar: React.FC<RecentlyViewedBarProps> = ({ recentIds }) => {
   return (
     <div className="bg-white dark:bg-[#1A222C] border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
       <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 shrink-0">
-        <Clock className="w-4 h-4 text-indigo-500" />
+        <Clock className="w-4 h-4 text-[#FF5B04]" />
         <span>최근 본 컴포넌트:</span>
       </div>
 
@@ -30,7 +30,7 @@ const RecentlyViewedBar: React.FC<RecentlyViewedBarProps> = ({ recentIds }) => {
           <button
             key={item!.id}
             onClick={() => navigate(item!.route)}
-            className="px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-xl whitespace-nowrap transition-all border border-slate-200 dark:border-slate-700 cursor-pointer flex items-center gap-1 shrink-0"
+            className="px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-[#16232A] hover:text-white dark:hover:bg-[#FF5B04] text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-xl whitespace-nowrap transition-all border border-slate-200 dark:border-slate-700 cursor-pointer flex items-center gap-1 shrink-0"
           >
             <span>{item!.title}</span>
             <ArrowRight className="w-3 h-3 opacity-60" />

@@ -97,7 +97,7 @@ const FAQ: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>페이지</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">자주 묻는 질문</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">자주 묻는 질문</span>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ const FAQ: React.FC = () => {
                 <div key={idx} className="rounded-lg overflow-hidden transition-all duration-300">
                   <button
                     onClick={() => setOpenFaq2(openFaq2 === idx ? null : idx)}
-                    className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+                    className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === idx ? 'bg-[#E4EEF0] dark:bg-[#075056]/20' : 'bg-slate-50 dark:bg-slate-800'}`}
                   >
                     <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
                     {openFaq2 === idx ? (
@@ -155,7 +155,7 @@ const FAQ: React.FC = () => {
                     )}
                   </button>
                   <div className={`transition-all duration-300 ease-in-out ${openFaq2 === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                    <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === idx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}`}>
+                    <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === idx ? 'bg-[#E4EEF0] dark:bg-[#075056]/20' : ''}`}>
                       {item.answer}
                     </div>
                   </div>
@@ -169,7 +169,7 @@ const FAQ: React.FC = () => {
                   <div key={realIdx} className="rounded-lg overflow-hidden transition-all duration-300">
                     <button
                       onClick={() => setOpenFaq2(openFaq2 === realIdx ? null : realIdx)}
-                      className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'bg-slate-50 dark:bg-slate-800'}`}
+                      className={`w-full flex items-center justify-between p-5 text-left transition-colors ${openFaq2 === realIdx ? 'bg-[#E4EEF0] dark:bg-[#075056]/20' : 'bg-slate-50 dark:bg-slate-800'}`}
                     >
                       <span className="font-bold text-slate-800 dark:text-white">{item.question}</span>
                       {openFaq2 === realIdx ? (
@@ -179,7 +179,7 @@ const FAQ: React.FC = () => {
                       )}
                     </button>
                     <div className={`transition-all duration-300 ease-in-out ${openFaq2 === realIdx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                      <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === realIdx ? 'bg-indigo-50 dark:bg-indigo-500/10' : ''}`}>
+                      <div className={`p-5 pt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${openFaq2 === realIdx ? 'bg-[#E4EEF0] dark:bg-[#075056]/20' : ''}`}>
                         {item.answer}
                       </div>
                     </div>

@@ -86,7 +86,7 @@ const ShowcaseBoards: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">게시판</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">게시판</span>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@ const ShowcaseBoards: React.FC = () => {
 
                     {/* Title */}
                     <div className="flex-1 min-w-0 pr-4">
-                      <h4 className="text-[#333d4b] dark:text-white text-xl leading-[29px] font-bold tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
+                      <h4 className="text-[#333d4b] dark:text-white text-xl leading-[29px] font-bold tracking-tight group-hover:text-[#FF5B04] transition-colors truncate">
                         {article.title}
                       </h4>
                     </div>

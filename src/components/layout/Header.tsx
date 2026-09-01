@@ -301,7 +301,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
         <div className="flex-1 max-w-xl px-4 lg:px-12 hidden md:block" ref={searchContainerRef}>
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-              <Search className="h-[18px] w-[18px] text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+              <Search className="h-[18px] w-[18px] text-slate-400 group-focus-within:text-[#16232A] dark:group-focus-within:text-[#FF5B04] transition-colors" />
             </div>
             
             <input
@@ -313,7 +313,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
                 if (!isDropdownOpen) setIsDropdownOpen(true);
               }}
               onFocus={() => setIsDropdownOpen(true)}
-              className="block w-full pl-11 pr-24 py-2 sm:py-2.5 bg-slate-100 dark:bg-slate-800/70 border border-transparent focus:border-indigo-500/30 rounded-full text-sm font-medium placeholder-slate-400 dark:placeholder-slate-500 text-slate-900 dark:text-white focus:ring-4 focus:ring-indigo-500/10 focus:bg-white dark:focus:bg-slate-800 transition-all outline-none"
+              className="block w-full pl-11 pr-24 py-2 sm:py-2.5 bg-slate-100 dark:bg-slate-800/70 border border-transparent focus:border-[#16232A]/30 dark:focus:border-[#FF5B04]/30 rounded-full text-sm font-medium placeholder-slate-400 dark:placeholder-slate-500 text-slate-900 dark:text-white focus:ring-4 focus:ring-[#16232A]/10 dark:focus:ring-[#FF5B04]/10 focus:bg-white dark:focus:bg-slate-800 transition-all outline-none"
               placeholder="타이틀, 메뉴, 키워드 검색... (⌘K)"
             />
 
@@ -344,8 +344,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
                   className={`p-1.5 rounded-full transition-colors ${
                     selectedCategory !== 'all' || isFilterOpen
-                      ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/20 dark:text-indigo-400'
-                      : 'text-slate-400 hover:text-indigo-500 hover:bg-slate-200/50 dark:hover:bg-slate-700'
+                      ? 'text-[#16232A] bg-[#E4EEF0] dark:bg-[#075056]/30 dark:text-[#FF5B04]'
+                      : 'text-slate-400 hover:text-[#16232A] dark:hover:text-[#FF5B04] hover:bg-slate-200/50 dark:hover:bg-slate-700'
                   }`}
                   title="카테고리 필터"
                 >
@@ -367,7 +367,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
                         }}
                         className={`w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium transition-colors ${
                           selectedCategory === cat.key
-                            ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 font-bold'
+                            ? 'text-[#16232A] dark:text-[#FF5B04] bg-[#E4EEF0] dark:bg-[#075056]/20 font-bold'
                             : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                         }`}
                       >
@@ -417,7 +417,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
             <Search className="w-5 h-5" />
           </button>
 
-          <button className="hidden sm:flex items-center gap-1.5 bg-indigo-500 hover:bg-indigo-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-sm transition-colors shadow-sm shadow-indigo-200">
+          <button className="hidden sm:flex items-center gap-1.5 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-sm transition-colors shadow-sm">
             <Plus className="w-4 h-4" />
             새로 만들기
           </button>
@@ -444,7 +444,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
               <button className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all">
                 <Bell className="w-5 h-5" />
               </button>
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-[#1A222C]"></span>
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#FF5B04] border-2 border-white dark:border-[#1A222C]"></span>
             </div>
 
             <button className="hidden sm:block p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all">
@@ -457,7 +457,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
             <img
               src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
               alt="User Avatar"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 shadow-sm bg-indigo-50 dark:bg-slate-800"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 shadow-sm bg-[#E4EEF0] dark:bg-slate-800"
             />
             <div className="hidden md:block flex-1 min-w-0">
               <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">퍼블리싱팀</p>
@@ -473,7 +473,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
           <div className="bg-white dark:bg-[#1A222C] rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col max-h-[85vh] overflow-hidden">
             {/* Mobile Search Header */}
             <div className="flex items-center gap-3 p-4 border-b border-slate-100 dark:border-slate-800">
-              <Search className="w-5 h-5 text-indigo-500 shrink-0" />
+              <Search className="w-5 h-5 text-[#16232A] dark:text-[#FF5B04] shrink-0" />
               <input
                 ref={mobileInputRef}
                 type="text"
@@ -566,7 +566,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             onClick={() => onSelectCategory(cat.key)}
             className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
               selectedCategory === cat.key
-                ? 'bg-indigo-600 text-white shadow-xs'
+                ? 'bg-[#16232A] dark:bg-[#075056] text-white shadow-xs'
                 : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
             }`}
           >
@@ -584,7 +584,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-2 px-1">
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-indigo-500" /> 최근 검색어
+                    <Clock className="w-3.5 h-3.5 text-[#16232A] dark:text-[#FF5B04]" /> 최근 검색어
                   </span>
                   <button
                     onClick={onClearAllRecent}
@@ -598,7 +598,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                     <span
                       key={item}
                       onClick={() => onSelectQueryTag(item)}
-                      className="group inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-500/20 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-300 rounded-xl text-xs font-medium cursor-pointer transition-all border border-slate-200/60 dark:border-slate-700/60"
+                      className="group inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-[#E4EEF0] dark:hover:bg-[#075056]/30 text-slate-700 dark:text-slate-300 hover:text-[#16232A] dark:hover:text-[#FF5B04] rounded-xl text-xs font-medium cursor-pointer transition-all border border-slate-200/60 dark:border-slate-700/60"
                     >
                       <span>{item}</span>
                       <button
@@ -623,7 +623,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                   <button
                     key={tag}
                     onClick={() => onSelectQueryTag(tag)}
-                    className="px-3 py-1.5 bg-indigo-50/70 dark:bg-indigo-500/10 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 text-indigo-600 dark:text-indigo-300 rounded-xl text-xs font-semibold transition-all border border-indigo-100 dark:border-indigo-500/20"
+                    className="px-3 py-1.5 bg-[#E4EEF0] dark:bg-[#075056]/20 hover:bg-[#16232A] hover:text-white dark:hover:bg-[#FF5B04] text-[#16232A] dark:text-[#FF5B04] rounded-xl text-xs font-semibold transition-all border border-slate-200/60 dark:border-[#075056]/30"
                   >
                     #{tag}
                   </button>
@@ -649,7 +649,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                   onClick={() => onSelectResult(item)}
                   className={`flex items-start justify-between p-3 rounded-xl cursor-pointer transition-all ${
                     isSelected
-                      ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-900 dark:text-white font-semibold shadow-2xs border border-indigo-200 dark:border-indigo-500/30'
+                      ? 'bg-[#E4EEF0] dark:bg-[#075056]/30 text-slate-900 dark:text-white font-semibold shadow-2xs border border-[#16232A]/20 dark:border-[#FF5B04]/30'
                       : 'hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200'
                   }`}
                 >
@@ -657,7 +657,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                     <div
                       className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
                         isSelected
-                          ? 'bg-indigo-500 text-white'
+                          ? 'bg-[#16232A] dark:bg-[#FF5B04] text-white'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
                       }`}
                     >
@@ -671,7 +671,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
                           {item.title}
                         </span>
                         {item.badge && (
-                          <span className="text-[10px] font-extrabold px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
+                          <span className="text-[10px] font-extrabold px-1.5 py-0.2 rounded bg-[#E4EEF0] text-[#16232A] dark:bg-[#075056] dark:text-[#E4EEF0]">
                             {item.badge}
                           </span>
                         )}
@@ -686,7 +686,7 @@ const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
                       {/* Category & Breadcrumb */}
                       <div className="flex items-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500 mt-1">
-                        <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 rounded">
+                        <span className="font-semibold text-[#16232A] dark:text-[#FF5B04] bg-[#E4EEF0] dark:bg-[#075056]/20 px-1.5 py-0.5 rounded">
                           {item.categoryName}
                         </span>
                         {item.parentMenuName && (

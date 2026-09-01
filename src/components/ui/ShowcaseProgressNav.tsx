@@ -61,7 +61,7 @@ const ShowcaseProgressNav: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">진행률 & 네비게이션</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">진행률 & 네비게이션</span>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ const ShowcaseProgressNav: React.FC = () => {
               <div className="flex gap-2">
                 <button
                   onClick={simulateProgress}
-                  className="p-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-xl transition-all cursor-pointer"
+                  className="p-2 bg-[#E4EEF0] hover:bg-[#d6e5e8] text-[#16232A] dark:bg-[#075056]/30 dark:text-[#FF5B04] rounded-xl transition-all cursor-pointer"
                 >
                   <Play className="w-4 h-4" />
                 </button>
@@ -103,7 +103,7 @@ const ShowcaseProgressNav: React.FC = () => {
                 </div>
                 <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300 ease-out"
+                    className="h-full bg-gradient-to-r from-[#16232A] via-[#075056] to-[#FF5B04] rounded-full transition-all duration-300 ease-out"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -132,23 +132,23 @@ const ShowcaseProgressNav: React.FC = () => {
           <div className="flex items-center justify-between relative max-h-full mx-auto py-4 w-full">
             {/* Connecting Bar */}
             <div className="absolute top-[34px] left-[30px] right-[30px] h-[2px] bg-slate-100 dark:bg-slate-700 -z-10">
-              <div className="h-full bg-indigo-500 w-1/2 transition-all duration-500" />
+              <div className="h-full bg-[#FF5B04] w-1/2 transition-all duration-500" />
             </div>
 
             {/* Step 1 */}
             <div className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-indigo-100 dark:shadow-none">
-                <Check className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-full bg-[#16232A] text-white flex items-center justify-center font-bold text-sm shadow-md">
+                <Check className="w-5 h-5 text-[#FF5B04]" />
               </div>
               <span className="text-xs font-bold text-slate-800 dark:text-white">본인 인증</span>
             </div>
 
             {/* Step 2 */}
             <div className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-sm border-4 border-indigo-50 dark:border-indigo-950">
+              <div className="w-10 h-10 rounded-full bg-[#FF5B04] text-white flex items-center justify-center font-bold text-sm border-4 border-[#E4EEF0] dark:border-[#075056]">
                 2
               </div>
-              <span className="text-xs font-bold text-indigo-500">정보 입력</span>
+              <span className="text-xs font-bold text-[#FF5B04]">정보 입력</span>
             </div>
 
             {/* Step 3 */}
@@ -179,7 +179,7 @@ const ShowcaseProgressNav: React.FC = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`pb-3 text-sm font-bold border-b-2 transition-all cursor-pointer ${activeTab === tab.id
-                      ? 'border-indigo-500 text-indigo-500'
+                      ? 'border-[#FF5B04] text-[#FF5B04]'
                       : 'border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                     }`}
                 >

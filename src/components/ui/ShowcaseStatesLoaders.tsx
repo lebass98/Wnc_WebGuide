@@ -24,7 +24,7 @@ const ShowcaseStatesLoaders: React.FC = () => {
             <ChevronRight className="w-3.5 h-3.5" />
             <span>UI 요소</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-indigo-600 dark:text-indigo-400 font-medium">상태 & 로더</span>
+            <span className="text-[#16232A] dark:text-[#FF5B04] font-medium">상태 & 로더</span>
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@ const ShowcaseStatesLoaders: React.FC = () => {
             <div className="space-y-2 pt-2">
               <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">데이터 함 비어있음</h4>
               <div className="flex flex-col items-center justify-center p-8 border border-dashed border-slate-200 dark:border-slate-700 rounded-2xl text-center space-y-4">
-                <div className="p-3 bg-indigo-50 text-indigo-505 dark:bg-indigo-500/10 dark:text-indigo-400 rounded-full">
+                <div className="p-3 bg-[#E4EEF0] text-[#16232A] dark:bg-[#075056]/20 dark:text-[#FF5B04] rounded-full">
                   <Inbox className="w-8 h-8" />
                 </div>
                 <div>
@@ -124,7 +124,7 @@ const ShowcaseStatesLoaders: React.FC = () => {
                     새로운 프로젝트 연동이 완료되면 이곳에 실시간 업무 메시지가 표시됩니다.
                   </p>
                 </div>
-                <button className="flex items-center gap-1.5 px-4 py-2 bg-[#4B62FA] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-indigo-100 dark:shadow-none cursor-pointer">
+                <button className="flex items-center gap-1.5 px-4 py-2 bg-[#16232A] hover:bg-[#23343e] dark:bg-[#FF5B04] dark:hover:bg-[#e04f00] text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer">
                   <Plus className="w-3.5 h-3.5" />
                   연동 추가하기
                 </button>

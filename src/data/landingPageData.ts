@@ -37,11 +37,11 @@ export interface UpdateLog {
 
 // 1. Hero Live Playground Code Snippets
 export const heroLiveSnippet = {
-  react: `<button className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer">
+  react: `<button className="px-5 py-2.5 bg-[#FF5B04] hover:bg-[#e04f00] text-white font-medium rounded-xl shadow-lg shadow-[#FF5B04]/25 hover:shadow-[#FF5B04]/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer">
   <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
   <span>시작하기 (Get Started)</span>
 </button>`,
-  html: `<button class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-medium rounded-xl shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all inline-flex items-center gap-2 cursor-pointer">
+  html: `<button class="px-5 py-2.5 bg-[#FF5B04] hover:bg-[#e04f00] text-white font-medium rounded-xl shadow-lg shadow-[#FF5B04]/25 hover:shadow-[#FF5B04]/40 transition-all inline-flex items-center gap-2 cursor-pointer">
   <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
   <span>시작하기 (Get Started)</span>
 </button>`
@@ -58,7 +58,7 @@ export const featuredComponents: ComponentItem[] = [
     badge: 'POPULAR',
     route: '/ui/buttons-badges',
     reactCode: `import ShowcaseButtonsBadges from '@/components/ui/ShowcaseButtonsBadges';\n\nexport default function ButtonsDemo() {\n  return <ShowcaseButtonsBadges />;\n}`,
-    htmlCode: `<button class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-xs rounded-xl shadow-md">샤인 버튼</button>`
+    htmlCode: `<button class="px-4 py-2 bg-[#16232A] hover:bg-[#075056] text-white font-bold text-xs rounded-xl shadow-md">샤인 버튼</button>`
   },
   {
     id: 'ui-boxes',
@@ -111,7 +111,7 @@ export const featuredComponents: ComponentItem[] = [
     route: '/ui/progress-nav',
     reactCode: `import ShowcaseProgressNav from '@/components/ui/ShowcaseProgressNav';\n\nexport default function ProgressDemo() {\n  return <ShowcaseProgressNav />;\n}`,
     htmlCode: `<div class="w-full bg-slate-200 rounded-full h-2">
-  <div class="bg-indigo-600 h-2 rounded-full" style="width: 78%"></div>
+  <div class="bg-[#FF5B04] h-2 rounded-full" style="width: 78%"></div>
 </div>`
   },
   {
@@ -121,7 +121,7 @@ export const featuredComponents: ComponentItem[] = [
     description: '실제 /ui/states-loaders 페이지의 스피너 로딩 모듈',
     route: '/ui/states-loaders',
     reactCode: `import ShowcaseStatesLoaders from '@/components/ui/ShowcaseStatesLoaders';\n\nexport default function StatesDemo() {\n  return <ShowcaseStatesLoaders />;\n}`,
-    htmlCode: `<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>`
+    htmlCode: `<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-[#FF5B04]"></div>`
   },
   {
     id: 'input-component',
@@ -169,7 +169,7 @@ export const featuredComponents: ComponentItem[] = [
     reactCode: `import LoginPage from '@/pages/auth/LoginPage';\n\nexport default function LoginDemo() {\n  return <LoginPage />;\n}`,
     htmlCode: `<form class="space-y-2 p-4 bg-white rounded-2xl shadow">
   <input type="email" placeholder="user@domain.com" class="w-full p-2 text-xs border rounded-lg" />
-  <button class="w-full py-2 bg-indigo-600 text-white text-xs rounded-lg">로그인</button>
+  <button class="w-full py-2 bg-[#16232A] hover:bg-[#075056] text-white text-xs rounded-lg">로그인</button>
 </form>`
   },
   {
@@ -217,8 +217,8 @@ export const featuredComponents: ComponentItem[] = [
     description: '실제 /pages/pricing-sections 페이지의 멤버십 요금제 카드',
     route: '/pages/pricing-sections',
     reactCode: `import PricingSections from '@/pages/pricing/PricingSections';\n\nexport default function PricingDemo() {\n  return <PricingSections />;\n}`,
-    htmlCode: `<div class="p-4 bg-indigo-600 text-white rounded-2xl text-center">
-  <span class="text-[10px] font-bold uppercase">Pro Plan</span>
+    htmlCode: `<div class="p-4 bg-[#16232A] text-white rounded-2xl text-center">
+  <span class="text-[10px] font-bold uppercase text-[#FF5B04]">Pro Plan</span>
   <div class="text-lg font-extrabold my-1">$29 / mo</div>
 </div>`
   },
@@ -229,7 +229,7 @@ export const featuredComponents: ComponentItem[] = [
     description: '실제 /pages/hero-sections 페이지의 랜딩 히어로 블록',
     route: '/pages/hero-sections',
     reactCode: `import HeroSections from '@/pages/hero/HeroSections';\n\nexport default function HeroSectionsDemo() {\n  return <HeroSections />;\n}`,
-    htmlCode: `<header class="p-6 bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-2xl text-center">
+    htmlCode: `<header class="p-6 bg-gradient-to-r from-[#16232A] via-[#075056] to-[#FF5B04] text-white rounded-2xl text-center">
   <h1 class="text-lg font-bold">모던 히어로 비주얼 블록</h1>
 </header>`
   },
@@ -241,7 +241,7 @@ export const featuredComponents: ComponentItem[] = [
     route: '/pages/error-404',
     reactCode: `import ErrorPage from '@/pages/errors/ErrorPage';\n\nexport default function Error404Demo() {\n  return <ErrorPage code="404" />;\n}`,
     htmlCode: `<div class="text-center p-4 border rounded-2xl">
-  <h2 class="text-2xl font-bold text-indigo-600">404</h2>
+  <h2 class="text-2xl font-bold text-[#FF5B04]">404</h2>
   <p class="text-xs text-slate-500">페이지를 찾을 수 없습니다.</p>
 </div>`
   },
@@ -281,7 +281,7 @@ export const featuredComponents: ComponentItem[] = [
     reactCode: `import TaskList from '@/pages/tasks/TaskList';\n\nexport default function TaskListDemo() {\n  return <TaskList />;\n}`,
     htmlCode: `<div class="p-3 border rounded-xl flex justify-between items-center">
   <span class="font-bold text-xs">대시보드 UI 개편 완료</span>
-  <span class="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 text-[10px] font-bold rounded">완료</span>
+  <span class="px-2 py-0.5 bg-[#E4EEF0] text-[#075056] text-[10px] font-bold rounded">완료</span>
 </div>`
   },
   {
@@ -293,7 +293,7 @@ export const featuredComponents: ComponentItem[] = [
     reactCode: `import TaskKanban from '@/pages/tasks/TaskKanban';\n\nexport default function KanbanDemo() {\n  return <TaskKanban />;\n}`,
     htmlCode: `<div class="grid grid-cols-2 gap-2 text-xs font-bold">
   <div class="p-2 bg-slate-100 rounded-lg">To Do (2)</div>
-  <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">Done (5)</div>
+  <div class="p-2 bg-[#E4EEF0] text-[#075056] rounded-lg">Done (5)</div>
 </div>`
   },
 
@@ -305,7 +305,7 @@ export const featuredComponents: ComponentItem[] = [
     description: '실제 /calendar 페이지의 2026년 8월 스케줄러 캘린더',
     route: '/calendar',
     reactCode: `import Calendar from '@/pages/Calendar';\n\nexport default function CalendarDemo() {\n  return <Calendar />;\n}`,
-    htmlCode: `<div class="p-3 border rounded-2xl text-center text-xs font-bold text-indigo-600">
+    htmlCode: `<div class="p-3 border rounded-2xl text-center text-xs font-bold text-[#FF5B04]">
   🗓️ 2026년 8월 6일 일정 스케줄러
 </div>`
   },
@@ -318,7 +318,7 @@ export const featuredComponents: ComponentItem[] = [
     route: '/charts/line-charts',
     reactCode: `import LineCharts from '@/pages/charts/LineCharts';\n\nexport default function LineChartsDemo() {\n  return <LineCharts />;\n}`,
     htmlCode: `<div class="p-3.5 bg-slate-900 text-white rounded-2xl flex justify-between items-center text-xs">
-  <div><p class="text-[10px] text-slate-400">주간 지수</p><p class="font-bold text-indigo-400">+28.4% ▲</p></div>
+  <div><p class="text-[10px] text-slate-400">주간 지수</p><p class="font-bold text-[#FF5B04]">+28.4% ▲</p></div>
   <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 font-mono text-[10px] rounded">LIVE</span>
 </div>`
   }
@@ -331,7 +331,7 @@ export const templatesList: TemplateItem[] = [
     category: 'webzine',
     description: '고화질 미디어, 필진 프로필, 동영상 플레이어 및 서브 컴포넌트를 탑재한 감각적인 문화 메가 웹진',
     tag: 'Arte Webzine',
-    imageBg: 'from-purple-900 to-indigo-900',
+    imageBg: 'from-[#16232A] to-[#075056]',
     route: '/webzine/arte',
     itemCount: 9
   },
@@ -341,7 +341,7 @@ export const templatesList: TemplateItem[] = [
     category: 'webzine',
     description: '인용구, 타이포그래피, 이미지 갤러리 및 서재 프로필이 매력적인 감성 에디토리얼 웹진 템플릿',
     tag: 'Eeum Webzine',
-    imageBg: 'from-indigo-900 to-slate-900',
+    imageBg: 'from-[#075056] to-[#16232A]',
     route: '/webzine/eeum',
     itemCount: 7
   },
@@ -351,7 +351,7 @@ export const templatesList: TemplateItem[] = [
     category: 'application',
     description: 'ECharts 트렌드 지표, 칸반 업무 보드, 캘린더 및 회원 관리 폼이 결합된 종합 반응형 어드민 템플릿',
     tag: 'Admin App',
-    imageBg: 'from-blue-900 to-slate-950',
+    imageBg: 'from-[#16232A] to-[#FF5B04]/40',
     route: '/tasks/kanban',
     itemCount: 12
   }

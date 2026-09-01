@@ -51,7 +51,7 @@ const MonthlySalesChart: React.FC = () => {
             {data.map((item, idx) => (
               <div key={idx} className="relative flex flex-col items-center flex-1 group z-10 h-full justify-end">
                 <div
-                  className="w-full max-w-[16px] bg-[#3C50E0] rounded-t-sm hover:bg-[#3C50E0]/90 transition-all cursor-pointer relative"
+                  className="w-full max-w-[16px] bg-[#16232A] dark:bg-[#075056] rounded-t-sm hover:bg-[#FF5B04] dark:hover:bg-[#FF5B04] transition-all cursor-pointer relative"
                   style={{ height: `${item.value}%` }}
                 >
                   <div className="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-[#1C2434] text-white text-[11px] font-medium py-1 px-2.5 rounded whitespace-nowrap z-20 transition-opacity pointer-events-none">
