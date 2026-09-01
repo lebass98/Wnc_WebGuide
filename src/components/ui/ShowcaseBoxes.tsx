@@ -91,34 +91,34 @@ const ShowcaseBoxes: React.FC = () => {
           </div>
         </ShowcaseWrapper>
 
-        {/* Box 2: Toss Impact All Box (Soft Blue Radial - 첨부 이미지 스타일) */}
+        {/* Box 2: Toss Impact All Box (Teal to Deep Navy Gradient - #42C2AA -> #191654) */}
         <ShowcaseWrapper
           title="모두의 경험 배너 박스 (Impact for All)"
-          description="소프트 블루 그라디언트 배경에 그림자 없이 호버된 항목만 선명하게 떠오르는 오퍼시티 포커스 카드 박스입니다."
+          description="에메랄드 틸과 딥 네이비 그라디언트(#42C2AA → #191654) 배경에 그림자 없이 호버된 항목만 선명하게 떠오르는 오퍼시티 포커스 카드 박스입니다."
           snippet={codeSnippets.impactAllBox}
         >
           <div
-            className="rounded-[32px] sm:rounded-[40px] p-6 sm:p-8 lg:p-10 flex flex-col 2xl:flex-row gap-6 2xl:gap-8 items-start justify-between relative overflow-hidden border border-sky-200/50 dark:border-slate-800 transition-colors w-full min-h-[420px] shadow-none"
+            className="rounded-[32px] sm:rounded-[40px] p-6 sm:p-8 lg:p-10 flex flex-col 2xl:flex-row gap-6 2xl:gap-8 items-start justify-between relative overflow-hidden border border-[#42C2AA]/30 dark:border-[#42C2AA]/20 transition-colors w-full min-h-[420px] shadow-none"
             style={{
               background:
-                'radial-gradient(circle at 15% 25%, rgba(195, 226, 255, 0.9) 0%, rgba(220, 240, 255, 0.45) 50%, rgba(235, 248, 255, 0.2) 100%)',
+                'linear-gradient(135deg, #42C2AA 0%, #191654 100%)',
             }}
           >
             {/* Left Column: Heading */}
             <div className="flex flex-col gap-3 items-start justify-between shrink-0 w-full 2xl:w-[220px]">
               <div className="space-y-0.5">
-                <h2 className="text-[#333d4b] dark:text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
+                <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
                   impact for
                 </h2>
-                <h2 className="text-[#333d4b] dark:text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
+                <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
                   all
                 </h2>
               </div>
 
-              <div className="flex items-center gap-2 pt-2 2xl:pt-8 text-[#333d4b]/70 dark:text-slate-300 font-bold text-lg sm:text-xl lg:text-2xl tracking-tight group cursor-pointer hover:text-[#333d4b] dark:hover:text-white transition-colors">
+              <div className="flex items-center gap-2 pt-2 2xl:pt-8 text-white/80 dark:text-white/80 font-bold text-lg sm:text-xl lg:text-2xl tracking-tight group cursor-pointer hover:text-white transition-colors">
                 <span>모두의 경험</span>
-                <div className="w-7 h-7 rounded-full bg-transparent group-hover:bg-black/5 dark:group-hover:bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-all shadow-none">
-                  <ChevronRight className="w-4 h-4 text-[#333d4b] dark:text-white" />
+                <div className="w-7 h-7 rounded-full bg-transparent group-hover:bg-white/15 dark:group-hover:bg-white/15 flex items-center justify-center group-hover:translate-x-1 transition-all shadow-none">
+                  <ChevronRight className="w-4 h-4 text-white" />
                 </div>
               </div>
             </div>
@@ -128,12 +128,12 @@ const ShowcaseBoxes: React.FC = () => {
               {allExperienceServices.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group/item bg-white dark:bg-slate-800/90 rounded-full py-3.5 sm:py-4 px-5 sm:px-6 flex items-center justify-between transition-all duration-200 cursor-pointer border border-white/60 dark:border-slate-700/50 shadow-none hover:shadow-none group-hover/list:opacity-40 group-hover/list:bg-white/50 dark:group-hover/list:bg-slate-800/40 hover:!opacity-100 hover:!bg-white dark:hover:!bg-slate-800"
+                  className="group/item bg-white dark:bg-slate-900/90 rounded-full py-3.5 sm:py-4 px-5 sm:px-6 flex items-center justify-between transition-all duration-200 cursor-pointer border border-white/60 dark:border-slate-700/50 shadow-none hover:shadow-none group-hover/list:opacity-40 group-hover/list:bg-white/50 dark:group-hover/list:bg-slate-900/40 hover:!opacity-100 hover:!bg-white dark:hover:!bg-slate-900"
                 >
-                  <span className="text-[#333d4b] dark:text-slate-100 text-sm sm:text-base font-semibold tracking-tight transition-colors">
+                  <span className="text-[#191654] dark:text-slate-100 text-sm sm:text-base font-semibold tracking-tight transition-colors">
                     {item}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-transparent group-hover/item:bg-slate-100/80 dark:group-hover/item:bg-slate-700/80 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover/list:text-slate-400 group-hover/item:text-[#333d4b] dark:group-hover/item:text-white transition-all shrink-0 ml-3 shadow-none">
+                  <div className="w-8 h-8 rounded-full bg-transparent group-hover/item:bg-[#42C2AA]/20 dark:group-hover/item:bg-slate-700/80 flex items-center justify-center text-[#191654]/70 dark:text-slate-400 group-hover/list:text-[#191654]/40 group-hover/item:text-[#191654] dark:group-hover/item:text-white transition-all shrink-0 ml-3 shadow-none">
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
